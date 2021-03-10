@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { IProps } from "./interface";
-import { InputElementFactory } from "../..";
+import { InputElementFactory, SubmitButton } from "../..";
 
 export const FormGenerator = <T extends {}, K = {}>({
 	form,
@@ -34,6 +34,7 @@ export const FormGenerator = <T extends {}, K = {}>({
 					onChange={(value) => onChange(key, value)}
 				/>
 			))}
+			<SubmitButton onClick={() => null} label={buttonLabel} />
 		</form>
 	);
 };
