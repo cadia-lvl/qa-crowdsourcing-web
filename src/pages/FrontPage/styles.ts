@@ -24,11 +24,7 @@ export const TextBoxTitle = styled.span`
 	font-weight: 700;
 	color: ${Colors.HIGHLIGHT};
 `;
+
 export const LogInBoxContainer = styled.div`
-	background-color: ${Colors.FG_WHITE};
 	width: 450px;
-	box-shadow: 0px 0px 20px rgba(${Colors.HIGHLIGHT_RGB}, 0.15);
-	border-radius: 5px;
-	box-sizing: border-box;
-	padding: 20px;
 `;

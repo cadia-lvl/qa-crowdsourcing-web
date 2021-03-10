@@ -7,7 +7,7 @@ import {
 	TextBoxPara,
 } from "./styles";
 import { form } from "./form";
-import { FormGenerator } from "../../components";
+import { FormBox } from "../../components";
 
 export const FrontPage = () => {
 	return (
@@ -26,7 +26,7 @@ export const FrontPage = () => {
 				</TextBoxPara>
 			</TextBoxContainer>
 			<LogInBoxContainer>
-				<FormGenerator
+				<FormBox
 					form={form}
 					url=""
 					buttonLabel="Búa til aðgang"

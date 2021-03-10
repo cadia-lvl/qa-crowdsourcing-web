@@ -34,4 +34,20 @@ export const GlobalStyle = createGlobalStyle`
         color: ${Colors.SUB_HEADING_COLOR};
         margin-bottom: 5px;
     }
+
+    input[type=text], input[type=password] {
+        outline: none;
+        color: ${Colors.PARAGRAPH_TEXT_COLOR};
+        border: none;
+        padding: 10px 5px;
+        box-sizing: border-box;
+        background-color: ${Colors.FG_WHITE};
+        border: 2px #bbb solid;
+        border-radius: 3px;
+        transition: 0.3s;
+        :focus {
+            outline: none;
+            border: 2px ${Colors.HIGHLIGHT} solid;
+        }
+    }
 `;

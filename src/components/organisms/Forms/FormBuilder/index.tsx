@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { IProps } from "./interface";
-import { InputElementFactory, SubmitButton } from "../..";
+import { IProps } from "../formInterface";
+import { InputElementFactory, SubmitButton } from "../../..";
+import { Form } from "./styles";
 
-export const FormGenerator = <T extends {}, K = {}>({
+export const FormBuilder = <T extends {}, K = {}>({
 	form,
 	onSubmit,
 	buttonLabel,
@@ -20,7 +21,7 @@ export const FormGenerator = <T extends {}, K = {}>({
 	};
 
 	return (
-		<form
+		<Form
 			onSubmit={(e) => {
 				e.preventDefault();
 			}}
@@ -35,6 +36,6 @@ export const FormGenerator = <T extends {}, K = {}>({
 				/>
 			))}
 			<SubmitButton onClick={() => null} label={buttonLabel} />
-		</form>
+		</Form>
 	);
 };

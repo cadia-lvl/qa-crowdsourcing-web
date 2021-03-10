@@ -6,13 +6,13 @@ export const Button = styled.button`
 	width: 100%;
 	padding: 12px 0;
 	border: none;
-	background-color: ${Colors.SUCCESS_BG};
-	color: ${Colors.SUCCESS};
+	background-color: ${Colors.HIGHLIGHT_BG};
+	color: ${Colors.HIGHLIGHT};
 	border-radius: 5px;
 	cursor: pointer;
 	:hover {
 		color: ${Colors.FG_WHITE};
-		background-color: ${Colors.SUCCESS};
+		background-color: ${Colors.HIGHLIGHT};
 	}
 	transition: 0.3s;
 `;
