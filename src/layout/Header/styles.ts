@@ -8,6 +8,7 @@ export const Outer = styled.div`
 	width: 100%;
 	box-sizing: border-box;
 	padding: 30px 0;
+	margin-bottom: 100px;
 `;
 
 export const HeaderItem = styled.div`

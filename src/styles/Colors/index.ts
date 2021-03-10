@@ -14,5 +14,7 @@ export const WARNING_BG = "#fff4de";
 
 export const HIGHLIGHT = "#8950fc";
 export const HIGHLIGHT_BG = "#eee5ff";
+export const HIGHLIGHT_RGB = "137,80,252";
 
 export const BG_COLOR = "#f2f3f7";
+export const FG_WHITE = "#f8f8f8";
