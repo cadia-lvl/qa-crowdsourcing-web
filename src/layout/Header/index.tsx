@@ -1,14 +1,16 @@
 import React from "react";
-import { FrontPage } from "../../pages";
-import { Outer, HeaderItem } from "./styles";
+import { Outer, HeaderItem, PlayButton, HeaderItemContainer } from "./styles";
 import { headerItems } from "./utils";
 
 export default () => {
 	return (
 		<Outer>
-			{headerItems.map((item) => (
-				<HeaderItem className="header-itm">{item.text}</HeaderItem>
-			))}
+			<HeaderItemContainer>
+				{headerItems.map((item) => (
+					<HeaderItem className="header-itm">{item.text}</HeaderItem>
+				))}
+			</HeaderItemContainer>
+			<PlayButton>Spila</PlayButton>
 		</Outer>
 	);
 };
