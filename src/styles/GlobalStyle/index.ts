@@ -12,4 +12,13 @@ export const GlobalStyle = createGlobalStyle`
     	height: 100%;
         font-family: 'Quicksand', sans-serif;
     }
+
+    .header-itm {
+        color: ${Colors.SUB_HEADING_COLOR};
+        transition: 0.3s;
+        cursor: pointer;
+        :hover { 
+            color: ${Colors.HEADING_COLOR};
+        }
+    }
 `;

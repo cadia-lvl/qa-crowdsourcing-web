@@ -1,13 +1,13 @@
 import React from "react";
 import { FrontPage } from "../../pages";
-import { Outer } from "./styles";
+import { Outer, HeaderItem } from "./styles";
 import { headerItems } from "./utils";
 
 export default () => {
 	return (
 		<Outer>
 			{headerItems.map((item) => (
-				<span>{item.text}</span>
+				<HeaderItem className="header-itm">{item.text}</HeaderItem>
 			))}
 		</Outer>
 	);
