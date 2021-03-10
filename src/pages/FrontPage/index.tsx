@@ -5,9 +5,14 @@ import {
 	LogInBoxContainer,
 	TextBoxTitle,
 	TextBoxPara,
+	StatsCardInner,
+	TopLine,
+	Thick,
+	Light,
 } from "./styles";
 import { form } from "./form";
-import { FormBox } from "../../components";
+import { FormBox, WhiteFlexCard } from "../../components";
+import { LoadForUserType } from "../../hoc";
 
 export const FrontPage = () => {
 	return (
@@ -25,15 +30,34 @@ export const FrontPage = () => {
 					the undoubtable source.
 				</TextBoxPara>
 			</TextBoxContainer>
-			<LogInBoxContainer>
-				<FormBox
-					HTTPmethod="post"
-					form={form}
-					url="/api/auth/register"
-					buttonLabel="Búa til aðgang"
-					onSubmit={() => null}
-				/>
-			</LogInBoxContainer>
+			<LoadForUserType
+				render={(userType) =>
+					userType == "guest" ? (
+						<LogInBoxContainer>
+							<FormBox
+								HTTPmethod="post"
+								form={form}
+								url="/api/auth/register"
+								buttonLabel="Búa til aðgang"
+								onSubmit={() => null}
+							/>
+						</LogInBoxContainer>
+					) : (
+						<WhiteFlexCard>
+							<StatsCardInner>
+								<TopLine>
+									<Thick>#23</Thick>
+									<Light>Á stigatöflunni</Light>
+								</TopLine>
+								<TextBoxPara>
+									Velkomin/n Ásgeir! and going through the
+									cites of the word in classical literature{" "}
+								</TextBoxPara>
+							</StatsCardInner>
+						</WhiteFlexCard>
+					)
+				}
+			/>
 		</Outer>
 	);
 };

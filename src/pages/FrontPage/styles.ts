@@ -28,3 +28,24 @@ export const TextBoxTitle = styled.span`
 export const LogInBoxContainer = styled.div`
 	width: 450px;
 `;
+
+export const StatsCardInner = styled.div``;
+
+export const TopLine = styled.span`
+	font-weight: 700;
+	font-size: 36px;
+	color: ${Colors.WARNING};
+	display: flex;
+	align-items: center;
+`;
+
+export const Thick = styled.span`
+	font-weight: 700;
+	font-size: 36px;
+	margin-right: 30px;
+`;
+
+export const Light = styled.span`
+	font-weight: 300;
+	font-size: 26px;
+`;
