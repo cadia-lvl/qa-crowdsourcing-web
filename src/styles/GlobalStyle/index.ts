@@ -10,7 +10,6 @@ export const GlobalStyle = createGlobalStyle`
     
     html, body {
     	height: 100%;
-    	font-family: 'Nanum Gothic', sans-serif;
         font-family: 'Quicksand', sans-serif;
     }
 `;
