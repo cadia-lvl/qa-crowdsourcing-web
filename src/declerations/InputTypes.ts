@@ -1,11 +1,16 @@
 export enum InputElementTypes {
 	text,
+	hidden,
 }
 
 export interface InputBaseInterface {
 	required?: boolean;
 	hidden?: boolean;
 }
+
+/**
+ * TEXT INPUTS
+ */
 
 export interface TextInputBase extends InputBaseInterface {
 	value: string;
@@ -21,8 +26,29 @@ export interface TextInputRecipe extends TextInputBase {
 	label: string;
 }
 
-export type InputElementProps = TextInputBase;
+/**
+ * HIDDEN INPUTS
+ */
 
-export type InputElementRecipe = TextInputRecipe;
+export interface HiddenInputBase extends InputBaseInterface {
+	value: string;
+	placeholder?: string;
+}
+
+export interface HiddenInputProps extends HiddenInputBase {
+	onChange: (v: any) => void;
+}
+
+export interface HiddenInputRecipe extends HiddenInputBase {
+	type: InputElementTypes.hidden;
+	label: string;
+}
+
+/**
+ * Putting it all together
+ */
+export type InputElementProps = TextInputBase | HiddenInputBase;
+
+export type InputElementRecipe = TextInputRecipe | HiddenInputRecipe;
 
 export type FormRecipe = { [key: string]: InputElementRecipe };

@@ -1,5 +1,5 @@
 import React from "react";
-import { TextInput, InputWrapper } from "../../";
+import { TextInput, InputWrapper, PasswordInput } from "../../";
 import { InputElementTypes } from "../../../declerations";
 import { IProps } from "./interface";
 
@@ -14,7 +14,11 @@ export const InputElementFactory = (props: IProps) => {
 		case InputElementTypes.text:
 			inputElement = <TextInput {...inputField} onChange={onChange} />;
 			break;
-
+		case InputElementTypes.hidden:
+			inputElement = (
+				<PasswordInput {...inputField} onChange={onChange} />
+			);
+			break;
 		default:
 			inputElement = <TextInput {...inputField} onChange={onChange} />;
 	}

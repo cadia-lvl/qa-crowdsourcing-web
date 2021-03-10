@@ -16,7 +16,7 @@ export const form: FormRecipe = {
 		required: true,
 	},
 	password: {
-		type: InputElementTypes.text,
+		type: InputElementTypes.hidden,
 		label: "Lykilorð",
 		placeholder: "Veldu öruggt lykilorð",
 		value: "",
