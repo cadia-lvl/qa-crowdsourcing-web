@@ -14,9 +14,8 @@ export default (
 ): AuthState => {
 	switch (action.type) {
 		case ActionTypes.logOutUser:
-			return initialState;
+			return { ...initialState, type: "guest" };
 		case ActionTypes.fetchUserFromToken:
-			console.log(action.payload);
 			return action.payload;
 		default:
 			return state;
