@@ -16,6 +16,7 @@ export default (
 		case ActionTypes.logOutUser:
 			return initialState;
 		case ActionTypes.fetchUserFromToken:
+			console.log(action.payload);
 			return action.payload;
 		default:
 			return state;

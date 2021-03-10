@@ -1,3 +1,5 @@
+import { AuthState } from "./AuthReducer";
+
 export interface StoreState {
-	foo?: 4;
+	auth: AuthState;
 }
