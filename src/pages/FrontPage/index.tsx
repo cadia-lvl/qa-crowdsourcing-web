@@ -27,8 +27,9 @@ export const FrontPage = () => {
 			</TextBoxContainer>
 			<LogInBoxContainer>
 				<FormBox
+					HTTPmethod="post"
 					form={form}
-					url=""
+					url="/api/auth/register"
 					buttonLabel="Búa til aðgang"
 					onSubmit={() => null}
 				/>

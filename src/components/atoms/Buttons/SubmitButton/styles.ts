@@ -15,4 +15,5 @@ export const Button = styled.button`
 		background-color: ${Colors.HIGHLIGHT};
 	}
 	transition: 0.3s;
+	${(props) => (props.theme.inactive ? "opacity: 0.2;" : "")}; ;
 `;

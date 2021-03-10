@@ -5,4 +5,5 @@ export interface IProps<T extends {}, K extends {}> {
 	buttonLabel: string;
 	url: string;
 	form: { [key in keyof K]: InputElementRecipe };
+	HTTPmethod: "put" | "post" | "patch";
 }
