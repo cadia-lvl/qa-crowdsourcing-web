@@ -11,8 +11,9 @@ import {
 	Light,
 } from "./styles";
 import { form } from "./form";
-import { FormBox, WhiteFlexCard } from "../../components";
+import { FormBox, WhiteFlexCard, SmallProgressBar } from "../../components";
 import { LoadForUserType } from "../../hoc";
+import { Colors } from "../../styles";
 
 export const FrontPage = () => {
 	return (
@@ -53,6 +54,30 @@ export const FrontPage = () => {
 									Velkomin/n Ásgeir! and going through the
 									cites of the word in classical literature{" "}
 								</TextBoxPara>
+								<SmallProgressBar
+									ratio={0.7}
+									label="Spurningar"
+									color={Colors.HIGHLIGHT}
+									amount={25}
+								/>
+								<SmallProgressBar
+									ratio={0.6}
+									label="Svör"
+									color={Colors.SUCCESS}
+									amount={21}
+								/>
+								<SmallProgressBar
+									ratio={0.4}
+									label="Yfirferðir"
+									color={Colors.DANGER}
+									amount={14}
+								/>
+								<SmallProgressBar
+									ratio={0.83}
+									label="Efnisgreinar"
+									color={Colors.WARNING}
+									amount={3}
+								/>
 							</StatsCardInner>
 						</WhiteFlexCard>
 					)
