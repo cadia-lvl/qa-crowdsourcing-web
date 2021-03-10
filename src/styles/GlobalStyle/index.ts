@@ -29,4 +29,9 @@ export const GlobalStyle = createGlobalStyle`
         margin-top: 15px;
         font-size: 18px;
     }
+
+    label {
+        color: ${Colors.SUB_HEADING_COLOR};
+        margin-bottom: 5px;
+    }
 `;

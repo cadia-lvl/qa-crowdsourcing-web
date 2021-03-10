@@ -7,7 +7,7 @@ export const Outer = styled.div`
 	label : {
 		font-size: 14px;
 	}
-	margin: 8px 0 5px 0;
+	margin: 0 0 13px 0;
 `;
 
 export const Asterisk = styled.span`
