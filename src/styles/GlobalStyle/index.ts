@@ -16,6 +16,7 @@ export const GlobalStyle = createGlobalStyle`
     .header-itm {
         color: ${Colors.SUB_HEADING_COLOR};
         transition: 0.3s;
+        font-size: 18px;
         cursor: pointer;
         :hover { 
             color: ${Colors.HEADING_COLOR};

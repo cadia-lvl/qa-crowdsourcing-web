@@ -2,13 +2,14 @@ import React from "react";
 import { GlobalStyle } from "../styles";
 import { IProps } from "./interface";
 import Header from "./Header";
+import { Outer } from "./styles";
 
 export const LayoutWrapper = ({ children }: IProps) => {
 	return (
-		<div>
+		<Outer>
 			<GlobalStyle />
 			<Header />
 			{children}
-		</div>
+		</Outer>
 	);
 };

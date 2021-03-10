@@ -1,5 +1,5 @@
 export const HEADING_COLOR = "#333";
-export const SUB_HEADING_COLOR = "#888";
+export const SUB_HEADING_COLOR = "#73626a";
 export const SUB_SUB_HEADING_COLOR = "#666";
 export const PARAGRAPH_TEXT_COLOR = "#666";
 
