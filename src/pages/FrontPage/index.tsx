@@ -5,6 +5,8 @@ import {
 	LogInBoxContainer,
 	TextBoxTitle,
 } from "./styles";
+import { form } from "./form";
+import { FormGenerator } from "../../components";
 
 export const FrontPage = () => {
 	return (
@@ -12,7 +14,14 @@ export const FrontPage = () => {
 			<TextBoxContainer>
 				<TextBoxTitle>Lorem ipsum!</TextBoxTitle>
 			</TextBoxContainer>
-			<LogInBoxContainer></LogInBoxContainer>
+			<LogInBoxContainer>
+				<FormGenerator
+					form={form}
+					url=""
+					buttonLabel="Búa til aðgang"
+					onSubmit={() => null}
+				/>
+			</LogInBoxContainer>
 		</Outer>
 	);
 };

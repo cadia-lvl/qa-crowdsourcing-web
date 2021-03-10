@@ -1,5 +1,8 @@
 import React from "react";
+import { TextInputProps } from "../../../../declerations";
 
-export const index = () => {
-	return <input type="text" value="x" />;
+export const TextInput = (props: TextInputProps) => {
+	return (
+		<input {...props} onChange={(e) => props.onChange(e.target.value)} />
+	);
 };
