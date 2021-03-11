@@ -8,7 +8,11 @@ export default () => {
 		<Outer>
 			<HeaderItemContainer>
 				{headerItems.map((item) => (
-					<HeaderItem className="header-itm">{item.text}</HeaderItem>
+					<NavLink to={item.path}>
+						<HeaderItem className="header-itm">
+							{item.text}
+						</HeaderItem>
+					</NavLink>
 				))}
 			</HeaderItemContainer>
 			<NavLink to="/spila">
