@@ -4,6 +4,7 @@ import { IProps } from "./interface";
 import { FillColorMap, TextColorMap } from "./utils";
 
 export const FilledAlert = ({ label, type }: IProps) => {
+	if (!label) return null;
 	return (
 		<Outer
 			theme={{
