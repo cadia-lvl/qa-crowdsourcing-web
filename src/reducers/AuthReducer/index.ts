@@ -17,6 +17,8 @@ export default (
 			return { ...initialState, type: "guest" };
 		case ActionTypes.fetchUserFromToken:
 			return action.payload;
+		case ActionTypes.registerUser:
+			return action.payload;
 		default:
 			return state;
 	}

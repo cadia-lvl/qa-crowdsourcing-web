@@ -21,4 +21,11 @@ export const fetchUserFromToken = () => {
 	};
 };
 
+export const registerUser = (user: User) => {
+	return {
+		type: ActionTypes.registerUser,
+		payload: user,
+	};
+};
+
 export * from "./interface";

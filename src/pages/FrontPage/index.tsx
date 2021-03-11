@@ -14,32 +14,41 @@ import { form } from "./form";
 import { FormBox, WhiteFlexCard, SmallProgressBar } from "../../components";
 import { LoadForUserType } from "../../hoc";
 import { Colors } from "../../styles";
+import { useDispatch, useSelector } from "react-redux";
+import { registerUser } from "../../actions";
+import { User } from "../../declerations";
+import { StoreState } from "../../reducers";
 
 export const FrontPage = () => {
+	const dispatch = useDispatch();
+	const state = useSelector((state: StoreState) => state);
 	return (
 		<Outer>
 			<TextBoxContainer>
 				<TextBoxTitle>Spurðu mig spurninga!</TextBoxTitle>
 				<TextBoxPara>
-					Contrary to popular belief, Lorem Ipsum is not simply random text. It
-					has roots in a piece of classical Latin literature from 45 BC, making
-					it over 2000 years old. Richard McClintock, a Latin professor at
-					Hampden-Sydney College in Virginia, looked up one of the more obscure
-					Latin words, consectetur, from a Lorem Ipsum passage, and going
-					through the cites of the word in classical literature, discovered the
-					undoubtable source.
+					Contrary to popular belief, Lorem Ipsum is not simply random
+					text. It has roots in a piece of classical Latin literature
+					from 45 BC, making it over 2000 years old. Richard
+					McClintock, a Latin professor at Hampden-Sydney College in
+					Virginia, looked up one of the more obscure Latin words,
+					consectetur, from a Lorem Ipsum passage, and going through
+					the cites of the word in classical literature, discovered
+					the undoubtable source.
 				</TextBoxPara>
 			</TextBoxContainer>
 			<LoadForUserType
 				render={(userType) =>
 					userType === "guest" ? (
 						<LogInBoxContainer>
-							<FormBox
+							<FormBox<User>
 								HTTPmethod="post"
 								form={form}
 								url="/api/auth/register"
 								buttonLabel="Búa til aðgang"
-								onSubmit={() => null}
+								onSubmit={(user) =>
+									dispatch(registerUser(user))
+								}
 							/>
 						</LogInBoxContainer>
 					) : (
@@ -50,8 +59,9 @@ export const FrontPage = () => {
 									<Light>Á stigatöflunni</Light>
 								</TopLine>
 								<TextBoxPara>
-									Velkomin/n Ásgeir! and going through the cites of the word in
-									classical literature{" "}
+									Velkomin/n {state.auth.username}! and going
+									through the cites of the word in classical
+									literature{" "}
 								</TextBoxPara>
 								<SmallProgressBar
 									ratio={0.7}

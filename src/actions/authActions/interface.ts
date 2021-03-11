@@ -6,6 +6,11 @@ export interface FetchUserFromTokenAction {
 	payload: User;
 }
 
+export interface RegisterUserAction {
+	type: ActionTypes.registerUser;
+	payload: User;
+}
+
 export interface LogOutUserAction {
 	type: ActionTypes.logOutUser;
 }
