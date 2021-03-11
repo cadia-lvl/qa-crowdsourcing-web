@@ -4,13 +4,8 @@ import { Redirect } from "react-router-dom";
 import { StoreState } from "../../reducers";
 import { IProps } from "./interface";
 
-export const RestrictedPage = ({
-	userTypes,
-	children,
-	fallbackUrl,
-}: IProps) => {
-	console.log("hello");
+export const AllowOnlyPage = ({ userTypes, children, fallbackUrl }: IProps) => {
 	const state = useSelector((state: StoreState) => state.auth);
-	if (userTypes.includes(state.type)) return <Redirect to={fallbackUrl} />;
+	if (!userTypes.includes(state.type)) return <Redirect to={fallbackUrl} />;
 	return <React.Fragment>{children}</React.Fragment>;
 };
