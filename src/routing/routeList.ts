@@ -19,7 +19,10 @@ export const ROUTE_LIST: RouteInterface[] = [
 	},
 	{
 		component: Pages.GamePage,
-		restrictFrom: ["guest"],
+		restrictFrom: {
+			userTypes: ["guest"],
+			fallbackUrl: "/innskra",
+		},
 		path: "/spila",
 	},
 	{

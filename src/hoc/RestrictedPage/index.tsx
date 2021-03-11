@@ -4,8 +4,12 @@ import { Redirect } from "react-router-dom";
 import { StoreState } from "../../reducers";
 import { IProps } from "./interface";
 
-export const RestrictedPage = ({ userTypes, children }: IProps) => {
+export const RestrictedPage = ({
+	userTypes,
+	children,
+	fallbackUrl,
+}: IProps) => {
 	const state = useSelector((state: StoreState) => state.auth);
-	if (!userTypes.includes(state.type)) return <Redirect to="/innskra" />;
+	if (userTypes.includes(state.type)) return <Redirect to={fallbackUrl} />;
 	return <React.Fragment>{children}</React.Fragment>;
 };

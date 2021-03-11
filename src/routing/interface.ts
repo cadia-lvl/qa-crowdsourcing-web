@@ -4,6 +4,11 @@ export interface RouteInterface {
 	path: string;
 	component: any;
 	exact?: boolean;
-	allowOnly?: UserType[];
-	restrictFrom?: UserType[];
+	allowOnly?: UserTypeRestrict;
+	restrictFrom?: UserTypeRestrict;
+}
+
+interface UserTypeRestrict {
+	userTypes: UserType[];
+	fallbackUrl: string;
 }

@@ -1,18 +1,32 @@
 import React, { useEffect } from "react";
-import { GlobalStyle } from "../styles";
+import { Colors, GlobalStyle } from "../styles";
 import { IProps } from "./interface";
 import Header from "./Header";
-import { Outer } from "./styles";
+import { LoadingOuter, Outer } from "./styles";
 import { useSelector, useDispatch } from "react-redux";
 import { StoreState } from "../reducers";
 import { fetchUserFromToken } from "../actions";
+import { FETCH_USER_FROM_TOKEN_WAIT_MS } from "./utils";
+import PuffLoader from "react-spinners/ClipLoader";
 
 export const LayoutWrapper = ({ children }: IProps) => {
 	const state = useSelector((state: StoreState) => state.auth);
 	const dispatch = useDispatch();
 	useEffect(() => {
-		if (state.type === "loading") dispatch(fetchUserFromToken());
+		if (state.type === "loading")
+			setTimeout(
+				() => dispatch(fetchUserFromToken()),
+				FETCH_USER_FROM_TOKEN_WAIT_MS
+			);
 	}, [state._id]);
+
+	if (state.type == "loading")
+		return (
+			<LoadingOuter>
+				<GlobalStyle />
+				<PuffLoader color={Colors.DANGER} loading={true} size={150} />
+			</LoadingOuter>
+		);
 	return (
 		<Outer>
 			<GlobalStyle />

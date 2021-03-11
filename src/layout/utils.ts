@@ -1,0 +1,1 @@
+export const FETCH_USER_FROM_TOKEN_WAIT_MS = 2000;
