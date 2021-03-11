@@ -8,6 +8,12 @@ export const ROUTE_LIST: RouteInterface[] = [
 		path: "/",
 	},
 	{
+		component: Pages.GamePage,
+		restrictFrom: ["guest"],
+		path: "/spila",
+		exact: true,
+	},
+	{
 		component: Pages.NotFound,
 		path: "*",
 	},
