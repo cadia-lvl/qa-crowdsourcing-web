@@ -14,7 +14,8 @@ export default (
 ): AuthState => {
 	switch (action.type) {
 		case ActionTypes.logOutUser:
-			return { ...initialState, type: "guest" };
+			return { ...initialState, type: "user", username: "Njall" };
+		// return { ...initialState, type: "guest" };
 		case ActionTypes.fetchUserFromToken:
 			return action.payload;
 		case ActionTypes.registerUser:
