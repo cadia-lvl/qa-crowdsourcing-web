@@ -42,12 +42,12 @@ export const GlobalStyle = createGlobalStyle`
         padding: 10px 5px;
         box-sizing: border-box;
         background-color: ${Colors.FG_WHITE};
-        border: 2px #bbb solid;
+        border: 1px #bbb solid;
         border-radius: 3px;
         transition: 0.3s;
         :focus {
             outline: none;
-            border: 2px ${Colors.HIGHLIGHT} solid;
+            border: 1px ${Colors.HIGHLIGHT} solid;
         }
     }
 `;

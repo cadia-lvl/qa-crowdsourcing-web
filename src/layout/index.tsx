@@ -11,7 +11,7 @@ export const LayoutWrapper = ({ children }: IProps) => {
 	const state = useSelector((state: StoreState) => state.auth);
 	const dispatch = useDispatch();
 	useEffect(() => {
-		if (state.type == "loading") dispatch(fetchUserFromToken());
+		if (state.type === "loading") dispatch(fetchUserFromToken());
 	}, [state._id]);
 	return (
 		<Outer>

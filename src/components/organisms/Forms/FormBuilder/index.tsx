@@ -13,7 +13,7 @@ export const FormBuilder = <T extends {}, K = {}>({
 	HTTPmethod,
 }: IProps<T, K>) => {
 	const [formObject, setFormObject] = useState(form);
-	const [isDone, setIsDone] = useState(false);
+	const [_, setIsDone] = useState(false);
 	const [errorMessage, setErrorMessage] = useState("");
 	const [isLoading, setIsLoading] = useState(false);
 
