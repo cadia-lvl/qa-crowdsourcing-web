@@ -50,4 +50,16 @@ export const GlobalStyle = createGlobalStyle`
             border: 1px ${Colors.HIGHLIGHT} solid;
         }
     }
+
+    a {
+        color: #0060B6;
+        text-decoration: none;
+    }
+
+    a:hover 
+    {
+        color:#00A0C6; 
+        text-decoration:none; 
+        cursor:pointer;  
+    }
 `;

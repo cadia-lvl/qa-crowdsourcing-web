@@ -1,6 +1,7 @@
 import React from "react";
 import { Outer, HeaderItem, PlayButton, HeaderItemContainer } from "./styles";
 import { headerItems } from "./utils";
+import { Link } from "react-router-dom";
 
 export default () => {
 	return (
@@ -10,7 +11,9 @@ export default () => {
 					<HeaderItem className="header-itm">{item.text}</HeaderItem>
 				))}
 			</HeaderItemContainer>
-			<PlayButton>Spila</PlayButton>
+			<Link to="/spila">
+				<PlayButton>Spila</PlayButton>
+			</Link>
 		</Outer>
 	);
 };
