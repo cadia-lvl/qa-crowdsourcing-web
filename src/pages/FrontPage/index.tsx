@@ -10,17 +10,14 @@ import {
 	Thick,
 	Light,
 } from "./styles";
-import { form } from "./form";
-import { FormBox, WhiteFlexCard, SmallProgressBar } from "../../components";
+import { WhiteFlexCard, SmallProgressBar } from "../../components";
 import { LoadForUserType } from "../../hoc";
 import { Colors } from "../../styles";
-import { useDispatch, useSelector } from "react-redux";
-import { registerUser } from "../../actions";
-import { User } from "../../declerations";
+import { useSelector } from "react-redux";
 import { StoreState } from "../../reducers";
+import { SignUpForm } from "../../forms";
 
 export const FrontPage = () => {
-	const dispatch = useDispatch();
 	const state = useSelector((state: StoreState) => state);
 	return (
 		<Outer>
@@ -37,61 +34,53 @@ export const FrontPage = () => {
 					the undoubtable source.
 				</TextBoxPara>
 			</TextBoxContainer>
-			<LoadForUserType
-				render={(userType) =>
-					userType === "guest" ? (
-						<LogInBoxContainer>
-							<FormBox<User>
-								HTTPmethod="post"
-								form={form}
-								url="/api/auth/register"
-								buttonLabel="Búa til aðgang"
-								onSubmit={(user) =>
-									dispatch(registerUser(user))
-								}
-							/>
-						</LogInBoxContainer>
-					) : (
-						<WhiteFlexCard>
-							<StatsCardInner>
-								<TopLine>
-									<Thick>#23</Thick>
-									<Light>Á stigatöflunni</Light>
-								</TopLine>
-								<TextBoxPara>
-									Velkomin/n {state.auth.username}! and going
-									through the cites of the word in classical
-									literature{" "}
-								</TextBoxPara>
-								<SmallProgressBar
-									ratio={0.7}
-									label="Spurningar"
-									color={Colors.HIGHLIGHT}
-									amount={25}
-								/>
-								<SmallProgressBar
-									ratio={0.6}
-									label="Svör"
-									color={Colors.SUCCESS}
-									amount={21}
-								/>
-								<SmallProgressBar
-									ratio={0.4}
-									label="Yfirferðir"
-									color={Colors.DANGER}
-									amount={14}
-								/>
-								<SmallProgressBar
-									ratio={0.83}
-									label="Efnisgreinar"
-									color={Colors.WARNING}
-									amount={3}
-								/>
-							</StatsCardInner>
-						</WhiteFlexCard>
-					)
-				}
-			/>
+			<LogInBoxContainer>
+				<WhiteFlexCard>
+					<LoadForUserType
+						render={(userType) =>
+							userType === "guest" ? (
+								<SignUpForm />
+							) : (
+								<StatsCardInner>
+									<TopLine>
+										<Thick>#23</Thick>
+										<Light>Á stigatöflunni</Light>
+									</TopLine>
+									<TextBoxPara>
+										Velkomin/n {state.auth.username}! and
+										going through the cites of the word in
+										classical literature{" "}
+									</TextBoxPara>
+									<SmallProgressBar
+										ratio={0.7}
+										label="Spurningar"
+										color={Colors.HIGHLIGHT}
+										amount={25}
+									/>
+									<SmallProgressBar
+										ratio={0.6}
+										label="Svör"
+										color={Colors.SUCCESS}
+										amount={21}
+									/>
+									<SmallProgressBar
+										ratio={0.4}
+										label="Yfirferðir"
+										color={Colors.DANGER}
+										amount={14}
+									/>
+									<SmallProgressBar
+										ratio={0.83}
+										label="Efnisgreinar"
+										color={Colors.WARNING}
+										amount={3}
+									/>
+								</StatsCardInner>
+							)
+						}
+					/>
+				</WhiteFlexCard>
+			</LogInBoxContainer>
 		</Outer>
 	);
 };

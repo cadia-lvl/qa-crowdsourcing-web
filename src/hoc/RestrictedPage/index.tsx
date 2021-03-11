@@ -6,6 +6,6 @@ import { IProps } from "./interface";
 
 export const RestrictedPage = ({ userTypes, children }: IProps) => {
 	const state = useSelector((state: StoreState) => state.auth);
-	if (!userTypes.includes(state.type)) return <Redirect to="log-in" />;
+	if (!userTypes.includes(state.type)) return <Redirect to="/log-in" />;
 	return <React.Fragment>{children}</React.Fragment>;
 };
