@@ -8,10 +8,19 @@ export const ROUTE_LIST: RouteInterface[] = [
 		path: "/",
 	},
 	{
+		component: Pages.SignInPage,
+		exact: true,
+		path: "/innskra",
+	},
+	{
+		component: Pages.SignUpPage,
+		exact: true,
+		path: "/nyr-notandi",
+	},
+	{
 		component: Pages.GamePage,
 		restrictFrom: ["guest"],
 		path: "/spila",
-		exact: true,
 	},
 	{
 		component: Pages.NotFound,
