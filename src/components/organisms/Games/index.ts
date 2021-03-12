@@ -1,1 +1,1 @@
-export * from "./WriteQuestion";
+export * from "./WriteQuestionGame";

@@ -1,5 +1,3 @@
-import { WriteQuestion } from "../components";
-
 export enum GameTypes {
 	writeQuestion,
 	rateQuestion,
