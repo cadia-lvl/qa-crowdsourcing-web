@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import { SmallProgressBar } from "../../../../";
+import { StoreState } from "../../../../../reducers";
 import { Colors } from "../../../../../styles";
 import {
 	Outer,
-	Inner,
 	IconContainer,
+	Icon,
 	TickContainer,
 	Tick,
 	ProgressBarCont,
+	TrophyCont,
 } from "./styles";
 
 /**
@@ -15,12 +18,15 @@ import {
  * generalize to support arbitrary number of ticks
  */
 export const GameProgress = () => {
-	const [ratio, setRatio] = useState(0);
+	const state = useSelector((state: StoreState) => state.game);
+
+	const ratio = state.tasksCompleted / state.totalTasks;
+
 	return (
 		<Outer>
-			<Inner>
-				<IconContainer>3</IconContainer>
-			</Inner>
+			<IconContainer theme={{ widthRatio: ratio }}>
+				<Icon>{state.tasksCompleted}</Icon>
+			</IconContainer>
 			<TickContainer>
 				<Tick />
 				<Tick />
@@ -35,8 +41,15 @@ export const GameProgress = () => {
 				<Tick />
 			</TickContainer>
 			<ProgressBarCont>
-				<SmallProgressBar ratio={0.3} label="" color={Colors.SUCCESS} />
+				<SmallProgressBar
+					ratio={ratio}
+					label=""
+					color={Colors.SUCCESS}
+				/>
 			</ProgressBarCont>
+			<TrophyCont>
+				<i className="fas fa-trophy"></i>
+			</TrophyCont>
 		</Outer>
 	);
 };

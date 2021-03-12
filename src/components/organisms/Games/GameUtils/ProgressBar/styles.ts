@@ -10,8 +10,8 @@ export const Outer = styled.div`
 	margin-bottom: 100px;
 `;
 
-export const Inner = styled.div`
-	width: 30%;
+export const IconContainer = styled.div`
+	width: ${(props) => props.theme.widthRatio * 100}%;
 	height: 100%;
 	position: relative;
 	z-index: 2;
@@ -39,7 +39,7 @@ export const Tick = styled.div`
 	width: 2px;
 `;
 
-export const IconContainer = styled.div`
+export const Icon = styled.div`
 	height: 100%;
 	width: 90px;
 	transform: translateX(50%);
@@ -75,4 +75,21 @@ export const IconContainer = styled.div`
 		border: 20px solid transparent;
 		border-top: 17px solid ${Colors.FG_WHITE};
 	}
+`;
+
+export const TrophyCont = styled.div`
+	position: absolute;
+	right: 0;
+	bottom: -6px;
+	height: 70px;
+	width: 70px;
+	font-size: 25px;
+	border-radius: 50%;
+	background-color: ${Colors.FG_WHITE};
+	transform: translateX(50%);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: ${Colors.WARNING};
+	box-shadow: 0px 0px 25px rgba(255, 168, 0, 0.1);
 `;

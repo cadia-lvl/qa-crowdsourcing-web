@@ -13,6 +13,8 @@ export const initialState: GameState = {
 		question: "",
 		url: "",
 	},
+	tasksCompleted: 6,
+	totalTasks: 10,
 };
 
 export default (
