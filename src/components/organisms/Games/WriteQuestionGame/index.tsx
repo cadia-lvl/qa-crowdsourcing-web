@@ -4,10 +4,8 @@ import { writeQuestionInGame } from "../../../../actions";
 import { GameTypes } from "../../../../declerations";
 import { GameWrapper } from "../../../../hoc";
 import { StoreState } from "../../../../reducers";
-import { SubmitButton } from "../../../";
+import { SubmitButton, TextPrompt, TextTag } from "../../../";
 import {
-	WordBox,
-	Prompt,
 	Paragraph,
 	InputContainer,
 	QuestionInput,
@@ -39,15 +37,15 @@ export const WriteQuestionGame = () => {
 
 	return (
 		<GameWrapper type={GameTypes.writeQuestion}>
-			<Prompt>
+			<TextPrompt>
 				Spurðu okkur spurning sem byrjar á <i>HVENÆR</i>
-			</Prompt>
-			<WordBox>Bill Clinton</WordBox>
-			<WordBox>Heimsmet</WordBox>
-			<WordBox>Guffi Grín</WordBox>
-			<WordBox>Hvíta Rússland</WordBox>
-			<WordBox>Efnafræði</WordBox>
-			<WordBox>George Floyd</WordBox>
+			</TextPrompt>
+			<TextTag>Bill Clinton</TextTag>
+			<TextTag>Heimsmet</TextTag>
+			<TextTag>Guffi Grín</TextTag>
+			<TextTag>Hvíta Rússland</TextTag>
+			<TextTag>Efnafræði</TextTag>
+			<TextTag>George Floyd</TextTag>
 			<Paragraph>
 				{" "}
 				Án efa geta orðin hér að ofan nýst þér sem innblástur. Ef þér

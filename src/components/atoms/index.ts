@@ -3,3 +3,4 @@ export * from "./Buttons";
 export * from "./Cards";
 export * from "./ChartAtoms";
 export * from "./Alerts";
+export * from "./Texts";
