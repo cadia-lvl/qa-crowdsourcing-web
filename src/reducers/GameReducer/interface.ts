@@ -1,3 +1,11 @@
-import { Game } from "../../declerations";
+import {
+	GameTypes,
+	WriteQuestionGame,
+	SubmitArticleGame,
+} from "../../declerations";
 
-export type GameState = Game;
+export interface GameState {
+	current: GameTypes;
+	writeQuestion: WriteQuestionGame;
+	submitArticle: SubmitArticleGame;
+}

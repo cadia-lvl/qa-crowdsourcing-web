@@ -3,29 +3,23 @@ import { Actions, ActionTypes } from "../../actions";
 import { GameTypes } from "../../declerations";
 
 export const initialState: GameState = {
-	type: GameTypes.loadingGame,
+	current: GameTypes.writeQuestion,
+	writeQuestion: {
+		ideaWords: [],
+		firstWord: "",
+		question: "",
+	},
+	submitArticle: {
+		question: "",
+		url: "",
+	},
 };
 
 export default (
 	state: GameState = initialState,
 	action: Actions
 ): GameState => {
-	if (state.type == GameTypes.writeQuestion)
-		switch (action.type) {
-			default:
-				return state;
-		}
-	else if (state.type == GameTypes.submitArticle)
-		switch (action.type) {
-			default:
-				return state;
-		}
-	else if (state.type == GameTypes.loadingGame)
-		switch (action.type) {
-			default:
-				return state;
-		}
-	else return state;
+	return state;
 };
 
 export * from "./interface";

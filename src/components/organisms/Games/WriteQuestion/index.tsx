@@ -1,11 +1,7 @@
 import React from "react";
-import { useSelector } from "react-redux";
 import { GameTypes } from "../../../../declerations";
-import { StoreState } from "../../../../reducers";
+import { GameWrapper } from "../../../../hoc";
 
-// bua til Game HOC sem ser m rretuurn null logic
-export const WriteQuestion = () => {
-	const state = useSelector((state: StoreState) => state.game);
-	if (state.type !== GameTypes.writeQuestion) return null;
-	return <div></div>;
+const WriteQuestion = () => {
+	return <GameWrapper type={GameTypes.writeQuestion}>a</GameWrapper>;
 };

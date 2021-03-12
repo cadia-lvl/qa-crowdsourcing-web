@@ -10,21 +10,16 @@ export enum GameTypes {
 }
 
 export interface WriteQuestionGame {
-	type: GameTypes.writeQuestion;
 	ideaWords: string[];
 	firstWord: string;
 	question: string;
 }
 
 export interface SubmitArticleGame {
-	type: GameTypes.submitArticle;
-	ideaWords: string[];
-	firstWord: string;
 	question: string;
+	url: string;
 }
 
-export interface LoadingGame {
-	type: GameTypes.loadingGame;
-}
+export interface LoadingGame {}
 
 export type Game = WriteQuestionGame | SubmitArticleGame | LoadingGame;
