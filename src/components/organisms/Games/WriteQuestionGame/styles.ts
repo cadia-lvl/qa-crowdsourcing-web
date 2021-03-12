@@ -53,13 +53,29 @@ export const QuestionInput = styled.input`
 	font-size: 24px;
 `;
 
+export const ErrorLabel = styled.div`
+	position: absolute;
+	color: ${Colors.DANGER_BG};
+	background-color: ${Colors.DANGER};
+	border-radius: 3px;
+	padding: 5px 8px;
+	right: 0;
+	transform: translateY(-120%);
+	box-shadow: 0px 0px 20px rgba(${Colors.HIGHLIGHT_RGB}, 0.35);
+	opacity: 0;
+	transition: 0.3;
+`;
+
 export const ButtonContainer = styled.div`
 	width: 100%;
 	position: relative;
 	padding-top: 50px;
-	> * {
+	> button {
 		position: absolute;
 		right: 0;
 		width: 100px;
+	}
+	:hover ${ErrorLabel} {
+		opacity: 1;
 	}
 `;

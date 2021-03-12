@@ -4,7 +4,7 @@ import { GameTypes } from "../../declerations";
 import { Action } from "history";
 
 export const initialState: GameState = {
-	current: GameTypes.writeQuestion,
+	current: GameTypes.submitArticle,
 	writeQuestion: {
 		ideaWords: [],
 		firstWord: "Hvenær",

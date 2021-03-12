@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { writeQuestionInGame } from "../../../../actions";
 import { GameTypes } from "../../../../declerations";
@@ -12,21 +12,30 @@ import {
 	InputContainer,
 	QuestionInput,
 	ButtonContainer,
+	ErrorLabel,
 } from "./styles";
 
 export const WriteQuestionGame = () => {
 	const state = useSelector((state: StoreState) => state.game);
+	const [errorMessage, setErrorMessage] = useState("");
 	const dispatch = useDispatch();
 
 	const MIN_QUESTION_LENGTH = 13;
 
 	const { question, firstWord } = state.writeQuestion;
-	const validateQuestion = () => {
-		if (question.split(" ")[0] !== firstWord) return false;
-		if (question.length < MIN_QUESTION_LENGTH) return false;
-		if (question.slice(-1) !== "?") return false;
-		return true;
-	};
+	useEffect(() => {
+		try {
+			if (question.split(" ")[0] !== firstWord)
+				throw new Error(`Spurningin verður að hefjast á ${firstWord}`);
+			if (question.length < MIN_QUESTION_LENGTH)
+				throw new Error(`Spurningin er ekki nógu löng`);
+			if (question.slice(-1) !== "?")
+				throw new Error(`Spurningin verður að enda á spurningarmerki`);
+			setErrorMessage("");
+		} catch (e) {
+			setErrorMessage(e.message);
+		}
+	}, [question]);
 
 	return (
 		<GameWrapper type={GameTypes.writeQuestion}>
@@ -55,11 +64,13 @@ export const WriteQuestionGame = () => {
 					value={question}
 				/>
 			</InputContainer>
+
 			<ButtonContainer>
+				{errorMessage ? <ErrorLabel>{errorMessage}</ErrorLabel> : null}
 				<SubmitButton
 					label="Afram"
 					onClick={() => null}
-					inactive={!validateQuestion()}
+					inactive={!!errorMessage}
 					invertColorScheme
 				/>
 			</ButtonContainer>
