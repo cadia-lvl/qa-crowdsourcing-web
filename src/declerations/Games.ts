@@ -16,6 +16,20 @@ export interface WriteQuestionGame {
 export interface SubmitArticleGame {
 	question: string;
 	url: string;
+	articles: Article[];
+}
+
+interface Article {
+	source: Source;
+	extract: string;
+	id: string;
+	title: string;
+}
+
+interface Source {
+	logo: string;
+	name: string;
+	baseUrl: string;
 }
 
 export interface LoadingGame {}

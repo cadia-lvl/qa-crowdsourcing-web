@@ -8,10 +8,10 @@ export const GlobalStyle = createGlobalStyle`
     }
     
     html, body {
-    	height: 100%;
         font-family: 'Quicksand', sans-serif;
         background: rgb(246,78,96);
         background: radial-gradient(circle, rgba(246,78,96,0.12) 0%, rgba(0,212,255,0) 100%);
+        min-height: 100vh;
     }
 
     .header-itm {
