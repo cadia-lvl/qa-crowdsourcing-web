@@ -38,3 +38,28 @@ export const Paragraph = styled.p`
 	color: ${Colors.SUB_HEADING_COLOR};
 	margin-top: 50px;
 `;
+
+export const InputContainer = styled.div`
+	margin-top: 50px;
+	width: 100%;
+	font-size: 24px;
+`;
+
+export const QuestionInput = styled.input`
+	border-width: 0px;
+	border-bottom-width: 2px;
+	width: 100%;
+	background-color: rgba(0, 0, 0, 0);
+	font-size: 24px;
+`;
+
+export const ButtonContainer = styled.div`
+	width: 100%;
+	position: relative;
+	padding-top: 50px;
+	> * {
+		position: absolute;
+		right: 0;
+		width: 100px;
+	}
+`;
