@@ -19,7 +19,7 @@ export interface SubmitArticleGame {
 	articles: Article[];
 }
 
-interface Article {
+export interface Article {
 	source: Source;
 	extract: string;
 	id: string;
