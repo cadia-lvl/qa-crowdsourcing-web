@@ -9,3 +9,7 @@ export interface PreviewArticleToSubmitInGameAction {
 	type: ActionTypes.previewArticleToSubmitInGame;
 	payload: string | number;
 }
+
+export interface ClosePreviewArticleToSubmitInGameAction {
+	type: ActionTypes.closePreviewArticleToSubmitInGame;
+}

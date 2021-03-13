@@ -5,13 +5,11 @@ import { Paragraph, SearchBoxContainer } from "./styles";
 import ArticlePreview from "./ArticlePreview";
 import { useDispatch, useSelector } from "react-redux";
 import { StoreState } from "../../../../reducers";
-import { previewArticleToSubmitInGame } from "../../../../actions";
 import { GameWrapper } from "../../../../hoc";
 import { GameTypes } from "../../../../declerations";
 
 export const SubmitArticleGame = () => {
 	const state = useSelector((state: StoreState) => state.game);
-	const dispatch = useDispatch();
 	return (
 		<GameWrapper type={GameTypes.submitArticle}>
 			<TextPrompt>
@@ -42,11 +40,7 @@ export const SubmitArticleGame = () => {
 				ekkert svar er að finna neinstaðar þá getur þú smellt hér.
 			</Paragraph>
 			{state.submitArticle.articles.map((item) => (
-				<div
-					onClick={() => dispatch(previewArticleToSubmitInGame(item))}
-				>
-					<ArticlePreview {...item} />
-				</div>
+				<ArticlePreview {...item} />
 			))}
 		</GameWrapper>
 	);

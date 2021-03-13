@@ -4,6 +4,7 @@ import { ActionTypes } from "../types";
 import {
 	WriteQuestionInGameAction,
 	PreviewArticleToSubmitInGameAction,
+	ClosePreviewArticleToSubmitInGameAction,
 } from "./interface";
 
 export const writeQuestionInGame = (
@@ -21,6 +22,12 @@ export const previewArticleToSubmitInGame = (
 	return {
 		type: ActionTypes.previewArticleToSubmitInGame,
 		payload: article._id,
+	};
+};
+
+export const closePreviewArticleToSubmitInGame = (): ClosePreviewArticleToSubmitInGameAction => {
+	return {
+		type: ActionTypes.closePreviewArticleToSubmitInGame,
 	};
 };
 

@@ -123,3 +123,9 @@ export const PreviewTopBar = styled.div`
 		}
 	}
 `;
+
+export const PreviewParagraphContainer = styled.div`
+	transition: 0.3s;
+	${(props) => (props.theme.isFocused ? `` : `opacity: 0.3`)};
+	cursor: pointer;
+`;

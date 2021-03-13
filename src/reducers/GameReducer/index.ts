@@ -1,6 +1,6 @@
 import { GameState } from "./interface";
 import { Actions, ActionTypes } from "../../actions";
-import { GameTypes } from "../../declerations";
+import { Game, GameTypes } from "../../declerations";
 import { Action } from "history";
 
 export const initialState: GameState = {
@@ -81,11 +81,22 @@ export default (
 					question: action.payload,
 				},
 			};
-		case ActionTypes.previewArticleToSubmitInGame:
+		case ActionTypes.closePreviewArticleToSubmitInGame:
+			console.log("s");
 			return {
 				...state,
 				submitArticle: {
 					...state.submitArticle,
+					previewArticle: undefined,
+				},
+			};
+		case ActionTypes.previewArticleToSubmitInGame:
+			console.log("w");
+			return {
+				...state,
+				submitArticle: {
+					...state.submitArticle,
+					articles: [...state.submitArticle.articles],
 					previewArticle: action.payload,
 				},
 			};
