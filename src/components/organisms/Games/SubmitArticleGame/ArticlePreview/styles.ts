@@ -2,11 +2,8 @@ import styled from "styled-components";
 import { Colors } from "../../../../../styles";
 
 export const Outer = styled.div`
-	min-height: 120px;
-	padding: 20px;
 	border-left: 4px solid #bbb;
-	box-sizing: border-box;
-	transition: 0.3s;
+	transition: border-color 0.3s;
 	margin-top: 25px;
 	:hover {
 		border-color: ${Colors.HIGHLIGHT};
@@ -14,13 +11,43 @@ export const Outer = styled.div`
 	display: flex;
 	flex-direction: row;
 	cursor: pointer;
+	${(props) =>
+		props.theme.isPreviewOpen
+			? `
+			min-height: 30px !important;
+			height: 0px !important;
+			border: none;
+			padding-bottom: 15px;
+	`
+			: `
+		min-height: 120px;
+		padding: 20px;
+		box-sizing: border-box;
+		`}
 `;
 
 export const LeftBox = styled.div`
+	transition: 0.3s;
 	width: 60px;
 	background-image: url(${(props) => props.theme.imgUrl});
 	background-size: contain;
 	background-repeat: no-repeat;
+	${(props) =>
+		props.theme.isPreviewOpen
+			? `
+			width: 30px !important;
+	`
+			: ``}
+`;
+
+export const ExtractPara = styled.p`
+	${(props) =>
+		props.theme.isPreviewOpen
+			? `
+		display: none;
+	`
+			: `
+			display: block;`}
 `;
 
 export const RightBox = styled.div`
@@ -51,5 +78,48 @@ export const RightBox = styled.div`
 
 export const PreviewOuter = styled.div`
 	box-sizing: border-box;
-	padding-left: 100px;
+	padding-right: 40px;
+`;
+
+export const PreviewInner = styled.div`
+	overflow-y: scroll;
+	max-height: 500px;
+	padding: 40px 20px;
+	box-sizing: border-box;
+	border: 2px solid ${Colors.SUCCESS};
+	background-color: white;
+`;
+
+export const PreviewTopBar = styled.div`
+	width: 100%;
+	height: 40px;
+	background-color: ${Colors.SUCCESS};
+	border-radius: 3px 3px 0 0;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	box-sizing: border-box;
+	padding: 4px 10px;
+	input[type="text"] {
+		height: 100%;
+		border-radius: 20px;
+		padding: 15px;
+		border: none;
+		:focus {
+			outline: none;
+			border: none;
+		}
+	}
+	justify-content: space-between;
+	span {
+		font-size: 18px;
+		transition: 0.2s;
+		color: ${Colors.FG_WHITE};
+		cursor: pointer;
+		padding: 3px;
+		font-weight: 600;
+		:hover {
+			color: ${Colors.SUCCESS_BG};
+		}
+	}
 `;
