@@ -23,7 +23,7 @@ export const initialState: GameState = {
 				},
 				extract:
 					"Dyngjugos á Reykjanesskaga byrja sennilega í flestum tilvikum sem sprungugos. Vísbendingar um slíkt má sjá í Fagradalsfjallskerfinu og víðar.",
-				id: "",
+				_id: "1",
 				title: "Hvað er vitað um dyngjugos á Reykjanesskaga?",
 			},
 			{
@@ -35,7 +35,7 @@ export const initialState: GameState = {
 				},
 				extract:
 					"William Jefferson Clinton, best þekktur sem Bill Clinton, (skírður William Jefferson Blythe; f. 19. ágúst 1946) er bandarískur lögfræðingur og stjórnmálamaður, sem gegndi embætti 42. forseti Bandaríkjanna frá 20. janúar 1993 til 20. janúar 2001. Hann tók við embættin",
-				id: "",
+				_id: "2",
 				title: "Bill Clinton",
 			},
 			{
@@ -47,7 +47,7 @@ export const initialState: GameState = {
 				},
 				extract:
 					"Farþegar í ferjunni Baldri eru komnir í land og halda nú hver sína leið. Guðný Sigurðardóttir segir frá því að hundi hennar, Mola, hafi ekki verið um sel um borð í ferjunni. ",
-				id: "",
+				_id: "3",
 				title: "Snarpur morgunskjálfti 5,0 að stærð",
 			},
 			{
@@ -59,7 +59,7 @@ export const initialState: GameState = {
 				},
 				extract:
 					"Snarpur skjálfti fannst á Suðurnesjum og á höfuðborgarsvæðinu um 7:43 í morgun. Skjálftinn var 5,0 að stærð við Fagradalsfjall.",
-				id: "",
+				_id: "4",
 				title: "Hund­in­um ekki um sel í Baldri",
 			},
 		],
@@ -79,6 +79,14 @@ export default (
 				writeQuestion: {
 					...state.writeQuestion,
 					question: action.payload,
+				},
+			};
+		case ActionTypes.previewArticleToSubmitInGame:
+			return {
+				...state,
+				submitArticle: {
+					...state.submitArticle,
+					previewArticle: action.payload,
 				},
 			};
 		default:

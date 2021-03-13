@@ -3,13 +3,17 @@ import { TextPrompt, TextTag, TextInput } from "../../../";
 import { SubmitButton } from "../../../atoms";
 import { Paragraph, SearchBoxContainer } from "./styles";
 import ArticlePreview from "./ArticlePreview";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { StoreState } from "../../../../reducers";
+import { previewArticleToSubmitInGame } from "../../../../actions";
+import { GameWrapper } from "../../../../hoc";
+import { GameTypes } from "../../../../declerations";
 
 export const SubmitArticleGame = () => {
 	const state = useSelector((state: StoreState) => state.game);
+	const dispatch = useDispatch();
 	return (
-		<div>
+		<GameWrapper type={GameTypes.submitArticle}>
 			<TextPrompt>
 				<i>HVENÆR</i> fæddist Bill Clinton?
 			</TextPrompt>
@@ -38,8 +42,12 @@ export const SubmitArticleGame = () => {
 				ekkert svar er að finna neinstaðar þá getur þú smellt hér.
 			</Paragraph>
 			{state.submitArticle.articles.map((item) => (
-				<ArticlePreview {...item} />
+				<div
+					onClick={() => dispatch(previewArticleToSubmitInGame(item))}
+				>
+					<ArticlePreview {...item} />
+				</div>
 			))}
-		</div>
+		</GameWrapper>
 	);
 };

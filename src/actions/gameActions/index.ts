@@ -1,6 +1,10 @@
-import { WriteQuestionGame } from "../../declerations";
+import ArticlePreview from "../../components/organisms/Games/SubmitArticleGame/ArticlePreview";
+import { Article, WriteQuestionGame } from "../../declerations";
 import { ActionTypes } from "../types";
-import { WriteQuestionInGameAction } from "./interface";
+import {
+	WriteQuestionInGameAction,
+	PreviewArticleToSubmitInGameAction,
+} from "./interface";
 
 export const writeQuestionInGame = (
 	question: string
@@ -8,6 +12,15 @@ export const writeQuestionInGame = (
 	return {
 		type: ActionTypes.writeQuestionInGame,
 		payload: question,
+	};
+};
+
+export const previewArticleToSubmitInGame = (
+	article: Article
+): PreviewArticleToSubmitInGameAction => {
+	return {
+		type: ActionTypes.previewArticleToSubmitInGame,
+		payload: article._id,
 	};
 };
 

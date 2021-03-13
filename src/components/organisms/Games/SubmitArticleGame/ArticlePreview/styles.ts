@@ -48,3 +48,8 @@ export const RightBox = styled.div`
 		color: ${Colors.HIGHLIGHT};
 	}
 `;
+
+export const PreviewOuter = styled.div`
+	box-sizing: border-box;
+	padding-left: 100px;
+`;

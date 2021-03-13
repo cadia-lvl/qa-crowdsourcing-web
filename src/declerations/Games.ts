@@ -17,12 +17,13 @@ export interface SubmitArticleGame {
 	question: string;
 	url: string;
 	articles: Article[];
+	previewArticle?: string | number;
 }
 
 export interface Article {
 	source: Source;
 	extract: string;
-	id: string;
+	_id: string;
 	title: string;
 }
 

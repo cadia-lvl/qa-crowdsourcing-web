@@ -28,6 +28,7 @@ export const GlobalStyle = createGlobalStyle`
         line-height: 1.5;
         margin-top: 15px;
         font-size: 18px;
+        color: ${Colors.PARAGRAPH_TEXT_COLOR}
     }
 
     label {
