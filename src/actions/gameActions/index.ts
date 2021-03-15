@@ -2,20 +2,10 @@ import ArticlePreview from "../../components/organisms/Games/SubmitArticleGame/A
 import { Article, ArticleAnswer, WriteQuestionGame } from "../../declerations";
 import { ActionTypes } from "../types";
 import {
-	WriteQuestionInGameAction,
 	PreviewArticleToSubmitInGameAction,
 	ClosePreviewArticleToSubmitInGameAction,
 	SubmitArticleAnswerInGameAction,
 } from "./interface";
-
-export const writeQuestionInGame = (
-	question: string
-): WriteQuestionInGameAction => {
-	return {
-		type: ActionTypes.writeQuestionInGame,
-		payload: question,
-	};
-};
 
 export const previewArticleToSubmitInGame = (
 	article: Article

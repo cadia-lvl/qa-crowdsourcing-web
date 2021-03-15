@@ -73,14 +73,6 @@ export default (
 	action: Actions
 ): GameState => {
 	switch (action.type) {
-		case ActionTypes.writeQuestionInGame:
-			return {
-				...state,
-				writeQuestion: {
-					...state.writeQuestion,
-					question: action.payload,
-				},
-			};
 		case ActionTypes.closePreviewArticleToSubmitInGame:
 			return {
 				...state,
