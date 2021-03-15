@@ -3,7 +3,7 @@ import { TextPrompt, TextTag, TextInput } from "../../../";
 import { SubmitButton } from "../../../atoms";
 import { Paragraph, SearchBoxContainer } from "./styles";
 import ArticlePreview from "./ArticlePreview";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { StoreState } from "../../../../reducers";
 import { GameWrapper } from "../../../../hoc";
 import { GameTypes } from "../../../../declerations";
