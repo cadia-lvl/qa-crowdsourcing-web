@@ -1,24 +1,9 @@
 import React, { useState } from "react";
-import {
-	Outer,
-	LeftBox,
-	RightBox,
-	PreviewInner,
-	PreviewTopBar,
-	PreviewOuter,
-	ExtractPara,
-	PreviewParagraphContainer,
-} from "./styles";
+import { Outer, LeftBox, RightBox, ExtractPara } from "./styles";
 import { IProps } from "./interface";
 import { useDispatch, useSelector } from "react-redux";
 import { StoreState } from "../../../../../reducers";
-import { TextInput, HighlightSubText } from "../../../../";
-import DUMMY_DATA from "./dummyData";
-import {
-	closePreviewArticleToSubmit,
-	previewArticleToSubmit,
-	submitArticleAnswerInGame,
-} from "../../../../../actions";
+import { previewArticleToSubmit } from "../../../../../actions";
 
 export default (article: IProps) => {
 	const {
@@ -28,17 +13,8 @@ export default (article: IProps) => {
 		_id,
 	} = article;
 
-	const NO_SELECTION_INDICATOR = -1;
-	const [searchString, setSearchString] = useState("");
-	const [selectedParagraph, setSelectedParagraph] = useState(
-		NO_SELECTION_INDICATOR
-	);
-
 	const state = useSelector((state: StoreState) => state.submitArticle);
 	const dispatch = useDispatch();
-
-	const clearParagraphSelection = () =>
-		setSelectedParagraph(NO_SELECTION_INDICATOR);
 
 	const { previewArticle } = state;
 
@@ -59,53 +35,6 @@ export default (article: IProps) => {
 					</ExtractPara>
 				</RightBox>
 			</Outer>
-			{isPreviewOpen ? (
-				<PreviewOuter>
-					<PreviewTopBar>
-						<TextInput
-							value={searchString}
-							onChange={setSearchString}
-							placeholder="Leita inní grein"
-						/>
-						<span
-							onClick={() =>
-								dispatch(closePreviewArticleToSubmit())
-							}
-						>
-							Loka grein
-						</span>
-					</PreviewTopBar>
-					<PreviewInner>
-						{DUMMY_DATA.map((paragraph, i) => (
-							<PreviewParagraphContainer
-								theme={{
-									isFocused:
-										i == selectedParagraph ||
-										NO_SELECTION_INDICATOR ==
-											selectedParagraph,
-								}}
-								onMouseOver={() => setSelectedParagraph(i)}
-								onMouseLeave={clearParagraphSelection}
-								onClick={() =>
-									dispatch(
-										submitArticleAnswerInGame({
-											articleId: _id,
-											paragrahNumber: i,
-										})
-									)
-								}
-							>
-								<p>
-									<HighlightSubText
-										string={paragraph}
-										subString={searchString}
-									/>
-								</p>
-							</PreviewParagraphContainer>
-						))}
-					</PreviewInner>
-				</PreviewOuter>
-			) : null}
 		</React.Fragment>
 	);
 };

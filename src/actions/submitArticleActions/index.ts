@@ -21,7 +21,7 @@ export const closePreviewArticleToSubmit = (): ClosePreviewArticleToSubmitAction
 	};
 };
 
-export const submitArticleAnswerInGame = (
+export const submitArticleAnswer = (
 	answer: ArticleAnswer
 ): SelectParagraphInArticleAction => {
 	return {

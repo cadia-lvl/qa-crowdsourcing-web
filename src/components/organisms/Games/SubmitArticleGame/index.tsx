@@ -7,36 +7,21 @@ import { useDispatch, useSelector } from "react-redux";
 import { StoreState } from "../../../../reducers";
 import { GameWrapper } from "../../../../hoc";
 import { GameTypes } from "../../../../declerations";
+import PreviewReader from "./PreviewReader";
 
 export const SubmitArticleGame = () => {
 	const state = useSelector((state: StoreState) => state.submitArticle);
 
-	const { answer } = state;
+	const { answer, previewArticle } = state;
 
 	const hasAnswer = !!answer;
+	const hasPreview = !!previewArticle;
 	return (
 		<GameWrapper type={GameTypes.submitArticle}>
 			<TextPrompt>
 				<i>HVENÆR</i> fæddist Bill Clinton?
 			</TextPrompt>
-			{hasAnswer ? (
-				<React.Fragment>
-					<Paragraph>
-						William Jefferson Clinton (born William Jefferson Blythe
-						III; born August 19, 1946) is an American lawyer and
-						politician who served as the 42nd president of the
-						United States from 1993 to 2001. Prior to his
-						presidency, he served as governor of Arkansas (1979–1981
-						and 1983–1992) and as attorney general of Arkansas
-						(1977–1979). A member of the Democratic Party, Clinton
-						was known as a New Democrat, and many of his policies
-						reflected a centrist "Third Way" political philosophy.
-						He is the husband of former secretary of state, former
-						U.S. senator, and two-time candidate for president
-						Hillary Clinton.
-					</Paragraph>
-				</React.Fragment>
-			) : (
+			{hasPreview ? null : (
 				<React.Fragment>
 					<Paragraph>
 						Væri ekki gaman ef við gætum fundið svarið við þessari
@@ -65,11 +50,34 @@ export const SubmitArticleGame = () => {
 						þar. Ef ekkert svar er að finna neinstaðar þá getur þú
 						smellt hér.
 					</Paragraph>
-					{state.articles.map((item) => (
-						<ArticlePreview {...item} />
-					))}
 				</React.Fragment>
 			)}
+
+			{state.articles.map((item) =>
+				/**
+				 * logical equivalence of
+				 * if (no article in preview) then this is the article being preview
+				 * if that proposition is true then we display the preview item
+				 *
+				 * else we don't display anything, i.e. if no preview
+				 * we display all, if we have a preview then we display
+				 * said preview
+				 */
+				!hasPreview || previewArticle === item._id ? (
+					<ArticlePreview {...item} />
+				) : null
+			)}
+			{hasPreview ? (
+				<React.Fragment>
+					<Paragraph>
+						Þessa grein er að finna á Wikipedia. Sérðu svarið? Ef
+						svo er, smelltu á þá efnisgrein sem inniheldur svarið.
+						Þú getur einnig leitað í innihaldi greinarinnar. Ýttu á
+						Loka Grein til að fara til baka í leitina
+					</Paragraph>
+					<PreviewReader />
+				</React.Fragment>
+			) : null}
 		</GameWrapper>
 	);
 };
