@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { GameTypes } from "../../../../declerations";
 import { GameWrapper } from "../../../../hoc";
 import { StoreState } from "../../../../reducers";
-import { TextPrompt } from "../../../";
-import { Outer, Word } from "./styles";
+import { TextPrompt, BaseButton } from "../../../";
+import { Outer, Word, ButtonContainer } from "./styles";
 import {
 	clearIndexRangeInParagraph,
 	selectFirstWordIndexInParagraph,
@@ -80,6 +80,19 @@ export const VerifyAnswerLocationGame = () => {
 				<TextPrompt>
 					<i>Svar:</i> {getAnswer()}
 				</TextPrompt>
+				<ButtonContainer>
+					<BaseButton
+						label="Svarið er ekki í þessari efnisgrein"
+						type="danger"
+						onClick={() => null}
+					/>
+					<BaseButton
+						label="Staðfesta svar"
+						type="highlight"
+						onClick={() => null}
+						isInactive={selectionState !== "clear-selection"}
+					/>
+				</ButtonContainer>
 			</Outer>
 		</GameWrapper>
 	);
