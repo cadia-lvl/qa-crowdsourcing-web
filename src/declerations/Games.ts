@@ -1,16 +1,9 @@
 export enum GameTypes {
 	writeQuestion,
-	rateQuestion,
+	answerQualityAssurance,
 	submitArticle,
-	locateAnswer,
 	verifyAnswerLocation,
-	loadingGame,
-}
-
-export interface WriteQuestionGame {
-	ideaWords: string[];
-	firstWord: string;
-	question: string;
+	questionQualityAssurance,
 }
 
 export interface ArticleAnswer {

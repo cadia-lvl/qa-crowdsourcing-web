@@ -1,5 +1,6 @@
 import { AuthState } from "./AuthReducer";
 import { GameState } from "./GameReducer";
+import { QuestionQualityAssuranceState } from "./QuestionQualityAssurance";
 import { SubmitArticleState } from "./SubmitArticleReducer";
 import { VerifyAnswerLocationState } from "./VerifyAnswerLocation";
 import { WriteQuestionState } from "./WriteQuestionReducer";
@@ -10,4 +11,5 @@ export interface StoreState {
 	writeQuestion: WriteQuestionState;
 	submitArticle: SubmitArticleState;
 	verifyAnswerLocation: VerifyAnswerLocationState;
+	questionQualityAssurance: QuestionQualityAssuranceState;
 }

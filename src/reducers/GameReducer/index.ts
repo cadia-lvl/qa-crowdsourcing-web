@@ -3,7 +3,7 @@ import { Actions } from "../../actions";
 import { GameTypes } from "../../declerations";
 
 export const initialState: GameState = {
-	current: GameTypes.verifyAnswerLocation,
+	current: GameTypes.questionQualityAssurance,
 
 	tasksCompleted: 8,
 	totalTasks: 10,
