@@ -9,9 +9,9 @@ import { GameWrapper } from "../../../../hoc";
 import { GameTypes } from "../../../../declerations";
 
 export const SubmitArticleGame = () => {
-	const state = useSelector((state: StoreState) => state.game);
+	const state = useSelector((state: StoreState) => state.submitArticle);
 
-	const { answer } = state.submitArticle;
+	const { answer } = state;
 
 	const hasAnswer = !!answer;
 	return (
@@ -65,7 +65,7 @@ export const SubmitArticleGame = () => {
 						þar. Ef ekkert svar er að finna neinstaðar þá getur þú
 						smellt hér.
 					</Paragraph>
-					{state.submitArticle.articles.map((item) => (
+					{state.articles.map((item) => (
 						<ArticlePreview {...item} />
 					))}
 				</React.Fragment>

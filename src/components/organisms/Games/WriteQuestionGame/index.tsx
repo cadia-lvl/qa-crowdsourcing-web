@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { writeQuestionInGame } from "../../../../actions";
+import { writeQuestion } from "../../../../actions";
 import { GameTypes } from "../../../../declerations";
 import { GameWrapper } from "../../../../hoc";
 import { StoreState } from "../../../../reducers";
@@ -14,13 +14,13 @@ import {
 } from "./styles";
 
 export const WriteQuestionGame = () => {
-	const state = useSelector((state: StoreState) => state.game);
+	const state = useSelector((state: StoreState) => state.writeQuestion);
 	const [errorMessage, setErrorMessage] = useState("");
 	const dispatch = useDispatch();
 
 	const MIN_QUESTION_LENGTH = 13;
 
-	const { question, firstWord } = state.writeQuestion;
+	const { question, firstWord } = state;
 	useEffect(() => {
 		try {
 			if (question.split(" ")[0] !== firstWord)
@@ -56,9 +56,7 @@ export const WriteQuestionGame = () => {
 				<QuestionInput
 					type="text"
 					placeholder={`${firstWord} ?`}
-					onChange={(e) =>
-						dispatch(writeQuestionInGame(e.target.value))
-					}
+					onChange={(e) => dispatch(writeQuestion(e.target.value))}
 					value={question}
 				/>
 			</InputContainer>

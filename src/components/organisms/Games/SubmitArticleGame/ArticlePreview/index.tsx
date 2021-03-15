@@ -15,8 +15,8 @@ import { StoreState } from "../../../../../reducers";
 import { TextInput, HighlightSubText } from "../../../../";
 import DUMMY_DATA from "./dummyData";
 import {
-	closePreviewArticleToSubmitInGame,
-	previewArticleToSubmitInGame,
+	closePreviewArticleToSubmit,
+	previewArticleToSubmit,
 	submitArticleAnswerInGame,
 } from "../../../../../actions";
 
@@ -34,15 +34,13 @@ export default (article: IProps) => {
 		NO_SELECTION_INDICATOR
 	);
 
-	const state = useSelector((state: StoreState) => state.game);
+	const state = useSelector((state: StoreState) => state.submitArticle);
 	const dispatch = useDispatch();
 
 	const clearParagraphSelection = () =>
 		setSelectedParagraph(NO_SELECTION_INDICATOR);
 
-	const {
-		submitArticle: { previewArticle },
-	} = state;
+	const { previewArticle } = state;
 
 	const isPreviewOpen = previewArticle === _id;
 	const previewHoverText = !isPreviewOpen ? "... Kannski er svarið hér" : "";
@@ -51,7 +49,7 @@ export default (article: IProps) => {
 		<React.Fragment>
 			<Outer
 				theme={{ isPreviewOpen }}
-				onClick={() => dispatch(previewArticleToSubmitInGame(article))}
+				onClick={() => dispatch(previewArticleToSubmit(article))}
 			>
 				<LeftBox theme={{ imgUrl: logo, isPreviewOpen }} />
 				<RightBox>
@@ -71,7 +69,7 @@ export default (article: IProps) => {
 						/>
 						<span
 							onClick={() =>
-								dispatch(closePreviewArticleToSubmitInGame())
+								dispatch(closePreviewArticleToSubmit())
 							}
 						>
 							Loka grein

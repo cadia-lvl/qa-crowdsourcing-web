@@ -13,20 +13,12 @@ export interface WriteQuestionGame {
 	question: string;
 }
 
-export interface SubmitArticleGame {
-	question: string;
-	url: string;
-	articles: Article[];
-	previewArticle?: string | number;
-	answer?: ArticleAnswer;
-}
-
 export interface ArticleAnswer {
 	paragrahNumber: number;
 	articleId: string | number;
 }
 
-export interface Article {
+export interface ArticlePreview {
 	source: Source;
 	extract: string;
 	_id: string;
@@ -40,5 +32,3 @@ interface Source {
 }
 
 export interface LoadingGame {}
-
-export type Game = WriteQuestionGame | SubmitArticleGame | LoadingGame;

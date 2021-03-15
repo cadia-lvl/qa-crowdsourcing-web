@@ -1,3 +1,3 @@
-import { Article } from "../../../../../declerations";
+import { ArticlePreview } from "../../../../../declerations";
 
-export interface IProps extends Article {}
+export interface IProps extends ArticlePreview {}
