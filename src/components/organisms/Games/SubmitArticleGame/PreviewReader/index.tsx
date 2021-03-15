@@ -3,7 +3,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { StoreState } from "../../../../../reducers";
 import DUMMY_DATA from "./dummyData";
 import { TextInput, HighlightSubText } from "../../../../";
-import { Outer, Inner, TopBar, ParagraphContainer } from "./styles";
+import {
+	Outer,
+	Inner,
+	TopBar,
+	ParagraphContainer,
+	SingleParagraph,
+	ConfirmTab,
+} from "./styles";
 import {
 	closePreviewArticleToSubmit,
 	submitArticleAnswer,
@@ -22,9 +29,7 @@ export default () => {
 	const clearParagraphSelection = () =>
 		setSelectedParagraph(NO_SELECTION_INDICATOR);
 
-	const { previewArticle } = state;
-
-	const isPreviewOpen = !!previewArticle;
+	const { previewArticle, answer } = state;
 
 	if (!previewArticle) return null;
 	return (
@@ -58,12 +63,24 @@ export default () => {
 							)
 						}
 					>
-						<p>
+						<SingleParagraph
+							theme={{ isSelected: answer?.paragrahNumber === i }}
+						>
+							<ConfirmTab>
+								{answer?.paragrahNumber === i ? (
+									<span>
+										Staðfesta
+										<i className="fas fa-check"></i>
+									</span>
+								) : (
+									"Svarið er hér"
+								)}
+							</ConfirmTab>
 							<HighlightSubText
 								string={paragraph}
 								subString={searchString}
 							/>
-						</p>
+						</SingleParagraph>
 					</ParagraphContainer>
 				))}
 			</Inner>

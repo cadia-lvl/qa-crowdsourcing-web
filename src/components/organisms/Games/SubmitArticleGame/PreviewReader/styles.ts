@@ -55,3 +55,51 @@ export const ParagraphContainer = styled.div`
 	${(props) => (props.theme.isFocused ? `` : `opacity: 0.3`)};
 	cursor: pointer;
 `;
+
+export const ConfirmTab = styled.div`
+	position: absolute;
+	left: -1px;
+	top: 0;
+	transform: translateY(-100%);
+	padding: 2px 5px;
+	background-color: ${Colors.WARNING};
+	color: ${Colors.FG_WHITE};
+	border-bottom: 0px solid black !important;
+	border-radius: 3px 3px 0 0;
+	i {
+		margin: 0 5px 0 10px;
+	}
+`;
+
+export const SingleParagraph = styled.p`
+	margin-top: 35px;
+	padding: 5px;
+	border-radius: 0px;
+	border: 1px solid rgba(0, 0, 0, 0);
+	border-radius: 0 3px 3px 3px;
+	box-sizing: border-box;
+	:hover {
+		${ConfirmTab} {
+			display: block !important;
+		}
+		border: 1px solid ${Colors.WARNING};
+	}
+	position: relative;
+	${(props) =>
+		!props.theme.isSelected
+			? `
+                ${ConfirmTab} {
+                    display: none;
+                }
+            `
+			: `
+                ${ConfirmTab} {
+                    display: block;
+                    background-color: ${Colors.HIGHLIGHT_BG} !important;
+                    color: ${Colors.HIGHLIGHT} !important;
+                    border: ${Colors.HIGHLIGHT} 1px solid !important;
+                    border-bottom: 0px !important;
+                }
+                border-color: ${Colors.HIGHLIGHT} !important;
+            `}
+`;
