@@ -4,6 +4,7 @@ import {
 	WriteQuestionGame,
 	GameProgress,
 	SubmitArticleGame,
+	VerifyAnswerLocationGame,
 } from "../../components";
 
 export const GamePage = () => {
@@ -12,6 +13,7 @@ export const GamePage = () => {
 			<GameProgress />
 			<WriteQuestionGame />
 			<SubmitArticleGame />
+			<VerifyAnswerLocationGame />
 		</RestrictedPage>
 	);
 };
