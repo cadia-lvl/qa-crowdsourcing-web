@@ -17,6 +17,7 @@ import DUMMY_DATA from "./dummyData";
 import {
 	closePreviewArticleToSubmitInGame,
 	previewArticleToSubmitInGame,
+	submitArticleAnswerInGame,
 } from "../../../../../actions";
 
 export default (article: IProps) => {
@@ -87,6 +88,14 @@ export default (article: IProps) => {
 								}}
 								onMouseOver={() => setSelectedParagraph(i)}
 								onMouseLeave={clearParagraphSelection}
+								onClick={() =>
+									dispatch(
+										submitArticleAnswerInGame({
+											articleId: _id,
+											paragrahNumber: i,
+										})
+									)
+								}
 							>
 								<p>
 									<HighlightSubText

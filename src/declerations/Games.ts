@@ -18,6 +18,12 @@ export interface SubmitArticleGame {
 	url: string;
 	articles: Article[];
 	previewArticle?: string | number;
+	answer?: ArticleAnswer;
+}
+
+export interface ArticleAnswer {
+	paragrahNumber: number;
+	articleId: string | number;
 }
 
 export interface Article {

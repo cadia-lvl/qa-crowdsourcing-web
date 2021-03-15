@@ -9,6 +9,7 @@ export enum ActionTypes {
 	writeQuestionInGame,
 	previewArticleToSubmitInGame,
 	closePreviewArticleToSubmitInGame,
+	submitArticleAnswerInGame,
 }
 
 export type Actions =
@@ -17,4 +18,5 @@ export type Actions =
 	| AuthActions.RegisterUserAction
 	| GameActions.WriteQuestionInGameAction
 	| GameActions.PreviewArticleToSubmitInGameAction
-	| GameActions.ClosePreviewArticleToSubmitInGameAction;
+	| GameActions.ClosePreviewArticleToSubmitInGameAction
+	| GameActions.SubmitArticleAnswerInGameAction;

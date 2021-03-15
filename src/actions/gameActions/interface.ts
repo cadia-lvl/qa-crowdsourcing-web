@@ -1,3 +1,4 @@
+import { ArticleAnswer } from "../../declerations";
 import { ActionTypes } from "../types";
 
 export interface WriteQuestionInGameAction {
@@ -12,4 +13,9 @@ export interface PreviewArticleToSubmitInGameAction {
 
 export interface ClosePreviewArticleToSubmitInGameAction {
 	type: ActionTypes.closePreviewArticleToSubmitInGame;
+}
+
+export interface SubmitArticleAnswerInGameAction {
+	type: ActionTypes.submitArticleAnswerInGame;
+	payload: ArticleAnswer;
 }

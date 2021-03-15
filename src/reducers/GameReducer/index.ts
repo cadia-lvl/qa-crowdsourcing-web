@@ -82,7 +82,6 @@ export default (
 				},
 			};
 		case ActionTypes.closePreviewArticleToSubmitInGame:
-			console.log("s");
 			return {
 				...state,
 				submitArticle: {
@@ -90,8 +89,16 @@ export default (
 					previewArticle: undefined,
 				},
 			};
+		case ActionTypes.submitArticleAnswerInGame:
+			return {
+				...state,
+				submitArticle: {
+					...state.submitArticle,
+					answer: action.payload,
+				},
+			};
+
 		case ActionTypes.previewArticleToSubmitInGame:
-			console.log("w");
 			return {
 				...state,
 				submitArticle: {

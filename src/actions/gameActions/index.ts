@@ -1,10 +1,11 @@
 import ArticlePreview from "../../components/organisms/Games/SubmitArticleGame/ArticlePreview";
-import { Article, WriteQuestionGame } from "../../declerations";
+import { Article, ArticleAnswer, WriteQuestionGame } from "../../declerations";
 import { ActionTypes } from "../types";
 import {
 	WriteQuestionInGameAction,
 	PreviewArticleToSubmitInGameAction,
 	ClosePreviewArticleToSubmitInGameAction,
+	SubmitArticleAnswerInGameAction,
 } from "./interface";
 
 export const writeQuestionInGame = (
@@ -28,6 +29,15 @@ export const previewArticleToSubmitInGame = (
 export const closePreviewArticleToSubmitInGame = (): ClosePreviewArticleToSubmitInGameAction => {
 	return {
 		type: ActionTypes.closePreviewArticleToSubmitInGame,
+	};
+};
+
+export const submitArticleAnswerInGame = (
+	answer: ArticleAnswer
+): SubmitArticleAnswerInGameAction => {
+	return {
+		type: ActionTypes.submitArticleAnswerInGame,
+		payload: answer,
 	};
 };
 
