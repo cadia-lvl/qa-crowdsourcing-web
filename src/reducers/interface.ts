@@ -1,11 +1,13 @@
 import { AuthState } from "./AuthReducer";
 import { GameState } from "./GameReducer";
-import { SubmitArticleReducer } from "./submitArticleReducer";
-import { WriteQuestionState } from "./writeQuestionReducer";
+import { SubmitArticleState } from "./SubmitArticleReducer";
+import { VerifyAnswerLocationState } from "./VerifyAnswerLocation";
+import { WriteQuestionState } from "./WriteQuestionReducer";
 
 export interface StoreState {
 	auth: AuthState;
 	game: GameState;
 	writeQuestion: WriteQuestionState;
-	submitArticle: SubmitArticleReducer;
+	submitArticle: SubmitArticleState;
+	verifyAnswerLocation: VerifyAnswerLocationState;
 }

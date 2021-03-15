@@ -11,6 +11,7 @@ export enum ActionTypes {
 	previewArticleToSubmit,
 	closePreviewArticleToSubmit,
 	selectParagraphInArticle,
+	selectWordIndexInParagraph,
 }
 
 export type Actions =

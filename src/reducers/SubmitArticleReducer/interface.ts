@@ -1,6 +1,6 @@
 import { ArticleAnswer, ArticlePreview } from "../../declerations";
 
-export interface SubmitArticleReducer {
+export interface SubmitArticleState {
 	question: string;
 	url: string;
 	articles: ArticlePreview[];

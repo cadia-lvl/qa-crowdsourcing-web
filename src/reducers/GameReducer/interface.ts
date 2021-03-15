@@ -1,4 +1,4 @@
-import { GameTypes, WriteQuestionGame } from "../../declerations";
+import { GameTypes } from "../../declerations";
 
 export interface GameState {
 	current: GameTypes;

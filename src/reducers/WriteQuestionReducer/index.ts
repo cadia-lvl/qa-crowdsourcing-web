@@ -1,6 +1,5 @@
 import { WriteQuestionState } from "./interface";
 import { Actions, ActionTypes } from "../../actions";
-import { Action } from "history";
 
 export const initialState: WriteQuestionState = {
 	ideaWords: [],

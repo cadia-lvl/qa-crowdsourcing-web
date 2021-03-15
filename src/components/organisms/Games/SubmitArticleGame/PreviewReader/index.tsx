@@ -9,12 +9,14 @@ import {
 	TopBar,
 	ParagraphContainer,
 	SingleParagraph,
-	ConfirmTab,
+	Tab,
+	Tabs,
 } from "./styles";
 import {
 	closePreviewArticleToSubmit,
 	submitArticleAnswer,
 } from "../../../../../actions";
+import { Colors } from "../../../../../styles";
 
 export default () => {
 	const state = useSelector((state: StoreState) => state.submitArticle);
@@ -50,7 +52,8 @@ export default () => {
 						theme={{
 							isFocused:
 								i == selectedParagraph ||
-								NO_SELECTION_INDICATOR == selectedParagraph,
+								answer?.paragrahNumber === i ||
+								!answer,
 						}}
 						onMouseOver={() => setSelectedParagraph(i)}
 						onMouseLeave={clearParagraphSelection}
@@ -66,17 +69,42 @@ export default () => {
 						<SingleParagraph
 							theme={{ isSelected: answer?.paragrahNumber === i }}
 						>
-							<ConfirmTab>
+							<Tabs>
 								{answer?.paragrahNumber === i ? (
-									<span>
-										Staðfesta
-										<i className="fas fa-check"></i>
-									</span>
+									<React.Fragment>
+										<Tab
+											theme={{
+												background: Colors.HIGHLIGHT_BG,
+												textColor: Colors.HIGHLIGHT,
+											}}
+										>
+											Staðfesta
+										</Tab>
+										<Tab
+											theme={{
+												background: Colors.DANGER_BG,
+												textColor: Colors.DANGER,
+											}}
+										>
+											Velja aðra efnisgrein
+										</Tab>
+									</React.Fragment>
 								) : (
-									"Svarið er hér"
+									<React.Fragment>
+										<Tab
+											theme={{
+												background: Colors.WARNING_BG,
+												textColor: Colors.WARNING,
+											}}
+										>
+											Svarið er hér
+										</Tab>
+									</React.Fragment>
 								)}
-							</ConfirmTab>
+							</Tabs>
+
 							<HighlightSubText
+								returnNoneOnNoMatch
 								string={paragraph}
 								subString={searchString}
 							/>

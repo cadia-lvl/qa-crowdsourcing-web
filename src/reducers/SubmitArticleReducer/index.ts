@@ -1,7 +1,7 @@
-import { SubmitArticleReducer } from "./interface";
+import { SubmitArticleState } from "./interface";
 import { Actions, ActionTypes } from "../../actions";
 
-export const initialState: SubmitArticleReducer = {
+export const initialState: SubmitArticleState = {
 	question: "",
 	url: "",
 	articles: [
@@ -56,9 +56,9 @@ export const initialState: SubmitArticleReducer = {
 };
 
 export default (
-	state: SubmitArticleReducer = initialState,
+	state: SubmitArticleState = initialState,
 	action: Actions
-): SubmitArticleReducer => {
+): SubmitArticleState => {
 	switch (action.type) {
 		case ActionTypes.closePreviewArticleToSubmit:
 			return {

@@ -56,7 +56,7 @@ export const SubmitArticleGame = () => {
 			{state.articles.map((item) =>
 				/**
 				 * logical equivalence of
-				 * if (no article in preview) then this is the article being preview
+				 * if (there is article in preview) then this is the article being preview
 				 * if that proposition is true then we display the preview item
 				 *
 				 * else we don't display anything, i.e. if no preview
