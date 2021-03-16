@@ -8,5 +8,7 @@ export const ReviewCheckList = <T extends {}>({
 	onComplete,
 }: IProps<T>) => {
 	const completed: Array<T> = [];
-	return <div>a</div>;
+	return <div>{title}</div>;
 };
+
+export * from "./interface";
