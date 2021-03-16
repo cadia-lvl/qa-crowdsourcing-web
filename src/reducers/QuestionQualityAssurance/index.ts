@@ -3,7 +3,7 @@ import { Actions } from "../../actions";
 
 export const initialState: QuestionQualityAssuranceState = {
 	_id: "",
-	text: "",
+	text: "Hvenær fæddist Vigdís Finnbogadóttir?",
 };
 
 export default (

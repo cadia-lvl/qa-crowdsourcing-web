@@ -1,4 +1,4 @@
-type AnswerTypes = "yes" | "no";
+export type AnswerTypes = "yes" | "no";
 
 export interface IProps<T> extends CheckList<T> {
 	onBadAnswer: (v: T) => void;
@@ -15,4 +15,5 @@ export interface CheckListItem<T> {
 	expectedAnswer: AnswerTypes;
 	key: T;
 	correctAnswerPrompt: string;
+	badAnswerPrompt: string;
 }
