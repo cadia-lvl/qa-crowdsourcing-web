@@ -44,7 +44,7 @@ const checkList: CheckList<QAquestionItems> = {
 			expectedAnswer: "no",
 			key: "is-opinionated",
 			correctAnswerPrompt: "Spurningin er ekki að biðja um gildismat",
-			badAnswerPrompt: "Svarið er óháð gildismati",
+			badAnswerPrompt: "Svarið er háð gildismati",
 		},
 	],
 };

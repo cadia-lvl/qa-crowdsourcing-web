@@ -18,8 +18,6 @@ export const ReviewCheckList = <T extends {}>({
 	onBadAnswer,
 	onComplete,
 }: IProps<T>) => {
-	const completed: Array<T> = [];
-
 	const initialState: State<T> = {
 		finished: [],
 		currentQuestion: 0,
@@ -29,23 +27,19 @@ export const ReviewCheckList = <T extends {}>({
 	const reducer = (state: State<T>, action: ReviewActions): State<T> => {
 		switch (action.type) {
 			case "answer-question":
-				if (
+				const badAnswer =
 					action.payload !==
-					items[state.currentQuestion].expectedAnswer
-				)
-					return {
-						...state,
-						questionIsBad: true,
-					};
-				else
-					return {
-						...state,
-						finished: [
-							...state.finished,
-							items[state.currentQuestion].key,
-						],
-						currentQuestion: state.currentQuestion + 1,
-					};
+					items[state.currentQuestion].expectedAnswer;
+				return {
+					...state,
+					finished: [
+						...state.finished,
+						items[state.currentQuestion].key,
+					],
+					questionIsBad: badAnswer,
+					currentQuestion:
+						state.currentQuestion + (!badAnswer ? 1 : 0),
+				};
 			case "reset-state":
 				return { ...initialState };
 			default:
