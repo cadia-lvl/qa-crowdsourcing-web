@@ -1,5 +1,6 @@
 import { ActionTypes } from "../types";
 import {
+	FindArticleRoundFromAPI,
 	MakeQuestionRoundFromAPI,
 	VerifyQuestionRoundFromAPI,
 } from "../../declerations";
@@ -12,6 +13,11 @@ export interface FetchQuestionRoundFromAPIAction {
 export interface VerifyQuestionRoundFromAPIAction {
 	type: ActionTypes.fetchVerifyQuestion;
 	payload: VerifyQuestionRoundFromAPI;
+}
+
+export interface FindArticleRoundFromAPIAction {
+	type: ActionTypes.findArticle;
+	payload: FindArticleRoundFromAPI;
 }
 
 export interface SetCurrentGameRoundAction {

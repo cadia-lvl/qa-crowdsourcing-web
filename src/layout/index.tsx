@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Colors, GlobalStyle } from "../styles";
+import { GlobalStyle } from "../styles";
 import { IProps } from "./interface";
 import Header from "./Header";
 import { LoadingOuter, Outer } from "./styles";
@@ -7,7 +7,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { StoreState } from "../reducers";
 import { fetchUserFromToken } from "../actions";
 import { FETCH_USER_FROM_TOKEN_WAIT_MS } from "./utils";
-import PuffLoader from "react-spinners/ClipLoader";
+import { FlexLoader } from "../components";
 
 export const LayoutWrapper = ({ children }: IProps) => {
 	const state = useSelector((state: StoreState) => state.auth);
@@ -24,11 +24,7 @@ export const LayoutWrapper = ({ children }: IProps) => {
 		return (
 			<LoadingOuter>
 				<GlobalStyle />
-				<PuffLoader
-					color={Colors.DANGER}
-					loading={true}
-					size={150}
-				/>
+				<FlexLoader size={150} />
 			</LoadingOuter>
 		);
 	return (

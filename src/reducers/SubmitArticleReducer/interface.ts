@@ -1,9 +1,14 @@
-import { ArticleAnswer, ArticlePreview } from "../../declerations";
+import {
+	ArticleAnswer,
+	ArticlePreview,
+	Article,
+} from "../../declerations";
 
 export interface SubmitArticleState {
-	question: string;
+	text: string;
 	url: string;
 	articles: ArticlePreview[];
-	previewArticle?: string | number;
+	previewArticle?: Article;
 	answer?: ArticleAnswer;
+	query: string;
 }

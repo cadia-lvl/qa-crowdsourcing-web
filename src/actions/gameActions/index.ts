@@ -3,8 +3,10 @@ import {
 	FetchQuestionRoundFromAPIAction,
 	VerifyQuestionRoundFromAPIAction,
 	SetCurrentGameRoundAction,
+	FindArticleRoundFromAPIAction,
 } from "./interface";
 import {
+	FindArticleRoundFromAPI,
 	MakeQuestionRoundFromAPI,
 	TaskFromBackend,
 	VerifyQuestionRoundFromAPI,
@@ -25,6 +27,12 @@ const __handleUpdateTask = (data: TaskFromBackend) => {
 			store.dispatch<VerifyQuestionRoundFromAPIAction>({
 				type: ActionTypes.fetchVerifyQuestion,
 				payload: data as VerifyQuestionRoundFromAPI,
+			});
+			break;
+		case "find-article":
+			store.dispatch<FindArticleRoundFromAPIAction>({
+				type: ActionTypes.findArticle,
+				payload: data as FindArticleRoundFromAPI,
 			});
 			break;
 		default:

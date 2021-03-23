@@ -49,7 +49,7 @@ const PreviewHeader = () => {
 				</span>
 			</TopBar>
 			<Inner>
-				{DUMMY_DATA.map((paragraph, i) => (
+				{previewArticle.paragraphs.map((paragraph, i) => (
 					<ParagraphContainer
 						theme={{
 							isFocused:
@@ -62,7 +62,7 @@ const PreviewHeader = () => {
 						onClick={() =>
 							dispatch(
 								submitArticleAnswer({
-									articleId: previewArticle,
+									articleId: 4,
 									paragrahNumber: i,
 								})
 							)

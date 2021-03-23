@@ -3,7 +3,6 @@ import { Actions, ActionTypes } from "../../actions";
 import { GameTypes } from "../../declerations";
 
 export const initialState: GameState = {
-	current: GameTypes.submitArticle,
 	currentRound: 0,
 	totalRounds: 10,
 	_id: "",
@@ -30,6 +29,12 @@ const reducer = (
 				...state,
 				...action.payload,
 				current: GameTypes.questionQualityAssurance,
+			};
+		case ActionTypes.findArticle:
+			return {
+				...state,
+				...action.payload,
+				current: GameTypes.submitArticle,
 			};
 		default:
 			return state;

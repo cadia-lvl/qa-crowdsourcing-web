@@ -28,9 +28,21 @@ export interface VerifyQuestionRoundFromAPI {
 	};
 }
 
+export interface FindArticleRoundFromAPI {
+	_id: string;
+	currentRound: number;
+	totalRounds: number;
+	taskInfo: {
+		_id: string;
+		text: string;
+		type: "find-article";
+	};
+}
+
 export type TaskFromBackend =
 	| MakeQuestionRoundFromAPI
-	| VerifyQuestionRoundFromAPI;
+	| VerifyQuestionRoundFromAPI
+	| FindArticleRoundFromAPI;
 
 export interface ArticleAnswer {
 	paragrahNumber: number;
@@ -39,15 +51,26 @@ export interface ArticleAnswer {
 
 export interface ArticlePreview {
 	source: Source;
-	extract: string;
+	snippet: string;
 	_id: string;
 	title: string;
+	key: string;
 }
 
 interface Source {
 	logo: string;
 	name: string;
 	baseUrl: string;
+	identifier: string;
+}
+
+export interface Article {
+	key: string;
+	snippet: string;
+	source: Source;
+	title: string;
+	url: string;
+	paragraphs: string[];
 }
 
 export interface LoadingGame {}

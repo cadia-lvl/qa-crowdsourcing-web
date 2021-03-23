@@ -18,6 +18,9 @@ export enum ActionTypes {
 	fetchMakeQuestion,
 	fetchVerifyQuestion,
 	setCurrentGameRound,
+	findArticle,
+	writeArticleSearchQuery,
+	fetchArticlesQuery,
 }
 
 export type Actions =
@@ -28,9 +31,12 @@ export type Actions =
 	| SubmitArticleActions.PreviewArticleToSubmitAction
 	| SubmitArticleActions.ClosePreviewArticleToSubmitAction
 	| SubmitArticleActions.SelectParagraphInArticleAction
+	| SubmitArticleActions.WriteArticleSearchQueryAction
+	| SubmitArticleActions.FetchArticlesQueryAction
 	| VerifyAnswerLocationsActions.SelectFirstWordIndexInParagraphAction
 	| VerifyAnswerLocationsActions.SelectSecondWordIndexInParagraphAction
 	| VerifyAnswerLocationsActions.ClearIndexRangeInParagraph
 	| GameActions.FetchQuestionRoundFromAPIAction
 	| GameActions.VerifyQuestionRoundFromAPIAction
-	| GameActions.SetCurrentGameRoundAction;
+	| GameActions.SetCurrentGameRoundAction
+	| GameActions.FindArticleRoundFromAPIAction;

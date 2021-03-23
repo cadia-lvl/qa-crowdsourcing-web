@@ -1,25 +1,36 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { TextPrompt, TextTag, TextInput } from "../../../";
 import { SubmitButton } from "../../../atoms";
 import { Paragraph, SearchBoxContainer } from "./styles";
 import ArticlePreview from "./ArticlePreview";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { StoreState } from "../../../../reducers";
 import { GameWrapper } from "../../../../hoc";
 import { GameTypes } from "../../../../declerations";
 import PreviewReader from "./PreviewReader";
+import { getHighlightWords } from "./utils";
+import {
+	fetchArticlesQuery,
+	writeArticleSearchQuery,
+} from "../../../../actions";
 
 export const SubmitArticleGame = () => {
+	const [highlightWords, setHighlightWords] = useState<string[]>([]);
 	const state = useSelector((state: StoreState) => state.submitArticle);
+	const dispatch = useDispatch();
 
-	const { previewArticle } = state;
+	const { previewArticle, query } = state;
 
 	const hasPreview = !!previewArticle;
+
+	useEffect(() => {
+		if (state.text !== "")
+			getHighlightWords(state.text).then(setHighlightWords);
+	}, [state.text]);
+
 	return (
 		<GameWrapper type={GameTypes.submitArticle}>
-			<TextPrompt>
-				<i>HVENÆR</i> fæddist Bill Clinton?
-			</TextPrompt>
+			<TextPrompt>{state.text}</TextPrompt>
 			{hasPreview ? null : (
 				<React.Fragment>
 					<Paragraph>
@@ -33,13 +44,19 @@ export const SubmitArticleGame = () => {
 						leitarstrengjum. Prufaðu eftirfarandi orð í
 						leitarstrengnum:
 					</Paragraph>
-					<TextTag>Bill</TextTag>
-					<TextTag>Clinton</TextTag>
+					{highlightWords.map((word, i) => (
+						<TextTag key={`${word}-${i}`}>{word}</TextTag>
+					))}
 					<SearchBoxContainer>
-						<TextInput value="" onChange={(a) => null} />
+						<TextInput
+							value={query}
+							onChange={(text) =>
+								dispatch(writeArticleSearchQuery(text))
+							}
+						/>
 						<SubmitButton
 							label="Leita"
-							onClick={() => null}
+							onClick={() => dispatch(fetchArticlesQuery())}
 							inactive={false}
 							invertColorScheme={true}
 						/>
@@ -62,8 +79,12 @@ export const SubmitArticleGame = () => {
 				 * we display all, if we have a preview then we display
 				 * said preview
 				 */
-				!hasPreview || previewArticle === item._id ? (
-					<ArticlePreview {...item} key={item._id} />
+				!hasPreview || previewArticle?.key === item.key ? (
+					<ArticlePreview
+						{...item}
+						key={item.key}
+						_key={item.key}
+					/>
 				) : null
 			)}
 			{hasPreview ? (

@@ -8,17 +8,17 @@ import { previewArticleToSubmit } from "../../../../../actions";
 const ArticlePreview = (article: IProps) => {
 	const {
 		title,
-		source: { logo },
-		extract,
+		source: { logo, identifier },
+		snippet,
 		_id,
+		_key,
 	} = article;
 
 	const state = useSelector((state: StoreState) => state.submitArticle);
 	const dispatch = useDispatch();
 
 	const { previewArticle } = state;
-
-	const isPreviewOpen = previewArticle === _id;
+	const isPreviewOpen = previewArticle?.key === _key;
 	const previewHoverText = !isPreviewOpen
 		? "... Kannski er svarið hér"
 		: "";
@@ -27,13 +27,20 @@ const ArticlePreview = (article: IProps) => {
 		<React.Fragment>
 			<Outer
 				theme={{ isPreviewOpen }}
-				onClick={() => dispatch(previewArticleToSubmit(article))}
+				onClick={() =>
+					dispatch(
+						previewArticleToSubmit(
+							identifier,
+							encodeURIComponent(_key)
+						)
+					)
+				}
 			>
 				<LeftBox theme={{ imgUrl: logo, isPreviewOpen }} />
 				<RightBox>
 					<h3>{title}</h3>
 					<ExtractPara theme={{ isPreviewOpen }}>
-						{extract} <b>{previewHoverText}</b>
+						{snippet} asdf<b>{previewHoverText}</b>
 					</ExtractPara>
 				</RightBox>
 			</Outer>
