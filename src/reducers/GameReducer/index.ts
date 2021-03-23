@@ -6,6 +6,7 @@ export const initialState: GameState = {
 	current: GameTypes.submitArticle,
 	currentRound: 0,
 	totalRounds: 10,
+	_id: "",
 };
 
 const reducer = (

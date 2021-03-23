@@ -19,12 +19,12 @@ import {
  */
 export const GameProgress = () => {
 	const state = useSelector((state: StoreState) => state.game);
-	const ratio = state.currentRound / state.totalRounds;
-	console.log(state, ratio);
+	const currentRound = state.currentRound - 1;
+	const ratio = currentRound / state.totalRounds;
 	return (
 		<Outer>
 			<IconContainer theme={{ widthRatio: ratio }}>
-				<Icon>{state.currentRound}</Icon>
+				<Icon>{currentRound}</Icon>
 			</IconContainer>
 			<TickContainer>
 				<Tick />

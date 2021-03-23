@@ -13,6 +13,7 @@ export interface MakeQuestionRoundFromAPI {
 	taskInfo: {
 		ideaWords: string[];
 		type: "make-question";
+		questionType: string;
 	};
 }
 

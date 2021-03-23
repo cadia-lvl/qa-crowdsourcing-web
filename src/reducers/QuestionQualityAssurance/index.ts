@@ -14,7 +14,7 @@ const reducer = (
 		case ActionTypes.fetchVerifyQuestion:
 			return {
 				...state,
-				...action.payload,
+				...action.payload.taskInfo,
 			};
 		default:
 			return state;

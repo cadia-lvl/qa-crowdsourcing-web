@@ -4,4 +4,5 @@ export interface GameState {
 	current: GameTypes;
 	currentRound: number;
 	totalRounds: number;
+	_id: string;
 }

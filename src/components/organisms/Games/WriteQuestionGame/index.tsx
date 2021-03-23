@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { writeQuestion } from "../../../../actions";
+import { submitQuestion, writeQuestion } from "../../../../actions";
 import { GameTypes } from "../../../../declerations";
 import { GameWrapper } from "../../../../hoc";
 import { StoreState } from "../../../../reducers";
@@ -14,18 +14,26 @@ import {
 } from "./styles";
 
 export const WriteQuestionGame = () => {
-	const state = useSelector((state: StoreState) => state.writeQuestion);
+	const state = useSelector((state: StoreState) => state);
 	const [errorMessage, setErrorMessage] = useState("");
 	const dispatch = useDispatch();
 
 	const MIN_QUESTION_LENGTH = 13;
 
-	const { question, firstWord } = state;
+	const {
+		writeQuestion: { question, questionType, ideaWords },
+		game: { _id },
+	} = state;
+	const isYesNoQuestion = questionType === "Já/Nei";
+
 	useEffect(() => {
 		try {
-			if (question.split(" ")[0] !== firstWord)
+			if (
+				question.split(" ")[0] !== questionType &&
+				!isYesNoQuestion
+			)
 				throw new Error(
-					`Spurningin verður að hefjast á ${firstWord}`
+					`Spurningin verður að hefjast á ${questionType}`
 				);
 			if (question.length < MIN_QUESTION_LENGTH)
 				throw new Error(`Spurningin er ekki nógu löng`);
@@ -37,14 +45,28 @@ export const WriteQuestionGame = () => {
 		} catch (e) {
 			setErrorMessage(e.message);
 		}
-	}, [question, firstWord]);
+	}, [question, questionType, isYesNoQuestion]);
 
+	const getPrompt = () => {
+		if (isYesNoQuestion)
+			return (
+				<React.Fragment>
+					Spurðu okkur <i>{questionType.toLocaleUpperCase()}</i>{" "}
+					spurningu
+				</React.Fragment>
+			);
+		else
+			return (
+				<React.Fragment>
+					Spurðu okkur spurning sem byrjar á{" "}
+					<i>{questionType.toLocaleUpperCase()}</i>
+				</React.Fragment>
+			);
+	};
 	return (
 		<GameWrapper type={GameTypes.writeQuestion}>
-			<TextPrompt>
-				Spurðu okkur spurning sem byrjar á <i>HVENÆR</i>
-			</TextPrompt>
-			{state.ideaWords.map((word) => (
+			<TextPrompt>{getPrompt()}</TextPrompt>
+			{ideaWords.map((word) => (
 				<TextTag key={word}>{word}</TextTag>
 			))}
 			<Paragraph>
@@ -56,7 +78,7 @@ export const WriteQuestionGame = () => {
 			<InputContainer>
 				<QuestionInput
 					type="text"
-					placeholder={`${firstWord} ?`}
+					placeholder={`${questionType} ?`}
 					onChange={(e) =>
 						dispatch(writeQuestion(e.target.value))
 					}
@@ -70,7 +92,7 @@ export const WriteQuestionGame = () => {
 				) : null}
 				<SubmitButton
 					label="Afram"
-					onClick={() => null}
+					onClick={() => dispatch(submitQuestion(_id, question))}
 					inactive={!!errorMessage}
 					invertColorScheme
 				/>

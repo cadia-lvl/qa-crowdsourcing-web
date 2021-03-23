@@ -3,7 +3,7 @@ import { Actions, ActionTypes } from "../../actions";
 
 export const initialState: WriteQuestionState = {
 	ideaWords: [],
-	firstWord: "Hvenær",
+	questionType: "",
 	question: "",
 };
 

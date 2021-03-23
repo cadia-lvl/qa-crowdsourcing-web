@@ -1,4 +1,4 @@
-import React, { useReducer } from "react";
+import React, { useReducer, useEffect } from "react";
 import { IProps } from "./interface";
 import {
 	Outer,
@@ -16,12 +16,17 @@ export const ReviewCheckList = <T extends {}>({
 	items,
 	onBadAnswer,
 	onComplete,
+	key,
 }: IProps<T>) => {
 	const initialState: State<T> = {
 		finished: [],
 		currentQuestion: 0,
 		questionIsBad: false,
 	};
+
+	useEffect(() => {
+		dispatch({ type: "reset-state" });
+	}, [key]);
 
 	const reducer = (state: State<T>, action: ReviewActions): State<T> => {
 		switch (action.type) {
@@ -120,7 +125,11 @@ export const ReviewCheckList = <T extends {}>({
 					<BaseButton
 						label="Ákkurat!"
 						type="highlight"
-						onClick={() => null}
+						onClick={() =>
+							(state.questionIsBad
+								? onBadAnswer
+								: onComplete)()
+						}
 					/>
 				</ButtonDiv>
 			) : null}
