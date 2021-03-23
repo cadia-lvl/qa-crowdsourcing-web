@@ -12,9 +12,8 @@ import PreviewReader from "./PreviewReader";
 export const SubmitArticleGame = () => {
 	const state = useSelector((state: StoreState) => state.submitArticle);
 
-	const { answer, previewArticle } = state;
+	const { previewArticle } = state;
 
-	const hasAnswer = !!answer;
 	const hasPreview = !!previewArticle;
 	return (
 		<GameWrapper type={GameTypes.submitArticle}>
@@ -24,10 +23,10 @@ export const SubmitArticleGame = () => {
 			{hasPreview ? null : (
 				<React.Fragment>
 					<Paragraph>
-						Væri ekki gaman ef við gætum fundið svarið við þessari
-						spurningu? Sláðu inn leitarstreng hér fyrir neðan og
-						athugum hvort við getum ekki fundið svarið á
-						veraldarvefnum.
+						Væri ekki gaman ef við gætum fundið svarið við
+						þessari spurningu? Sláðu inn leitarstreng hér fyrir
+						neðan og athugum hvort við getum ekki fundið svarið
+						á veraldarvefnum.
 					</Paragraph>
 					<Paragraph>
 						Oft er gott að notast við nafnorð og sérnöfn í
@@ -46,9 +45,9 @@ export const SubmitArticleGame = () => {
 						/>
 					</SearchBoxContainer>
 					<Paragraph>
-						Smelltu á grein til þess að sjá hvort svarið leynist
-						þar. Ef ekkert svar er að finna neinstaðar þá getur þú
-						smellt hér.
+						Smelltu á grein til þess að sjá hvort svarið
+						leynist þar. Ef ekkert svar er að finna neinstaðar
+						þá getur þú smellt hér.
 					</Paragraph>
 				</React.Fragment>
 			)}
@@ -64,16 +63,17 @@ export const SubmitArticleGame = () => {
 				 * said preview
 				 */
 				!hasPreview || previewArticle === item._id ? (
-					<ArticlePreview {...item} />
+					<ArticlePreview {...item} key={item._id} />
 				) : null
 			)}
 			{hasPreview ? (
 				<React.Fragment>
 					<Paragraph>
-						Þessa grein er að finna á Wikipedia. Sérðu svarið? Ef
-						svo er, smelltu á þá efnisgrein sem inniheldur svarið.
-						Þú getur einnig leitað í innihaldi greinarinnar. Ýttu á
-						Loka Grein til að fara til baka í leitina
+						Þessa grein er að finna á Wikipedia. Sérðu svarið?
+						Ef svo er, smelltu á þá efnisgrein sem inniheldur
+						svarið. Þú getur einnig leitað í innihaldi
+						greinarinnar. Ýttu á Loka Grein til að fara til
+						baka í leitina
 					</Paragraph>
 					<PreviewReader />
 				</React.Fragment>

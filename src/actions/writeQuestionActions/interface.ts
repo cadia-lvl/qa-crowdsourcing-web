@@ -1,4 +1,3 @@
-import { ArticleAnswer } from "../../declerations";
 import { ActionTypes } from "../types";
 
 export interface WriteQuestionAction {

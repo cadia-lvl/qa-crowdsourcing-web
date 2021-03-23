@@ -18,7 +18,7 @@ import {
 } from "../../../../../actions";
 import { Colors } from "../../../../../styles";
 
-export default () => {
+const PreviewHeader = () => {
 	const state = useSelector((state: StoreState) => state.submitArticle);
 	const dispatch = useDispatch();
 
@@ -42,7 +42,9 @@ export default () => {
 					onChange={setSearchString}
 					placeholder="Leita inní grein"
 				/>
-				<span onClick={() => dispatch(closePreviewArticleToSubmit())}>
+				<span
+					onClick={() => dispatch(closePreviewArticleToSubmit())}
+				>
 					Loka grein
 				</span>
 			</TopBar>
@@ -51,7 +53,7 @@ export default () => {
 					<ParagraphContainer
 						theme={{
 							isFocused:
-								i == selectedParagraph ||
+								i === selectedParagraph ||
 								answer?.paragrahNumber === i ||
 								!answer,
 						}}
@@ -65,24 +67,30 @@ export default () => {
 								})
 							)
 						}
+						key={i}
 					>
 						<SingleParagraph
-							theme={{ isSelected: answer?.paragrahNumber === i }}
+							theme={{
+								isSelected: answer?.paragrahNumber === i,
+							}}
 						>
 							<Tabs>
 								{answer?.paragrahNumber === i ? (
 									<React.Fragment>
 										<Tab
 											theme={{
-												background: Colors.HIGHLIGHT_BG,
-												textColor: Colors.HIGHLIGHT,
+												background:
+													Colors.HIGHLIGHT_BG,
+												textColor:
+													Colors.HIGHLIGHT,
 											}}
 										>
 											Staðfesta
 										</Tab>
 										<Tab
 											theme={{
-												background: Colors.DANGER_BG,
+												background:
+													Colors.DANGER_BG,
 												textColor: Colors.DANGER,
 											}}
 										>
@@ -93,7 +101,8 @@ export default () => {
 									<React.Fragment>
 										<Tab
 											theme={{
-												background: Colors.WARNING_BG,
+												background:
+													Colors.WARNING_BG,
 												textColor: Colors.WARNING,
 											}}
 										>
@@ -115,3 +124,5 @@ export default () => {
 		</Outer>
 	);
 };
+
+export default PreviewHeader;

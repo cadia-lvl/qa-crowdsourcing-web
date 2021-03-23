@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import { Outer, LeftBox, RightBox, ExtractPara } from "./styles";
 import { IProps } from "./interface";
 import { useDispatch, useSelector } from "react-redux";
 import { StoreState } from "../../../../../reducers";
 import { previewArticleToSubmit } from "../../../../../actions";
 
-export default (article: IProps) => {
+const ArticlePreview = (article: IProps) => {
 	const {
 		title,
 		source: { logo },
@@ -19,7 +19,9 @@ export default (article: IProps) => {
 	const { previewArticle } = state;
 
 	const isPreviewOpen = previewArticle === _id;
-	const previewHoverText = !isPreviewOpen ? "... Kannski er svarið hér" : "";
+	const previewHoverText = !isPreviewOpen
+		? "... Kannski er svarið hér"
+		: "";
 
 	return (
 		<React.Fragment>
@@ -38,3 +40,5 @@ export default (article: IProps) => {
 		</React.Fragment>
 	);
 };
+
+export default ArticlePreview;

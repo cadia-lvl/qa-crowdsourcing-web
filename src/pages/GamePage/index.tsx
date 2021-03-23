@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { RestrictedPage } from "../../hoc";
 import {
 	WriteQuestionGame,
@@ -7,8 +7,16 @@ import {
 	VerifyAnswerLocationGame,
 	QuestionQualityAssuranceGame,
 } from "../../components";
+import { useDispatch } from "react-redux";
+import { fetchCurrentGameRound } from "../../actions";
 
 export const GamePage = () => {
+	const dispatch = useDispatch();
+
+	useEffect(() => {
+		dispatch(fetchCurrentGameRound());
+	}, [dispatch]);
+
 	return (
 		<RestrictedPage userTypes={["guest"]} fallbackUrl="/innskra">
 			<GameProgress />

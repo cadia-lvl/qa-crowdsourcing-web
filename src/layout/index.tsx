@@ -18,13 +18,17 @@ export const LayoutWrapper = ({ children }: IProps) => {
 				() => dispatch(fetchUserFromToken()),
 				FETCH_USER_FROM_TOKEN_WAIT_MS
 			);
-	}, [state._id]);
+	}, [state._id, dispatch, state.type]);
 
-	if (state.type == "loading")
+	if (state.type === "loading")
 		return (
 			<LoadingOuter>
 				<GlobalStyle />
-				<PuffLoader color={Colors.DANGER} loading={true} size={150} />
+				<PuffLoader
+					color={Colors.DANGER}
+					loading={true}
+					size={150}
+				/>
 			</LoadingOuter>
 		);
 	return (

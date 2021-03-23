@@ -22,11 +22,11 @@ export const VerifyAnswerLocationGame = () => {
 	let { firstWord, lastWord, paragraph } = state;
 
 	let action: (v: number) => any;
-	if (firstWord == undefined) {
+	if (firstWord === undefined) {
 		action = selectFirstWordIndexInParagraph;
 		lastWord = firstWord = -1;
 		selectionState = "select-first";
-	} else if (lastWord == undefined) {
+	} else if (lastWord === undefined) {
 		action = selectSecondWordIndexInParagraph;
 		lastWord = firstWord;
 		selectionState = "select-last";
@@ -47,9 +47,9 @@ export const VerifyAnswerLocationGame = () => {
 	};
 
 	const getAnswer = () => {
-		if (selectionState == "select-first")
+		if (selectionState === "select-first")
 			return "Smelltu a textann fyrir ofan til ad velja svarid";
-		else if (selectionState == "select-last")
+		else if (selectionState === "select-last")
 			return paragraph.split(" ")[firstWord!] + "...";
 		return ` „${paragraph
 			.split(" ")
@@ -64,10 +64,12 @@ export const VerifyAnswerLocationGame = () => {
 				<p>
 					{state.paragraph.split(" ").map((word, i) => (
 						<Word
+							key={i}
 							title={getToolTipString(word)}
 							onClick={() => dispatch(action(i))}
 							theme={{
-								isSelected: i >= firstWord! && i <= lastWord!,
+								isSelected:
+									i >= firstWord! && i <= lastWord!,
 								openRange:
 									// check if is selected here as well
 									i >= firstWord! &&

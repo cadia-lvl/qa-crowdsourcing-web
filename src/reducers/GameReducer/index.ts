@@ -1,22 +1,40 @@
 import { GameState } from "./interface";
-import { Actions } from "../../actions";
+import { Actions, ActionTypes } from "../../actions";
 import { GameTypes } from "../../declerations";
 
 export const initialState: GameState = {
-	current: GameTypes.questionQualityAssurance,
-
-	tasksCompleted: 8,
-	totalTasks: 10,
+	current: GameTypes.submitArticle,
+	currentRound: 0,
+	totalRounds: 10,
 };
 
-export default (
+const reducer = (
 	state: GameState = initialState,
 	action: Actions
 ): GameState => {
 	switch (action.type) {
+		case ActionTypes.setCurrentGameRound:
+			return {
+				...state,
+				currentRound: action.payload,
+			};
+		case ActionTypes.fetchMakeQuestion:
+			return {
+				...state,
+				...action.payload,
+				current: GameTypes.writeQuestion,
+			};
+		case ActionTypes.fetchVerifyQuestion:
+			return {
+				...state,
+				...action.payload,
+				current: GameTypes.questionQualityAssurance,
+			};
 		default:
 			return state;
 	}
 };
+
+export default reducer;
 
 export * from "./interface";

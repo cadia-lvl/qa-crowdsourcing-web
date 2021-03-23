@@ -1,9 +1,8 @@
-import { GameTypes } from "../../declerations";
 import * as AuthActions from "../authActions";
 import * as SubmitArticleActions from "../submitArticleActions";
 import * as WriteQuestionActions from "../writeQuestionActions";
+import * as GameActions from "../gameActions";
 import * as VerifyAnswerLocationsActions from "../verifyAnswerLocationActions";
-import { VerifyAnswerLocationState } from "../../reducers/VerifyAnswerLocation";
 
 export enum ActionTypes {
 	fetchUserFromToken,
@@ -16,6 +15,9 @@ export enum ActionTypes {
 	selectFirstWordIndexInParagraph,
 	selectSecondWordIndexInParagraph,
 	clearIndexRangeInParagraph,
+	fetchMakeQuestion,
+	fetchVerifyQuestion,
+	setCurrentGameRound,
 }
 
 export type Actions =
@@ -28,4 +30,7 @@ export type Actions =
 	| SubmitArticleActions.SelectParagraphInArticleAction
 	| VerifyAnswerLocationsActions.SelectFirstWordIndexInParagraphAction
 	| VerifyAnswerLocationsActions.SelectSecondWordIndexInParagraphAction
-	| VerifyAnswerLocationsActions.ClearIndexRangeInParagraph;
+	| VerifyAnswerLocationsActions.ClearIndexRangeInParagraph
+	| GameActions.FetchQuestionRoundFromAPIAction
+	| GameActions.VerifyQuestionRoundFromAPIAction
+	| GameActions.SetCurrentGameRoundAction;

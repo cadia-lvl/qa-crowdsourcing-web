@@ -1,4 +1,4 @@
-export default [
+const DUMMY_DATA = [
 	"Frakkland eða Lýðveldið Frakkland, (franska République française eða France) er land í Vestur-Evrópu sem nær frá Miðjarðarhafi í suðri að Ermarsundi í norðri og frá Rín í austri að Atlantshafi í vestri. Vegna lögunar landsins gengur það oft undir heitinu „sexhyrningurinn“ (fr. Hexagone) hjá Frökkum sjálfum. Í Evrópu á Frakkland landamæri að Belgíu, Lúxemborg, Þýskalandi, Sviss, Ítalíu, Mónakó, Spáni og Andorra, en handanhafssýslur þess í öðrum heimsálfum eiga landamæri að Brasilíu, Súrínam og Hollensku Antillaeyjum. Landið tengist Bretlandseyjum gegnum Ermarsundsgöngin.",
 	"Frakkland er meðal aðildarríkja Evrópusambandsins og Atlantshafsbandalagsins og á fast sæti í Öryggisráði Sameinuðu þjóðanna",
 	"Landamæri Frakklands í Evrópu eru 2970 km að lengd og snúa að eftirtöldum átta ríkjum: Spáni (650 km), Belgíu (620 km), Sviss (572 km), Ítalíu (515 km), Þýskalandi (450 km), Lúxemborg (73 km), Andorra (57 km) og Mónakó (4,5 km). Í Suður-Ameríku á Franska Gíana landamæri að Brasilíu (580 km) og Súrínam (520 km). Saint-Martin-ey í Antillaeyjaklasanum skiptist milli Frakklands og Hollands. Loks gera Frakkar tilkall til svonefndrar Terre Adélie á Suðurskautslandinu. Stjórnsýsla á þessum yfirráðasvæðum Frakklands er með ýmsum hætti og ganga þau eftir því undir fjölbreytilegum nöfnum, allt frá „handanhafssýslu“ til „handanhafssvæðis“.",
@@ -9,3 +9,5 @@ export default [
 	"Samfelld tilvist Frakklands sem sérstaks ríkis er talin hefjast á 9. öld þegar Frankaveldi Karlamagnúsar skiptist í vestur- og austurhluta. Austurhlutinn náði þá yfir það svæði sem nú er Þýskaland og er þessi skipting oft einnig talin marka upphaf Þýskalands.",
 	"Normannar lögðu undir sig England árið 1066 sem síðar leiddi til togstreitu milli afkomenda Vilhjálms Sigurvegara hertoga af Normandí og konunga Frakklands í hinu svokallaða hundrað ára stríði.",
 ];
+
+export default DUMMY_DATA;

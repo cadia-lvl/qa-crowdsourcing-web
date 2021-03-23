@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 import { SmallProgressBar } from "../../../../";
 import { StoreState } from "../../../../../reducers";
@@ -19,13 +19,12 @@ import {
  */
 export const GameProgress = () => {
 	const state = useSelector((state: StoreState) => state.game);
-
-	const ratio = state.tasksCompleted / state.totalTasks;
-
+	const ratio = state.currentRound / state.totalRounds;
+	console.log(state, ratio);
 	return (
 		<Outer>
 			<IconContainer theme={{ widthRatio: ratio }}>
-				<Icon>{state.tasksCompleted}</Icon>
+				<Icon>{state.currentRound}</Icon>
 			</IconContainer>
 			<TickContainer>
 				<Tick />

@@ -6,6 +6,31 @@ export enum GameTypes {
 	questionQualityAssurance,
 }
 
+export interface MakeQuestionRoundFromAPI {
+	_id: string;
+	currentRound: number;
+	totalRounds: number;
+	taskInfo: {
+		ideaWords: string[];
+		type: "make-question";
+	};
+}
+
+export interface VerifyQuestionRoundFromAPI {
+	_id: string;
+	currentRound: number;
+	totalRounds: number;
+	taskInfo: {
+		_id: string;
+		text: string;
+		type: "verify-question";
+	};
+}
+
+export type TaskFromBackend =
+	| MakeQuestionRoundFromAPI
+	| VerifyQuestionRoundFromAPI;
+
 export interface ArticleAnswer {
 	paragrahNumber: number;
 	articleId: string | number;

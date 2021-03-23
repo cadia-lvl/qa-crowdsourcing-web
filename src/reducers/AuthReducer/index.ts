@@ -8,14 +8,13 @@ export const initialState: AuthState = {
 	_id: "",
 };
 
-export default (
+const reducer = (
 	state: AuthState = initialState,
 	action: Actions
 ): AuthState => {
 	switch (action.type) {
 		case ActionTypes.logOutUser:
-			return { ...initialState, type: "user", username: "Njall" };
-		// return { ...initialState, type: "guest" };
+			return { ...initialState, type: "guest" };
 		case ActionTypes.fetchUserFromToken:
 			return action.payload;
 		case ActionTypes.registerUser:
@@ -25,4 +24,5 @@ export default (
 	}
 };
 
+export default reducer;
 export * from "./interface";

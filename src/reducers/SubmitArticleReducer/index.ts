@@ -19,7 +19,8 @@ export const initialState: SubmitArticleState = {
 		},
 		{
 			source: {
-				logo: "https://image.flaticon.com/icons/png/512/48/48927.png",
+				logo:
+					"https://image.flaticon.com/icons/png/512/48/48927.png",
 				name: "Wikipedia",
 				baseUrl: "http://is.wikipedia.org",
 			},
@@ -55,7 +56,7 @@ export const initialState: SubmitArticleState = {
 	],
 };
 
-export default (
+const reducer = (
 	state: SubmitArticleState = initialState,
 	action: Actions
 ): SubmitArticleState => {
@@ -81,5 +82,7 @@ export default (
 			return state;
 	}
 };
+
+export default reducer;
 
 export * from "./interface";

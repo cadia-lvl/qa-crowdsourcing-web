@@ -13,7 +13,6 @@ export const FormBuilder = <T extends {}, K = {}>({
 	HTTPmethod,
 }: IProps<T, K>) => {
 	const [formObject, setFormObject] = useState(form);
-	const [_, setIsDone] = useState(false);
 	const [errorMessage, setErrorMessage] = useState("");
 	const [isLoading, setIsLoading] = useState(false);
 
@@ -29,14 +28,16 @@ export const FormBuilder = <T extends {}, K = {}>({
 		if (isLoading) return;
 		setIsLoading(true);
 		const formValues: { [key in keyof K]: any } = { ...form };
-		for (const key in formValues) formValues[key] = formObject[key].value;
+		for (const key in formValues)
+			formValues[key] = formObject[key].value;
 		try {
 			const res = await Api[HTTPmethod]<T>(url, formValues);
 			onSubmit(res.data);
 			setFormObject({ ...form });
-			setIsDone(true);
 		} catch (error) {
-			setErrorMessage(error.response?.data.message ?? "Unknown error");
+			setErrorMessage(
+				error.response?.data.message ?? "Unknown error"
+			);
 		} finally {
 			setTimeout(() => setIsLoading(false), LOAD_TIMER_MS);
 		}
@@ -51,6 +52,7 @@ export const FormBuilder = <T extends {}, K = {}>({
 			<FilledAlert type="danger" label={errorMessage} />
 			{Object.keys(formObject).map((key: any) => (
 				<InputElementFactory
+					key={key}
 					inputField={{
 						// @ts-ignore
 						...form[key],

@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { Colors } from "../../../../../styles";
-import { HIGHLIGHT_BG } from "../../../../../styles/Colors";
 
 export const Outer = styled.div`
 	display: flex;

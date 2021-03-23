@@ -10,7 +10,6 @@ import {
 } from "./styles";
 import { TextPrompt, BaseButton, TextTag } from "../../../../";
 import { ReviewActions, State } from "./stateUtils";
-import { type } from "os";
 
 export const ReviewCheckList = <T extends {}>({
 	title,
@@ -63,19 +62,25 @@ export const ReviewCheckList = <T extends {}>({
 					].badAnswerPrompt.toLocaleUpperCase()}
 				</BadQuestionPrompt>
 			) : checkListDone ? (
-				<GoodQuestionPrompt>Þetta er góð spurning!</GoodQuestionPrompt>
+				<GoodQuestionPrompt>
+					Þetta er góð spurning!
+				</GoodQuestionPrompt>
 			) : (
 				<React.Fragment>
-					{items.slice(0, state.currentQuestion + 1).map((item) => (
-						<React.Fragment>
-							<VerticalBar />
-							{state.finished.includes(item.key) ? (
-								<TextTag>{item.correctAnswerPrompt}</TextTag>
-							) : (
-								<Question>{item.question}</Question>
-							)}
-						</React.Fragment>
-					))}
+					{items
+						.slice(0, state.currentQuestion + 1)
+						.map((item) => (
+							<React.Fragment key={item.question}>
+								<VerticalBar />
+								{state.finished.includes(item.key) ? (
+									<TextTag>
+										{item.correctAnswerPrompt}
+									</TextTag>
+								) : (
+									<Question>{item.question}</Question>
+								)}
+							</React.Fragment>
+						))}
 					<ButtonDiv>
 						<BaseButton
 							label="Nei"

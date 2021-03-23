@@ -1,6 +1,5 @@
 import { VerifyAnswerLocationState } from "./interface";
 import { Actions, ActionTypes } from "../../actions";
-import { GameTypes } from "../../declerations";
 
 export const initialState: VerifyAnswerLocationState = {
 	question: "Hver er Hrafn Loftsson?",
@@ -10,7 +9,7 @@ export const initialState: VerifyAnswerLocationState = {
 	lastWord: undefined,
 };
 
-export default (
+const reducer = (
 	state: VerifyAnswerLocationState = initialState,
 	action: Actions
 ): VerifyAnswerLocationState => {
@@ -36,5 +35,5 @@ export default (
 			return state;
 	}
 };
-
+export default reducer;
 export * from "./interface";
