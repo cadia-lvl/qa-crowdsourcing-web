@@ -1,8 +1,4 @@
-import {
-	ArticleAnswer,
-	ArticlePreview,
-	Article,
-} from "../../declerations";
+import { ArticlePreview, Article } from "../../declerations";
 import { ActionTypes } from "../types";
 
 export interface PreviewArticleToSubmitAction {
@@ -16,7 +12,7 @@ export interface ClosePreviewArticleToSubmitAction {
 
 export interface SelectParagraphInArticleAction {
 	type: ActionTypes.selectParagraphInArticle;
-	payload: ArticleAnswer;
+	payload: number;
 }
 
 export interface WriteArticleSearchQueryAction {

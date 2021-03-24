@@ -61,7 +61,7 @@ export const fetchCurrentGameRound = () => {
 			);
 			__handleUpdateTask(data);
 		} catch (error) {
-			console.log(error);
+			//
 		}
 	};
 };
@@ -81,7 +81,7 @@ export const submitQuestion = (
 			);
 			__handleUpdateTask(data);
 		} catch (error) {
-			console.log(error);
+			//
 		}
 	};
 };
@@ -103,7 +103,74 @@ export const submitVerifyQuestion = (
 			);
 			__handleUpdateTask(data);
 		} catch (error) {
-			console.log(error);
+			//
+		}
+	};
+};
+
+export const submitArticleAndParagraph = (
+	gameRoundId: string,
+	identifier: string,
+	key: string,
+	questionId: string,
+	paragraphIndex: number
+) => {
+	return async function (_dispatch: Dispatch) {
+		try {
+			const { data } = await Api.post<TaskFromBackend>(
+				`/api/v1/game_rounds/${gameRoundId}/advance`,
+				{
+					type: "find-article",
+					identifier,
+					questionId,
+					key,
+					paragraphIndex,
+				}
+			);
+			__handleUpdateTask(data);
+		} catch (error) {
+			//
+		}
+	};
+};
+
+export const archiveAnswer = (gameRoundId: string, answerId: string) => {
+	return async function (_dispatch: Dispatch) {
+		try {
+			const { data } = await Api.post<TaskFromBackend>(
+				`/api/v1/game_rounds/${gameRoundId}/advance`,
+				{
+					type: "archive-answer",
+					answerId,
+				}
+			);
+			__handleUpdateTask(data);
+		} catch (error) {
+			//
+		}
+	};
+};
+
+export const submitSpan = (
+	gameRoundId: string,
+	answerId: string,
+	firstWord: number,
+	lastWord: number
+) => {
+	return async function (_dispatch: Dispatch) {
+		try {
+			const { data } = await Api.post<TaskFromBackend>(
+				`/api/v1/game_rounds/${gameRoundId}/advance`,
+				{
+					type: "locate-span",
+					answerId,
+					firstWord,
+					lastWord,
+				}
+			);
+			__handleUpdateTask(data);
+		} catch (error) {
+			//
 		}
 	};
 };

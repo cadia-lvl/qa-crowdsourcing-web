@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { StoreState } from "../../../../../reducers";
-import DUMMY_DATA from "./dummyData";
 import { TextInput, HighlightSubText } from "../../../../";
 import {
 	Outer,
@@ -13,13 +12,14 @@ import {
 	Tabs,
 } from "./styles";
 import {
+	submitArticleAndParagraph,
 	closePreviewArticleToSubmit,
-	submitArticleAnswer,
+	selectParagraphToPreview,
 } from "../../../../../actions";
 import { Colors } from "../../../../../styles";
 
 const PreviewHeader = () => {
-	const state = useSelector((state: StoreState) => state.submitArticle);
+	const state = useSelector((state: StoreState) => state);
 	const dispatch = useDispatch();
 
 	const NO_SELECTION_INDICATOR = -1;
@@ -31,8 +31,13 @@ const PreviewHeader = () => {
 	const clearParagraphSelection = () =>
 		setSelectedParagraph(NO_SELECTION_INDICATOR);
 
-	const { previewArticle, answer } = state;
+	const {
+		previewArticle,
+		previewParagraphIndex,
+		_id,
+	} = state.submitArticle;
 
+	const isPreviewSelected = previewParagraphIndex === undefined;
 	if (!previewArticle) return null;
 	return (
 		<Outer>
@@ -54,28 +59,23 @@ const PreviewHeader = () => {
 						theme={{
 							isFocused:
 								i === selectedParagraph ||
-								answer?.paragrahNumber === i ||
-								!answer,
+								previewParagraphIndex === i ||
+								isPreviewSelected,
 						}}
 						onMouseOver={() => setSelectedParagraph(i)}
 						onMouseLeave={clearParagraphSelection}
 						onClick={() =>
-							dispatch(
-								submitArticleAnswer({
-									articleId: 4,
-									paragrahNumber: i,
-								})
-							)
+							dispatch(selectParagraphToPreview(i))
 						}
 						key={i}
 					>
 						<SingleParagraph
 							theme={{
-								isSelected: answer?.paragrahNumber === i,
+								isSelected: previewParagraphIndex === i,
 							}}
 						>
 							<Tabs>
-								{answer?.paragrahNumber === i ? (
+								{previewParagraphIndex === i ? (
 									<React.Fragment>
 										<Tab
 											theme={{
@@ -84,6 +84,19 @@ const PreviewHeader = () => {
 												textColor:
 													Colors.HIGHLIGHT,
 											}}
+											onClick={() =>
+												dispatch(
+													submitArticleAndParagraph(
+														state.game._id,
+														previewArticle
+															?.source
+															.identifier,
+														previewArticle?.key,
+														_id, // this is the questionId
+														i
+													)
+												)
+											}
 										>
 											Staðfesta
 										</Tab>

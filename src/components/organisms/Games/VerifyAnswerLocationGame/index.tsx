@@ -9,17 +9,26 @@ import {
 	clearIndexRangeInParagraph,
 	selectFirstWordIndexInParagraph,
 	selectSecondWordIndexInParagraph,
+	submitSpan,
+	archiveAnswer,
 } from "../../../../actions";
 import { SelectionStates } from "./interface";
 
 export const VerifyAnswerLocationGame = () => {
-	const state = useSelector(
-		(state: StoreState) => state.verifyAnswerLocation
-	);
+	const state = useSelector((state: StoreState) => state);
 	const dispatch = useDispatch();
 
 	let selectionState: SelectionStates;
-	let { firstWord, lastWord, paragraph } = state;
+	let {
+		verifyAnswerLocation: {
+			firstWord,
+			lastWord,
+			paragraph,
+			text,
+			_id: answerId,
+		},
+		game: { _id: gameRoundId },
+	} = state;
 
 	let action: (v: number) => any;
 	if (firstWord === undefined) {
@@ -60,9 +69,9 @@ export const VerifyAnswerLocationGame = () => {
 	return (
 		<GameWrapper type={GameTypes.verifyAnswerLocation}>
 			<Outer>
-				<TextPrompt>{state.text}</TextPrompt>
+				<TextPrompt>{text}</TextPrompt>
 				<p>
-					{state.paragraph.split(" ").map((word, i) => (
+					{paragraph.split(" ").map((word, i) => (
 						<Word
 							key={i}
 							title={getToolTipString(word)}
@@ -86,12 +95,23 @@ export const VerifyAnswerLocationGame = () => {
 					<BaseButton
 						label="Svarið er ekki í þessari efnisgrein"
 						type="danger"
-						onClick={() => null}
+						onClick={() =>
+							dispatch(archiveAnswer(gameRoundId, answerId))
+						}
 					/>
 					<BaseButton
 						label="Staðfesta svar"
 						type="highlight"
-						onClick={() => null}
+						onClick={() =>
+							dispatch(
+								submitSpan(
+									gameRoundId,
+									answerId,
+									firstWord ?? -1,
+									lastWord ?? -1
+								)
+							)
+						}
 						isInactive={selectionState !== "clear-selection"}
 					/>
 				</ButtonContainer>

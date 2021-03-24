@@ -6,6 +6,7 @@ export const initialState: SubmitArticleState = {
 	url: "",
 	articles: [],
 	query: "",
+	_id: "",
 };
 
 const reducer = (
@@ -21,7 +22,7 @@ const reducer = (
 		case ActionTypes.selectParagraphInArticle:
 			return {
 				...state,
-				answer: action.payload,
+				previewParagraphIndex: action.payload,
 			};
 
 		case ActionTypes.previewArticleToSubmit:
@@ -35,6 +36,9 @@ const reducer = (
 			return {
 				...state,
 				...action.payload.taskInfo,
+				previewArticle: undefined,
+				query: "",
+				articles: [],
 			};
 		case ActionTypes.writeArticleSearchQuery: {
 			return {

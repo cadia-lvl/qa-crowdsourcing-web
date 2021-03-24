@@ -6,6 +6,7 @@ export const initialState: VerifyAnswerLocationState = {
 	paragraph: "",
 	firstWord: undefined,
 	lastWord: undefined,
+	_id: "",
 };
 
 const reducer = (
@@ -14,10 +15,11 @@ const reducer = (
 ): VerifyAnswerLocationState => {
 	switch (action.type) {
 		case ActionTypes.locateSpanInParagraph:
-			console.log(action.payload);
 			return {
 				...state,
 				...action.payload.taskInfo,
+				firstWord: undefined,
+				lastWord: undefined,
 			};
 		case ActionTypes.selectFirstWordIndexInParagraph:
 			return {

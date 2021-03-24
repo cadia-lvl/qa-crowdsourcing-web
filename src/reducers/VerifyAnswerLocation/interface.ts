@@ -3,4 +3,5 @@ export interface VerifyAnswerLocationState {
 	paragraph: string;
 	firstWord?: number;
 	lastWord?: number;
+	_id: string;
 }

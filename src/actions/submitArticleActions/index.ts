@@ -1,10 +1,6 @@
 import { Dispatch } from "redux";
 import Api from "../../api";
-import {
-	ArticlePreview,
-	ArticleAnswer,
-	Article,
-} from "../../declerations";
+import { ArticlePreview, Article } from "../../declerations";
 import store from "../../store";
 import { ActionTypes } from "../types";
 import {
@@ -29,7 +25,6 @@ export const previewArticleToSubmit = (
 				payload: data,
 			});
 		} catch (error) {
-			console.log(error);
 			dispatch<PreviewArticleToSubmitAction>({
 				type: ActionTypes.previewArticleToSubmit,
 				payload: undefined,
@@ -44,12 +39,12 @@ export const closePreviewArticleToSubmit = (): ClosePreviewArticleToSubmitAction
 	};
 };
 
-export const submitArticleAnswer = (
-	answer: ArticleAnswer
+export const selectParagraphToPreview = (
+	paragraphId: number
 ): SelectParagraphInArticleAction => {
 	return {
 		type: ActionTypes.selectParagraphInArticle,
-		payload: answer,
+		payload: paragraphId,
 	};
 };
 
@@ -70,13 +65,11 @@ export const fetchArticlesQuery = () => {
 					store.getState().submitArticle.query
 				}`
 			);
-			console.log(data);
 			dispatch<FetchArticlesQueryAction>({
 				type: ActionTypes.fetchArticlesQuery,
 				payload: data,
 			});
 		} catch (error) {
-			console.log(error);
 			dispatch<FetchArticlesQueryAction>({
 				type: ActionTypes.fetchArticlesQuery,
 				payload: [],

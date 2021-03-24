@@ -57,11 +57,6 @@ export type TaskFromBackend =
 	| FindArticleRoundFromAPI
 	| LocateSpanRoundFromAPI;
 
-export interface ArticleAnswer {
-	paragrahNumber: number;
-	articleId: string | number;
-}
-
 export interface ArticlePreview {
 	source: Source;
 	snippet: string;
