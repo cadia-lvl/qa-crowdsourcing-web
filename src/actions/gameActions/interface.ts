@@ -1,6 +1,7 @@
 import { ActionTypes } from "../types";
 import {
 	FindArticleRoundFromAPI,
+	LocateSpanRoundFromAPI,
 	MakeQuestionRoundFromAPI,
 	VerifyQuestionRoundFromAPI,
 } from "../../declerations";
@@ -18,6 +19,11 @@ export interface VerifyQuestionRoundFromAPIAction {
 export interface FindArticleRoundFromAPIAction {
 	type: ActionTypes.findArticle;
 	payload: FindArticleRoundFromAPI;
+}
+
+export interface LocateSpanRoundFromAPIAction {
+	type: ActionTypes.locateSpanInParagraph;
+	payload: LocateSpanRoundFromAPI;
 }
 
 export interface SetCurrentGameRoundAction {

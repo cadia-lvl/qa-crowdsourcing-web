@@ -4,9 +4,11 @@ import {
 	VerifyQuestionRoundFromAPIAction,
 	SetCurrentGameRoundAction,
 	FindArticleRoundFromAPIAction,
+	LocateSpanRoundFromAPIAction,
 } from "./interface";
 import {
 	FindArticleRoundFromAPI,
+	LocateSpanRoundFromAPI,
 	MakeQuestionRoundFromAPI,
 	TaskFromBackend,
 	VerifyQuestionRoundFromAPI,
@@ -33,6 +35,12 @@ const __handleUpdateTask = (data: TaskFromBackend) => {
 			store.dispatch<FindArticleRoundFromAPIAction>({
 				type: ActionTypes.findArticle,
 				payload: data as FindArticleRoundFromAPI,
+			});
+			break;
+		case "locate-span":
+			store.dispatch<LocateSpanRoundFromAPIAction>({
+				type: ActionTypes.locateSpanInParagraph,
+				payload: data as LocateSpanRoundFromAPI,
 			});
 			break;
 		default:

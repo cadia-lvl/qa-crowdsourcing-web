@@ -36,6 +36,12 @@ const reducer = (
 				...action.payload,
 				current: GameTypes.submitArticle,
 			};
+		case ActionTypes.locateSpanInParagraph:
+			return {
+				...state,
+				...action.payload,
+				current: GameTypes.verifyAnswerLocation,
+			};
 		default:
 			return state;
 	}

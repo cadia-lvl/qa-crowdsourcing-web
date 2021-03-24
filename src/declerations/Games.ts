@@ -38,11 +38,24 @@ export interface FindArticleRoundFromAPI {
 		type: "find-article";
 	};
 }
+export interface LocateSpanRoundFromAPI {
+	_id: string;
+	currentRound: number;
+	totalRounds: number;
+	taskInfo: {
+		type: "locate-span";
+		key: string;
+		identifier: string;
+		paragraphIndex: number;
+		questionId: string;
+	};
+}
 
 export type TaskFromBackend =
 	| MakeQuestionRoundFromAPI
 	| VerifyQuestionRoundFromAPI
-	| FindArticleRoundFromAPI;
+	| FindArticleRoundFromAPI
+	| LocateSpanRoundFromAPI;
 
 export interface ArticleAnswer {
 	paragrahNumber: number;

@@ -60,7 +60,7 @@ export const VerifyAnswerLocationGame = () => {
 	return (
 		<GameWrapper type={GameTypes.verifyAnswerLocation}>
 			<Outer>
-				<TextPrompt>{state.question}</TextPrompt>
+				<TextPrompt>{state.text}</TextPrompt>
 				<p>
 					{state.paragraph.split(" ").map((word, i) => (
 						<Word

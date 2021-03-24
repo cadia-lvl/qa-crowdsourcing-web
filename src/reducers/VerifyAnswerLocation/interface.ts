@@ -1,5 +1,5 @@
 export interface VerifyAnswerLocationState {
-	question: string;
+	text: string;
 	paragraph: string;
 	firstWord?: number;
 	lastWord?: number;

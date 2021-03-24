@@ -21,6 +21,7 @@ export enum ActionTypes {
 	findArticle,
 	writeArticleSearchQuery,
 	fetchArticlesQuery,
+	locateSpanInParagraph,
 }
 
 export type Actions =
@@ -39,4 +40,5 @@ export type Actions =
 	| GameActions.FetchQuestionRoundFromAPIAction
 	| GameActions.VerifyQuestionRoundFromAPIAction
 	| GameActions.SetCurrentGameRoundAction
-	| GameActions.FindArticleRoundFromAPIAction;
+	| GameActions.FindArticleRoundFromAPIAction
+	| GameActions.LocateSpanRoundFromAPIAction;
