@@ -24,11 +24,15 @@ export const WriteQuestionGame = () => {
 	useEffect(() => {
 		try {
 			if (question.split(" ")[0] !== firstWord)
-				throw new Error(`Spurningin verður að hefjast á ${firstWord}`);
+				throw new Error(
+					`Spurningin verður að hefjast á ${firstWord}`
+				);
 			if (question.length < MIN_QUESTION_LENGTH)
 				throw new Error(`Spurningin er ekki nógu löng`);
 			if (question.slice(-1) !== "?")
-				throw new Error(`Spurningin verður að enda á spurningarmerki`);
+				throw new Error(
+					`Spurningin verður að enda á spurningarmerki`
+				);
 			setErrorMessage("");
 		} catch (e) {
 			setErrorMessage(e.message);
@@ -48,21 +52,25 @@ export const WriteQuestionGame = () => {
 			<TextTag>George Floyd</TextTag>
 			<Paragraph>
 				{" "}
-				Án efa geta orðin hér að ofan nýst þér sem innblástur. Ef þér
-				dettur í hug spurningu um tengda einstaklinga, atburði, örnefni,
-				hugtök eða álíka þá er það í lagi.
+				Án efa geta orðin hér að ofan nýst þér sem innblástur. Ef
+				þér dettur í hug spurningu um tengda einstaklinga, atburði,
+				örnefni, hugtök eða álíka þá er það í lagi.
 			</Paragraph>
 			<InputContainer>
 				<QuestionInput
 					type="text"
 					placeholder={`${firstWord} ?`}
-					onChange={(e) => dispatch(writeQuestion(e.target.value))}
+					onChange={(e) =>
+						dispatch(writeQuestion(e.target.value))
+					}
 					value={question}
 				/>
 			</InputContainer>
 
 			<ButtonContainer>
-				{errorMessage ? <ErrorLabel>{errorMessage}</ErrorLabel> : null}
+				{errorMessage ? (
+					<ErrorLabel>{errorMessage}</ErrorLabel>
+				) : null}
 				<SubmitButton
 					label="Afram"
 					onClick={() => null}
