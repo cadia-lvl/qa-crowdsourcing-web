@@ -4,6 +4,7 @@ import {
 	LocateSpanRoundFromAPI,
 	MakeQuestionRoundFromAPI,
 	VerifyQuestionRoundFromAPI,
+	VerifySpanRoundFromAPI,
 } from "../../declerations";
 
 export interface FetchQuestionRoundFromAPIAction {
@@ -24,6 +25,11 @@ export interface FindArticleRoundFromAPIAction {
 export interface LocateSpanRoundFromAPIAction {
 	type: ActionTypes.locateSpanInParagraph;
 	payload: LocateSpanRoundFromAPI;
+}
+
+export interface VerifySpanRoundFromAPIAction {
+	type: ActionTypes.verifySpanInAnswer;
+	payload: VerifySpanRoundFromAPI;
 }
 
 export interface SetCurrentGameRoundAction {

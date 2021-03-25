@@ -51,12 +51,26 @@ export interface LocateSpanRoundFromAPI {
 		questionId: string;
 	};
 }
+export interface VerifySpanRoundFromAPI {
+	_id: string;
+	currentRound: number;
+	totalRounds: number;
+	taskInfo: {
+		_id: string;
+		text: string;
+		type: "verify-span";
+		paragraph: string;
+		firstWord: number;
+		lastWord: number;
+	};
+}
 
 export type TaskFromBackend =
 	| MakeQuestionRoundFromAPI
 	| VerifyQuestionRoundFromAPI
 	| FindArticleRoundFromAPI
-	| LocateSpanRoundFromAPI;
+	| LocateSpanRoundFromAPI
+	| VerifySpanRoundFromAPI;
 
 export interface ArticlePreview {
 	source: Source;

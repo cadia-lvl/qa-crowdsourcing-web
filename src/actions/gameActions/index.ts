@@ -12,6 +12,8 @@ import {
 	MakeQuestionRoundFromAPI,
 	TaskFromBackend,
 	VerifyQuestionRoundFromAPI,
+	VerifySpanRoundFromAPI,
+	VerifySpanRoundFromAPIAction,
 } from "../../declerations";
 import { Dispatch } from "redux";
 import Api from "../../api";
@@ -41,6 +43,12 @@ const __handleUpdateTask = (data: TaskFromBackend) => {
 			store.dispatch<LocateSpanRoundFromAPIAction>({
 				type: ActionTypes.locateSpanInParagraph,
 				payload: data as LocateSpanRoundFromAPI,
+			});
+			break;
+		case "verify-span":
+			store.dispatch<VerifySpanRoundFromAPIAction>({
+				type: ActionTypes.verifySpanInAnswer,
+				payload: data as VerifySpanRoundFromAPI,
 			});
 			break;
 		default:

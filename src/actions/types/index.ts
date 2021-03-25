@@ -22,6 +22,7 @@ export enum ActionTypes {
 	writeArticleSearchQuery,
 	fetchArticlesQuery,
 	locateSpanInParagraph,
+	verifySpanInAnswer,
 }
 
 export type Actions =
