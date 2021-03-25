@@ -8,6 +8,8 @@ export const SpanSelector = ({
 	question,
 	firstWord,
 	lastWord,
+	immutable,
+	hideAnswer,
 	onFirstWordChange,
 	onLastWordChange,
 	onClearRange,
@@ -27,6 +29,8 @@ export const SpanSelector = ({
 		action = onClearRange;
 		selectionState = "clear-selection";
 	}
+
+	if (immutable) action = () => null;
 
 	const getToolTipString = (word: string) => {
 		switch (selectionState) {
@@ -69,9 +73,11 @@ export const SpanSelector = ({
 					>{`${word} `}</Word>
 				))}
 			</p>
-			<TextPrompt>
-				<i>Svar:</i> {getAnswer()}
-			</TextPrompt>
+			{hideAnswer ? null : (
+				<TextPrompt>
+					<i>Svar:</i> {getAnswer()}
+				</TextPrompt>
+			)}
 		</Outer>
 	);
 };
