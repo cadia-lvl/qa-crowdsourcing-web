@@ -5,9 +5,11 @@ import { GameWrapper } from "../../../../hoc";
 import { StoreState } from "../../../../reducers";
 import { SpanSelector } from "../GameUtils";
 import {
+	archiveAnswer,
 	clearIndexRangeInParagraph,
 	selectFirstWordIndexInParagraph,
 	selectSecondWordIndexInParagraph,
+	verifyAnswerSpan,
 } from "../../../../actions";
 import { TextPrompt, BaseButton } from "../../../";
 import { ButtonContainer, TextPromptWrapper } from "./styles";
@@ -23,9 +25,13 @@ export const VerifyAnswerSpanGame = () => {
 	const dispatch = useDispatch();
 
 	const {
-		verifyAnswerLocation: { _id: answerId, text, firstWord, lastWord },
+		verifyAnswerLocation: { _id: answerId, text},
 		game: { _id: gameRoundId },
 	} = state;
+
+	const handleVerifyDispatch = (canBeShortened: boolean) => {
+		dispatch(verifyAnswerSpan(gameRoundId, answerId, canBeShortened));
+	};
 
 	return (
 		<GameWrapper type={GameTypes.verifyAnswerSpan}>
@@ -55,17 +61,19 @@ export const VerifyAnswerSpanGame = () => {
 				<BaseButton
 					label="Svarið er ekki rétt merkt"
 					type="danger"
-					onClick={() => null}
+					onClick={() =>
+						dispatch(archiveAnswer(gameRoundId, answerId))
+					}
 				/>
 				<BaseButton
 					label="Svarið er rétt, en gæti verið styttra"
 					type="highlight"
-					onClick={() => null}
+					onClick={() => handleVerifyDispatch(true)}
 				/>
 				<BaseButton
 					label="Þetta er rétt og hnitmiðað"
 					type="success"
-					onClick={() => null}
+					onClick={() => handleVerifyDispatch(false)}
 				/>
 			</ButtonContainer>
 		</GameWrapper>

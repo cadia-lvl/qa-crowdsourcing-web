@@ -184,4 +184,26 @@ export const submitSpan = (
 	};
 };
 
+export const verifyAnswerSpan = (
+	gameRoundId: string,
+	answerId: string,
+	canBeShortened?: boolean
+) => {
+	return async function (_dispatch: Dispatch) {
+		try {
+			const { data } = await Api.post<TaskFromBackend>(
+				`/api/v1/game_rounds/${gameRoundId}/advance`,
+				{
+					type: "verify-span",
+					_id: answerId,
+					canBeShortened,
+				}
+			);
+			__handleUpdateTask(data);
+		} catch (error) {
+			console.log(error);
+		}
+	};
+};
+
 export * from "./interface";

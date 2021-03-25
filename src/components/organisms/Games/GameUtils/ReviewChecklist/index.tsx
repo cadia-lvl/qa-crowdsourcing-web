@@ -16,7 +16,7 @@ export const ReviewCheckList = <T extends {}>({
 	items,
 	onBadAnswer,
 	onComplete,
-	key,
+	_key,
 }: IProps<T>) => {
 	const initialState: State<T> = {
 		finished: [],
@@ -26,7 +26,7 @@ export const ReviewCheckList = <T extends {}>({
 
 	useEffect(() => {
 		dispatch({ type: "reset-state" });
-	}, [key]);
+	}, [_key]);
 
 	const reducer = (state: State<T>, action: ReviewActions): State<T> => {
 		switch (action.type) {

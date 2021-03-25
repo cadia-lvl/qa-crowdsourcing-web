@@ -3,7 +3,7 @@ export type AnswerTypes = "yes" | "no";
 export interface IProps<T> extends CheckList<T> {
 	onBadAnswer: () => void;
 	onComplete: () => void;
-	key: any;
+	_key: any;
 }
 
 export interface CheckList<T> {

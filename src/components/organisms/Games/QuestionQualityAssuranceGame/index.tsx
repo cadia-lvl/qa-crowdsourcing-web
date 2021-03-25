@@ -23,7 +23,7 @@ export const QuestionQualityAssuranceGame = () => {
 		<GameWrapper type={GameTypes.questionQualityAssurance}>
 			<ReviewCheckList<QAquestionItems>
 				{...checkList}
-				key={_id}
+				_key={_id}
 				title={text}
 				onBadAnswer={() => handleDispatch(false)}
 				onComplete={() => handleDispatch(true)}
