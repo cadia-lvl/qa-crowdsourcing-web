@@ -42,4 +42,5 @@ export type Actions =
 	| GameActions.VerifyQuestionRoundFromAPIAction
 	| GameActions.SetCurrentGameRoundAction
 	| GameActions.FindArticleRoundFromAPIAction
-	| GameActions.LocateSpanRoundFromAPIAction;
+	| GameActions.LocateSpanRoundFromAPIAction
+	| GameActions.VerifySpanRoundFromAPIAction;

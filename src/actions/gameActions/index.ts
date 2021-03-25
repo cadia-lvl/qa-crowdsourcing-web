@@ -5,6 +5,7 @@ import {
 	SetCurrentGameRoundAction,
 	FindArticleRoundFromAPIAction,
 	LocateSpanRoundFromAPIAction,
+	VerifySpanRoundFromAPIAction,
 } from "./interface";
 import {
 	FindArticleRoundFromAPI,
@@ -13,13 +14,13 @@ import {
 	TaskFromBackend,
 	VerifyQuestionRoundFromAPI,
 	VerifySpanRoundFromAPI,
-	VerifySpanRoundFromAPIAction,
 } from "../../declerations";
 import { Dispatch } from "redux";
 import Api from "../../api";
 import store from "../../store";
 
 const __handleUpdateTask = (data: TaskFromBackend) => {
+	console.log(data);
 	switch (data.taskInfo.type) {
 		case "make-question":
 			store.dispatch<FetchQuestionRoundFromAPIAction>({

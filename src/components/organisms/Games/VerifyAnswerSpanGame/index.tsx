@@ -2,6 +2,8 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { GameTypes } from "../../../../declerations";
 import { GameWrapper } from "../../../../hoc";
+import { StoreState } from "../../../../reducers";
+import { SpanSelector } from "../GameUtils";
 
 export type SelectionStates =
 	| "select-first"
@@ -21,9 +23,9 @@ export const VerifyAnswerSpanGame = () => {
 			<SpanSelector
 				{...state.verifyAnswerLocation}
 				question={text}
-				onClearRange={(_word) => null}
-				onFirstWordChange={(_word) => null}
-				onLastWordChange={(_word) => null}
+				onClearRange={() => null}
+				onFirstWordChange={() => null}
+				onLastWordChange={() => null}
 			/>
 		</GameWrapper>
 	);

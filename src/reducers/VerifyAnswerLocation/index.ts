@@ -37,7 +37,11 @@ const reducer = (
 				firstWord: undefined,
 				lastWord: undefined,
 			};
-
+		case ActionTypes.verifySpanInAnswer:
+			return {
+				...state,
+				...action.payload.taskInfo,
+			};
 		default:
 			return state;
 	}

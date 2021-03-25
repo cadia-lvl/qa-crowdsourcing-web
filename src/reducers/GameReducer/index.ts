@@ -42,6 +42,12 @@ const reducer = (
 				...action.payload,
 				current: GameTypes.verifyAnswerLocation,
 			};
+		case ActionTypes.verifySpanInAnswer:
+			return {
+				...state,
+				...action.payload,
+				current: GameTypes.verifyAnswerSpan,
+			};
 		default:
 			return state;
 	}
