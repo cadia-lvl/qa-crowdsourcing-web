@@ -1,9 +1,11 @@
-import { ArticleAnswer, ArticlePreview } from "../../declerations";
+import { ArticlePreview, Article } from "../../declerations";
 
 export interface SubmitArticleState {
-	question: string;
+	text: string;
 	url: string;
 	articles: ArticlePreview[];
-	previewArticle?: string | number;
-	answer?: ArticleAnswer;
+	previewArticle?: Article;
+	previewParagraphIndex?: number;
+	query: string;
+	_id: string;
 }

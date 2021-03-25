@@ -4,6 +4,7 @@ import GameReducer from "./GameReducer";
 import { StoreState } from "./interface";
 import SubmitArticleReducer from "./SubmitArticleReducer";
 import WriteQuestionReducer from "./WriteQuestionReducer";
+import QuestionQualityAssuranceReducer from "./QuestionQualityAssurance";
 import VerifyAnswerLocationReducer from "./VerifyAnswerLocation";
 
 export default combineReducers<StoreState>({
@@ -12,6 +13,7 @@ export default combineReducers<StoreState>({
 	writeQuestion: WriteQuestionReducer,
 	submitArticle: SubmitArticleReducer,
 	verifyAnswerLocation: VerifyAnswerLocationReducer,
+	questionQualityAssurance: QuestionQualityAssuranceReducer,
 });
 
 export * from "./interface";

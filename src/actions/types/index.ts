@@ -1,9 +1,8 @@
-import { GameTypes } from "../../declerations";
 import * as AuthActions from "../authActions";
 import * as SubmitArticleActions from "../submitArticleActions";
 import * as WriteQuestionActions from "../writeQuestionActions";
+import * as GameActions from "../gameActions";
 import * as VerifyAnswerLocationsActions from "../verifyAnswerLocationActions";
-import { VerifyAnswerLocationState } from "../../reducers/VerifyAnswerLocation";
 
 export enum ActionTypes {
 	fetchUserFromToken,
@@ -16,6 +15,13 @@ export enum ActionTypes {
 	selectFirstWordIndexInParagraph,
 	selectSecondWordIndexInParagraph,
 	clearIndexRangeInParagraph,
+	fetchMakeQuestion,
+	fetchVerifyQuestion,
+	setCurrentGameRound,
+	findArticle,
+	writeArticleSearchQuery,
+	fetchArticlesQuery,
+	locateSpanInParagraph,
 }
 
 export type Actions =
@@ -26,6 +32,13 @@ export type Actions =
 	| SubmitArticleActions.PreviewArticleToSubmitAction
 	| SubmitArticleActions.ClosePreviewArticleToSubmitAction
 	| SubmitArticleActions.SelectParagraphInArticleAction
+	| SubmitArticleActions.WriteArticleSearchQueryAction
+	| SubmitArticleActions.FetchArticlesQueryAction
 	| VerifyAnswerLocationsActions.SelectFirstWordIndexInParagraphAction
 	| VerifyAnswerLocationsActions.SelectSecondWordIndexInParagraphAction
-	| VerifyAnswerLocationsActions.ClearIndexRangeInParagraph;
+	| VerifyAnswerLocationsActions.ClearIndexRangeInParagraph
+	| GameActions.FetchQuestionRoundFromAPIAction
+	| GameActions.VerifyQuestionRoundFromAPIAction
+	| GameActions.SetCurrentGameRoundAction
+	| GameActions.FindArticleRoundFromAPIAction
+	| GameActions.LocateSpanRoundFromAPIAction;

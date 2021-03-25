@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { StoreState } from "../../../../../reducers";
-import DUMMY_DATA from "./dummyData";
 import { TextInput, HighlightSubText } from "../../../../";
 import {
 	Outer,
@@ -13,13 +12,14 @@ import {
 	Tabs,
 } from "./styles";
 import {
+	submitArticleAndParagraph,
 	closePreviewArticleToSubmit,
-	submitArticleAnswer,
+	selectParagraphToPreview,
 } from "../../../../../actions";
 import { Colors } from "../../../../../styles";
 
-export default () => {
-	const state = useSelector((state: StoreState) => state.submitArticle);
+const PreviewHeader = () => {
+	const state = useSelector((state: StoreState) => state);
 	const dispatch = useDispatch();
 
 	const NO_SELECTION_INDICATOR = -1;
@@ -31,8 +31,13 @@ export default () => {
 	const clearParagraphSelection = () =>
 		setSelectedParagraph(NO_SELECTION_INDICATOR);
 
-	const { previewArticle, answer } = state;
+	const {
+		previewArticle,
+		previewParagraphIndex,
+		_id,
+	} = state.submitArticle;
 
+	const isPreviewSelected = previewParagraphIndex === undefined;
 	if (!previewArticle) return null;
 	return (
 		<Outer>
@@ -42,47 +47,63 @@ export default () => {
 					onChange={setSearchString}
 					placeholder="Leita inní grein"
 				/>
-				<span onClick={() => dispatch(closePreviewArticleToSubmit())}>
+				<span
+					onClick={() => dispatch(closePreviewArticleToSubmit())}
+				>
 					Loka grein
 				</span>
 			</TopBar>
 			<Inner>
-				{DUMMY_DATA.map((paragraph, i) => (
+				{previewArticle.paragraphs.map((paragraph, i) => (
 					<ParagraphContainer
 						theme={{
 							isFocused:
-								i == selectedParagraph ||
-								answer?.paragrahNumber === i ||
-								!answer,
+								i === selectedParagraph ||
+								previewParagraphIndex === i ||
+								isPreviewSelected,
 						}}
 						onMouseOver={() => setSelectedParagraph(i)}
 						onMouseLeave={clearParagraphSelection}
 						onClick={() =>
-							dispatch(
-								submitArticleAnswer({
-									articleId: previewArticle,
-									paragrahNumber: i,
-								})
-							)
+							dispatch(selectParagraphToPreview(i))
 						}
+						key={i}
 					>
 						<SingleParagraph
-							theme={{ isSelected: answer?.paragrahNumber === i }}
+							theme={{
+								isSelected: previewParagraphIndex === i,
+							}}
 						>
 							<Tabs>
-								{answer?.paragrahNumber === i ? (
+								{previewParagraphIndex === i ? (
 									<React.Fragment>
 										<Tab
 											theme={{
-												background: Colors.HIGHLIGHT_BG,
-												textColor: Colors.HIGHLIGHT,
+												background:
+													Colors.HIGHLIGHT_BG,
+												textColor:
+													Colors.HIGHLIGHT,
 											}}
+											onClick={() =>
+												dispatch(
+													submitArticleAndParagraph(
+														state.game._id,
+														previewArticle
+															?.source
+															.identifier,
+														previewArticle?.key,
+														_id, // this is the questionId
+														i
+													)
+												)
+											}
 										>
 											Staðfesta
 										</Tab>
 										<Tab
 											theme={{
-												background: Colors.DANGER_BG,
+												background:
+													Colors.DANGER_BG,
 												textColor: Colors.DANGER,
 											}}
 										>
@@ -93,7 +114,8 @@ export default () => {
 									<React.Fragment>
 										<Tab
 											theme={{
-												background: Colors.WARNING_BG,
+												background:
+													Colors.WARNING_BG,
 												textColor: Colors.WARNING,
 											}}
 										>
@@ -115,3 +137,5 @@ export default () => {
 		</Outer>
 	);
 };
+
+export default PreviewHeader;

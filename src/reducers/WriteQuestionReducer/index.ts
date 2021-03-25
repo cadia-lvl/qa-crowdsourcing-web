@@ -3,15 +3,21 @@ import { Actions, ActionTypes } from "../../actions";
 
 export const initialState: WriteQuestionState = {
 	ideaWords: [],
-	firstWord: "Hvenær",
+	questionType: "",
 	question: "",
 };
 
-export default (
+const reducer = (
 	state: WriteQuestionState = initialState,
 	action: Actions
 ): WriteQuestionState => {
 	switch (action.type) {
+		case ActionTypes.fetchMakeQuestion:
+			return {
+				...state,
+				...action.payload.taskInfo,
+				question: "",
+			};
 		case ActionTypes.writeQuestion:
 			return {
 				...state,
@@ -22,5 +28,5 @@ export default (
 			return state;
 	}
 };
-
+export default reducer;
 export * from "./interface";

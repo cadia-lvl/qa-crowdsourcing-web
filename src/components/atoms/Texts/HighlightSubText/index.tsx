@@ -7,7 +7,7 @@ export const HighlightSubText = ({
 	returnNoneOnNoMatch,
 }: IProps) => {
 	const regex = new RegExp(
-		`(${subString.replace(/[-\/\\^$*+?.()|[\]{}]/g, "\\$&")})`,
+		`(${subString.replace(/[-/\\^$*+?.()|[\]{}]/g, "\\$&")})`,
 		"gi"
 	);
 	const parts = string.split(regex);

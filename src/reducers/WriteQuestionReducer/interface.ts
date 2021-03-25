@@ -1,5 +1,5 @@
 export interface WriteQuestionState {
 	ideaWords: string[];
-	firstWord: string;
+	questionType: string;
 	question: string;
 }

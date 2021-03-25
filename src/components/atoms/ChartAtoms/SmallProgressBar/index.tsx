@@ -12,7 +12,7 @@ export const SmallProgressBar = ({
 
 	useEffect(() => {
 		setRatio(size);
-	}, []);
+	}, [size]);
 
 	return (
 		<Outer>

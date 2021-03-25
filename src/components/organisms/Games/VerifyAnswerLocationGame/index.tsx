@@ -5,6 +5,8 @@ import {
 	clearIndexRangeInParagraph,
 	selectFirstWordIndexInParagraph,
 	selectSecondWordIndexInParagraph,
+	submitSpan,
+	archiveAnswer,
 } from "../../../../actions";
 import { GameTypes } from "../../../../declerations";
 import { GameWrapper } from "../../../../hoc";
@@ -37,19 +39,30 @@ export const VerifyAnswerLocationGame = () => {
 					dispatch(selectSecondWordIndexInParagraph(index))
 				}
 			/>
-			<ButtonContainer>
-				<BaseButton
-					label="Svarið er ekki í þessari efnisgrein"
-					type="danger"
-					onClick={() => null}
-				/>
-				<BaseButton
-					label="Staðfesta svar"
-					type="highlight"
-					onClick={() => null}
-					isInactive={!canUserProceed}
-				/>
-			</ButtonContainer>
+				</ButtonContainer>
+				<ButtonContainer>
+					<BaseButton
+						label="Svarið er ekki í þessari efnisgrein"
+						type="danger"
+						onClick={() =>
+						}
+							dispatch(archiveAnswer(gameRoundId, answerId))
+					/>
+					<BaseButton
+						label="Staðfesta svar"
+						onClick={() =>
+							dispatch(
+						type="highlight"
+								submitSpan(
+									gameRoundId,
+									firstWord ?? -1,
+									answerId,
+								)
+									lastWord ?? -1
+							)
+						}
+						isInactive={selectionState !== "clear-selection"}
+					/>
 		</GameWrapper>
 	);
 };
