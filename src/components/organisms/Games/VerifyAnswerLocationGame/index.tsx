@@ -15,20 +15,24 @@ import { SpanSelector } from "../GameUtils";
 import { ButtonContainer } from "./styles";
 
 export const VerifyAnswerLocationGame = () => {
-	const state = useSelector(
-		(state: StoreState) => state.verifyAnswerLocation
-	);
+	const state = useSelector((state: StoreState) => state);
 
 	const dispatch = useDispatch();
 
+	const {
+		verifyAnswerLocation: { _id: answerId, text, firstWord, lastWord },
+		game: { _id: gameRoundId },
+	} = state;
+
 	const canUserProceed = !(
-		state.firstWord === undefined || state.lastWord === undefined
+		firstWord === undefined || lastWord === undefined
 	);
 
 	return (
 		<GameWrapper type={GameTypes.verifyAnswerLocation}>
 			<SpanSelector
-				{...state}
+				{...state.verifyAnswerLocation}
+				question={text}
 				onClearRange={(word) =>
 					dispatch(clearIndexRangeInParagraph(word))
 				}
@@ -39,30 +43,30 @@ export const VerifyAnswerLocationGame = () => {
 					dispatch(selectSecondWordIndexInParagraph(index))
 				}
 			/>
-				</ButtonContainer>
-				<ButtonContainer>
-					<BaseButton
-						label="Svarið er ekki í þessari efnisgrein"
-						type="danger"
-						onClick={() =>
-						}
-							dispatch(archiveAnswer(gameRoundId, answerId))
-					/>
-					<BaseButton
-						label="Staðfesta svar"
-						onClick={() =>
-							dispatch(
-						type="highlight"
-								submitSpan(
-									gameRoundId,
-									firstWord ?? -1,
-									answerId,
-								)
-									lastWord ?? -1
+			<ButtonContainer>
+				<BaseButton
+					label="Svarið er ekki í þessari efnisgrein"
+					type="danger"
+					onClick={() =>
+						dispatch(archiveAnswer(gameRoundId, answerId))
+					}
+				/>
+				<BaseButton
+					label="Staðfesta svar"
+					onClick={() =>
+						dispatch(
+							submitSpan(
+								gameRoundId,
+								answerId,
+								firstWord ?? -1,
+								lastWord ?? -1
 							)
-						}
-						isInactive={selectionState !== "clear-selection"}
-					/>
+						)
+					}
+					type="highlight"
+					isInactive={!canUserProceed}
+				/>
+			</ButtonContainer>
 		</GameWrapper>
 	);
 };
