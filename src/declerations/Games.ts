@@ -4,6 +4,7 @@ export enum GameTypes {
 	submitArticle,
 	verifyAnswerLocation,
 	questionQualityAssurance,
+	verifyAnswerSpan,
 }
 
 export interface MakeQuestionRoundFromAPI {

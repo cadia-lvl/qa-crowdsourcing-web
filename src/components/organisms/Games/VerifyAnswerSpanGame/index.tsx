@@ -1,4 +1,7 @@
 import React from "react";
+import { useSelector } from "react-redux";
+import { GameTypes } from "../../../../declerations";
+import { GameWrapper } from "../../../../hoc";
 
 export type SelectionStates =
 	| "select-first"
@@ -6,5 +9,22 @@ export type SelectionStates =
 	| "clear-selection";
 
 export const VerifyAnswerSpanGame = () => {
-	return <div></div>;
+	const state = useSelector((state: StoreState) => state);
+
+	const {
+		verifyAnswerLocation: { _id: answerId, text, firstWord, lastWord },
+		game: { _id: gameRoundId },
+	} = state;
+
+	return (
+		<GameWrapper type={GameTypes.verifyAnswerSpan}>
+			<SpanSelector
+				{...state.verifyAnswerLocation}
+				question={text}
+				onClearRange={(_word) => null}
+				onFirstWordChange={(_word) => null}
+				onLastWordChange={(_word) => null}
+			/>
+		</GameWrapper>
+	);
 };
