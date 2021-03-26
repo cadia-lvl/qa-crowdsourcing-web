@@ -22,7 +22,7 @@ export const WriteQuestionGame = () => {
 
 	const {
 		writeQuestion: { question, questionType, ideaWords },
-		game: { _id },
+		game: { _id: gameRoundId },
 	} = state;
 	const isYesNoQuestion = questionType === "Já/Nei";
 
@@ -92,7 +92,15 @@ export const WriteQuestionGame = () => {
 				) : null}
 				<SubmitButton
 					label="Afram"
-					onClick={() => dispatch(submitQuestion(_id, question))}
+					onClick={() =>
+						dispatch(
+							submitQuestion(
+								gameRoundId,
+								question,
+								isYesNoQuestion
+							)
+						)
+					}
 					inactive={!!errorMessage}
 					invertColorScheme
 				/>

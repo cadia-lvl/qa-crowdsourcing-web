@@ -8,4 +8,5 @@ export interface SubmitArticleState {
 	previewParagraphIndex?: number;
 	query: string;
 	_id: string;
+	previewOpenCount: number;
 }
