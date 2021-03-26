@@ -8,6 +8,7 @@ export const Outer = styled.div`
 	background-color: ${Colors.FG_WHITE};
 	box-shadow: 0px 0px 25px rgba(255, 168, 0, 0.1);
 	width: 100%;
+	margin-bottom: 85px;
 `;
 
 export const PromptOuter = styled.div`
@@ -22,4 +23,14 @@ export const TrophyCont = styled.div`
 	margin-right: 20px;
 	font-size: 80px;
 	color: ${Colors.WARNING};
+`;
+
+export const ButtonContainer = styled.div`
+	> button {
+		width: 310px;
+	}
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+	margin-top: 40px;
 `;
