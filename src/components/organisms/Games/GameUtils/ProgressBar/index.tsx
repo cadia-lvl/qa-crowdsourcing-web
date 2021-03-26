@@ -46,9 +46,11 @@ export const GameProgress = () => {
 					color={Colors.SUCCESS}
 				/>
 			</ProgressBarCont>
-			<TrophyCont>
-				<i className="fas fa-trophy"></i>
-			</TrophyCont>
+			{ratio < 1 ? (
+				<TrophyCont>
+					<i className="fas fa-trophy"></i>
+				</TrophyCont>
+			) : null}
 		</Outer>
 	);
 };
