@@ -48,6 +48,12 @@ const reducer = (
 				...action.payload,
 				current: GameTypes.verifyAnswerSpan,
 			};
+		case ActionTypes.completeRound: {
+			return {
+				...state,
+				current: GameTypes.completed,
+			};
+		}
 		default:
 			return state;
 	}

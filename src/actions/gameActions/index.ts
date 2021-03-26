@@ -6,6 +6,7 @@ import {
 	FindArticleRoundFromAPIAction,
 	LocateSpanRoundFromAPIAction,
 	VerifySpanRoundFromAPIAction,
+	CompleteRoundFromAPIAction,
 } from "./interface";
 import {
 	FindArticleRoundFromAPI,
@@ -50,6 +51,11 @@ const __handleUpdateTask = (data: TaskFromBackend) => {
 			store.dispatch<VerifySpanRoundFromAPIAction>({
 				type: ActionTypes.verifySpanInAnswer,
 				payload: data as VerifySpanRoundFromAPI,
+			});
+			break;
+		case "completed":
+			store.dispatch<CompleteRoundFromAPIAction>({
+				type: ActionTypes.completeRound,
 			});
 			break;
 		default:

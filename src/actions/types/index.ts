@@ -23,6 +23,7 @@ export enum ActionTypes {
 	fetchArticlesQuery,
 	locateSpanInParagraph,
 	verifySpanInAnswer,
+	completeRound,
 }
 
 export type Actions =
@@ -43,4 +44,5 @@ export type Actions =
 	| GameActions.SetCurrentGameRoundAction
 	| GameActions.FindArticleRoundFromAPIAction
 	| GameActions.LocateSpanRoundFromAPIAction
-	| GameActions.VerifySpanRoundFromAPIAction;
+	| GameActions.VerifySpanRoundFromAPIAction
+	| GameActions.CompleteRoundFromAPIAction;
