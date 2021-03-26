@@ -51,6 +51,7 @@ const reducer = (
 		case ActionTypes.completeRound: {
 			return {
 				...state,
+				currentRound: state.totalRounds,
 				current: GameTypes.completed,
 			};
 		}

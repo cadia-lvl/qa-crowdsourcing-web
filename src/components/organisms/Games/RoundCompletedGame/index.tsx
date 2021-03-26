@@ -1,5 +1,7 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import { SmallProgressBar, TextPrompt } from "../../..";
+import { fetchCurrentGameRound } from "../../../../actions";
 import { GameTypes } from "../../../../declerations";
 import { GameWrapper } from "../../../../hoc";
 import { Colors } from "../../../../styles";
@@ -7,6 +9,8 @@ import { BaseButton } from "../../../atoms";
 import { Outer, TrophyCont, PromptOuter, ButtonContainer } from "./styles";
 
 export const RoundCompletedGame = () => {
+	const dispatch = useDispatch();
+
 	return (
 		<GameWrapper type={GameTypes.completed}>
 			<Outer>
@@ -48,7 +52,7 @@ export const RoundCompletedGame = () => {
 					<BaseButton
 						type="highlight"
 						label="Halda áfram"
-						onClick={() => null}
+						onClick={() => dispatch(fetchCurrentGameRound())}
 					/>
 				</ButtonContainer>
 			</Outer>
