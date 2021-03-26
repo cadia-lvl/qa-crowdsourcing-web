@@ -8,6 +8,7 @@ import {
 	QuestionQualityAssuranceGame,
 	FlexLoader,
 	VerifyAnswerSpanGame,
+	RoundCompletedGame,
 } from "../../components";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCurrentGameRound } from "../../actions";
@@ -29,6 +30,7 @@ export const GamePage = () => {
 			<VerifyAnswerLocationGame />
 			<QuestionQualityAssuranceGame />
 			<VerifyAnswerSpanGame />
+			<RoundCompletedGame />
 		</RestrictedPage>
 	);
 };
