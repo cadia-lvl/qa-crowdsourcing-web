@@ -27,6 +27,7 @@ export interface VerifyQuestionRoundFromAPI {
 		_id: string;
 		text: string;
 		type: "verify-question";
+		isYesOrNo: boolean;
 	};
 }
 
