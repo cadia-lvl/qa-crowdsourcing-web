@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { SmallProgressBar } from "../../../../";
+import { GameTypes } from "../../../../../declerations";
 import { StoreState } from "../../../../../reducers";
 import { Colors } from "../../../../../styles";
 import {
@@ -19,7 +20,10 @@ import {
  */
 export const GameProgress = () => {
 	const state = useSelector((state: StoreState) => state.game);
-	const currentRound = state.currentRound - 1;
+	const isFinished = state.current === GameTypes.completed;
+	const currentRound = isFinished
+		? state.currentRound
+		: state.currentRound - 1;
 	const ratio = currentRound / state.totalRounds;
 	return (
 		<Outer>
@@ -46,9 +50,11 @@ export const GameProgress = () => {
 					color={Colors.SUCCESS}
 				/>
 			</ProgressBarCont>
-			<TrophyCont>
-				<i className="fas fa-trophy"></i>
-			</TrophyCont>
+			{ratio < 1 ? (
+				<TrophyCont>
+					<i className="fas fa-trophy"></i>
+				</TrophyCont>
+			) : null}
 		</Outer>
 	);
 };

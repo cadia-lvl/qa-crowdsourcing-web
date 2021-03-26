@@ -21,3 +21,8 @@ export const SearchBoxContainer = styled.div`
 		margin-left: 17px;
 	}
 `;
+
+export const AlertContainer = styled.div`
+	margin-top: 40px;
+	cursor: pointer;
+`;

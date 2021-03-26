@@ -36,3 +36,7 @@ export interface SetCurrentGameRoundAction {
 	type: ActionTypes.setCurrentGameRound;
 	payload: number;
 }
+
+export interface CompleteRoundFromAPIAction {
+	type: ActionTypes.completeRound;
+}

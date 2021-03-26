@@ -6,6 +6,7 @@ import {
 	FindArticleRoundFromAPIAction,
 	LocateSpanRoundFromAPIAction,
 	VerifySpanRoundFromAPIAction,
+	CompleteRoundFromAPIAction,
 } from "./interface";
 import {
 	FindArticleRoundFromAPI,
@@ -52,6 +53,11 @@ const __handleUpdateTask = (data: TaskFromBackend) => {
 				payload: data as VerifySpanRoundFromAPI,
 			});
 			break;
+		case "completed":
+			store.dispatch<CompleteRoundFromAPIAction>({
+				type: ActionTypes.completeRound,
+			});
+			break;
 		default:
 			throw new Error("Unreachable statement in __handleUpdateTask");
 	}
@@ -77,7 +83,8 @@ export const fetchCurrentGameRound = () => {
 
 export const submitQuestion = (
 	gameRoundId: string,
-	questionText: string
+	questionText: string,
+	isYesOrNo: boolean
 ) => {
 	return async function (_dispatch: Dispatch) {
 		try {
@@ -86,6 +93,7 @@ export const submitQuestion = (
 				{
 					type: "make-question",
 					text: questionText,
+					isYesOrNo,
 				}
 			);
 			__handleUpdateTask(data);
@@ -197,6 +205,26 @@ export const verifyAnswerSpan = (
 					type: "verify-span",
 					_id: answerId,
 					canBeShortened,
+				}
+			);
+			__handleUpdateTask(data);
+		} catch (error) {
+			console.log(error);
+		}
+	};
+};
+
+export const markQuestionAsImpossible = (
+	gameRoundId: string,
+	questionId: string
+) => {
+	return async function (_dispatch: Dispatch) {
+		try {
+			const { data } = await Api.post<TaskFromBackend>(
+				`/api/v1/game_rounds/${gameRoundId}/advance`,
+				{
+					type: "mark-question-impossible",
+					questionId,
 				}
 			);
 			__handleUpdateTask(data);

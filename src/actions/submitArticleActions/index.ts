@@ -65,9 +65,10 @@ export const fetchArticlesQuery = () => {
 					store.getState().submitArticle.query
 				}`
 			);
+
 			dispatch<FetchArticlesQueryAction>({
 				type: ActionTypes.fetchArticlesQuery,
-				payload: data,
+				payload: data.filter((item) => !!item.source),
 			});
 		} catch (error) {
 			dispatch<FetchArticlesQueryAction>({

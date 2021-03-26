@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { TextPrompt, TextTag, TextInput } from "../../../";
+import { TextPrompt, TextTag, TextInput, FilledAlert } from "../../../";
 import { SubmitButton } from "../../../atoms";
-import { Paragraph, SearchBoxContainer } from "./styles";
+import { Paragraph, SearchBoxContainer, AlertContainer } from "./styles";
 import ArticlePreview from "./ArticlePreview";
 import { useDispatch, useSelector } from "react-redux";
 import { StoreState } from "../../../../reducers";
@@ -11,26 +11,49 @@ import PreviewReader from "./PreviewReader";
 import { getHighlightWords } from "./utils";
 import {
 	fetchArticlesQuery,
+	markQuestionAsImpossible,
 	writeArticleSearchQuery,
 } from "../../../../actions";
 
 export const SubmitArticleGame = () => {
 	const [highlightWords, setHighlightWords] = useState<string[]>([]);
-	const state = useSelector((state: StoreState) => state.submitArticle);
+	const state = useSelector((state: StoreState) => state);
 	const dispatch = useDispatch();
 
-	const { previewArticle, query } = state;
+	const {
+		submitArticle: {
+			previewArticle,
+			query,
+			previewOpenCount,
+			_id: questionId,
+			articles,
+			text,
+		},
+		game: { _id: GameRoundId },
+	} = state;
 
 	const hasPreview = !!previewArticle;
 
 	useEffect(() => {
-		if (state.text !== "")
-			getHighlightWords(state.text).then(setHighlightWords);
-	}, [state.text]);
+		if (text !== "") getHighlightWords(text).then(setHighlightWords);
+	}, [text]);
+
+	const alertBar = (
+		<AlertContainer
+			onClick={() =>
+				dispatch(markQuestionAsImpossible(GameRoundId, questionId))
+			}
+		>
+			<FilledAlert
+				type="danger"
+				label="Finnst svarið bara alls ekki? Smelltu hér til að merkja spurninguna sem ósvaranlega"
+			/>
+		</AlertContainer>
+	);
 
 	return (
 		<GameWrapper type={GameTypes.submitArticle}>
-			<TextPrompt>{state.text}</TextPrompt>
+			<TextPrompt>{text}</TextPrompt>
 			{hasPreview ? null : (
 				<React.Fragment>
 					<Paragraph>
@@ -68,8 +91,9 @@ export const SubmitArticleGame = () => {
 					</Paragraph>
 				</React.Fragment>
 			)}
+			{previewOpenCount >= 2 && !hasPreview ? alertBar : null}
 
-			{state.articles.map((item) =>
+			{articles.map((item) =>
 				/**
 				 * logical equivalence of
 				 * if (there is article in preview) then this is the article being preview
@@ -87,6 +111,7 @@ export const SubmitArticleGame = () => {
 					/>
 				) : null
 			)}
+			{articles.length > 0 && !hasPreview ? alertBar : null}
 			{hasPreview ? (
 				<React.Fragment>
 					<Paragraph>

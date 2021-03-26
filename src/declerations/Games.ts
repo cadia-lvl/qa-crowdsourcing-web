@@ -5,6 +5,7 @@ export enum GameTypes {
 	verifyAnswerLocation,
 	questionQualityAssurance,
 	verifyAnswerSpan,
+	completed,
 }
 
 export interface MakeQuestionRoundFromAPI {
@@ -26,6 +27,7 @@ export interface VerifyQuestionRoundFromAPI {
 		_id: string;
 		text: string;
 		type: "verify-question";
+		isYesOrNo: boolean;
 	};
 }
 
@@ -64,13 +66,22 @@ export interface VerifySpanRoundFromAPI {
 		lastWord: number;
 	};
 }
+export interface CompleteRoundFromAPI {
+	_id: string;
+	currentRound: number;
+	totalRounds: number;
+	taskInfo: {
+		type: "completed";
+	};
+}
 
 export type TaskFromBackend =
 	| MakeQuestionRoundFromAPI
 	| VerifyQuestionRoundFromAPI
 	| FindArticleRoundFromAPI
 	| LocateSpanRoundFromAPI
-	| VerifySpanRoundFromAPI;
+	| VerifySpanRoundFromAPI
+	| CompleteRoundFromAPI;
 
 export interface ArticlePreview {
 	source: Source;

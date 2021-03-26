@@ -7,6 +7,7 @@ export const initialState: SubmitArticleState = {
 	articles: [],
 	query: "",
 	_id: "",
+	previewOpenCount: 0,
 };
 
 const reducer = (
@@ -30,6 +31,7 @@ const reducer = (
 				...state,
 				articles: [...state.articles],
 				previewArticle: action.payload,
+				previewOpenCount: state.previewOpenCount + 1,
 			};
 
 		case ActionTypes.findArticle:
@@ -40,6 +42,7 @@ const reducer = (
 				query: "",
 				articles: [],
 				previewParagraphIndex: undefined,
+				previewOpenCount: 0,
 			};
 		case ActionTypes.writeArticleSearchQuery: {
 			return {

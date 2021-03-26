@@ -5,7 +5,8 @@ export type QAquestionItems =
 	| "appropriate"
 	| "is-impossible"
 	| "has-short-answer"
-	| "is-opinionated";
+	| "is-opinionated"
+	| "is-yes-or-no";
 
 const checkList: CheckList<QAquestionItems> = {
 	title: "Review question quality",
@@ -32,7 +33,8 @@ const checkList: CheckList<QAquestionItems> = {
 			badAnswerPrompt: "Spurningin er ómöguleg",
 		},
 		{
-			question: "Væri mögulegt að svara spurningunni í nokkrum orðum?",
+			question:
+				"Væri mögulegt að svara spurningunni í nokkrum orðum?",
 			expectedAnswer: "yes",
 			key: "has-short-answer",
 			correctAnswerPrompt: "Spurningin er ekki of löng",
@@ -43,7 +45,8 @@ const checkList: CheckList<QAquestionItems> = {
 				"Hefur spurningin mismunandi svör eftir því hvern þú spyrð?",
 			expectedAnswer: "no",
 			key: "is-opinionated",
-			correctAnswerPrompt: "Spurningin er ekki að biðja um gildismat",
+			correctAnswerPrompt:
+				"Spurningin er ekki að biðja um gildismat",
 			badAnswerPrompt: "Svarið er háð gildismati",
 		},
 	],

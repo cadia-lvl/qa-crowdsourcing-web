@@ -4,6 +4,7 @@ import { Actions, ActionTypes } from "../../actions";
 export const initialState: QuestionQualityAssuranceState = {
 	_id: "",
 	text: "Hvenær fæddist Vigdís Finnbogadóttir?",
+	isYesOrNo: false,
 };
 
 const reducer = (
