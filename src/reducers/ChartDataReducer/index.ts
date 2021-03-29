@@ -1,4 +1,4 @@
-import { Actions } from "../../actions";
+import { Actions, ActionTypes } from "../../actions";
 import { ChartDataState } from "./interface";
 
 export const initialState: ChartDataState = {
@@ -10,6 +10,11 @@ const reducer = (
 	action: Actions
 ): ChartDataState => {
 	switch (action.type) {
+		case ActionTypes.fetchAnswersPerDay:
+			return {
+				...state,
+				answersPerDay: action.payload,
+			};
 		default:
 			return state;
 	}

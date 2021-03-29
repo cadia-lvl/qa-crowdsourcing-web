@@ -8,10 +8,12 @@ import { StoreState } from "../reducers";
 import { fetchUserFromToken } from "../actions";
 import { FETCH_USER_FROM_TOKEN_WAIT_MS } from "./utils";
 import { FlexLoader } from "../components";
+import { fetchAnswersPerDay } from "../actions/chartDataActions";
 
 export const LayoutWrapper = ({ children }: IProps) => {
 	const state = useSelector((state: StoreState) => state.auth);
 	const dispatch = useDispatch();
+
 	useEffect(() => {
 		if (state.type === "loading")
 			setTimeout(
@@ -19,6 +21,10 @@ export const LayoutWrapper = ({ children }: IProps) => {
 				FETCH_USER_FROM_TOKEN_WAIT_MS
 			);
 	}, [state._id, dispatch, state.type]);
+
+	useEffect(() => {
+		dispatch(fetchAnswersPerDay());
+	}, []);
 
 	if (state.type === "loading")
 		return (

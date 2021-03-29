@@ -3,6 +3,7 @@ import * as SubmitArticleActions from "../submitArticleActions";
 import * as WriteQuestionActions from "../writeQuestionActions";
 import * as GameActions from "../gameActions";
 import * as VerifyAnswerLocationsActions from "../verifyAnswerLocationActions";
+import * as ChartDataActions from "../chartDataActions";
 
 export enum ActionTypes {
 	fetchUserFromToken,
@@ -25,6 +26,7 @@ export enum ActionTypes {
 	verifySpanInAnswer,
 	completeRound,
 	fetchScoreCard,
+	fetchAnswersPerDay,
 }
 
 export type Actions =
@@ -47,4 +49,5 @@ export type Actions =
 	| GameActions.FindArticleRoundFromAPIAction
 	| GameActions.LocateSpanRoundFromAPIAction
 	| GameActions.VerifySpanRoundFromAPIAction
-	| GameActions.CompleteRoundFromAPIAction;
+	| GameActions.CompleteRoundFromAPIAction
+	| ChartDataActions.FetchAnswersPerDayAction;
