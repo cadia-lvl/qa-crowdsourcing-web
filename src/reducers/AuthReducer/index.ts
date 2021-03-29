@@ -6,6 +6,13 @@ export const initialState: AuthState = {
 	email: "",
 	type: "loading",
 	_id: "",
+	scoreCard: {
+		questions: 0,
+		answers: 0,
+		answerVerifications: 0,
+		questionVerifications: 0,
+		articles: 0,
+	},
 };
 
 const reducer = (
@@ -19,6 +26,11 @@ const reducer = (
 			return action.payload;
 		case ActionTypes.registerUser:
 			return action.payload;
+		case ActionTypes.fetchScoreCard:
+			return {
+				...state,
+				scoreCard: action.payload,
+			};
 		default:
 			return state;
 	}

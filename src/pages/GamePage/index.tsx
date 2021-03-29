@@ -11,7 +11,7 @@ import {
 	RoundCompletedGame,
 } from "../../components";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchCurrentGameRound } from "../../actions";
+import { fetchCurrentGameRound, fetchScoreCard } from "../../actions";
 import { StoreState } from "../../reducers";
 
 export const GamePage = () => {
@@ -20,6 +20,10 @@ export const GamePage = () => {
 	useEffect(() => {
 		dispatch(fetchCurrentGameRound());
 	}, [dispatch]);
+
+	useEffect(() => {
+		dispatch(fetchScoreCard());
+	}, [state.currentRound]);
 
 	if (state.current === undefined) return <FlexLoader size={150} />;
 	return (

@@ -10,6 +10,7 @@ import {
 	selectFirstWordIndexInParagraph,
 	selectSecondWordIndexInParagraph,
 	verifyAnswerSpan,
+	verifyYesNoQuestion,
 } from "../../../../actions";
 import { TextPrompt, BaseButton } from "../../../";
 import { ButtonContainer, TextPromptWrapper } from "./styles";
@@ -25,7 +26,13 @@ export const VerifyAnswerSpanGame = () => {
 	const dispatch = useDispatch();
 
 	const {
-		verifyAnswerLocation: { _id: answerId, text},
+		verifyAnswerLocation: {
+			_id: answerId,
+			text,
+			isYesOrNo,
+			firstWord,
+			lastWord,
+		},
 		game: { _id: gameRoundId },
 	} = state;
 
@@ -33,10 +40,16 @@ export const VerifyAnswerSpanGame = () => {
 		dispatch(verifyAnswerSpan(gameRoundId, answerId, canBeShortened));
 	};
 
+	const handleVerifyYesOrNo = (answer: boolean) => {
+		dispatch(verifyYesNoQuestion(gameRoundId, answerId, answer));
+	};
+
 	return (
 		<GameWrapper type={GameTypes.verifyAnswerSpan}>
 			<SpanSelector
 				{...state.verifyAnswerLocation}
+				firstWord={isYesOrNo ? -1 : firstWord}
+				lastWord={isYesOrNo ? -1 : lastWord}
 				question={text}
 				onClearRange={(word) =>
 					dispatch(clearIndexRangeInParagraph(word))
@@ -51,30 +64,69 @@ export const VerifyAnswerSpanGame = () => {
 				immutable
 			/>
 			<TextPromptWrapper>
-				<TextPrompt>
-					Það er <i>mikilvægt</i> að svarið sem er merkt sé rétt
-					svar við spurningunni. Einnig er mikilvægt að svarið sé
-					í eins <i>fáum orðum</i> og mögulegt er
-				</TextPrompt>
+				{isYesOrNo ? (
+					<TextPrompt>
+						Þetta er <i>JÁ/NEI</i>. Ef efnisgreinin svarar
+						spurningunni með <i>JÁ</i> eða <i>NEI</i> þá segjum
+						við að efnisgreinin innihaldi svarið. Ef þessi
+						efnisgrein inniheldur ekki svarið við spurningunni,
+						smelltu þá á rauða takkann.
+					</TextPrompt>
+				) : (
+					<TextPrompt>
+						Það er <i>mikilvægt</i> að svarið sem er merkt sé
+						rétt svar við spurningunni. Einnig er mikilvægt að
+						svarið sé í eins <i>fáum orðum</i> og mögulegt er
+					</TextPrompt>
+				)}
 			</TextPromptWrapper>
+
 			<ButtonContainer>
-				<BaseButton
-					label="Svarið er ekki rétt merkt"
-					type="danger"
-					onClick={() =>
-						dispatch(archiveAnswer(gameRoundId, answerId))
-					}
-				/>
-				<BaseButton
-					label="Svarið er rétt, en gæti verið styttra"
-					type="highlight"
-					onClick={() => handleVerifyDispatch(true)}
-				/>
-				<BaseButton
-					label="Þetta er rétt og hnitmiðað"
-					type="success"
-					onClick={() => handleVerifyDispatch(false)}
-				/>
+				{isYesOrNo ? (
+					<React.Fragment>
+						<BaseButton
+							label="Þessi grein svarar ekki spurningunni"
+							type="danger"
+							onClick={() =>
+								dispatch(
+									archiveAnswer(gameRoundId, answerId)
+								)
+							}
+						/>
+						<BaseButton
+							label="Svarið er nei samkvæmt greininni"
+							type="highlight"
+							onClick={() => handleVerifyYesOrNo(false)}
+						/>
+						<BaseButton
+							label="Svarið er já samkvæmt greininni"
+							type="success"
+							onClick={() => handleVerifyYesOrNo(true)}
+						/>
+					</React.Fragment>
+				) : (
+					<React.Fragment>
+						<BaseButton
+							label="Svarið er ekki rétt merkt"
+							type="danger"
+							onClick={() =>
+								dispatch(
+									archiveAnswer(gameRoundId, answerId)
+								)
+							}
+						/>
+						<BaseButton
+							label="Svarið er rétt, en gæti verið styttra"
+							type="highlight"
+							onClick={() => handleVerifyDispatch(true)}
+						/>
+						<BaseButton
+							label="Þetta er rétt og hnitmiðað"
+							type="success"
+							onClick={() => handleVerifyDispatch(false)}
+						/>
+					</React.Fragment>
+				)}
 			</ButtonContainer>
 		</GameWrapper>
 	);

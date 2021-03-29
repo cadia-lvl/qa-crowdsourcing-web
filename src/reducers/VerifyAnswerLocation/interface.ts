@@ -4,4 +4,5 @@ export interface VerifyAnswerLocationState {
 	firstWord?: number;
 	lastWord?: number;
 	_id: string;
+	isYesOrNo: boolean;
 }
