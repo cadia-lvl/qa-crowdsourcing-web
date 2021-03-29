@@ -234,4 +234,26 @@ export const markQuestionAsImpossible = (
 	};
 };
 
+export const verifyYesNoQuestion = (
+	gameRoundId: string,
+	answerId: string,
+	answer: boolean
+) => {
+	return async function (_dispatch: Dispatch) {
+		try {
+			const { data } = await Api.post<TaskFromBackend>(
+				`/api/v1/game_rounds/${gameRoundId}/advance`,
+				{
+					type: "verify-yes-no-answer-paragraph",
+					answerId,
+					answer,
+				}
+			);
+			__handleUpdateTask(data);
+		} catch (error) {
+			console.log(error);
+		}
+	};
+};
+
 export * from "./interface";

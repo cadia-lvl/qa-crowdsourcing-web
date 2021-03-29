@@ -7,6 +7,7 @@ export const initialState: VerifyAnswerLocationState = {
 	firstWord: undefined,
 	lastWord: undefined,
 	_id: "",
+	isYesOrNo: false,
 };
 
 const reducer = (
