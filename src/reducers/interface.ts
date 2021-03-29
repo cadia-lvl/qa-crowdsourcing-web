@@ -1,4 +1,5 @@
 import { AuthState } from "./AuthReducer";
+import { ChartDataState } from "./ChartDataReducer";
 import { GameState } from "./GameReducer";
 import { QuestionQualityAssuranceState } from "./QuestionQualityAssurance";
 import { SubmitArticleState } from "./SubmitArticleReducer";
@@ -12,4 +13,5 @@ export interface StoreState {
 	submitArticle: SubmitArticleState;
 	verifyAnswerLocation: VerifyAnswerLocationState;
 	questionQualityAssurance: QuestionQualityAssuranceState;
+	chartData: ChartDataState;
 }

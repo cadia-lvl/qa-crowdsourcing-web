@@ -6,6 +6,7 @@ import SubmitArticleReducer from "./SubmitArticleReducer";
 import WriteQuestionReducer from "./WriteQuestionReducer";
 import QuestionQualityAssuranceReducer from "./QuestionQualityAssurance";
 import VerifyAnswerLocationReducer from "./VerifyAnswerLocation";
+import ChartDataReducer from "./ChartDataReducer";
 
 export default combineReducers<StoreState>({
 	auth: AuthReducer,
@@ -14,6 +15,7 @@ export default combineReducers<StoreState>({
 	submitArticle: SubmitArticleReducer,
 	verifyAnswerLocation: VerifyAnswerLocationReducer,
 	questionQualityAssurance: QuestionQualityAssuranceReducer,
+	chartData: ChartDataReducer,
 });
 
 export * from "./interface";
