@@ -82,7 +82,7 @@ export const FrontPage = () => {
 									<TextBoxPara>
 										Velkomin/n {state.auth.username}!
 										and going through the cites of the
-										word in classical literature{" "}
+										word in classical literature
 									</TextBoxPara>
 									<ScoreCard />
 								</StatsCardInner>
