@@ -56,5 +56,3 @@ export const ScoreCard = () => {
 		</React.Fragment>
 	);
 };
-
-// db.answers.aggregate([{ $match: { answeredAt: { $exists: true } } }, { $project: { date: { '$dateToString': { format: '%Y-%m-%d', date: '$answeredAt' } } } }, { $group: { _id: { dateToString: '$date' }, count: { $sum: 1 } } }]);
