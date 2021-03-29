@@ -1,5 +1,5 @@
 import { ActionTypes } from "../types";
-import { User } from "../../declerations";
+import { ScoreCard, User } from "../../declerations";
 
 export interface FetchUserFromTokenAction {
 	type: ActionTypes.fetchUserFromToken;
@@ -13,4 +13,9 @@ export interface RegisterUserAction {
 
 export interface LogOutUserAction {
 	type: ActionTypes.logOutUser;
+}
+
+export interface FetchScoreCardAction {
+	type: ActionTypes.fetchScoreCard;
+	payload: ScoreCard;
 }

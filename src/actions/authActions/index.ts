@@ -1,6 +1,10 @@
 import { ActionTypes } from "../types";
-import { FetchUserFromTokenAction, LogOutUserAction } from "./interface";
-import { User } from "../../declerations";
+import {
+	FetchUserFromTokenAction,
+	LogOutUserAction,
+	FetchScoreCardAction,
+} from "./interface";
+import { ScoreCard, User } from "../../declerations";
 import { Dispatch } from "redux";
 import Api from "../../api";
 
@@ -25,6 +29,23 @@ export const registerUser = (user: User) => {
 	return {
 		type: ActionTypes.registerUser,
 		payload: user,
+	};
+};
+
+export const fetchScoreCard = () => {
+	return async function (dispatch: Dispatch) {
+		try {
+			const res = await Api.get<ScoreCard>(
+				"/api/v1/users/current/score_card"
+			);
+
+			dispatch<FetchScoreCardAction>({
+				type: ActionTypes.fetchScoreCard,
+				payload: res.data,
+			});
+		} catch (error) {
+			// do nothing on error
+		}
 	};
 };
 

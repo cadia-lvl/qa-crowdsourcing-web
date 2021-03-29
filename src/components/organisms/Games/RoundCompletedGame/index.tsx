@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { SmallProgressBar, TextPrompt } from "../../..";
+import { SmallProgressBar, TextPrompt, ScoreCard } from "../../..";
 import { fetchCurrentGameRound } from "../../../../actions";
 import { GameTypes } from "../../../../declerations";
 import { GameWrapper } from "../../../../hoc";
@@ -24,30 +24,7 @@ export const RoundCompletedGame = () => {
 						<i>nútímann</i>.
 					</TextPrompt>
 				</PromptOuter>
-				<SmallProgressBar
-					ratio={0.7}
-					label="Spurningar"
-					color={Colors.HIGHLIGHT}
-					amount={25}
-				/>
-				<SmallProgressBar
-					ratio={0.6}
-					label="Svör"
-					color={Colors.SUCCESS}
-					amount={21}
-				/>
-				<SmallProgressBar
-					ratio={0.4}
-					label="Yfirferðir"
-					color={Colors.DANGER}
-					amount={14}
-				/>
-				<SmallProgressBar
-					ratio={0.83}
-					label="Efnisgreinar"
-					color={Colors.WARNING}
-					amount={3}
-				/>
+				<ScoreCard />
 				<ButtonContainer>
 					<BaseButton
 						type="highlight"

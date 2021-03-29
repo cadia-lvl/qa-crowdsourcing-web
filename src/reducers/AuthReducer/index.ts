@@ -26,6 +26,11 @@ const reducer = (
 			return action.payload;
 		case ActionTypes.registerUser:
 			return action.payload;
+		case ActionTypes.fetchScoreCard:
+			return {
+				...state,
+				scoreCard: action.payload,
+			};
 		default:
 			return state;
 	}

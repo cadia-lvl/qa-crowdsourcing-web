@@ -24,12 +24,14 @@ export enum ActionTypes {
 	locateSpanInParagraph,
 	verifySpanInAnswer,
 	completeRound,
+	fetchScoreCard,
 }
 
 export type Actions =
 	| AuthActions.FetchUserFromTokenAction
 	| AuthActions.LogOutUserAction
 	| AuthActions.RegisterUserAction
+	| AuthActions.FetchScoreCardAction
 	| WriteQuestionActions.WriteQuestionAction
 	| SubmitArticleActions.PreviewArticleToSubmitAction
 	| SubmitArticleActions.ClosePreviewArticleToSubmitAction

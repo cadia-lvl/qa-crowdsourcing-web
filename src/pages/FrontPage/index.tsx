@@ -10,29 +10,15 @@ import {
 	Thick,
 	Light,
 } from "./styles";
-import { WhiteFlexCard, SmallProgressBar } from "../../components";
+import { WhiteFlexCard, ScoreCard } from "../../components";
 import { LoadForUserType } from "../../hoc";
-import { Colors } from "../../styles";
 import { useSelector } from "react-redux";
 import { StoreState } from "../../reducers";
 import { SignUpForm } from "../../forms";
 
 export const FrontPage = () => {
 	const state = useSelector((state: StoreState) => state);
-	const {
-		questionVerifications,
-		answerVerifications,
-		answers,
-		questions,
-		articles,
-	} = state.auth.scoreCard;
 
-	const calculateProgressRatio = (
-		count: number,
-		coefficient: number
-	) => {
-		return (2 * Math.atan(coefficient * count)) / Math.PI;
-	};
 	return (
 		<Outer>
 			<TextBoxContainer>
@@ -65,51 +51,7 @@ export const FrontPage = () => {
 										and going through the cites of the
 										word in classical literature{" "}
 									</TextBoxPara>
-									<SmallProgressBar
-										ratio={calculateProgressRatio(
-											questions,
-											0.25
-										)}
-										label="Spurningar"
-										color={Colors.HIGHLIGHT}
-										amount={questions}
-									/>
-									<SmallProgressBar
-										ratio={calculateProgressRatio(
-											answers,
-											0.3
-										)}
-										label="Svör"
-										color={Colors.SUCCESS}
-										amount={answers}
-									/>
-									<SmallProgressBar
-										ratio={calculateProgressRatio(
-											questionVerifications,
-											0.15
-										)}
-										label="Yfirfarnar spurningar"
-										color={Colors.DANGER}
-										amount={questionVerifications}
-									/>
-									<SmallProgressBar
-										ratio={calculateProgressRatio(
-											answerVerifications,
-											0.15
-										)}
-										label="Yfirfarnin svör"
-										color={Colors.DANGER}
-										amount={answerVerifications}
-									/>
-									<SmallProgressBar
-										ratio={calculateProgressRatio(
-											articles,
-											0.4
-										)}
-										label="Greinar"
-										color={Colors.WARNING}
-										amount={articles}
-									/>
+									<ScoreCard />
 								</StatsCardInner>
 							)
 						}
