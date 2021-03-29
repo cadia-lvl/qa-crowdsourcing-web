@@ -30,25 +30,25 @@ export const ScoreCard = () => {
 				amount={questions}
 			/>
 			<SmallProgressBar
-				ratio={calculateProgressRatio(answers, 0.3)}
+				ratio={calculateProgressRatio(answers, 0.25)}
 				label="Svör"
 				color={Colors.SUCCESS}
 				amount={answers}
 			/>
 			<SmallProgressBar
-				ratio={calculateProgressRatio(questionVerifications, 0.15)}
+				ratio={calculateProgressRatio(questionVerifications, 0.25)}
 				label="Yfirfarnar spurningar"
 				color={Colors.DANGER}
 				amount={questionVerifications}
 			/>
 			<SmallProgressBar
-				ratio={calculateProgressRatio(answerVerifications, 0.15)}
+				ratio={calculateProgressRatio(answerVerifications, 0.25)}
 				label="Yfirfarnin svör"
 				color={Colors.DANGER}
 				amount={answerVerifications}
 			/>
 			<SmallProgressBar
-				ratio={calculateProgressRatio(articles, 0.4)}
+				ratio={calculateProgressRatio(articles, 0.25)}
 				label="Greinar"
 				color={Colors.WARNING}
 				amount={articles}
@@ -56,3 +56,5 @@ export const ScoreCard = () => {
 		</React.Fragment>
 	);
 };
+
+// db.answers.aggregate([{ $match: { answeredAt: { $exists: true } } }, { $project: { date: { '$dateToString': { format: '%Y-%m-%d', date: '$answeredAt' } } } }, { $group: { _id: { dateToString: '$date' }, count: { $sum: 1 } } }]);
