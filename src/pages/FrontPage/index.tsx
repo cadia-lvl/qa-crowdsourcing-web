@@ -19,19 +19,33 @@ import { SignUpForm } from "../../forms";
 
 export const FrontPage = () => {
 	const state = useSelector((state: StoreState) => state);
+	const {
+		questionVerifications,
+		answerVerifications,
+		answers,
+		questions,
+		articles,
+	} = state.auth.scoreCard;
+
+	const calculateProgressRatio = (
+		count: number,
+		coefficient: number
+	) => {
+		return (2 * Math.atan(coefficient * count)) / Math.PI;
+	};
 	return (
 		<Outer>
 			<TextBoxContainer>
 				<TextBoxTitle>Spurðu mig spurninga!</TextBoxTitle>
 				<TextBoxPara>
-					Contrary to popular belief, Lorem Ipsum is not simply random
-					text. It has roots in a piece of classical Latin literature
-					from 45 BC, making it over 2000 years old. Richard
-					McClintock, a Latin professor at Hampden-Sydney College in
-					Virginia, looked up one of the more obscure Latin words,
-					consectetur, from a Lorem Ipsum passage, and going through
-					the cites of the word in classical literature, discovered
-					the undoubtable source.
+					Contrary to popular belief, Lorem Ipsum is not simply
+					random text. It has roots in a piece of classical Latin
+					literature from 45 BC, making it over 2000 years old.
+					Richard McClintock, a Latin professor at Hampden-Sydney
+					College in Virginia, looked up one of the more obscure
+					Latin words, consectetur, from a Lorem Ipsum passage,
+					and going through the cites of the word in classical
+					literature, discovered the undoubtable source.
 				</TextBoxPara>
 			</TextBoxContainer>
 			<LogInBoxContainer>
@@ -47,33 +61,54 @@ export const FrontPage = () => {
 										<Light>Á stigatöflunni</Light>
 									</TopLine>
 									<TextBoxPara>
-										Velkomin/n {state.auth.username}! and
-										going through the cites of the word in
-										classical literature{" "}
+										Velkomin/n {state.auth.username}!
+										and going through the cites of the
+										word in classical literature{" "}
 									</TextBoxPara>
 									<SmallProgressBar
-										ratio={0.7}
+										ratio={calculateProgressRatio(
+											questions,
+											0.25
+										)}
 										label="Spurningar"
 										color={Colors.HIGHLIGHT}
-										amount={25}
+										amount={questions}
 									/>
 									<SmallProgressBar
-										ratio={0.6}
+										ratio={calculateProgressRatio(
+											answers,
+											0.3
+										)}
 										label="Svör"
 										color={Colors.SUCCESS}
-										amount={21}
+										amount={answers}
 									/>
 									<SmallProgressBar
-										ratio={0.4}
-										label="Yfirferðir"
+										ratio={calculateProgressRatio(
+											questionVerifications,
+											0.15
+										)}
+										label="Yfirfarnar spurningar"
 										color={Colors.DANGER}
-										amount={14}
+										amount={questionVerifications}
 									/>
 									<SmallProgressBar
-										ratio={0.83}
-										label="Efnisgreinar"
+										ratio={calculateProgressRatio(
+											answerVerifications,
+											0.15
+										)}
+										label="Yfirfarnin svör"
+										color={Colors.DANGER}
+										amount={answerVerifications}
+									/>
+									<SmallProgressBar
+										ratio={calculateProgressRatio(
+											articles,
+											0.4
+										)}
+										label="Greinar"
 										color={Colors.WARNING}
-										amount={3}
+										amount={articles}
 									/>
 								</StatsCardInner>
 							)
