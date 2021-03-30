@@ -88,7 +88,6 @@ export const FrontPage = () => {
 					</WhiteFlexCard>
 				</LogInBoxContainer>
 			</Inner>
-			<ChartContainer></ChartContainer>
 		</Outer>
 	);
 };
