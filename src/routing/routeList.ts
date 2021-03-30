@@ -15,6 +15,10 @@ export const ROUTE_LIST: RouteInterface[] = [
 		path: "/spila",
 	},
 	{
+		component: Pages.AboutUsPage,
+		path: "/um-okkur",
+	},
+	{
 		component: Pages.FrontPage,
 		path: "(/|/heim)?",
 	},

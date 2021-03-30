@@ -25,7 +25,9 @@ const Footer = () => {
 			<span>Skilmálar</span>
 			{isAuth ? <span>Útskrá</span> : <span>Innskrá</span>}
 
-			<span>Um okkur</span>
+			<span>
+				<Link to="/um-okkur">Um okkur</Link>
+			</span>
 		</Outer>
 	);
 };

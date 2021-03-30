@@ -10,7 +10,6 @@ import {
 	Thick,
 	Light,
 	Inner,
-	ChartContainer,
 } from "./styles";
 import { WhiteFlexCard, ScoreCard } from "../../components";
 import { LoadForUserType } from "../../hoc";
