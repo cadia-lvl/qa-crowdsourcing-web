@@ -66,13 +66,15 @@ export const WriteQuestionGame = () => {
 	return (
 		<GameWrapper type={GameTypes.writeQuestion}>
 			<TextPrompt>{getPrompt()}</TextPrompt>
-			{ideaWords.map((word) => (
-				<TextTag key={word}>{word}</TextTag>
-			))}
+			<div>
+				{ideaWords.map((word) => (
+					<TextTag key={word}>{word}</TextTag>
+				))}
+			</div>
 			<Paragraph>
 				{" "}
 				Án efa geta orðin hér að ofan nýst þér sem innblástur. Ef
-				þér dettur í hug spurningu um tengda einstaklinga, atburði,
+				þér dettur í hug spurning um tengda einstaklinga, atburði,
 				örnefni, hugtök eða álíka þá er það í lagi.
 			</Paragraph>
 			<InputContainer>
@@ -91,7 +93,7 @@ export const WriteQuestionGame = () => {
 					<ErrorLabel>{errorMessage}</ErrorLabel>
 				) : null}
 				<SubmitButton
-					label="Afram"
+					label="Áfram"
 					onClick={() =>
 						dispatch(
 							submitQuestion(

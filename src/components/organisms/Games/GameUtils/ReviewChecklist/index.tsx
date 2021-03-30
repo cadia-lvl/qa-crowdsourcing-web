@@ -123,7 +123,7 @@ export const ReviewCheckList = <T extends {}>({
 						}
 					/>
 					<BaseButton
-						label="Ákkurat!"
+						label="Sammála!"
 						type="highlight"
 						onClick={() =>
 							(state.questionIsBad

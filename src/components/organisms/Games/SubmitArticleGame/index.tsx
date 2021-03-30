@@ -64,8 +64,7 @@ export const SubmitArticleGame = () => {
 					</Paragraph>
 					<Paragraph>
 						Oft er gott að notast við nafnorð og sérnöfn í
-						leitarstrengjum. Prufaðu eftirfarandi orð í
-						leitarstrengnum:
+						leitarstrengjum.
 					</Paragraph>
 					{highlightWords.map((word, i) => (
 						<TextTag key={`${word}-${i}`}>{word}</TextTag>
@@ -86,7 +85,7 @@ export const SubmitArticleGame = () => {
 					</SearchBoxContainer>
 					<Paragraph>
 						Smelltu á grein til þess að sjá hvort svarið
-						leynist þar. Ef ekkert svar er að finna neinstaðar
+						leynist þar. Ef ekkert svar er að finna nein staðar
 						þá getur þú smellt hér.
 					</Paragraph>
 				</React.Fragment>
@@ -118,8 +117,8 @@ export const SubmitArticleGame = () => {
 						Þessa grein er að finna á Wikipedia. Sérðu svarið?
 						Ef svo er, smelltu á þá efnisgrein sem inniheldur
 						svarið. Þú getur einnig leitað í innihaldi
-						greinarinnar. Ýttu á Loka Grein til að fara til
-						baka í leitina
+						greinarinnar.Lokaðu greininni til að fara til baka
+						í leitina
 					</Paragraph>
 					<PreviewReader />
 				</React.Fragment>

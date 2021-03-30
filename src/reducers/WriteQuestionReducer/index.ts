@@ -13,10 +13,11 @@ const reducer = (
 ): WriteQuestionState => {
 	switch (action.type) {
 		case ActionTypes.fetchMakeQuestion:
+			const { questionType } = action.payload.taskInfo;
 			return {
 				...state,
 				...action.payload.taskInfo,
-				question: "",
+				question: questionType === "Já/Nei" ? "" : questionType,
 			};
 		case ActionTypes.writeQuestion:
 			return {
