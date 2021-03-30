@@ -4,3 +4,4 @@ export * from "./GamePage";
 export * from "./SignInPage";
 export * from "./SignUpPage";
 export * from "./AboutUsPage";
+export * from "./TermsPage";

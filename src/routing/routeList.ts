@@ -19,6 +19,10 @@ export const ROUTE_LIST: RouteInterface[] = [
 		path: "/um-okkur",
 	},
 	{
+		component: Pages.TermsPage,
+		path: "/skilmalar",
+	},
+	{
 		component: Pages.FrontPage,
 		path: "(/|/heim)?",
 	},
