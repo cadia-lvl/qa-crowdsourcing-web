@@ -10,7 +10,7 @@ export const headerItems: HeaderItem[] = [
 		path: "/um-okkur",
 	},
 	{
-		text: "Placeholder",
-		path: "/foo",
+		text: "Skilmálar",
+		path: "/skilmalar",
 	},
 ];
