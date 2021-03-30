@@ -8,6 +8,11 @@ export const Outer = styled.footer`
 	display: flex;
 	align-items: flex-end;
 	justify-content: flex-start;
+	a {
+		padding: none;
+		margin: none;
+		color: inherit;
+	}
 	span {
 		cursor: pointer;
 		padding: 20px;

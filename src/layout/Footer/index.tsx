@@ -1,14 +1,30 @@
 import React from "react";
 import { Outer } from "./styles";
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { StoreState } from "../../reducers";
 
 const Footer = () => {
+	const userType = useSelector((state: StoreState) => state.auth.type);
+	const isAuth = !["guest", "loading"].includes(userType);
 	return (
 		<Outer>
-			<span>Heim</span>
-			<span>spurningar@spurningar.is</span>
-			<span>GitHub</span>
+			<span>
+				<Link to="/">Heim</Link>
+			</span>
+			<span>
+				<a href="mailto:spurningar@spurningar.is">
+					spurningar@spurningar.is
+				</a>
+			</span>
+			<span>
+				<a target="_blank" href="https://github.com/cadia-lvl">
+					GitHub
+				</a>
+			</span>
 			<span>Skilmálar</span>
-			<span>Útskrá</span>
+			{isAuth ? <span>Útskrá</span> : <span>Innskrá</span>}
+
 			<span>Um okkur</span>
 		</Outer>
 	);
