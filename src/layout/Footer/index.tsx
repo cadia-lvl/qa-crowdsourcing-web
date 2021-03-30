@@ -22,7 +22,10 @@ const Footer = () => {
 					GitHub
 				</a>
 			</span>
-			<span>Skilmálar</span>
+
+			<span>
+				<Link to="/skilmalar">Skilmálar</Link>
+			</span>
 			{isAuth ? <span>Útskrá</span> : <span>Innskrá</span>}
 
 			<span>

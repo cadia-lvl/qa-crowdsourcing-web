@@ -15,12 +15,14 @@ export const ROUTE_LIST: RouteInterface[] = [
 		path: "/spila",
 	},
 	{
-		component: Pages.AboutUsPage,
-		path: "/um-okkur",
-	},
-	{
 		component: Pages.TermsPage,
 		path: "/skilmalar",
+		exact: true,
+	},
+	{
+		component: Pages.AboutUsPage,
+		path: "/um-okkur",
+		exact: true,
 	},
 	{
 		component: Pages.FrontPage,
