@@ -28,7 +28,13 @@ export const TextBoxContainer = styled.div`
 	padding-right: 70px;
 `;
 
-export const TextBoxPara = styled.p``;
+export const TextBoxPara = styled.p`
+	i {
+		color: ${Colors.HIGHLIGHT};
+		font-weight: 700;
+		font-style: normal;
+	}
+`;
 
 export const TextBoxTitle = styled.span`
 	font-size: 32px;

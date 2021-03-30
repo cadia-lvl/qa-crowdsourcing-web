@@ -51,15 +51,22 @@ export const FrontPage = () => {
 				<TextBoxContainer>
 					<TextBoxTitle>Spurðu mig spurninga!</TextBoxTitle>
 					<TextBoxPara>
-						Contrary to popular belief, Lorem Ipsum is not
-						simply random text. It has roots in a piece of
-						classical Latin literature from 45 BC, making it
-						over 2000 years old. Richard McClintock, a Latin
-						professor at Hampden-Sydney College in Virginia,
-						looked up one of the more obscure Latin words,
-						consectetur, from a Lorem Ipsum passage, and going
-						through the cites of the word in classical
-						literature, discovered the undoubtable source.
+						Flest höfum við gaman af spurningjaleikjum. Hér
+						getur þú aflað þér allskyns þekkingar og um leið
+						styrkt íslensku í nútímanum. Þær spurningar og svör
+						sem verða til á þessari síðu nýtast síðan til þess
+						að þjálfa gervigreind sem mun læra að svara hinum
+						ýmsu spurningum, ekki aðeins þeim sem hér birtast.
+					</TextBoxPara>
+					<TextBoxPara>
+						Afurð þessara verkefnis mun því ekki einungis læra
+						svörin við þínum spurningum, heldur um leið læra að
+						svara spurningum sem það hefur aldrei séð áður
+					</TextBoxPara>
+					<TextBoxPara>
+						Hálpaðu okkur að koma íslensku inn í nútímann,
+						markmiðið er að safna <i>100.000 spurningum</i>{" "}
+						árið 2021
 					</TextBoxPara>
 				</TextBoxContainer>
 				<LogInBoxContainer>
