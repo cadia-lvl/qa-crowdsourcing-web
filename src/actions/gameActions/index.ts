@@ -21,7 +21,6 @@ import Api from "../../api";
 import store from "../../store";
 
 const __handleUpdateTask = (data: TaskFromBackend) => {
-	console.log(data);
 	switch (data.taskInfo.type) {
 		case "make-question":
 			store.dispatch<FetchQuestionRoundFromAPIAction>({
@@ -209,7 +208,7 @@ export const verifyAnswerSpan = (
 			);
 			__handleUpdateTask(data);
 		} catch (error) {
-			console.log(error);
+			// console.log(error);
 		}
 	};
 };
@@ -229,7 +228,7 @@ export const markQuestionAsImpossible = (
 			);
 			__handleUpdateTask(data);
 		} catch (error) {
-			console.log(error);
+			// console.log(error);
 		}
 	};
 };
@@ -251,7 +250,7 @@ export const verifyYesNoQuestion = (
 			);
 			__handleUpdateTask(data);
 		} catch (error) {
-			console.log(error);
+			// console.log(error);
 		}
 	};
 };

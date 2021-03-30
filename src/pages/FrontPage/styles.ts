@@ -3,6 +3,17 @@ import { Colors } from "../../styles";
 
 export const Outer = styled.div`
 	display: flex;
+	flex-direction: column;
+`;
+
+export const ChartContainer = styled.div`
+	width: 100%;
+	height: 300px;
+	margin-top: 55px;
+`;
+
+export const Inner = styled.div`
+	display: flex;
 	flex-direction: row;
 	width: 100%;
 `;
