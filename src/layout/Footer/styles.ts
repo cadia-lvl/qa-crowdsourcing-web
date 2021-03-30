@@ -5,4 +5,9 @@ export const Outer = styled.footer`
 	width: 100%;
 	border: 1px solid red;
 	flex: 1;
+	padding: 20px;
+	box-sizing: border-box;
+	display: flex;
+	align-items: flex-end;
+	justify-content: flex-start;
 `;
