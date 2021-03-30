@@ -23,7 +23,6 @@ export const ButtonDiv = styled.div`
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
-	flex: 1;
 	width: 500px;
 	button {
 		:first-child {

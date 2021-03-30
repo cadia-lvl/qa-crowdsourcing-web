@@ -58,7 +58,7 @@ export const WriteQuestionGame = () => {
 		else
 			return (
 				<React.Fragment>
-					Spurðu okkur spurning sem byrjar á{" "}
+					Spurðu okkur spurningu sem byrjar á{" "}
 					<i>{questionType.toLocaleUpperCase()}</i>
 				</React.Fragment>
 			);

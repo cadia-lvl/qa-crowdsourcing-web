@@ -4,7 +4,9 @@ export const Outer = styled.div`
 	max-width: 1200px;
 	width: 90%;
 	margin: 0 auto;
-	padding-bottom: 100px;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
 `;
 
 export const LoadingOuter = styled.div`
