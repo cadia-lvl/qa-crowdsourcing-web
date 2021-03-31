@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const isProd = true;
+const isProd = false;
 
 const url = isProd
 	? "https://spurningar.herokuapp.com/"

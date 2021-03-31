@@ -49,4 +49,16 @@ export const fetchScoreCard = () => {
 	};
 };
 
+export const logOutUser = () => {
+	return async function (dispatch: Dispatch) {
+		try {
+			await Api.delete("/api/v1/users/current/auth_token");
+			dispatch<LogOutUserAction>({
+				type: ActionTypes.logOutUser,
+			});
+		} catch (error) {
+			//
+		}
+	};
+};
 export * from "./interface";
