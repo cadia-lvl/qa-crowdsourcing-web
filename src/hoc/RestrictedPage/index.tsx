@@ -11,8 +11,8 @@ export const RestrictedPage = ({
 }: IProps) => {
 	console.log(4);
 	const state = useSelector((state: StoreState) => state.auth);
-	if (userTypes.includes(state.type)) {
-	}
-	return <Redirect to="/innskra" />;
+	if (userTypes.includes(state.type))
+		return <Redirect to={fallbackUrl} />;
+
 	return <React.Fragment>{children}</React.Fragment>;
 };
