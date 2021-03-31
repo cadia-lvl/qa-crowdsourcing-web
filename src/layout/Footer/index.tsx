@@ -1,11 +1,13 @@
 import React from "react";
 import { Outer } from "./styles";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { StoreState } from "../../reducers";
+import { logOutUser } from "../../actions";
 
 const Footer = () => {
 	const userType = useSelector((state: StoreState) => state.auth.type);
+	const dispatch = useDispatch();
 	const isAuth = !["guest", "loading"].includes(userType);
 	return (
 		<Outer>
@@ -26,7 +28,13 @@ const Footer = () => {
 			<span>
 				<Link to="/skilmalar">Skilmálar</Link>
 			</span>
-			{isAuth ? <span>Útskrá</span> : <span>Innskrá</span>}
+			{isAuth ? (
+				<span onClick={() => dispatch(logOutUser())}>Útskrá</span>
+			) : (
+				<span>
+					<Link to="/innskra">Innskrá</Link>
+				</span>
+			)}
 
 			<span>
 				<Link to="/um-okkur">Um okkur</Link>
