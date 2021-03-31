@@ -25,16 +25,21 @@ export const GamePage = () => {
 		dispatch(fetchScoreCard());
 	}, [state.currentRound]);
 
-	if (state.current === undefined) return <FlexLoader size={150} />;
 	return (
 		<RestrictedPage userTypes={["guest"]} fallbackUrl="/innskra">
-			<GameProgress />
-			<WriteQuestionGame />
-			<SubmitArticleGame />
-			<VerifyAnswerLocationGame />
-			<QuestionQualityAssuranceGame />
-			<VerifyAnswerSpanGame />
-			<RoundCompletedGame />
+			{state.current === undefined ? (
+				<FlexLoader size={150} />
+			) : (
+				<React.Fragment>
+					<GameProgress />
+					<WriteQuestionGame />
+					<SubmitArticleGame />
+					<VerifyAnswerLocationGame />
+					<QuestionQualityAssuranceGame />
+					<VerifyAnswerSpanGame />
+					<RoundCompletedGame />
+				</React.Fragment>
+			)}
 		</RestrictedPage>
 	);
 };
