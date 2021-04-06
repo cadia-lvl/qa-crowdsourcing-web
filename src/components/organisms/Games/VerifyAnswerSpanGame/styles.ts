@@ -11,5 +11,5 @@ export const ButtonContainer = styled.div`
 `;
 
 export const TextPromptWrapper = styled.div`
-	margin: 75px 0 75px 0;
+	margin: 30px 0 30px 0;
 `;

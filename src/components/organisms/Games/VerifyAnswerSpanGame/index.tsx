@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { GameTypes } from "../../../../declerations";
 import { GameWrapper } from "../../../../hoc";
 import { StoreState } from "../../../../reducers";
-import { SpanSelector } from "../GameUtils";
+import { SpanSelector, TaskInfoBox } from "../GameUtils";
 import {
 	archiveAnswer,
 	clearIndexRangeInParagraph,
@@ -46,23 +46,25 @@ export const VerifyAnswerSpanGame = () => {
 
 	return (
 		<GameWrapper type={GameTypes.verifyAnswerSpan}>
-			<SpanSelector
-				{...state.verifyAnswerLocation}
-				firstWord={isYesOrNo ? -1 : firstWord}
-				lastWord={isYesOrNo ? -1 : lastWord}
-				question={text}
-				onClearRange={(word) =>
-					dispatch(clearIndexRangeInParagraph(word))
-				}
-				onFirstWordChange={(index) =>
-					dispatch(selectFirstWordIndexInParagraph(index))
-				}
-				onLastWordChange={(index) =>
-					dispatch(selectSecondWordIndexInParagraph(index))
-				}
-				hideAnswer
-				immutable
-			/>
+			<TaskInfoBox title="Yfirferð á spurningu og svari frá öðrum notendum">
+				<SpanSelector
+					{...state.verifyAnswerLocation}
+					firstWord={isYesOrNo ? -1 : firstWord}
+					lastWord={isYesOrNo ? -1 : lastWord}
+					question={text}
+					onClearRange={(word) =>
+						dispatch(clearIndexRangeInParagraph(word))
+					}
+					onFirstWordChange={(index) =>
+						dispatch(selectFirstWordIndexInParagraph(index))
+					}
+					onLastWordChange={(index) =>
+						dispatch(selectSecondWordIndexInParagraph(index))
+					}
+					hideAnswer
+					immutable
+				/>
+			</TaskInfoBox>
 			<TextPromptWrapper>
 				{isYesOrNo ? (
 					<TextPrompt>
