@@ -68,11 +68,11 @@ export const VerifyAnswerSpanGame = () => {
 			<TextPromptWrapper>
 				{isYesOrNo ? (
 					<TextPrompt>
-						Þetta er <i>JÁ/NEI</i>. Ef efnisgreinin svarar
-						spurningunni með <i>JÁ</i> eða <i>NEI</i> þá segjum
-						við að efnisgreinin innihaldi svarið. Ef þessi
-						efnisgrein inniheldur ekki svarið við spurningunni,
-						smelltu þá á rauða takkann.
+						Þetta er <i>JÁ/NEI</i> spurning. Ef efnisgreinin
+						svarar spurningunni með <i>JÁ</i> eða <i>NEI</i> þá
+						segjum við að efnisgreinin innihaldi svarið. Ef
+						þessi efnisgrein inniheldur ekki svarið við
+						spurningunni, smelltu þá á rauða takkann.
 					</TextPrompt>
 				) : (
 					<TextPrompt>
