@@ -45,7 +45,7 @@ export const SpanSelector = ({
 
 	const getAnswer = () => {
 		if (selectionState == "select-first")
-			return "Smelltu a textann fyrir ofan til ad velja svarid";
+			return "Smelltu á textann fyrir til þess að velja svarið";
 		else if (selectionState == "select-last")
 			return paragraph.split(" ")[firstWord!] + "...";
 		return ` „${paragraph

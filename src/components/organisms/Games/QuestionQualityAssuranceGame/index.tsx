@@ -4,7 +4,7 @@ import { submitVerifyQuestion } from "../../../../actions";
 import { GameTypes } from "../../../../declerations";
 import { GameWrapper } from "../../../../hoc";
 import { StoreState } from "../../../../reducers";
-import { CheckListItem, ReviewCheckList } from "../GameUtils";
+import { CheckListItem, ReviewCheckList, TaskInfoBox } from "../GameUtils";
 import checkList, { QAquestionItems } from "./checkList";
 
 export const QuestionQualityAssuranceGame = () => {
@@ -34,13 +34,15 @@ export const QuestionQualityAssuranceGame = () => {
 	};
 	return (
 		<GameWrapper type={GameTypes.questionQualityAssurance}>
-			<ReviewCheckList<QAquestionItems>
-				items={getCheckListItems()}
-				_key={_id}
-				title={text}
-				onBadAnswer={() => handleDispatch(false)}
-				onComplete={() => handleDispatch(true)}
-			/>
+			<TaskInfoBox title="Yfirferð á spurningu frá öðrum notanda">
+				<ReviewCheckList<QAquestionItems>
+					items={getCheckListItems()}
+					_key={_id}
+					title={text}
+					onBadAnswer={() => handleDispatch(false)}
+					onComplete={() => handleDispatch(true)}
+				/>
+			</TaskInfoBox>
 		</GameWrapper>
 	);
 };

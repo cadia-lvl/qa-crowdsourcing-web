@@ -11,7 +11,10 @@ import {
 	QuestionInput,
 	ButtonContainer,
 	ErrorLabel,
+	IdeaBoxInner,
+	IdeaBoxOuter,
 } from "./styles";
+import { TaskInfoBox } from "../GameUtils";
 
 export const WriteQuestionGame = () => {
 	const state = useSelector((state: StoreState) => state);
@@ -66,17 +69,15 @@ export const WriteQuestionGame = () => {
 	return (
 		<GameWrapper type={GameTypes.writeQuestion}>
 			<TextPrompt>{getPrompt()}</TextPrompt>
-			<div>
-				{ideaWords.map((word) => (
-					<TextTag key={word}>{word}</TextTag>
-				))}
-			</div>
-			<Paragraph>
-				{" "}
-				Án efa geta orðin hér að ofan nýst þér sem innblástur. Ef
-				þér dettur í hug spurning um tengda einstaklinga, atburði,
-				örnefni, hugtök eða álíka þá er það í lagi.
-			</Paragraph>
+			<IdeaBoxOuter>
+				<TaskInfoBox title="Hugmyndakassi">
+					<IdeaBoxInner>
+						{ideaWords.map((word) => (
+							<TextTag key={word}>{word}</TextTag>
+						))}
+					</IdeaBoxInner>
+				</TaskInfoBox>
+			</IdeaBoxOuter>
 			<InputContainer>
 				<QuestionInput
 					type="text"
