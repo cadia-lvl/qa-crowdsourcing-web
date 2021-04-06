@@ -14,6 +14,7 @@ import {
 	markQuestionAsImpossible,
 	writeArticleSearchQuery,
 } from "../../../../actions";
+import { TaskInfoBox } from "../GameUtils";
 
 export const SubmitArticleGame = () => {
 	const [highlightWords, setHighlightWords] = useState<string[]>([]);
@@ -53,19 +54,21 @@ export const SubmitArticleGame = () => {
 
 	return (
 		<GameWrapper type={GameTypes.submitArticle}>
-			<TextPrompt>{text}</TextPrompt>
+			<TaskInfoBox title="Nota leitarvél til þess að finna grein með svari við spurningunni">
+				<TextPrompt>{text}</TextPrompt>
+				<Paragraph>
+					Væri ekki gaman ef við gætum fundið svarið við þessari
+					spurningu? Sláðu inn leitarstreng hér fyrir neðan og
+					athugum hvort við getum ekki fundið svarið á
+					veraldarvefnum.
+				</Paragraph>
+				<Paragraph>
+					Oft er gott að notast við nafnorð og sérnöfn í
+					leitarstrengjum.
+				</Paragraph>
+			</TaskInfoBox>
 			{hasPreview ? null : (
 				<React.Fragment>
-					<Paragraph>
-						Væri ekki gaman ef við gætum fundið svarið við
-						þessari spurningu? Sláðu inn leitarstreng hér fyrir
-						neðan og athugum hvort við getum ekki fundið svarið
-						á veraldarvefnum.
-					</Paragraph>
-					<Paragraph>
-						Oft er gott að notast við nafnorð og sérnöfn í
-						leitarstrengjum.
-					</Paragraph>
 					{highlightWords.map((word, i) => (
 						<TextTag key={`${word}-${i}`}>{word}</TextTag>
 					))}
