@@ -14,4 +14,5 @@ export const WordBox = styled.div`
 	-moz-user-select: none; /* Firefox */
 	-ms-user-select: none; /* IE10+/Edge */
 	user-select: none; /* Standard */
+	margin-bottom: 15px;
 `;

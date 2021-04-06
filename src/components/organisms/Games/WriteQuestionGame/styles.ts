@@ -48,3 +48,11 @@ export const ButtonContainer = styled.div`
 		opacity: 1;
 	}
 `;
+
+export const IdeaBoxInner = styled.div`
+	margin-top: 20px;
+`;
+
+export const IdeaBoxOuter = styled.div`
+	display: flex;
+`;
