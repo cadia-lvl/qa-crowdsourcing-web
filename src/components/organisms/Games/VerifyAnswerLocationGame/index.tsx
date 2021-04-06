@@ -11,7 +11,7 @@ import {
 import { GameTypes } from "../../../../declerations";
 import { GameWrapper } from "../../../../hoc";
 import { StoreState } from "../../../../reducers";
-import { SpanSelector } from "../GameUtils";
+import { SpanSelector, TaskInfoBox } from "../GameUtils";
 import { ButtonContainer } from "./styles";
 
 export const VerifyAnswerLocationGame = () => {
@@ -30,43 +30,45 @@ export const VerifyAnswerLocationGame = () => {
 
 	return (
 		<GameWrapper type={GameTypes.verifyAnswerLocation}>
-			<SpanSelector
-				{...state.verifyAnswerLocation}
-				question={text}
-				onClearRange={(word) =>
-					dispatch(clearIndexRangeInParagraph(word))
-				}
-				onFirstWordChange={(index) =>
-					dispatch(selectFirstWordIndexInParagraph(index))
-				}
-				onLastWordChange={(index) =>
-					dispatch(selectSecondWordIndexInParagraph(index))
-				}
-			/>
-			<ButtonContainer>
-				<BaseButton
-					label="Svarið er ekki í þessari efnisgrein"
-					type="danger"
-					onClick={() =>
-						dispatch(archiveAnswer(gameRoundId, answerId))
+			<TaskInfoBox title="Finna svar í grein sem notandi hefur sent inn">
+				<SpanSelector
+					{...state.verifyAnswerLocation}
+					question={text}
+					onClearRange={(word) =>
+						dispatch(clearIndexRangeInParagraph(word))
+					}
+					onFirstWordChange={(index) =>
+						dispatch(selectFirstWordIndexInParagraph(index))
+					}
+					onLastWordChange={(index) =>
+						dispatch(selectSecondWordIndexInParagraph(index))
 					}
 				/>
-				<BaseButton
-					label="Staðfesta svar"
-					onClick={() =>
-						dispatch(
-							submitSpan(
-								gameRoundId,
-								answerId,
-								firstWord ?? -1,
-								lastWord ?? -1
+				<ButtonContainer>
+					<BaseButton
+						label="Svarið er ekki í þessari efnisgrein"
+						type="danger"
+						onClick={() =>
+							dispatch(archiveAnswer(gameRoundId, answerId))
+						}
+					/>
+					<BaseButton
+						label="Staðfesta svar"
+						onClick={() =>
+							dispatch(
+								submitSpan(
+									gameRoundId,
+									answerId,
+									firstWord ?? -1,
+									lastWord ?? -1
+								)
 							)
-						)
-					}
-					type="highlight"
-					isInactive={!canUserProceed}
-				/>
-			</ButtonContainer>
+						}
+						type="highlight"
+						isInactive={!canUserProceed}
+					/>
+				</ButtonContainer>
+			</TaskInfoBox>
 		</GameWrapper>
 	);
 };
