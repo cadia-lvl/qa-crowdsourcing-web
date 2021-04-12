@@ -5,4 +5,5 @@ export interface GameState {
 	currentRound: number;
 	totalRounds: number;
 	_id: string;
+	isLoading: boolean;
 }

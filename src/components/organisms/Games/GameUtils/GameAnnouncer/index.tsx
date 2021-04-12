@@ -10,6 +10,7 @@ import {
 	BaseButton,
 } from "../../../../";
 import { IProps } from "./interface";
+import { getPrevText, getCurrText, LOADING_TIMER } from "./utils";
 
 export const GameAnnouncer = ({ children }: IProps) => {
 	/**
@@ -33,17 +34,45 @@ export const GameAnnouncer = ({ children }: IProps) => {
 		undefined
 	);
 
+	const announceCurrGame = currGame !== undefined;
+	// makes sure both are defined
+	const announcePrevGame = !(
+		prevGame == undefined || currGame == undefined
+	);
+
 	const state = useSelector((state: StoreState) => state.game);
 
+	/**
+	 * If the state in REDUX has changed
+	 * then we set the current game as currGame
+	 * in local state
+	 */
 	useEffect(() => {
 		if (state.current) {
 			setCurrGame(state.current);
 		}
-	}, [state.current, prevGame]);
+	}, [state.current]);
 
+	/**
+	 * Hook clears the current state when previous
+	 * state is set to a value
+	 */
 	useEffect(() => {
-		setCurrGame(undefined);
+		if (prevGame !== undefined) setCurrGame(undefined);
 	}, [prevGame]);
+
+	/**
+	 * If we are announcing the previous state
+	 * then we clear that state with a timeout
+	 */
+	useEffect(() => {
+		if (announcePrevGame) {
+			const timeout = setTimeout(() => {
+				setPrevGame(undefined);
+			}, LOADING_TIMER);
+			return () => clearTimeout(timeout);
+		}
+	}, [announcePrevGame]);
 
 	/**
 	 * Sets the prev game as undefined
@@ -55,13 +84,6 @@ export const GameAnnouncer = ({ children }: IProps) => {
 	const handleOpenTask = () => {
 		setPrevGame(currGame);
 	};
-
-	const announceCurrGame = currGame !== undefined;
-	// makes sure both are defined
-	const announcePrevGame = !(
-		prevGame == undefined || currGame == undefined
-	);
-
 	if (announcePrevGame)
 		return (
 			<WhiteFlexCard>
@@ -70,7 +92,7 @@ export const GameAnnouncer = ({ children }: IProps) => {
 						<FlexLoader size={40} />
 					</LoadingContainer>
 
-					<TextPrompt>Sendi inn spurningu..</TextPrompt>
+					<TextPrompt>{getPrevText(prevGame)}</TextPrompt>
 				</Inner>
 			</WhiteFlexCard>
 		);
@@ -81,9 +103,7 @@ export const GameAnnouncer = ({ children }: IProps) => {
 					<TextPrompt>
 						<i>NÆSTA VERKEFNI</i>
 					</TextPrompt>
-					<TextPrompt>
-						Finna svar í grein frá öðrum notenda
-					</TextPrompt>
+					<TextPrompt>{getCurrText(currGame)}</TextPrompt>
 					<BaseButton
 						label="Áfram"
 						onClick={handleOpenTask}

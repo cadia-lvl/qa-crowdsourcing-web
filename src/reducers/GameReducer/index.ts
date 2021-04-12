@@ -6,6 +6,7 @@ export const initialState: GameState = {
 	currentRound: 0,
 	totalRounds: 10,
 	_id: "",
+	isLoading: false,
 };
 
 const reducer = (
