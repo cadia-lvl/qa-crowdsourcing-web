@@ -56,6 +56,12 @@ const reducer = (
 				current: GameTypes.completed,
 			};
 		}
+		case ActionTypes.setGameLoadingState: {
+			return {
+				...state,
+				isLoading: action.payload,
+			};
+		}
 		default:
 			return state;
 	}

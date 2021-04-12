@@ -27,6 +27,7 @@ export enum ActionTypes {
 	completeRound,
 	fetchScoreCard,
 	fetchAnswersPerDay,
+	setGameLoadingState,
 }
 
 export type Actions =
@@ -50,4 +51,5 @@ export type Actions =
 	| GameActions.LocateSpanRoundFromAPIAction
 	| GameActions.VerifySpanRoundFromAPIAction
 	| GameActions.CompleteRoundFromAPIAction
+	| GameActions.SetGameLoadingStateAction
 	| ChartDataActions.FetchAnswersPerDayAction;

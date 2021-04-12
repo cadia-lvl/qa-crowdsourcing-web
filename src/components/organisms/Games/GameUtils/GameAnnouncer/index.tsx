@@ -34,13 +34,13 @@ export const GameAnnouncer = ({ children }: IProps) => {
 		undefined
 	);
 
+	const state = useSelector((state: StoreState) => state.game);
+
 	const announceCurrGame = currGame !== undefined;
 	// makes sure both are defined
-	const announcePrevGame = !(
-		prevGame == undefined || currGame == undefined
-	);
-
-	const state = useSelector((state: StoreState) => state.game);
+	const announcePrevGame =
+		!(prevGame === undefined || currGame === undefined) ||
+		state.isLoading;
 
 	/**
 	 * If the state in REDUX has changed
@@ -66,13 +66,14 @@ export const GameAnnouncer = ({ children }: IProps) => {
 	 * then we clear that state with a timeout
 	 */
 	useEffect(() => {
-		if (announcePrevGame) {
+		// do not show next screen if is loading
+		if (announcePrevGame && !state.isLoading) {
 			const timeout = setTimeout(() => {
 				setPrevGame(undefined);
 			}, LOADING_TIMER);
 			return () => clearTimeout(timeout);
 		}
-	}, [announcePrevGame]);
+	}, [announcePrevGame, state.isLoading]);
 
 	/**
 	 * Sets the prev game as undefined

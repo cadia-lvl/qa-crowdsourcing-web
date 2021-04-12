@@ -40,3 +40,8 @@ export interface SetCurrentGameRoundAction {
 export interface CompleteRoundFromAPIAction {
 	type: ActionTypes.completeRound;
 }
+
+export interface SetGameLoadingStateAction {
+	type: ActionTypes.setGameLoadingState;
+	payload: boolean;
+}
