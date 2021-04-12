@@ -51,6 +51,7 @@ export const GlobalStyle = createGlobalStyle`
         border: 1px #bbb solid;
         border-radius: 3px;
         transition: 0.3s;
+        background-color: #fff;
         :focus {
             outline: none;
             border: 1px ${Colors.HIGHLIGHT} solid;
