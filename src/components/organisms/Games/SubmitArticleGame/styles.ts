@@ -13,12 +13,20 @@ export const Paragraph = styled.p`
 `;
 
 export const SearchBoxContainer = styled.div`
-	width: 800px;
+	margin: 0 auto;
+	border-radius: 5px;
+	box-sizing: border-box;
+	width: 600px;
+	height: 200px;
 	margin-top: 35px;
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
+	align-items: center;
 	input {
-		width: 100%;
+		width: 450px;
+	}
+	img {
+		margin-bottom: 30px;
 	}
 	button {
 		width: 100px;

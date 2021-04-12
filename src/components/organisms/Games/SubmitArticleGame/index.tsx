@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { TextPrompt, TextTag, TextInput, FilledAlert } from "../../../";
-import { SubmitButton } from "../../../atoms";
+import {
+	TextPrompt,
+	TextTag,
+	GoogleTextInput,
+	FilledAlert,
+} from "../../../";
+import { GOOGLE_LOGO } from "../../../../static";
 import { Paragraph, SearchBoxContainer, AlertContainer } from "./styles";
 import ArticlePreview from "./ArticlePreview";
 import { useDispatch, useSelector } from "react-redux";
@@ -57,35 +62,30 @@ export const SubmitArticleGame = () => {
 			<TaskInfoBox title="Nota leitarvél til þess að finna grein með svari við spurningunni">
 				<TextPrompt>{text}</TextPrompt>
 				<Paragraph>
-					Væri ekki gaman ef við gætum fundið svarið við þessari
-					spurningu? Sláðu inn leitarstreng hér fyrir neðan og
-					athugum hvort við getum ekki fundið svarið á
-					veraldarvefnum.
+					Væri ekki gaman ef þú gætum fundið svarið við þessari
+					spurningu? Notaðu Google leitarvélina hér fyrir neðan
+					til þess að finna greinar á vefnum sem svara
+					spurningunni.
 				</Paragraph>
 				<Paragraph>
-					Oft er gott að notast við nafnorð og sérnöfn í
-					leitarstrengjum.
+					Niðurstöðurnar birtast hér fyrir neðan. Notaðu sama
+					leitarstreng og þú myndir nota á www.google.is
 				</Paragraph>
+				<SearchBoxContainer>
+					<img src={GOOGLE_LOGO} />
+					<GoogleTextInput
+						value={query}
+						onChange={(text) =>
+							dispatch(writeArticleSearchQuery(text))
+						}
+					/>
+				</SearchBoxContainer>
 			</TaskInfoBox>
 			{hasPreview ? null : (
 				<React.Fragment>
 					{highlightWords.map((word, i) => (
 						<TextTag key={`${word}-${i}`}>{word}</TextTag>
 					))}
-					<SearchBoxContainer>
-						<TextInput
-							value={query}
-							onChange={(text) =>
-								dispatch(writeArticleSearchQuery(text))
-							}
-						/>
-						<SubmitButton
-							label="Leita"
-							onClick={() => dispatch(fetchArticlesQuery())}
-							inactive={false}
-							invertColorScheme={true}
-						/>
-					</SearchBoxContainer>
 					<Paragraph>
 						Smelltu á grein til þess að sjá hvort svarið
 						leynist þar. Ef ekkert svar er að finna nein staðar
