@@ -6,6 +6,10 @@ export const Paragraph = styled.p`
 	width: 800px;
 	color: ${Colors.SUB_HEADING_COLOR};
 	margin-bottom: 20px;
+
+	@media only screen and (max-width: 1300px) {
+		font-size: 16px;
+	}
 `;
 
 export const SearchBoxContainer = styled.div`

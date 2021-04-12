@@ -28,7 +28,12 @@ export const GlobalStyle = createGlobalStyle`
         line-height: 1.5;
         margin-top: 15px;
         font-size: 18px;
-        color: ${Colors.PARAGRAPH_TEXT_COLOR}
+        color: ${Colors.PARAGRAPH_TEXT_COLOR};
+
+        @media only screen and (max-width: 1300px) {
+            font-size: 16px;
+        }
+        
     }
 
     label {
@@ -50,6 +55,12 @@ export const GlobalStyle = createGlobalStyle`
             outline: none;
             border: 1px ${Colors.HIGHLIGHT} solid;
         }
+
+        @media only screen and (max-width: 1300px) {
+            font-size: 16px;
+        }
+
+        
     }
 
     a {

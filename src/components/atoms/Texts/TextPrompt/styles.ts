@@ -15,4 +15,9 @@ export const Prompt = styled.h2`
 		font-family: "Merriweather", serif;
 		color: ${Colors.HIGHLIGHT};
 	}
+
+	@media only screen and (max-width: 1300px) {
+		font-size: 28px;
+		margin-bottom: 25px;
+	}
 `;

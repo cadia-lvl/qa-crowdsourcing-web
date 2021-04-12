@@ -9,6 +9,10 @@ export const Outer = styled.div`
 			padding-right: 2px;
 			padding-left: 2px;
 		}
+
+		@media only screen and (max-width: 1300px) {
+			font-size: 21px;
+		}
 	}
 `;
 

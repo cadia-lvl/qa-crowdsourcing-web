@@ -8,6 +8,9 @@ export const Outer = styled.div`
 	flex-direction: row;
 	position: relative;
 	margin-bottom: 100px;
+	@media only screen and (max-width: 1300px) {
+		margin-bottom: 35px;
+	}
 `;
 
 export const IconContainer = styled.div`
