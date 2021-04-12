@@ -28,6 +28,12 @@ const reducer = (
 				firstWord: action.payload,
 			};
 		case ActionTypes.selectSecondWordIndexInParagraph:
+			if (action.payload < (state.firstWord ?? 0))
+				return {
+					...state,
+					firstWord: undefined,
+					lastWord: undefined,
+				};
 			return {
 				...state,
 				lastWord: action.payload,
