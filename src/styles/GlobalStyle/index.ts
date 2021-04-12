@@ -47,7 +47,7 @@ export const GlobalStyle = createGlobalStyle`
         border: none;
         padding: 10px 5px;
         box-sizing: border-box;
-        background-color: ${Colors.FG_WHITE};
+        background-color: $fff;
         border: 1px #bbb solid;
         border-radius: 3px;
         transition: 0.3s;

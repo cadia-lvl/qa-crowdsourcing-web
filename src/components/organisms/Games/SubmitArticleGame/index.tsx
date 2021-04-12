@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { FormEvent, useEffect, useState } from "react";
 import {
 	TextPrompt,
 	TextTag,
@@ -6,7 +6,7 @@ import {
 	FilledAlert,
 } from "../../../";
 import { GOOGLE_LOGO } from "../../../../static";
-import { Paragraph, SearchBoxContainer, AlertContainer } from "./styles";
+import { Paragraph, SearchForm, AlertContainer } from "./styles";
 import ArticlePreview from "./ArticlePreview";
 import { useDispatch, useSelector } from "react-redux";
 import { StoreState } from "../../../../reducers";
@@ -57,6 +57,11 @@ export const SubmitArticleGame = () => {
 		</AlertContainer>
 	);
 
+	const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+		e.preventDefault();
+		dispatch(fetchArticlesQuery());
+	};
+
 	return (
 		<GameWrapper type={GameTypes.submitArticle}>
 			<TaskInfoBox title="Nota leitarvél til þess að finna grein með svari við spurningunni">
@@ -71,7 +76,7 @@ export const SubmitArticleGame = () => {
 					Niðurstöðurnar birtast hér fyrir neðan. Notaðu sama
 					leitarstreng og þú myndir nota á www.google.is
 				</Paragraph>
-				<SearchBoxContainer>
+				<SearchForm onSubmit={handleSubmit}>
 					<img src={GOOGLE_LOGO} />
 					<GoogleTextInput
 						value={query}
@@ -79,7 +84,8 @@ export const SubmitArticleGame = () => {
 							dispatch(writeArticleSearchQuery(text))
 						}
 					/>
-				</SearchBoxContainer>
+					<input type="submit" value="Google leit" />
+				</SearchForm>
 			</TaskInfoBox>
 			{hasPreview ? null : (
 				<React.Fragment>
