@@ -44,4 +44,5 @@ export const PlayButton = styled.div`
 		background-color: ${Colors.DANGER_BG};
 		box-shadow: none;
 	}
+	margin-left: 30px;
 `;

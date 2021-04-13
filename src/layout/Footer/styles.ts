@@ -15,9 +15,15 @@ export const Outer = styled.footer`
 	}
 	span {
 		cursor: pointer;
-		padding: 20px;
+		padding: 20px 20px 35px 20px;
 		:first-child {
 			padding-left: 0;
 		}
 	}
+`;
+
+export const LogoImg = styled.img`
+	height: 70px;
+	width: 70px;
+	margin-bottom: 10px;
 `;

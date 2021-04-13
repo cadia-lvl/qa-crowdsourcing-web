@@ -1,9 +1,10 @@
 import React from "react";
-import { Outer } from "./styles";
+import { Outer, LogoImg } from "./styles";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { StoreState } from "../../reducers";
 import { logOutUser } from "../../actions";
+import { RU_LOGO } from "../../static";
 
 const Footer = () => {
 	const userType = useSelector((state: StoreState) => state.auth.type);
@@ -11,6 +12,9 @@ const Footer = () => {
 	const isAuth = !["guest", "loading"].includes(userType);
 	return (
 		<Outer>
+			<a target="_blank" href="https://www.ru.is">
+				<LogoImg src={RU_LOGO} />
+			</a>
 			<span>
 				<Link to="/">Heim</Link>
 			</span>
