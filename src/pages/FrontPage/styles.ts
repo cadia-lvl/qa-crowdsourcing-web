@@ -6,12 +6,6 @@ export const Outer = styled.div`
 	flex-direction: column;
 `;
 
-export const ChartContainer = styled.div`
-	width: 100%;
-	height: 300px;
-	margin-top: 55px;
-`;
-
 export const Inner = styled.div`
 	display: flex;
 	flex-direction: row;
@@ -73,4 +67,8 @@ export const FormContainer = styled.div`
 export const SignInLinkContainer = styled.div`
 	margin-top: 15px;
 	text-align: center;
+`;
+
+export const ChartContainer = styled.div`
+	margin-top: 120px;
 `;

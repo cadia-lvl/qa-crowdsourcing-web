@@ -12,6 +12,7 @@ export interface ScoreCard {
 	answerVerifications: number;
 	questionVerifications: number;
 	articles: number;
+	hiscoreRank: number;
 }
 
 export type UserType = "user" | "admin" | "loading" | "guest";
