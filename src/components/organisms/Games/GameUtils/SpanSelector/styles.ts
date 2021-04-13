@@ -20,8 +20,9 @@ export const Word = styled.span`
 	${(props) =>
 		props.theme.isSelected
 			? `
-            background-color: ${Colors.HIGHLIGHT};
-            color: ${Colors.FG_WHITE};`
+			color: ${Colors.HIGHLIGHT};
+			font-weight: bold;
+			`
 			: ""}
 	${(props) =>
 		props.theme.openRange
