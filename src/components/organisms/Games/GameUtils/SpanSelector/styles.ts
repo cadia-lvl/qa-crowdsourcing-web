@@ -32,3 +32,7 @@ export const Word = styled.span`
 			background: linear-gradient(90deg, rgba(137,80,252,1) 63%, rgba(0,212,255,0) 100%);             color: ${Colors.FG_WHITE};`
 			: ""}
 `;
+
+export const InstructionWrapper = styled.div`
+	${(props) => (props.theme.isDone ? `opacity: 0.3` : ``)};
+`;

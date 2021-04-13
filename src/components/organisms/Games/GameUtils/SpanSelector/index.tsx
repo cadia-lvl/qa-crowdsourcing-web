@@ -1,7 +1,7 @@
 import React from "react";
 import { TextPrompt } from "../../../..";
 import { IProps, SelectionStates } from "./interface";
-import { Outer, Word } from "./styles";
+import { Outer, Word, InstructionWrapper } from "./styles";
 
 export const SpanSelector = ({
 	paragraph,
@@ -42,6 +42,12 @@ export const SpanSelector = ({
 				return `Svarið endar á ${word}`;
 		}
 	};
+
+	const userInstructions = [
+		"Smella á fyrsta orðið sem myndar svarið",
+		"Smella á síðasta orðið sem myndar svarið",
+		"Staðfesta að svarið sé rétt",
+	];
 
 	const getStage = () => {
 		if (selectionState === "select-first") return 0;
@@ -91,6 +97,17 @@ export const SpanSelector = ({
 					<TextPrompt>
 						<i>Þú þarft að:</i>
 					</TextPrompt>
+					{userInstructions.map((instr, i) =>
+						i <= getStage() ? (
+							<InstructionWrapper
+								theme={{ isDone: getStage() > i }}
+							>
+								<TextPrompt>
+									<i>{`${i + 1}. `}</i> {instr}
+								</TextPrompt>
+							</InstructionWrapper>
+						) : null
+					)}
 				</div>
 			)}
 		</Outer>
