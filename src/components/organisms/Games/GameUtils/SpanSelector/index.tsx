@@ -9,7 +9,6 @@ export const SpanSelector = ({
 	firstWord,
 	lastWord,
 	immutable,
-	hideAnswer,
 	onFirstWordChange,
 	onLastWordChange,
 	onClearRange,
@@ -92,7 +91,7 @@ export const SpanSelector = ({
 					</React.Fragment>
 				))}
 			</p>
-			{hideAnswer ? null : (
+			{immutable ? null : (
 				<div>
 					<TextPrompt>
 						<i>Þú þarft að:</i>

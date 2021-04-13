@@ -53,7 +53,7 @@ export const VerifyAnswerSpanGame = () => {
 					lastWord={isYesOrNo ? -1 : lastWord}
 					question={text}
 					onClearRange={(word) =>
-						dispatch(clearIndexRangeInParagraph(word))
+						dispatch(clearIndexRangeInParagraph())
 					}
 					onFirstWordChange={(index) =>
 						dispatch(selectFirstWordIndexInParagraph(index))
@@ -61,7 +61,6 @@ export const VerifyAnswerSpanGame = () => {
 					onLastWordChange={(index) =>
 						dispatch(selectSecondWordIndexInParagraph(index))
 					}
-					hideAnswer
 					immutable
 				/>
 			</TaskInfoBox>

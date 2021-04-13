@@ -23,12 +23,9 @@ export const selectSecondWordIndexInParagraph = (
 	};
 };
 
-export const clearIndexRangeInParagraph = (
-	index: number
-): ClearIndexRangeInParagraph => {
+export const clearIndexRangeInParagraph = (): ClearIndexRangeInParagraph => {
 	return {
 		type: ActionTypes.clearIndexRangeInParagraph,
-		payload: index,
 	};
 };
 

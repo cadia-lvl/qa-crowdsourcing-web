@@ -3,7 +3,6 @@ export interface IProps {
 	lastWord?: number;
 	paragraph: string;
 	question: string;
-	hideAnswer?: boolean;
 	immutable?: boolean;
 	onFirstWordChange: (index: number) => void;
 	onLastWordChange: (index: number) => void;
