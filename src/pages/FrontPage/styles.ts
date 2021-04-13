@@ -36,12 +36,6 @@ export const TextBoxPara = styled.p`
 	}
 `;
 
-export const TextBoxTitle = styled.span`
-	font-size: 32px;
-	font-weight: 700;
-	color: ${Colors.HIGHLIGHT};
-`;
-
 export const LogInBoxContainer = styled.div`
 	width: 450px;
 `;

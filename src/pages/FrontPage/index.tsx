@@ -3,7 +3,6 @@ import {
 	Outer,
 	TextBoxContainer,
 	LogInBoxContainer,
-	TextBoxTitle,
 	TextBoxPara,
 	StatsCardInner,
 	TopLine,
@@ -52,7 +51,7 @@ export const FrontPage = () => {
 		<Outer>
 			<Inner>
 				<TextBoxContainer>
-					<TextBoxTitle>Spurðu mig spurninga!</TextBoxTitle>
+					<h1>Spurðu mig spurninga!</h1>
 					<TextBoxPara>
 						Flest höfum við gaman af spurningjaleikjum. Hér
 						getur þú aflað þér allskyns þekkingar og um leið

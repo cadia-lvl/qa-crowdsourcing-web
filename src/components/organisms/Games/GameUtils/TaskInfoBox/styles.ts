@@ -7,6 +7,7 @@ export const Outer = styled.div`
 	border-radius: 5px;
 	box-sizing: border-box;
 	box-shadow: 0px 0px 20px rgba(${Colors.HIGHLIGHT_RGB}, 0.15);
+	transition: 0.3s;
 `;
 
 export const TitleContainer = styled.p`

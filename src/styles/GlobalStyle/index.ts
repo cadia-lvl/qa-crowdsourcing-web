@@ -36,6 +36,10 @@ export const GlobalStyle = createGlobalStyle`
         
     }
 
+    h1 {
+        color: ${Colors.HIGHLIGHT}
+    }
+
     label {
         color: ${Colors.SUB_HEADING_COLOR};
         margin-bottom: 5px;
