@@ -70,14 +70,23 @@ const __handleUpdateTask = (data: TaskFromBackend) => {
 };
 
 export const fetchCurrentGameRound = () => {
-	return async function (_dispatch: Dispatch) {
+	return async function (dispatch: Dispatch) {
 		try {
+			dispatch<SetGameLoadingStateAction>({
+				type: ActionTypes.setGameLoadingState,
+				payload: true,
+			});
 			const { data } = await Api.get<TaskFromBackend>(
 				"/api/v1/game_rounds/current"
 			);
 			__handleUpdateTask(data);
 		} catch (error) {
 			//
+		} finally {
+			dispatch<SetGameLoadingStateAction>({
+				type: ActionTypes.setGameLoadingState,
+				payload: false,
+			});
 		}
 	};
 };

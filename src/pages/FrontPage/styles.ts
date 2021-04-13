@@ -66,3 +66,8 @@ export const Light = styled.span`
 	font-weight: 300;
 	font-size: 26px;
 `;
+
+export const ButtonContainer = styled.div`
+	margin-top: 35px;
+	width: 300px;
+`;
