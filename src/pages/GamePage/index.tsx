@@ -9,6 +9,7 @@ import {
 	FlexLoader,
 	VerifyAnswerSpanGame,
 	RoundCompletedGame,
+	GameAnnouncer,
 } from "../../components";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCurrentGameRound, fetchScoreCard } from "../../actions";
@@ -27,19 +28,21 @@ export const GamePage = () => {
 
 	return (
 		<RestrictedPage userTypes={["guest"]} fallbackUrl="/innskra">
-			{state.current === undefined ? (
-				<FlexLoader size={150} />
-			) : (
-				<React.Fragment>
-					<GameProgress />
-					<WriteQuestionGame />
-					<SubmitArticleGame />
-					<VerifyAnswerLocationGame />
-					<QuestionQualityAssuranceGame />
-					<VerifyAnswerSpanGame />
-					<RoundCompletedGame />
-				</React.Fragment>
-			)}
+			<GameAnnouncer>
+				{state.current === undefined ? (
+					<FlexLoader size={150} />
+				) : (
+					<React.Fragment>
+						<GameProgress />
+						<WriteQuestionGame />
+						<SubmitArticleGame />
+						<VerifyAnswerLocationGame />
+						<QuestionQualityAssuranceGame />
+						<VerifyAnswerSpanGame />
+						<RoundCompletedGame />
+					</React.Fragment>
+				)}
+			</GameAnnouncer>
 		</RestrictedPage>
 	);
 };

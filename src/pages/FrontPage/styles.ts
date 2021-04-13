@@ -36,12 +36,6 @@ export const TextBoxPara = styled.p`
 	}
 `;
 
-export const TextBoxTitle = styled.span`
-	font-size: 32px;
-	font-weight: 700;
-	color: ${Colors.HIGHLIGHT};
-`;
-
 export const LogInBoxContainer = styled.div`
 	width: 450px;
 `;
@@ -65,4 +59,18 @@ export const Thick = styled.span`
 export const Light = styled.span`
 	font-weight: 300;
 	font-size: 26px;
+`;
+
+export const ButtonContainer = styled.div`
+	margin-top: 35px;
+	width: 300px;
+`;
+
+export const FormContainer = styled.div`
+	width: 100%;
+`;
+
+export const SignInLinkContainer = styled.div`
+	margin-top: 15px;
+	text-align: center;
 `;

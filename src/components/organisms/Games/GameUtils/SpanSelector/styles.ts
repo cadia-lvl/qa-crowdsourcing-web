@@ -9,6 +9,10 @@ export const Outer = styled.div`
 			padding-right: 2px;
 			padding-left: 2px;
 		}
+
+		@media only screen and (max-width: 1300px) {
+			font-size: 21px;
+		}
 	}
 `;
 
@@ -16,8 +20,9 @@ export const Word = styled.span`
 	${(props) =>
 		props.theme.isSelected
 			? `
-            background-color: ${Colors.HIGHLIGHT};
-            color: ${Colors.FG_WHITE};`
+			color: ${Colors.HIGHLIGHT};
+			font-weight: bold;
+			`
 			: ""}
 	${(props) =>
 		props.theme.openRange
@@ -26,4 +31,8 @@ export const Word = styled.span`
 			background: rgb(137,80,252);
 			background: linear-gradient(90deg, rgba(137,80,252,1) 63%, rgba(0,212,255,0) 100%);             color: ${Colors.FG_WHITE};`
 			: ""}
+`;
+
+export const InstructionWrapper = styled.div`
+	${(props) => (props.theme.isDone ? `opacity: 0.3` : ``)};
 `;

@@ -28,7 +28,16 @@ export const GlobalStyle = createGlobalStyle`
         line-height: 1.5;
         margin-top: 15px;
         font-size: 18px;
-        color: ${Colors.PARAGRAPH_TEXT_COLOR}
+        color: ${Colors.PARAGRAPH_TEXT_COLOR};
+
+        @media only screen and (max-width: 1300px) {
+            font-size: 16px;
+        }
+        
+    }
+
+    h1 {
+        color: ${Colors.HIGHLIGHT}
     }
 
     label {
@@ -42,14 +51,21 @@ export const GlobalStyle = createGlobalStyle`
         border: none;
         padding: 10px 5px;
         box-sizing: border-box;
-        background-color: ${Colors.FG_WHITE};
+        background-color: $fff;
         border: 1px #bbb solid;
         border-radius: 3px;
         transition: 0.3s;
+        background-color: #fff;
         :focus {
             outline: none;
             border: 1px ${Colors.HIGHLIGHT} solid;
         }
+
+        @media only screen and (max-width: 1300px) {
+            font-size: 16px;
+        }
+
+        
     }
 
     a {

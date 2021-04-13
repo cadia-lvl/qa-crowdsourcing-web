@@ -3,19 +3,22 @@ import {
 	Outer,
 	TextBoxContainer,
 	LogInBoxContainer,
-	TextBoxTitle,
 	TextBoxPara,
 	StatsCardInner,
 	TopLine,
 	Thick,
 	Light,
 	Inner,
+	ButtonContainer,
+	FormContainer,
+	SignInLinkContainer,
 } from "./styles";
-import { WhiteFlexCard, ScoreCard } from "../../components";
+import { WhiteFlexCard, ScoreCard, BaseButton } from "../../components";
 import { LoadForUserType } from "../../hoc";
 import { useSelector } from "react-redux";
 import { StoreState } from "../../reducers";
 import { SignUpForm } from "../../forms";
+import { NavLink } from "react-router-dom";
 
 export const FrontPage = () => {
 	const state = useSelector((state: StoreState) => state);
@@ -48,7 +51,7 @@ export const FrontPage = () => {
 		<Outer>
 			<Inner>
 				<TextBoxContainer>
-					<TextBoxTitle>Spurðu mig spurninga!</TextBoxTitle>
+					<h1>Spurðu mig spurninga!</h1>
 					<TextBoxPara>
 						Flest höfum við gaman af spurningjaleikjum. Hér
 						getur þú aflað þér allskyns þekkingar og um leið
@@ -67,13 +70,29 @@ export const FrontPage = () => {
 						markmiðið er að safna <i>100.000 spurningum</i>{" "}
 						árið 2021
 					</TextBoxPara>
+					<ButtonContainer>
+						<NavLink to="/spila">
+							<BaseButton
+								label="Áfram"
+								onClick={() => null}
+								type="success"
+							/>
+						</NavLink>
+					</ButtonContainer>
 				</TextBoxContainer>
 				<LogInBoxContainer>
 					<WhiteFlexCard>
 						<LoadForUserType
 							render={(userType) =>
 								userType === "guest" ? (
-									<SignUpForm />
+									<FormContainer>
+										<SignUpForm />
+										<SignInLinkContainer>
+											<NavLink to="/innskra">
+												Ég er með aðgang
+											</NavLink>
+										</SignInLinkContainer>
+									</FormContainer>
 								) : (
 									<StatsCardInner>
 										<TopLine>
@@ -82,9 +101,8 @@ export const FrontPage = () => {
 										</TopLine>
 										<TextBoxPara>
 											Velkomin/n{" "}
-											{state.auth.username}! and
-											going through the cites of the
-											word in classical literature
+											{state.auth.username}! Hér
+											sérðu yfirlit yfir framlag þitt
 										</TextBoxPara>
 										<ScoreCard />
 									</StatsCardInner>

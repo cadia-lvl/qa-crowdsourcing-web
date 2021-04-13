@@ -12,5 +12,4 @@ export interface SelectSecondWordIndexInParagraphAction {
 
 export interface ClearIndexRangeInParagraph {
 	type: ActionTypes.clearIndexRangeInParagraph;
-	payload: number;
 }

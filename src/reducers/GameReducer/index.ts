@@ -6,6 +6,7 @@ export const initialState: GameState = {
 	currentRound: 0,
 	totalRounds: 10,
 	_id: "",
+	isLoading: false,
 };
 
 const reducer = (
@@ -53,6 +54,12 @@ const reducer = (
 				...state,
 				currentRound: state.totalRounds,
 				current: GameTypes.completed,
+			};
+		}
+		case ActionTypes.setGameLoadingState: {
+			return {
+				...state,
+				isLoading: action.payload,
 			};
 		}
 		default:

@@ -9,6 +9,9 @@ export const Outer = styled.div`
 	box-sizing: border-box;
 	padding: 30px 0;
 	margin-bottom: 100px;
+	@media only screen and (max-width: 1300px) {
+		margin-bottom: 20px;
+	}
 `;
 
 export const HeaderItemContainer = styled.div`
@@ -41,4 +44,5 @@ export const PlayButton = styled.div`
 		background-color: ${Colors.DANGER_BG};
 		box-shadow: none;
 	}
+	margin-left: 30px;
 `;
