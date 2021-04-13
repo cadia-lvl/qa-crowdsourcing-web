@@ -71,3 +71,12 @@ export const ButtonContainer = styled.div`
 	margin-top: 35px;
 	width: 300px;
 `;
+
+export const FormContainer = styled.div`
+	width: 100%;
+`;
+
+export const SignInLinkContainer = styled.div`
+	margin-top: 15px;
+	text-align: center;
+`;

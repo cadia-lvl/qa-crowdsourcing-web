@@ -11,6 +11,8 @@ import {
 	Light,
 	Inner,
 	ButtonContainer,
+	FormContainer,
+	SignInLinkContainer,
 } from "./styles";
 import { WhiteFlexCard, ScoreCard, BaseButton } from "../../components";
 import { LoadForUserType } from "../../hoc";
@@ -84,7 +86,14 @@ export const FrontPage = () => {
 						<LoadForUserType
 							render={(userType) =>
 								userType === "guest" ? (
-									<SignUpForm />
+									<FormContainer>
+										<SignUpForm />
+										<SignInLinkContainer>
+											<NavLink to="/innskra">
+												Ég er með aðgang
+											</NavLink>
+										</SignInLinkContainer>
+									</FormContainer>
 								) : (
 									<StatsCardInner>
 										<TopLine>
