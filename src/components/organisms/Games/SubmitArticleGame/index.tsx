@@ -81,7 +81,7 @@ export const SubmitArticleGame = () => {
 					vefsíður sem kunna að innihalda svarið.
 				</Paragraph>
 				<SearchForm onSubmit={handleSubmit}>
-					<img src={GOOGLE_LOGO} />
+					<img src={GOOGLE_LOGO} alt="myndmerki google" />
 					<GoogleTextInput
 						value={query}
 						onChange={(text) =>
