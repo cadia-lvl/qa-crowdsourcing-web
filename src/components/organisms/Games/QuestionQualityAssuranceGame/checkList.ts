@@ -12,11 +12,11 @@ const checkList: CheckList<QAquestionItems> = {
 	title: "Review question quality",
 	items: [
 		{
-			question: "Fylgir spurningin stafsetningarreglum?",
+			question: "Er spurningin skrifuð á ágætis íslensku?",
 			expectedAnswer: "yes",
 			key: "grammar-correct",
-			correctAnswerPrompt: "Góð stafsetning!",
-			badAnswerPrompt: "Stafsetning er slæm",
+			correctAnswerPrompt: "Ágætis íslenska!",
+			badAnswerPrompt: "Málfarið er slæmt",
 		},
 		{
 			question: "Er spurningin óviðeigandi?",
@@ -29,7 +29,7 @@ const checkList: CheckList<QAquestionItems> = {
 			question: "Er spurningin ómöguleg eða ósvaranleg?",
 			expectedAnswer: "no",
 			key: "is-impossible",
-			correctAnswerPrompt: "Spurningin er ekki ómöguleg",
+			correctAnswerPrompt: "Spurningin er svaranleg",
 			badAnswerPrompt: "Spurningin er ómöguleg",
 		},
 		{
@@ -37,12 +37,11 @@ const checkList: CheckList<QAquestionItems> = {
 				"Væri mögulegt að svara spurningunni í nokkrum orðum?",
 			expectedAnswer: "yes",
 			key: "has-short-answer",
-			correctAnswerPrompt: "Spurningin er ekki of löng",
-			badAnswerPrompt: "Spurning er of löng",
+			correctAnswerPrompt: "Svarið væri ekki of langt",
+			badAnswerPrompt: "Svarið væri of langt",
 		},
 		{
-			question:
-				"Hefur spurningin mismunandi svör eftir því hvern þú spyrð?",
+			question: "Er svarið háð gildismati þess sem svarar henni?",
 			expectedAnswer: "no",
 			key: "is-opinionated",
 			correctAnswerPrompt:

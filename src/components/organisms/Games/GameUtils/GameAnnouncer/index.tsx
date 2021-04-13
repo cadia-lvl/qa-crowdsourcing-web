@@ -48,7 +48,7 @@ export const GameAnnouncer = ({ children }: IProps) => {
 	 * in local state
 	 */
 	useEffect(() => {
-		if (state.current) {
+		if (state.current !== undefined) {
 			setCurrGame(state.current);
 		}
 	}, [state.current]);

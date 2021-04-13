@@ -9,7 +9,6 @@ export const RestrictedPage = ({
 	children,
 	fallbackUrl,
 }: IProps) => {
-	console.log(4);
 	const state = useSelector((state: StoreState) => state.auth);
 	if (userTypes.includes(state.type))
 		return <Redirect to={fallbackUrl} />;
