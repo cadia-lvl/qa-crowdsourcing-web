@@ -12,6 +12,7 @@ export const initialState: AuthState = {
 		answerVerifications: 0,
 		questionVerifications: 0,
 		articles: 0,
+		hiscoreRank: -2,
 	},
 };
 

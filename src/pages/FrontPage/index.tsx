@@ -12,6 +12,7 @@ import {
 	ButtonContainer,
 	FormContainer,
 	SignInLinkContainer,
+	ChartContainer,
 } from "./styles";
 import { WhiteFlexCard, ScoreCard, BaseButton } from "../../components";
 import { LoadForUserType } from "../../hoc";
@@ -19,6 +20,9 @@ import { useSelector } from "react-redux";
 import { StoreState } from "../../reducers";
 import { SignUpForm } from "../../forms";
 import { NavLink } from "react-router-dom";
+import Charts, { Line } from "react-chartjs-2";
+import moment from "moment";
+import { Colors } from "../../styles";
 
 export const FrontPage = () => {
 	const state = useSelector((state: StoreState) => state);
@@ -36,17 +40,22 @@ export const FrontPage = () => {
 			return cumulatives[i].count;
 		}, 0);
 
-		return [
-			{
-				data: cumulatives.map((item) => ({
-					x: item.date,
-					y: item.count,
-				})),
-				label: "Fjöldi svara",
-			},
-		];
-	}, [state.chartData.answersPerDay.length]);
-
+		return {
+			datasets: [
+				{
+					label: "Fjöldi spurninga og svara",
+					backgroundColor: "rgba(27, 197, 189, 0.3)",
+					borderColor: Colors.SUCCESS,
+					pointBackgroundColor: "rgba(255, 255, 255, 1)",
+					data: cumulatives.map((item) => item.count),
+				},
+			],
+			labels: cumulatives.map((item) =>
+				moment(item.date).format("DD MM")
+			),
+		};
+	}, [state.chartData.answersPerDay]);
+	console.log(data);
 	return (
 		<Outer>
 			<Inner>
@@ -96,7 +105,13 @@ export const FrontPage = () => {
 								) : (
 									<StatsCardInner>
 										<TopLine>
-											<Thick>#23</Thick>
+											<Thick>
+												#
+												{
+													state.auth.scoreCard
+														.hiscoreRank
+												}
+											</Thick>
 											<Light>Á stigatöflunni</Light>
 										</TopLine>
 										<TextBoxPara>
@@ -112,6 +127,58 @@ export const FrontPage = () => {
 					</WhiteFlexCard>
 				</LogInBoxContainer>
 			</Inner>
+			<ChartContainer>
+				<WhiteFlexCard>
+					<Line
+						data={data}
+						// @ts-ignore
+						otpions={{
+							legend: {
+								labels: {
+									filter: function (
+										item: any,
+										chart: any
+									) {
+										return (
+											item.datasetIndex !== -1 &&
+											item.datasetIndex !== -1
+										);
+									},
+								},
+							},
+
+							elements: {
+								point: {
+									radius: 0,
+								},
+							},
+							scales: {
+								yAxes: [
+									{
+										ticks: {
+											fontColor:
+												"rgba(255, 255, 255, 0)",
+										},
+										gridLines: {
+											display: false,
+										},
+									},
+								],
+								xAxes: [
+									{
+										scaleLabel: {
+											display: false,
+										},
+										ticks: {
+											display: false, // it should work
+										},
+									},
+								],
+							},
+						}}
+					/>
+				</WhiteFlexCard>
+			</ChartContainer>
 		</Outer>
 	);
 };
