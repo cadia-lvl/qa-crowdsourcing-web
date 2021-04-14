@@ -12,6 +12,7 @@ import {
 	Tick,
 	ProgressBarCont,
 	TrophyCont,
+	UserIconWrapper,
 } from "./styles";
 
 /**
@@ -31,17 +32,9 @@ export const GameProgress = () => {
 				<Icon>{currentRound}</Icon>
 			</IconContainer>
 			<TickContainer>
-				<Tick />
-				<Tick />
-				<Tick />
-				<Tick />
-				<Tick />
-				<Tick />
-				<Tick />
-				<Tick />
-				<Tick />
-				<Tick />
-				<Tick />
+				{[...Array(state.totalRounds + 1)].map((_) => (
+					<Tick />
+				))}
 			</TickContainer>
 			<ProgressBarCont>
 				<SmallProgressBar
@@ -52,7 +45,7 @@ export const GameProgress = () => {
 			</ProgressBarCont>
 			{ratio < 1 ? (
 				<TrophyCont>
-					<i className="fas fa-trophy"></i>
+					<UserIconWrapper />
 				</TrophyCont>
 			) : null}
 		</Outer>

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { ICON_LVL_1 } from "../../static/icons";
 import { Colors } from "../../styles";
 
 export const Outer = styled.div`
@@ -45,4 +46,19 @@ export const PlayButton = styled.div`
 		box-shadow: none;
 	}
 	margin-left: 30px;
+`;
+
+export const UserIconWrapper = styled.div`
+	background-image: url(${ICON_LVL_1});
+	background-size: cover;
+	border-radius: 50%;
+	border: 4px solid ${Colors.DANGER};
+	height: 70px;
+	width: 70px;
+	transition: 0.3s;
+	cursor: pointer;
+	box-shadow: 0px 0px 20px rgba(${Colors.HIGHLIGHT_RGB}, 0.55);
+	:hover {
+		box-shadow: 0px 0px 25px rgba(${Colors.HIGHLIGHT_RGB}, 0.8);
+	}
 `;

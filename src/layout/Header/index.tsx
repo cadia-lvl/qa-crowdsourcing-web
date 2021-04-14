@@ -3,6 +3,7 @@ import {
 	Outer,
 	HeaderItem,
 	PlayButton,
+	UserIconWrapper,
 	HeaderItemContainer,
 } from "./styles";
 import { headerItems } from "./utils";
@@ -27,17 +28,7 @@ const Header = () => {
 				))}
 			</HeaderItemContainer>
 			<HeaderItemContainer>
-				{isAuth ? (
-					<div onClick={() => dispatch(logOutUser())}>
-						<HeaderItem className="header-itm">
-							Útskrá
-						</HeaderItem>
-					</div>
-				) : null}
-
-				<Link to="/spila">
-					<PlayButton>Spila</PlayButton>
-				</Link>
+				<UserIconWrapper />
 			</HeaderItemContainer>
 		</Outer>
 	);
