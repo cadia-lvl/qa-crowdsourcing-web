@@ -11,6 +11,7 @@ export const Outer = styled.div`
 	margin-bottom: 85px;
 	position: relative;
 	z-index: 2;
+	overflow: hidden;
 `;
 
 export const PromptOuter = styled.div`
@@ -44,6 +45,9 @@ export const ShakeImg = styled.img`
 	height: 200px;
 	width: 200px;
 	border: 7px solid rgba(0, 0, 0, 0.05);
+	:hover {
+		translate: rotateY(180deg);
+	}
 `;
 
 export const IconBoxOuter = styled.div`
