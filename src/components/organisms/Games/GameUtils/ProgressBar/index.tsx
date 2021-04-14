@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { SmallProgressBar } from "../../../../";
 import { GameTypes } from "../../../../../declerations";
@@ -20,12 +20,22 @@ import {
  * generalize to support arbitrary number of ticks
  */
 export const GameProgress = () => {
+	const [shouldShow, setShouldShow] = useState(true);
 	const state = useSelector((state: StoreState) => state.game);
 	const isFinished = state.current === GameTypes.completed;
 	const currentRound = isFinished
 		? state.currentRound
 		: state.currentRound - 1;
 	const ratio = currentRound / state.totalRounds;
+	useEffect(() => {
+		console.log(4);
+		if (isFinished) {
+			const to = setTimeout(() => setShouldShow(false), 500);
+			return () => clearTimeout(to);
+		} else setShouldShow(true);
+	}, [isFinished]);
+
+	if (!shouldShow) return null;
 	return (
 		<Outer>
 			<IconContainer theme={{ widthRatio: ratio }}>

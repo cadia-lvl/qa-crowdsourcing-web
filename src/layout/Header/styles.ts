@@ -48,17 +48,24 @@ export const PlayButton = styled.div`
 	margin-left: 30px;
 `;
 
-export const UserIconWrapper = styled.div`
+export const UserIcon = styled.div`
 	background-image: url(${ICON_LVL_1});
+	height: 100%;
+	width: 105%;
+	cursor: pointer;
+	box-sizing: border-box;
 	background-size: cover;
-	border-radius: 50%;
-	border: 4px solid ${Colors.DANGER};
+	:hover {
+		transform: rotateY(180deg);
+	}
+`;
+
+export const UserIconWrapper = styled.div`
 	height: 70px;
 	width: 70px;
-	transition: 0.3s;
 	cursor: pointer;
-	box-shadow: 0px 0px 20px rgba(${Colors.HIGHLIGHT_RGB}, 0.55);
-	:hover {
-		box-shadow: 0px 0px 25px rgba(${Colors.HIGHLIGHT_RGB}, 0.8);
-	}
+	border: 4px solid ${Colors.DANGER};
+	border-radius: 50%;
+	overflow: hidden;
+	/* Start the shake animation and make the animation last for 0.5 seconds */
 `;

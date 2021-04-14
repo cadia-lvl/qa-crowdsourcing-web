@@ -38,4 +38,4 @@ export const getPrevText = (game?: GameTypes) => {
 	}
 };
 
-export const LOADING_TIMER = 3500;
+export const LOADING_TIMER = 2000;

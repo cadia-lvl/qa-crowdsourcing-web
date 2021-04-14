@@ -2,9 +2,9 @@ import React from "react";
 import {
 	Outer,
 	HeaderItem,
-	PlayButton,
 	UserIconWrapper,
 	HeaderItemContainer,
+	UserIcon,
 } from "./styles";
 import { headerItems } from "./utils";
 import { Link } from "react-router-dom";
@@ -28,7 +28,9 @@ const Header = () => {
 				))}
 			</HeaderItemContainer>
 			<HeaderItemContainer>
-				<UserIconWrapper />
+				<UserIconWrapper>
+					<UserIcon />
+				</UserIconWrapper>
 			</HeaderItemContainer>
 		</Outer>
 	);
