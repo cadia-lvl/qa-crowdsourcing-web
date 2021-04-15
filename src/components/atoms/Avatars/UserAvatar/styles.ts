@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 interface OuterProps {
 	color: string;
-	image: string;
+	avatarURL: string;
 }
 
 export const Outer = styled.div<OuterProps>`
@@ -10,4 +10,6 @@ export const Outer = styled.div<OuterProps>`
 	height: 100%;
 	border-radius: 50%;
 	border: 4px solid ${(props) => props.color};
+	background-image: url(${(props) => props.avatarURL});
+	background-size: cover;
 `;
