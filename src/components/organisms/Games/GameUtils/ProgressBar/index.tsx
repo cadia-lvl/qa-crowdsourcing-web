@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { SmallProgressBar } from "../../../../";
+import { SmallProgressBar, UserAvatar } from "../../../../";
 import { GameTypes } from "../../../../../declerations";
 import { StoreState } from "../../../../../reducers";
+import { ICON_LVL_3 } from "../../../../../static";
 import { Colors } from "../../../../../styles";
 import {
 	Outer,
@@ -12,7 +13,6 @@ import {
 	Tick,
 	ProgressBarCont,
 	TrophyCont,
-	UserIconWrapper,
 } from "./styles";
 
 /**
@@ -54,7 +54,7 @@ export const GameProgress = () => {
 			</ProgressBarCont>
 			{ratio < 1 ? (
 				<TrophyCont>
-					<UserIconWrapper />
+					<UserAvatar src={ICON_LVL_3} />
 				</TrophyCont>
 			) : null}
 		</Outer>

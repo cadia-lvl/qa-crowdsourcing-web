@@ -11,5 +11,7 @@ export const Outer = styled.div<OuterProps>`
 	border-radius: 50%;
 	border: 4px solid ${(props) => props.color};
 	background-image: url(${(props) => props.avatarURL});
-	background-size: cover;
+	background-size: contain;
+	box-sizing: border-box;
+	overflow: hidden;
 `;

@@ -3,7 +3,7 @@ import { Outer } from "./styles";
 import { IProps } from "./interface";
 
 export const UserAvatar = ({ src, color }: IProps) => {
-	const DEFAULT_BORDER_COLOR = "rgba(0,0,0,0.02)";
+	const DEFAULT_BORDER_COLOR = "rgba(0,0,0,0.05)";
 
 	return (
 		<Outer
