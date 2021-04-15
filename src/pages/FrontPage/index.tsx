@@ -15,7 +15,7 @@ import {
 	ChartContainer,
 } from "./styles";
 import { WhiteFlexCard, ScoreCard, BaseButton } from "../../components";
-import { LoadForUserType } from "../../hoc";
+import { AuthConditionalRender } from "../../hoc";
 import { useSelector } from "react-redux";
 import { StoreState } from "../../reducers";
 import { SignUpForm } from "../../forms";
@@ -91,88 +91,95 @@ export const FrontPage = () => {
 				</TextBoxContainer>
 				<LogInBoxContainer>
 					<WhiteFlexCard>
-						<LoadForUserType
-							render={(userType) =>
-								userType === "guest" ? (
-									<FormContainer>
-										<SignUpForm />
-										<SignInLinkContainer>
-											<NavLink to="/innskra">
-												Ég er með aðgang
-											</NavLink>
-										</SignInLinkContainer>
-									</FormContainer>
-								) : (
-									<StatsCardInner>
-										<TopLine>
-											<Thick>
-												#
-												{
-													state.auth.scoreCard
-														.hiscoreRank
-												}
-											</Thick>
-											<Light>Á stigatöflunni</Light>
-										</TopLine>
-										<TextBoxPara>
-											Velkomin/n{" "}
-											{state.auth.username}! Hér
-											sérðu yfirlit yfir framlag þitt
-										</TextBoxPara>
-										<Line
-											data={data}
-											// @ts-ignore
-											otpions={{
-												legend: {
-													labels: {
-														filter: function (
-															item: any,
-															chart: any
-														) {
-															return (
-																item.datasetIndex !==
-																	-1 &&
-																item.datasetIndex !==
-																	-1
-															);
+						<AuthConditionalRender>
+							{(WhenAuth, WhenNotAuth) => (
+								<React.Fragment>
+									<WhenAuth>
+										<StatsCardInner>
+											<TopLine>
+												<Thick>
+													#
+													{
+														state.auth
+															.scoreCard
+															.hiscoreRank
+													}
+												</Thick>
+												<Light>
+													Á stigatöflunni
+												</Light>
+											</TopLine>
+											<TextBoxPara>
+												Velkomin/n{" "}
+												{state.auth.username}! Hér
+												sérðu yfirlit yfir framlag
+												þitt
+											</TextBoxPara>
+											<Line
+												data={data}
+												// @ts-ignore
+												otpions={{
+													legend: {
+														labels: {
+															filter: function (
+																item: any,
+																chart: any
+															) {
+																return (
+																	item.datasetIndex !==
+																		-1 &&
+																	item.datasetIndex !==
+																		-1
+																);
+															},
 														},
 													},
-												},
 
-												elements: {
-													point: {
-														radius: 0,
+													elements: {
+														point: {
+															radius: 0,
+														},
 													},
-												},
-												scales: {
-													yAxes: [
-														{
-															ticks: {
-																fontColor:
-																	"rgba(255, 255, 255, 0)",
+													scales: {
+														yAxes: [
+															{
+																ticks: {
+																	fontColor:
+																		"rgba(255, 255, 255, 0)",
+																},
+																gridLines: {
+																	display: false,
+																},
 															},
-															gridLines: {
-																display: false,
+														],
+														xAxes: [
+															{
+																scaleLabel: {
+																	display: false,
+																},
+																ticks: {
+																	display: false, // it should work
+																},
 															},
-														},
-													],
-													xAxes: [
-														{
-															scaleLabel: {
-																display: false,
-															},
-															ticks: {
-																display: false, // it should work
-															},
-														},
-													],
-												},
-											}}
-										/>
-									</StatsCardInner>
-								)
-							}
-						/>
+														],
+													},
+												}}
+											/>
+										</StatsCardInner>
+									</WhenAuth>
+									<WhenNotAuth>
+										<FormContainer>
+											<SignUpForm />
+											<SignInLinkContainer>
+												<NavLink to="/innskra">
+													Ég er með aðgang
+												</NavLink>
+											</SignInLinkContainer>
+										</FormContainer>
+									</WhenNotAuth>
+								</React.Fragment>
+							)}
+						</AuthConditionalRender>
 					</WhiteFlexCard>
 				</LogInBoxContainer>
 			</Inner>
