@@ -28,7 +28,6 @@ export const GameProgress = () => {
 		: state.currentRound - 1;
 	const ratio = currentRound / state.totalRounds;
 	useEffect(() => {
-		console.log(4);
 		if (isFinished) {
 			const to = setTimeout(() => setShouldShow(false), 500);
 			return () => clearTimeout(to);

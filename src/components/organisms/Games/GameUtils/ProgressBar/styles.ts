@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ICON_LVL_2 } from "../../../../../static/icons";
+import { ICON_LVL_3 } from "../../../../../static/icons";
 import { Colors } from "../../../../../styles";
 
 export const Outer = styled.div`
@@ -99,7 +99,7 @@ export const TrophyCont = styled.div`
 `;
 
 export const UserIconWrapper = styled.div`
-	background-image: url(${ICON_LVL_2});
+	background-image: url(${ICON_LVL_3});
 	background-size: cover;
 	border-radius: 50%;
 	height: 70px;

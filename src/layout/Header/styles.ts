@@ -20,6 +20,18 @@ export const HeaderItemContainer = styled.div`
 	flex-direction: row;
 	align-items: center;
 	justify-content: flex-start;
+	.header-profile-itm {
+		color: ${Colors.FG_WHITE} !important;
+		font-weight: 700;
+		font-size: 15px;
+		padding: 5px 20px 5px 14px;
+		background-color: ${Colors.DANGER};
+		transform: translateX(-85%);
+		position: absolute;
+		left: 0;
+		top: 50%;
+		z-index: -1;
+	}
 `;
 
 export const HeaderItem = styled.div`
@@ -51,10 +63,12 @@ export const PlayButton = styled.div`
 export const UserIcon = styled.div`
 	background-image: url(${ICON_LVL_1});
 	height: 100%;
-	width: 105%;
+	width: 100%;
 	cursor: pointer;
 	box-sizing: border-box;
 	background-size: cover;
+	z-index: 3;
+	border-radius: 50%;
 	:hover {
 		transform: rotateY(180deg);
 	}
@@ -66,6 +80,7 @@ export const UserIconWrapper = styled.div`
 	cursor: pointer;
 	border: 4px solid ${Colors.DANGER};
 	border-radius: 50%;
-	overflow: hidden;
+
+	position: relative;
 	/* Start the shake animation and make the animation last for 0.5 seconds */
 `;

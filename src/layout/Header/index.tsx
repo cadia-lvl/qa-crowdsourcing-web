@@ -14,8 +14,8 @@ import { StoreState } from "../../reducers";
 
 const Header = () => {
 	const dispatch = useDispatch();
-	const userType = useSelector((state: StoreState) => state.auth.type);
-	const isAuth = !["guest", "loading"].includes(userType);
+	const auth = useSelector((state: StoreState) => state.auth);
+	const isAuth = !["guest", "loading"].includes(auth.type);
 	return (
 		<Outer>
 			<HeaderItemContainer>
@@ -29,6 +29,9 @@ const Header = () => {
 			</HeaderItemContainer>
 			<HeaderItemContainer>
 				<UserIconWrapper>
+					<HeaderItem className="header-profile-itm">
+						<span>Lvl 3</span>
+					</HeaderItem>
 					<UserIcon />
 				</UserIconWrapper>
 			</HeaderItemContainer>
