@@ -12,9 +12,7 @@ export const Inner = styled.div`
 	width: 100%;
 `;
 
-export const TextBoxContainer = styled.div`
-	height: 40px;
-	width: 40px;
+export const LeftSpaceWrapper = styled.div`
 	display: flex;
 	flex: 1;
 	flex-direction: column;
@@ -71,4 +69,9 @@ export const SignInLinkContainer = styled.div`
 
 export const ChartContainer = styled.div`
 	margin-top: 120px;
+`;
+
+export const UserMonsterIconWrapper = styled.div`
+	height: 300px;
+	width: 300px;
 `;
