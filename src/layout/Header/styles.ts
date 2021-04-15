@@ -24,13 +24,25 @@ export const HeaderItemContainer = styled.div`
 		color: ${Colors.FG_WHITE} !important;
 		font-weight: 700;
 		font-size: 15px;
-		padding: 5px 20px 5px 14px;
+		padding: 3px 20px 3px 14px;
 		background-color: ${Colors.DANGER};
-		transform: translateX(-85%);
+		transform: translateX(-82%);
 		position: absolute;
 		left: 0;
-		top: 50%;
+		top: 60%;
 		z-index: -1;
+		:nth-child(2) {
+			color: ${Colors.FG_WHITE} !important;
+			font-weight: 700;
+			font-size: 15px;
+			padding: 3px 20px 3px 14px;
+			background-color: ${Colors.DANGER};
+			transform: translateX(-90%);
+			position: absolute;
+			left: 0;
+			top: 20%;
+			z-index: -1;
+		}
 	}
 `;
 
@@ -83,4 +95,18 @@ export const UserIconWrapper = styled.div`
 
 	position: relative;
 	/* Start the shake animation and make the animation last for 0.5 seconds */
+`;
+
+export const Badge = styled.div`
+	position: absolute;
+	background-color: ${Colors.HIGHLIGHT};
+	height: 27px;
+	width: 27px;
+	border-radius: 50%;
+	bottom: -5px;
+	right: -2px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: #fff;
 `;

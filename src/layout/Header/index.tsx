@@ -5,6 +5,7 @@ import {
 	UserIconWrapper,
 	HeaderItemContainer,
 	UserIcon,
+	Badge,
 } from "./styles";
 import { headerItems } from "./utils";
 import { Link } from "react-router-dom";
@@ -32,7 +33,13 @@ const Header = () => {
 					<HeaderItem className="header-profile-itm">
 						<span>Lvl 3</span>
 					</HeaderItem>
+					<HeaderItem className="header-profile-itm">
+						<span>Njallskarp</span>
+					</HeaderItem>
 					<UserIcon />
+					<Badge>
+						<i className="fas fa-award"></i>
+					</Badge>
 				</UserIconWrapper>
 			</HeaderItemContainer>
 		</Outer>
