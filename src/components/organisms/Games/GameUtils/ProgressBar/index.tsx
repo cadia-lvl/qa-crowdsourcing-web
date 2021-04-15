@@ -1,19 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { SmallProgressBar, UserAvatar } from "../../../../";
+import { SmallProgressBar } from "../../../../";
 import { GameTypes } from "../../../../../declerations";
 import { StoreState } from "../../../../../reducers";
-import { ICON_LVL_3 } from "../../../../../static";
 import { Colors } from "../../../../../styles";
-import {
-	Outer,
-	IconContainer,
-	Icon,
-	TickContainer,
-	Tick,
-	ProgressBarCont,
-	TrophyCont,
-} from "./styles";
+import { Outer, TickContainer, Tick, ProgressBarCont } from "./styles";
 
 /**
  * Currently only supports 10 ticks, need to
@@ -37,9 +28,6 @@ export const GameProgress = () => {
 	if (!shouldShow) return null;
 	return (
 		<Outer>
-			<IconContainer theme={{ widthRatio: ratio }}>
-				<Icon>{currentRound}</Icon>
-			</IconContainer>
 			<TickContainer>
 				{[...Array(state.totalRounds + 1)].map((_) => (
 					<Tick />
@@ -52,11 +40,7 @@ export const GameProgress = () => {
 					color={Colors.SUCCESS}
 				/>
 			</ProgressBarCont>
-			{ratio < 1 ? (
-				<TrophyCont>
-					<UserAvatar src={ICON_LVL_3} />
-				</TrophyCont>
-			) : null}
+			{ratio < 1 ? null : null}
 		</Outer>
 	);
 };

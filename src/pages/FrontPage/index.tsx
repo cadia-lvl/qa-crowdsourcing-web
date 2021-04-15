@@ -1,126 +1,133 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
 	Outer,
 	LeftSpaceWrapper,
 	LogInBoxContainer,
 	TextBoxPara,
-	StatsCardInner,
-	TopLine,
-	Thick,
-	Light,
 	Inner,
 	ButtonContainer,
 	FormContainer,
 	SignInLinkContainer,
-	ChartContainer,
-	UserMonsterIconWrapper,
+	DashBoardOuter,
+	DashboardCol1,
+	DashboardCol2,
+	DashboardCol3,
+	Col3Cell1,
+	Col1Row1,
+	Col1Row2,
+	Col1Row1Cell1,
+	Col1Row1Cell2,
 } from "./styles";
 import {
 	WhiteFlexCard,
 	BaseButton,
-	QAsPerDay,
-	UserAvatar,
-	UserStatsAvatar,
 	ScoreCard,
+	QAsPerDay,
+	GameProgress,
+	UserAvatar,
 } from "../../components";
 import { AuthConditionalRender } from "../../hoc";
 import { SignUpForm } from "../../forms";
 import { NavLink } from "react-router-dom";
 import { StoreState } from "../../reducers";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchCurrentGameRound } from "../../actions";
+import { ICON_LVL_1 } from "../../static";
 export const FrontPage = () => {
 	const state = useSelector((state: StoreState) => state);
+	const dispatch = useDispatch();
+
+	useEffect(() => {
+		dispatch(fetchCurrentGameRound());
+	}, []);
 
 	return (
 		<Outer>
-			<Inner>
-				{/* Space to the Left of the screen */}
-				<AuthConditionalRender>
-					{(WhenIsAuth, WhenNotAuth) => (
-						<LeftSpaceWrapper>
-							{/* When user is Authenticated */}
-							<WhenIsAuth>
-								<UserMonsterIconWrapper>
-									<UserStatsAvatar />
-								</UserMonsterIconWrapper>
-							</WhenIsAuth>
+			{/* Space to the Left of the screen */}
+			<AuthConditionalRender>
+				{(WhenIsAuth, WhenNotAuth) => (
+					<React.Fragment>
+						{/* When user is Authenticated */}
+						<WhenIsAuth>
+							<DashBoardOuter>
+								<DashboardCol1>
+									{" "}
+									<Col1Row1>
+										<Col1Row1Cell1>
+											<UserAvatar src={ICON_LVL_1} />
+										</Col1Row1Cell1>
+										<Col1Row1Cell2>
+											<span>Lvl 3 dúx</span>
+											<span className="bold username">
+												Njallskarp123
+											</span>
+										</Col1Row1Cell2>
+									</Col1Row1>
+									<Col1Row2>
+										<div className="advance-info">
+											<span>8/10</span>
+											<span>
+												<i className="fas fa-chevron-right" />
+												<i className="fas fa-chevron-right" />
+												Lvl 4 Kennari
+											</span>
+										</div>
+										<GameProgress />
+									</Col1Row2>
+								</DashboardCol1>
+								<DashboardCol2>
+									<ScoreCard />
+								</DashboardCol2>
+								<DashboardCol3>
+									{" "}
+									<Col3Cell1>
+										<QAsPerDay />
+									</Col3Cell1>
+								</DashboardCol3>
+							</DashBoardOuter>
+						</WhenIsAuth>
 
-							{/* When user is not authenticated */}
-							<WhenNotAuth>
-								<h1>Spurðu mig spurninga!</h1>
-								<TextBoxPara>
-									Flest höfum við gaman af
-									spurningjaleikjum. Hér getur þú aflað
-									þér allskyns þekkingar og um leið
-									styrkt íslensku í nútímanum. Þær
-									spurningar og svör sem verða til á
-									þessari síðu nýtast síðan til þess að
-									þjálfa gervigreind sem mun læra að
-									svara hinum ýmsu spurningum, ekki
-									aðeins þeim sem hér birtast.
-								</TextBoxPara>
-								<TextBoxPara>
-									Afurð þessara verkefnis mun því ekki
-									einungis læra svörin við þínum
-									spurningum, heldur um leið læra að
-									svara spurningum sem það hefur aldrei
-									séð áður
-								</TextBoxPara>
-								<TextBoxPara>
-									Hálpaðu okkur að koma íslensku inn í
-									nútímann, markmiðið er að safna{" "}
-									<i>100.000 spurningum</i> árið 2021
-								</TextBoxPara>
-								<ButtonContainer>
-									<NavLink to="/spila">
-										<BaseButton
-											label="Áfram"
-											onClick={() => null}
-											type="success"
-										/>
-									</NavLink>
-								</ButtonContainer>
-							</WhenNotAuth>
-						</LeftSpaceWrapper>
-					)}
-				</AuthConditionalRender>
-
-				{/* 
-					WHITE CARD right hand side of front page
-				*/}
-				<LogInBoxContainer>
-					<WhiteFlexCard>
-						<AuthConditionalRender>
-							{(WhenAuth, WhenNotAuth) => (
-								<React.Fragment>
-									{/* When user is Authenticated */}
-									<WhenAuth>
-										<StatsCardInner>
-											<TopLine>
-												<Thick>
-													#
-													{
-														state.auth
-															.scoreCard
-															.hiscoreRank
-													}
-												</Thick>
-												<Light>
-													Á stigatöflunni
-												</Light>
-											</TopLine>
-											<TextBoxPara>
-												Velkomin/n{" "}
-												{state.auth.username}! Hér
-												sérðu yfirlit yfir framlag
-												þitt
-											</TextBoxPara>
-											{/* <QAsPerDay /> */}
-											<ScoreCard />
-										</StatsCardInner>
-									</WhenAuth>
-
-									<WhenNotAuth>
+						{/* When user is not authenticated */}
+						<WhenNotAuth>
+							<Inner>
+								<LeftSpaceWrapper>
+									<h1>Spurðu mig spurninga!</h1>
+									<TextBoxPara>
+										Flest höfum við gaman af
+										spurningjaleikjum. Hér getur þú
+										aflað þér allskyns þekkingar og um
+										leið styrkt íslensku í nútímanum.
+										Þær spurningar og svör sem verða
+										til á þessari síðu nýtast síðan til
+										þess að þjálfa gervigreind sem mun
+										læra að svara hinum ýmsu
+										spurningum, ekki aðeins þeim sem
+										hér birtast.
+									</TextBoxPara>
+									<TextBoxPara>
+										Afurð þessara verkefnis mun því
+										ekki einungis læra svörin við þínum
+										spurningum, heldur um leið læra að
+										svara spurningum sem það hefur
+										aldrei séð áður
+									</TextBoxPara>
+									<TextBoxPara>
+										Hálpaðu okkur að koma íslensku inn
+										í nútímann, markmiðið er að safna{" "}
+										<i>100.000 spurningum</i> árið 2021
+									</TextBoxPara>
+									<ButtonContainer>
+										<NavLink to="/spila">
+											<BaseButton
+												label="Áfram"
+												onClick={() => null}
+												type="success"
+											/>
+										</NavLink>
+									</ButtonContainer>
+								</LeftSpaceWrapper>
+								<LogInBoxContainer>
+									<WhiteFlexCard>
 										<FormContainer>
 											<SignUpForm />
 											<SignInLinkContainer>
@@ -129,14 +136,13 @@ export const FrontPage = () => {
 												</NavLink>
 											</SignInLinkContainer>
 										</FormContainer>
-									</WhenNotAuth>
-								</React.Fragment>
-							)}
-						</AuthConditionalRender>
-					</WhiteFlexCard>
-				</LogInBoxContainer>
-			</Inner>
-			<ChartContainer></ChartContainer>
+									</WhiteFlexCard>
+								</LogInBoxContainer>
+							</Inner>
+						</WhenNotAuth>
+					</React.Fragment>
+				)}
+			</AuthConditionalRender>
 		</Outer>
 	);
 };

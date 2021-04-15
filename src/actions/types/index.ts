@@ -28,6 +28,7 @@ export enum ActionTypes {
 	fetchScoreCard,
 	fetchAnswersPerDay,
 	setGameLoadingState,
+	setShowAvatarInHeader,
 }
 
 export type Actions =
@@ -52,4 +53,5 @@ export type Actions =
 	| GameActions.VerifySpanRoundFromAPIAction
 	| GameActions.CompleteRoundFromAPIAction
 	| GameActions.SetGameLoadingStateAction
+	| GameActions.SetShowAvatarInHeaderAction
 	| ChartDataActions.FetchAnswersPerDayAction;

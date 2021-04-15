@@ -7,6 +7,7 @@ export const initialState: GameState = {
 	totalRounds: 10,
 	_id: "",
 	isLoading: false,
+	showAvatarInHeader: true,
 };
 
 const reducer = (
@@ -60,6 +61,12 @@ const reducer = (
 			return {
 				...state,
 				isLoading: action.payload,
+			};
+		}
+		case ActionTypes.setShowAvatarInHeader: {
+			return {
+				...state,
+				showAvatarInHeader: action.payload,
 			};
 		}
 		default:

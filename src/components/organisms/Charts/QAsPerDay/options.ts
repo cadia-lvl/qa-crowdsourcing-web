@@ -1,19 +1,4 @@
 const options = {
-	legend: {
-		labels: {
-			filter: function (item: any, chart: any) {
-				return (
-					item.datasetIndex !== -1 && item.datasetIndex !== -1
-				);
-			},
-		},
-	},
-
-	elements: {
-		point: {
-			radius: 0,
-		},
-	},
 	scales: {
 		yAxes: [
 			{
@@ -23,6 +8,10 @@ const options = {
 				gridLines: {
 					display: false,
 				},
+				type: "linear",
+				display: true,
+				yAxisID: "A",
+				position: "left",
 			},
 		],
 		xAxes: [

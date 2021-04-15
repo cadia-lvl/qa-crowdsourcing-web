@@ -69,6 +69,13 @@ const __handleUpdateTask = (data: TaskFromBackend) => {
 	});
 };
 
+export const setShowAvatarInHeader = (shouldShow: boolean) => {
+	return {
+		type: ActionTypes.setShowAvatarInHeader,
+		payload: shouldShow,
+	};
+};
+
 export const fetchCurrentGameRound = () => {
 	return async function (dispatch: Dispatch) {
 		try {

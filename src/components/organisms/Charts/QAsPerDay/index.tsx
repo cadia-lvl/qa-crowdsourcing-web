@@ -26,9 +26,9 @@ export const QAsPerDay = () => {
 			datasets: [
 				{
 					label: "Fjöldi spurninga og svara",
-					backgroundColor: "rgba(27, 197, 189, 0.3)",
-					borderColor: Colors.SUCCESS,
-					pointBackgroundColor: "rgba(255, 255, 255, 1)",
+					backgroundColor: "rgba(137, 80, 252, 0.3)",
+					borderColor: Colors.HIGHLIGHT,
+					pointBackgroundColor: "rgba(255, 255, 255,0 )",
 					data: cumulatives.map((item) => item.count),
 				},
 			],

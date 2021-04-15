@@ -17,7 +17,12 @@ import { Colors } from "../../styles";
 
 const Header = () => {
 	const dispatch = useDispatch();
-	const auth = useSelector((state: StoreState) => state.auth);
+	const state = useSelector((state: StoreState) => state);
+
+	const {
+		auth,
+		game: { showAvatarInHeader },
+	} = state;
 	const isAuth = !["guest", "loading"].includes(auth.type);
 	return (
 		<Outer>
@@ -32,16 +37,23 @@ const Header = () => {
 			</HeaderItemContainer>
 			<HeaderItemContainer>
 				<UserIconWrapper>
-					<HeaderItem className="header-profile-itm">
-						<span>Lvl 3</span>
-					</HeaderItem>
-					<HeaderItem className="header-profile-itm">
-						<span>Njallskarp</span>
-					</HeaderItem>
-					<UserAvatar src={ICON_LVL_1} color={Colors.DANGER} />
-					<Badge>
-						<i className="fas fa-award"></i>
-					</Badge>
+					{showAvatarInHeader ? (
+						<React.Fragment>
+							{/* <HeaderItem className="header-profile-itm">
+								<span>Lvl 3</span>
+							</HeaderItem>
+							<HeaderItem className="header-profile-itm">
+								<span>Njallskarp</span>
+							</HeaderItem>
+							<UserAvatar
+								src={ICON_LVL_1}
+								color={Colors.DANGER}
+							/>
+							<Badge>
+								<i className="fas fa-award"></i>
+							</Badge> */}
+						</React.Fragment>
+					) : null}
 				</UserIconWrapper>
 			</HeaderItemContainer>
 		</Outer>
