@@ -119,7 +119,56 @@ export const FrontPage = () => {
 											{state.auth.username}! Hér
 											sérðu yfirlit yfir framlag þitt
 										</TextBoxPara>
-										<ScoreCard />
+										<Line
+											data={data}
+											// @ts-ignore
+											otpions={{
+												legend: {
+													labels: {
+														filter: function (
+															item: any,
+															chart: any
+														) {
+															return (
+																item.datasetIndex !==
+																	-1 &&
+																item.datasetIndex !==
+																	-1
+															);
+														},
+													},
+												},
+
+												elements: {
+													point: {
+														radius: 0,
+													},
+												},
+												scales: {
+													yAxes: [
+														{
+															ticks: {
+																fontColor:
+																	"rgba(255, 255, 255, 0)",
+															},
+															gridLines: {
+																display: false,
+															},
+														},
+													],
+													xAxes: [
+														{
+															scaleLabel: {
+																display: false,
+															},
+															ticks: {
+																display: false, // it should work
+															},
+														},
+													],
+												},
+											}}
+										/>
 									</StatsCardInner>
 								)
 							}
@@ -127,58 +176,7 @@ export const FrontPage = () => {
 					</WhiteFlexCard>
 				</LogInBoxContainer>
 			</Inner>
-			<ChartContainer>
-				<WhiteFlexCard>
-					<Line
-						data={data}
-						// @ts-ignore
-						otpions={{
-							legend: {
-								labels: {
-									filter: function (
-										item: any,
-										chart: any
-									) {
-										return (
-											item.datasetIndex !== -1 &&
-											item.datasetIndex !== -1
-										);
-									},
-								},
-							},
-
-							elements: {
-								point: {
-									radius: 0,
-								},
-							},
-							scales: {
-								yAxes: [
-									{
-										ticks: {
-											fontColor:
-												"rgba(255, 255, 255, 0)",
-										},
-										gridLines: {
-											display: false,
-										},
-									},
-								],
-								xAxes: [
-									{
-										scaleLabel: {
-											display: false,
-										},
-										ticks: {
-											display: false, // it should work
-										},
-									},
-								],
-							},
-						}}
-					/>
-				</WhiteFlexCard>
-			</ChartContainer>
+			<ChartContainer></ChartContainer>
 		</Outer>
 	);
 };

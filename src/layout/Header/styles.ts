@@ -75,8 +75,6 @@ export const PlayButton = styled.div`
 export const UserIconWrapper = styled.div`
 	height: 82px;
 	width: 82px;
-	cursor: pointer;
-	border-radius: 50%;
 
 	position: relative;
 	/* Start the shake animation and make the animation last for 0.5 seconds */
