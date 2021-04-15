@@ -72,6 +72,7 @@ export const ChartContainer = styled.div`
 `;
 
 export const UserMonsterIconWrapper = styled.div`
-	height: 300px;
-	width: 300px;
+	height: 250px;
+	width: 250px;
+	margin: 0 auto;
 `;

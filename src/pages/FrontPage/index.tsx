@@ -20,14 +20,14 @@ import {
 	BaseButton,
 	QAsPerDay,
 	UserAvatar,
+	UserStatsAvatar,
+	ScoreCard,
 } from "../../components";
 import { AuthConditionalRender } from "../../hoc";
 import { SignUpForm } from "../../forms";
 import { NavLink } from "react-router-dom";
 import { StoreState } from "../../reducers";
 import { useSelector } from "react-redux";
-import { ICON_LVL_1 } from "../../static";
-
 export const FrontPage = () => {
 	const state = useSelector((state: StoreState) => state);
 
@@ -38,11 +38,14 @@ export const FrontPage = () => {
 				<AuthConditionalRender>
 					{(WhenIsAuth, WhenNotAuth) => (
 						<LeftSpaceWrapper>
+							{/* When user is Authenticated */}
 							<WhenIsAuth>
 								<UserMonsterIconWrapper>
-									<UserAvatar src={ICON_LVL_1} />
+									<UserStatsAvatar />
 								</UserMonsterIconWrapper>
 							</WhenIsAuth>
+
+							{/* When user is not authenticated */}
 							<WhenNotAuth>
 								<h1>Spurðu mig spurninga!</h1>
 								<TextBoxPara>
@@ -112,11 +115,11 @@ export const FrontPage = () => {
 												sérðu yfirlit yfir framlag
 												þitt
 											</TextBoxPara>
-											<QAsPerDay />
+											{/* <QAsPerDay /> */}
+											<ScoreCard />
 										</StatsCardInner>
 									</WhenAuth>
 
-									{/* When user is not authenticated */}
 									<WhenNotAuth>
 										<FormContainer>
 											<SignUpForm />
