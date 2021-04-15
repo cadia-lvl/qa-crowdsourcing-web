@@ -26,7 +26,7 @@ export const HeaderItemContainer = styled.div`
 		font-size: 15px;
 		padding: 3px 20px 3px 14px;
 		background-color: ${Colors.DANGER};
-		transform: translateX(-82%);
+		transform: translateX(-78%);
 		position: absolute;
 		left: 0;
 		top: 60%;
@@ -72,25 +72,10 @@ export const PlayButton = styled.div`
 	margin-left: 30px;
 `;
 
-export const UserIcon = styled.div`
-	background-image: url(${ICON_LVL_1});
-	height: 100%;
-	width: 100%;
-	cursor: pointer;
-	box-sizing: border-box;
-	background-size: cover;
-	z-index: 3;
-	border-radius: 50%;
-	:hover {
-		transform: rotateY(180deg);
-	}
-`;
-
 export const UserIconWrapper = styled.div`
-	height: 70px;
-	width: 70px;
+	height: 82px;
+	width: 82px;
 	cursor: pointer;
-	border: 4px solid ${Colors.DANGER};
 	border-radius: 50%;
 
 	position: relative;
