@@ -6,7 +6,7 @@ import { IProps } from "./interface";
 
 export const GameWrapper = ({ type, children }: IProps) => {
 	const state = useSelector((state: StoreState) => state.game);
-	if (state.current !== type) return null;
+	if (GameTypes.completed !== type) return null;
 	return (
 		<div style={{ position: "relative", zIndex: 0 }}>{children}</div>
 	);

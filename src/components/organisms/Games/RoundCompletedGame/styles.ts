@@ -30,26 +30,6 @@ export const ButtonContainer = styled.div`
 	margin-top: 40px;
 `;
 
-export const ShakeImg = styled.img`
-	${(props) =>
-		props.theme.shake
-			? `
-	  /* Start the shake animation and make the animation last for 0.5 seconds */
-	  animation: shake 0.5s;
-
-	  /* When the animation is finished, start again */
-	  animation-iteration-count: infinite; 
-	`
-			: ""}
-	border-radius: 50%;
-	height: 200px;
-	width: 200px;
-	border: 7px solid rgba(0, 0, 0, 0.05);
-	:hover {
-		translate: rotateY(180deg);
-	}
-`;
-
 export const IconBoxOuter = styled.div`
 	width: 500px;
 	margin: 0 auto;
@@ -78,4 +58,9 @@ export const TopBox = styled.div`
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
+`;
+
+export const IconWrapper = styled.div`
+	height: 200px;
+	width: 200px;
 `;
