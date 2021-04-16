@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Outer, Bar, InfoOuter, Label, BarOuter } from "./styles";
 import { IProps } from "./interface";
 

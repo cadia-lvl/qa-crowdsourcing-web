@@ -47,20 +47,7 @@ export const getCurrText = (username: string, game?: GameTypes) => {
 };
 
 export const getPrevText = (game?: GameTypes) => {
-	switch (game) {
-		case GameTypes.answerQualityAssurance:
-			return "Við erum að vista endurgjöfina þína";
-		case GameTypes.questionQualityAssurance:
-			return "Við erum að vista endurgjöfina þína";
-		case GameTypes.verifyAnswerLocation:
-			return "Við erum að vista upplýsingarnar";
-		case GameTypes.completed:
-			return "Við erum að vista árangur þinn";
-		case GameTypes.writeQuestion:
-			return "Við erum að vista spurninguna";
-		default:
-			return "Við erum að vista upplýsingarnar";
-	}
+	return "Undirbý næsta verkefni";
 };
 
 export const LOADING_TIMER = 2000;

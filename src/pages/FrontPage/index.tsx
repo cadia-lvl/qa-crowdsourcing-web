@@ -36,6 +36,7 @@ import { StoreState } from "../../reducers";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCurrentGameRound } from "../../actions";
 import { ICON_LVL_1 } from "../../static";
+
 export const FrontPage = () => {
 	const state = useSelector((state: StoreState) => state);
 	const dispatch = useDispatch();
@@ -73,7 +74,11 @@ export const FrontPage = () => {
 									</Col1Row1>
 									<Col1Row2>
 										<div className="advance-info">
-											<span>8/10</span>
+											<span>
+												{state.game.currentRound -
+													1}
+												/{state.game.totalRounds}
+											</span>
 											<span>
 												<i className="fas fa-chevron-right" />
 												<i className="fas fa-chevron-right" />
@@ -94,7 +99,11 @@ export const FrontPage = () => {
 											stoppað þau?
 										</p>
 										<GlowBtnWrapper>
-											<PlayButton>Spila</PlayButton>
+											<NavLink to="/spila">
+												<PlayButton>
+													Spila
+												</PlayButton>
+											</NavLink>
 										</GlowBtnWrapper>
 									</Col1Row3>
 								</DashboardCol1>

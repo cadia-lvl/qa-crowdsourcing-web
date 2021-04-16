@@ -8,6 +8,8 @@ import {
 	LoadingItems,
 	NextTaskInner,
 	ButtonWrapper,
+	NextTaskTopLine,
+	NextTaskTopLineAvatarContainer,
 } from "./styles";
 import { FlexLoader, TextPrompt, PlayButton } from "../../../../";
 import { IProps } from "./interface";
@@ -108,15 +110,22 @@ export const GameAnnouncer = ({ children }: IProps) => {
 					</LoadingItems>
 				) : (
 					<NextTaskInner>
-						<h1 className="italic">
-							{getCurrText(
-								username,
-								currGame
-							).title.toUpperCase()}
-						</h1>
+						<NextTaskTopLine>
+							<NextTaskTopLineAvatarContainer>
+								<UserAvatar src={ICON_LVL_1} />
+							</NextTaskTopLineAvatarContainer>
+							<h1 className="italic">
+								{getCurrText(
+									username,
+									currGame
+								).title.toUpperCase()}
+							</h1>
+						</NextTaskTopLine>
 						<p>{getCurrText(username, currGame).text}</p>
 						<ButtonWrapper>
-							<PlayButton>Áfram</PlayButton>
+							<PlayButton onClick={handleOpenTask}>
+								Áfram
+							</PlayButton>
 						</ButtonWrapper>
 					</NextTaskInner>
 				)}
