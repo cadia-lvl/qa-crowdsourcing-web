@@ -2,12 +2,11 @@ import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { GameTypes } from "../../../../../declerations";
 import { StoreState } from "../../../../../reducers";
-import { Inner, LoadingContainer } from "./styles";
+import { Outer, LoadingContainer, LoadingItems } from "./styles";
 import {
 	WhiteFlexCard,
 	FlexLoader,
 	TextPrompt,
-	BaseButton,
 	PlayButton,
 } from "../../../../";
 import { IProps } from "./interface";
@@ -92,28 +91,21 @@ export const GameAnnouncer = ({ children }: IProps) => {
 
 	if (showAnnouncement)
 		return (
-			<WhiteFlexCard>
-				<Inner theme={{ flexDirection }}>
-					{announcePrevGame ? (
-						<React.Fragment>
-							<LoadingContainer>
-								<FlexLoader size={40} />
-							</LoadingContainer>
-							<TextPrompt>
-								{getPrevText(prevGame)}
-							</TextPrompt>
-						</React.Fragment>
-					) : (
-						<React.Fragment>
-							<TextPrompt>
-								<i>NÆSTA VERKEFNI</i>:{" "}
-								{getCurrText(currGame)}
-							</TextPrompt>
-							<PlayButton>Áfram</PlayButton>
-						</React.Fragment>
-					)}
-				</Inner>
-			</WhiteFlexCard>
+			<Outer theme={{ flexDirection }}>
+				{announcePrevGame ? (
+					<LoadingItems>
+						<LoadingContainer>
+							<FlexLoader size={40} />
+						</LoadingContainer>
+						<TextPrompt>{getPrevText(prevGame)}</TextPrompt>
+					</LoadingItems>
+				) : (
+					<React.Fragment>
+						<TextPrompt>{getCurrText(currGame)}</TextPrompt>
+						<PlayButton>Áfram</PlayButton>
+					</React.Fragment>
+				)}
+			</Outer>
 		);
 
 	return <React.Fragment>{children}</React.Fragment>;
