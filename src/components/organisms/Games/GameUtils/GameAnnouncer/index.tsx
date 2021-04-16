@@ -2,15 +2,18 @@ import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { GameTypes } from "../../../../../declerations";
 import { StoreState } from "../../../../../reducers";
-import { Outer, LoadingContainer, LoadingItems } from "./styles";
 import {
-	WhiteFlexCard,
-	FlexLoader,
-	TextPrompt,
-	PlayButton,
-} from "../../../../";
+	Outer,
+	LoadingContainer,
+	LoadingItems,
+	NextTaskInner,
+	ButtonWrapper,
+} from "./styles";
+import { FlexLoader, TextPrompt, PlayButton } from "../../../../";
 import { IProps } from "./interface";
 import { getPrevText, getCurrText, LOADING_TIMER } from "./utils";
+import { UserAvatar } from "../../../../atoms";
+import { ICON_LVL_1 } from "../../../../../static";
 
 export const GameAnnouncer = ({ children }: IProps) => {
 	/**
@@ -34,13 +37,17 @@ export const GameAnnouncer = ({ children }: IProps) => {
 		undefined
 	);
 
-	const state = useSelector((state: StoreState) => state.game);
+	const state = useSelector((state: StoreState) => state);
+
+	const {
+		game: { isLoading, current },
+		auth: { username },
+	} = state;
 
 	const announceCurrGame = currGame !== undefined;
 	// makes sure both are defined
 	const announcePrevGame =
-		!(prevGame === undefined || currGame === undefined) ||
-		state.isLoading;
+		!(prevGame === undefined || currGame === undefined) || isLoading;
 
 	const showAnnouncement = announcePrevGame || announceCurrGame;
 	const flexDirection = announcePrevGame ? "row" : "column";
@@ -51,10 +58,10 @@ export const GameAnnouncer = ({ children }: IProps) => {
 	 * in local state
 	 */
 	useEffect(() => {
-		if (state.current !== undefined) {
-			setCurrGame(state.current);
+		if (current !== undefined) {
+			setCurrGame(current);
 		}
-	}, [state.current]);
+	}, [current]);
 
 	/**
 	 * Hook clears the current state when previous
@@ -70,13 +77,13 @@ export const GameAnnouncer = ({ children }: IProps) => {
 	 */
 	useEffect(() => {
 		// do not show next screen if is loading
-		if (announcePrevGame && !state.isLoading) {
+		if (announcePrevGame && !isLoading) {
 			const timeout = setTimeout(() => {
 				setPrevGame(undefined);
 			}, LOADING_TIMER);
 			return () => clearTimeout(timeout);
 		}
-	}, [announcePrevGame, state.isLoading]);
+	}, [announcePrevGame, isLoading]);
 
 	/**
 	 * Sets the prev game as undefined
@@ -100,10 +107,18 @@ export const GameAnnouncer = ({ children }: IProps) => {
 						<TextPrompt>{getPrevText(prevGame)}</TextPrompt>
 					</LoadingItems>
 				) : (
-					<React.Fragment>
-						<TextPrompt>{getCurrText(currGame)}</TextPrompt>
-						<PlayButton>Áfram</PlayButton>
-					</React.Fragment>
+					<NextTaskInner>
+						<h1 className="italic">
+							{getCurrText(
+								username,
+								currGame
+							).title.toUpperCase()}
+						</h1>
+						<p>{getCurrText(username, currGame).text}</p>
+						<ButtonWrapper>
+							<PlayButton>Áfram</PlayButton>
+						</ButtonWrapper>
+					</NextTaskInner>
 				)}
 			</Outer>
 		);

@@ -83,7 +83,9 @@ export const FrontPage = () => {
 										<GameProgress />
 									</Col1Row2>
 									<Col1Row3>
-										<h1>Næsta verkefni</h1>
+										<h1 className="italic">
+											Næsta verkefni
+										</h1>
 										<p>
 											Þér hefur tekist að gera foo og
 											bar, en getur þú gert foobar?

@@ -144,11 +144,6 @@ export const Col1Row2 = styled.div`
 `;
 
 export const Col1Row3 = styled.div`
-	h1 {
-		font-family: "Merriweather", serif;
-		font-style: italic;
-		margin-bottom: 0;
-	}
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
