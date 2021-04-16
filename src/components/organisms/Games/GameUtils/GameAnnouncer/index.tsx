@@ -16,6 +16,7 @@ import { IProps } from "./interface";
 import { getPrevText, getCurrText, LOADING_TIMER } from "./utils";
 import { UserAvatar } from "../../../../atoms";
 import { ICON_LVL_1 } from "../../../../../static";
+import { UserLevelService } from "../../../../../services";
 
 export const GameAnnouncer = ({ children }: IProps) => {
 	/**
@@ -43,7 +44,7 @@ export const GameAnnouncer = ({ children }: IProps) => {
 
 	const {
 		game: { isLoading, current },
-		auth: { username },
+		auth: { username, level },
 	} = state;
 
 	const announceCurrGame = currGame !== undefined;
@@ -112,7 +113,11 @@ export const GameAnnouncer = ({ children }: IProps) => {
 					<NextTaskInner>
 						<NextTaskTopLine>
 							<NextTaskTopLineAvatarContainer>
-								<UserAvatar src={ICON_LVL_1} />
+								<UserAvatar
+									src={UserLevelService.mapLevelToIconURL(
+										level
+									)}
+								/>
 							</NextTaskTopLineAvatarContainer>
 							<h1 className="italic">
 								{getCurrText(

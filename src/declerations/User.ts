@@ -4,6 +4,7 @@ export interface User {
 	_id: string;
 	type: UserType;
 	scoreCard: ScoreCard;
+	level: number;
 }
 
 export interface ScoreCard {
