@@ -46,3 +46,13 @@ export const Tick = styled.div`
 	height: 100%;
 	width: 2px;
 `;
+
+export const Icon = styled.div`
+	height: 70px;
+	width: 70px;
+	transition: 0.3s;
+	transform: translateY(-100%);
+	position: absolute;
+	right: -35px;
+	transition: 0.3s;
+`;

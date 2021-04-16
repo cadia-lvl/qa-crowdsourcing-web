@@ -34,16 +34,10 @@ import { SignUpForm } from "../../forms";
 import { NavLink } from "react-router-dom";
 import { StoreState } from "../../reducers";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchCurrentGameRound } from "../../actions";
 import { ICON_LVL_1 } from "../../static";
 
 export const FrontPage = () => {
 	const state = useSelector((state: StoreState) => state);
-	const dispatch = useDispatch();
-
-	useEffect(() => {
-		dispatch(fetchCurrentGameRound());
-	}, []);
 
 	return (
 		<Outer>

@@ -10,10 +10,13 @@ import {
 	VerifyAnswerSpanGame,
 	RoundCompletedGame,
 	GameAnnouncer,
+	UserAvatar,
 } from "../../components";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCurrentGameRound, fetchScoreCard } from "../../actions";
 import { StoreState } from "../../reducers";
+import { ProgressBarContainer, IconContainer } from "./styles";
+import { ICON_LVL_1 } from "../../static";
 
 export const GamePage = () => {
 	const dispatch = useDispatch();
@@ -33,7 +36,9 @@ export const GamePage = () => {
 					<FlexLoader size={150} />
 				) : (
 					<React.Fragment>
-						<GameProgress />
+						<ProgressBarContainer>
+							<GameProgress showIcon />
+						</ProgressBarContainer>
 						<WriteQuestionGame />
 						<SubmitArticleGame />
 						<VerifyAnswerLocationGame />

@@ -6,7 +6,7 @@ import Footer from "./Footer";
 import { LoadingOuter, Outer } from "./styles";
 import { useSelector, useDispatch } from "react-redux";
 import { StoreState } from "../reducers";
-import { fetchUserFromToken } from "../actions";
+import { fetchCurrentGameRound, fetchUserFromToken } from "../actions";
 import { FETCH_USER_FROM_TOKEN_WAIT_MS } from "./utils";
 import { FlexLoader } from "../components";
 import { fetchAnswersPerDay } from "../actions/chartDataActions";
@@ -25,6 +25,7 @@ export const LayoutWrapper = ({ children }: IProps) => {
 
 	useEffect(() => {
 		dispatch(fetchAnswersPerDay());
+		dispatch(fetchCurrentGameRound());
 	}, []);
 
 	if (state.type === "loading")
