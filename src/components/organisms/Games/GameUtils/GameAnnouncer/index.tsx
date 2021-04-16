@@ -8,6 +8,7 @@ import {
 	FlexLoader,
 	TextPrompt,
 	BaseButton,
+	PlayButton,
 } from "../../../../";
 import { IProps } from "./interface";
 import { getPrevText, getCurrText, LOADING_TIMER } from "./utils";
@@ -41,6 +42,9 @@ export const GameAnnouncer = ({ children }: IProps) => {
 	const announcePrevGame =
 		!(prevGame === undefined || currGame === undefined) ||
 		state.isLoading;
+
+	const showAnnouncement = announcePrevGame || announceCurrGame;
+	const flexDirection = announcePrevGame ? "row" : "column";
 
 	/**
 	 * If the state in REDUX has changed
@@ -85,33 +89,32 @@ export const GameAnnouncer = ({ children }: IProps) => {
 	const handleOpenTask = () => {
 		setPrevGame(currGame);
 	};
-	if (announcePrevGame)
-		return (
-			<WhiteFlexCard>
-				<Inner theme={{ flexDirection: "row" }}>
-					<LoadingContainer>
-						<FlexLoader size={40} />
-					</LoadingContainer>
 
-					<TextPrompt>{getPrevText(prevGame)}</TextPrompt>
-				</Inner>
-			</WhiteFlexCard>
-		);
-	else if (announceCurrGame)
+	if (showAnnouncement)
 		return (
 			<WhiteFlexCard>
-				<Inner theme={{ flexDirection: "column" }}>
-					<TextPrompt>
-						<i>NÆSTA VERKEFNI</i>
-					</TextPrompt>
-					<TextPrompt>{getCurrText(currGame)}</TextPrompt>
-					<BaseButton
-						label="Áfram"
-						onClick={handleOpenTask}
-						type="success"
-					/>
+				<Inner theme={{ flexDirection }}>
+					{announcePrevGame ? (
+						<React.Fragment>
+							<LoadingContainer>
+								<FlexLoader size={40} />
+							</LoadingContainer>
+							<TextPrompt>
+								{getPrevText(prevGame)}
+							</TextPrompt>
+						</React.Fragment>
+					) : (
+						<React.Fragment>
+							<TextPrompt>
+								<i>NÆSTA VERKEFNI</i>:{" "}
+								{getCurrText(currGame)}
+							</TextPrompt>
+							<PlayButton>Áfram</PlayButton>
+						</React.Fragment>
+					)}
 				</Inner>
 			</WhiteFlexCard>
 		);
-	else return <React.Fragment>{children}</React.Fragment>;
+
+	return <React.Fragment>{children}</React.Fragment>;
 };

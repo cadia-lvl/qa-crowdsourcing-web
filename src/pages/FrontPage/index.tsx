@@ -18,7 +18,6 @@ import {
 	Col1Row1Cell1,
 	Col1Row1Cell2,
 	Col1Row3,
-	GlowButton,
 	GlowBtnWrapper,
 } from "./styles";
 import {
@@ -28,6 +27,7 @@ import {
 	QAsPerDay,
 	GameProgress,
 	UserAvatar,
+	PlayButton,
 } from "../../components";
 import { AuthConditionalRender } from "../../hoc";
 import { SignUpForm } from "../../forms";
@@ -92,11 +92,7 @@ export const FrontPage = () => {
 											stoppað þau?
 										</p>
 										<GlowBtnWrapper>
-											<NavLink to="/spila">
-												<GlowButton>
-													Spila
-												</GlowButton>
-											</NavLink>
+											<PlayButton>Spila</PlayButton>
 										</GlowBtnWrapper>
 									</Col1Row3>
 								</DashboardCol1>
