@@ -30,6 +30,7 @@ export const QAsPerDay = () => {
 					borderColor: Colors.HIGHLIGHT,
 					pointBackgroundColor: "rgba(255, 255, 255,0 )",
 					data: cumulatives.map((item) => item.count),
+					yAxisId: "aszf",
 				},
 			],
 			labels: cumulatives.map((item) =>
@@ -37,6 +38,7 @@ export const QAsPerDay = () => {
 			),
 		};
 	}, [state.chartData.answersPerDay]);
+
 	return (
 		<Line
 			data={data}

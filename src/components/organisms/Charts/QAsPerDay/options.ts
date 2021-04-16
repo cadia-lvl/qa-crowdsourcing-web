@@ -2,26 +2,22 @@ const options = {
 	scales: {
 		yAxes: [
 			{
-				ticks: {
-					fontColor: "rgba(255, 255, 255, 0)",
-				},
 				gridLines: {
 					display: false,
 				},
-				type: "linear",
-				display: true,
-				yAxisID: "A",
-				position: "left",
+				drawOnChartArea: false,
+				display: false, // this will hide vertical lines
+				id: "1",
 			},
 		],
 		xAxes: [
 			{
-				scaleLabel: {
+				gridLines: {
 					display: false,
+					drawOnChartArea: false,
 				},
-				ticks: {
-					display: false, // it should work
-				},
+				drawOnChartArea: false,
+				display: false, // this will hide vertical lines,
 			},
 		],
 	},
