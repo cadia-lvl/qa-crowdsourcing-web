@@ -53,6 +53,11 @@ export const FrontPage = () => {
 						{/* When user is Authenticated */}
 						<WhenIsAuth>
 							<DashBoardOuter>
+								{/* -- START OF DASHBOARD --
+									
+								This is sort of a home made grid
+								where things are split into columns first and then
+								optionally into rows and lastly always cells */}
 								<DashboardCol1>
 									{" "}
 									<Col1Row1>
@@ -87,7 +92,11 @@ export const FrontPage = () => {
 											stoppað þau?
 										</p>
 										<GlowBtnWrapper>
-											<GlowButton>Spila</GlowButton>
+											<NavLink to="/spila">
+												<GlowButton>
+													Spila
+												</GlowButton>
+											</NavLink>
 										</GlowBtnWrapper>
 									</Col1Row3>
 								</DashboardCol1>
@@ -101,6 +110,8 @@ export const FrontPage = () => {
 									</Col3Cell1>
 								</DashboardCol3>
 							</DashBoardOuter>
+
+							{/* -- END OF DASHBOARD -- */}
 						</WhenIsAuth>
 
 						{/* When user is not authenticated */}
