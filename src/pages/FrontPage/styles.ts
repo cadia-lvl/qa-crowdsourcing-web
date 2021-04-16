@@ -144,13 +144,45 @@ export const Col1Row2 = styled.div`
 `;
 
 export const Col1Row3 = styled.div`
+	h1 {
+		font-family: "Merriweather", serif;
+		font-style: italic;
+		margin-bottom: 0;
+	}
 	display: flex;
 	flex-direction: column;
-	.fas {
-		font-size: 50px !important;
+	justify-content: flex-start;
+	p {
+		margin: 0;
+		padding: 0;
 	}
+	height: 100%;
+	padding-bottom: 10px;
 `;
 
 export const Col3Cell1 = styled.div`
 	flex: 0.4;
+`;
+
+export const GlowBtnWrapper = styled.div`
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+	justify-content: flex-end;
+	align-items: flex-end;
+	height: 100%;
+`;
+
+const GLOW_BTN_HEIGHT = 45;
+export const GlowButton = styled.button`
+	background: ${Colors.DANGER};
+	border: none;
+	outline: none;
+	box-shadow: 0px 0px 25px rgba(246, 78, 96, 0.65);
+	animation: pulse 2s infinite;
+	height: ${GLOW_BTN_HEIGHT}px;
+	width: 120px;
+	border-radius: ${GLOW_BTN_HEIGHT / 2}px;
+	color: #fff;
+	cursor: pointer;
 `;

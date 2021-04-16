@@ -17,6 +17,9 @@ import {
 	Col1Row2,
 	Col1Row1Cell1,
 	Col1Row1Cell2,
+	Col1Row3,
+	GlowButton,
+	GlowBtnWrapper,
 } from "./styles";
 import {
 	WhiteFlexCard,
@@ -74,6 +77,19 @@ export const FrontPage = () => {
 										</div>
 										<GameProgress />
 									</Col1Row2>
+									<Col1Row3>
+										<h1>Næsta verkefni</h1>
+										<p>
+											Þér hefur tekist að gera foo og
+											bar, en getur þú gert foobar?
+											Það eru þúsundir schpoinkels
+											valsandi um miðbæinn, getur þú
+											stoppað þau?
+										</p>
+										<GlowBtnWrapper>
+											<GlowButton>Spila</GlowButton>
+										</GlowBtnWrapper>
+									</Col1Row3>
 								</DashboardCol1>
 								<DashboardCol2>
 									<ScoreCard />
