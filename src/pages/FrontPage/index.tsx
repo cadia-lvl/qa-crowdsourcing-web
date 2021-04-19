@@ -36,6 +36,7 @@ import { NavLink } from "react-router-dom";
 import { StoreState } from "../../reducers";
 import { useDispatch, useSelector } from "react-redux";
 import { ICON_LVL_1 } from "../../static";
+import { UserLevelService } from "../../services";
 
 export const FrontPage = () => {
 	const state = useSelector((state: StoreState) => state);
@@ -60,11 +61,19 @@ export const FrontPage = () => {
 										<Col1Row1>
 											<Col1Row1Cell1>
 												<UserAvatar
-													src={ICON_LVL_1}
+													src={UserLevelService.mapLevelToIconURL(
+														state.auth.level
+													)}
 												/>
 											</Col1Row1Cell1>
+
 											<Col1Row1Cell2>
-												<span>Lvl 3 dúx</span>
+												<span>
+													Lvl {state.auth.level}{" "}
+													{UserLevelService.mapLevelToString(
+														state.auth.level
+													)}
+												</span>
 												<span className="bold username">
 													Njallskarp123
 												</span>
@@ -84,32 +93,36 @@ export const FrontPage = () => {
 												<span>
 													<i className="fas fa-chevron-right" />
 													<i className="fas fa-chevron-right" />
-													Lvl 4 Kennari
+													Lvl{" "}
+													{state.auth.level + 1}{" "}
+													{UserLevelService.mapLevelToString(
+														state.auth.level +
+															1
+													)}
 												</span>
 											</div>
 											<GameProgress />
 										</Col1Row2>
-										<Col1Row3>
-											<h1 className="italic">
-												Næsta verkefni
-											</h1>
-											<p>
-												Þér hefur tekist að gera
-												foo og bar, en getur þú
-												gert foobar? Það eru
-												þúsundir schpoinkels
-												valsandi um miðbæinn, getur
-												þú stoppað þau?
-											</p>
-											<GlowBtnWrapper>
-												<NavLink to="/spila">
-													<PlayButton>
-														Spila
-													</PlayButton>
-												</NavLink>
-											</GlowBtnWrapper>
-										</Col1Row3>
 									</Explain>
+									<Col1Row3>
+										<h1 className="italic">
+											Næsta verkefni
+										</h1>
+										<p>
+											Þér hefur tekist að gera foo og
+											bar, en getur þú gert foobar?
+											Það eru þúsundir schpoinkels
+											valsandi um miðbæinn, getur þú
+											stoppað þau?
+										</p>
+										<GlowBtnWrapper>
+											<NavLink to="/spila">
+												<PlayButton>
+													Spila
+												</PlayButton>
+											</NavLink>
+										</GlowBtnWrapper>
+									</Col1Row3>
 								</DashboardCol1>
 								<DashboardCol2>
 									<ScoreCard />

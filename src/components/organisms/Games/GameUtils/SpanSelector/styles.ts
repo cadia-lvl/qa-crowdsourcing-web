@@ -22,6 +22,7 @@ export const Word = styled.span`
 			? `
 			color: ${Colors.HIGHLIGHT};
 			font-weight: bold;
+			text-shadow: 0px 0px 5px rgba(250, 0, 0, 0.4);
 			`
 			: ""}
 	${(props) =>
