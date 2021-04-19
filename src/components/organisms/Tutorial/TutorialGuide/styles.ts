@@ -10,3 +10,9 @@ export const Outer = styled.div`
 	bottom: 50px;
 	right: 50px;
 `;
+
+export const Inner = styled.div`
+	position: relative;
+	height: inherit;
+	width: inherit;
+`;
