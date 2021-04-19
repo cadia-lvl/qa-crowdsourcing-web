@@ -134,15 +134,22 @@ export const GameAnnouncer = ({ children }: IProps) => {
 						</DescriptionBoxPara>
 					</DescriptionBox>
 					<BulletSection>
-						<Bullet type="good">
-							This is something. This is something. This is
-							something. This is something. This is something
-						</Bullet>
-						<Bullet type="good">This is something</Bullet>
-						<Bullet type="good">This is something</Bullet>
-						<Bullet type="bad">This is something</Bullet>
-						<Bullet type="bad">This is something</Bullet>
-						<Bullet type="bad">This is something</Bullet>
+						{getCurrText(username, currGame).dos.map(
+							(text) => (
+								<Bullet type="good">{text}</Bullet>
+							)
+						)}
+						{getCurrText(username, currGame).infos.map(
+							(text) => (
+								<Bullet type="neutral">{text}</Bullet>
+							)
+						)}
+
+						{getCurrText(username, currGame).donts.map(
+							(text) => (
+								<Bullet type="bad">{text}</Bullet>
+							)
+						)}
 					</BulletSection>
 					<ButtonWrapper>
 						<PlayButton onClick={handleOpenTask}>

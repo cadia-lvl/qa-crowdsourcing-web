@@ -1,4 +1,4 @@
 export interface IProps {
 	children: React.ReactNode;
-	type: "good" | "bad";
+	type: "good" | "bad" | "neutral";
 }

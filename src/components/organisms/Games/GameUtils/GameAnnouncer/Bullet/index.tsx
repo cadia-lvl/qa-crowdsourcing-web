@@ -7,6 +7,7 @@ const Bullet = ({ children, type }: IProps) => {
 		<Outer type={type}>
 			<i className="fas fa-check" />
 			<i className="fas fa-times" />
+			<i className="fas fa-minus" />
 			{children}
 		</Outer>
 	);
