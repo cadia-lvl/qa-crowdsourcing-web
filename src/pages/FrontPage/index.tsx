@@ -28,6 +28,7 @@ import {
 	GameProgress,
 	UserAvatar,
 	PlayButton,
+	Explain,
 } from "../../components";
 import { AuthConditionalRender } from "../../hoc";
 import { SignUpForm } from "../../forms";
@@ -55,51 +56,60 @@ export const FrontPage = () => {
 								optionally into rows and lastly always cells */}
 								<DashboardCol1>
 									{" "}
-									<Col1Row1>
-										<Col1Row1Cell1>
-											<UserAvatar src={ICON_LVL_1} />
-										</Col1Row1Cell1>
-										<Col1Row1Cell2>
-											<span>Lvl 3 dúx</span>
-											<span className="bold username">
-												Njallskarp123
-											</span>
-										</Col1Row1Cell2>
-									</Col1Row1>
-									<Col1Row2>
-										<div className="advance-info">
-											<span>
-												{state.game.currentRound -
-													1}
-												/{state.game.totalRounds}
-											</span>
-											<span>
-												<i className="fas fa-chevron-right" />
-												<i className="fas fa-chevron-right" />
-												Lvl 4 Kennari
-											</span>
-										</div>
-										<GameProgress />
-									</Col1Row2>
-									<Col1Row3>
-										<h1 className="italic">
-											Næsta verkefni
-										</h1>
-										<p>
-											Þér hefur tekist að gera foo og
-											bar, en getur þú gert foobar?
-											Það eru þúsundir schpoinkels
-											valsandi um miðbæinn, getur þú
-											stoppað þau?
-										</p>
-										<GlowBtnWrapper>
-											<NavLink to="/spila">
-												<PlayButton>
-													Spila
-												</PlayButton>
-											</NavLink>
-										</GlowBtnWrapper>
-									</Col1Row3>
+									<Explain>
+										<Col1Row1>
+											<Col1Row1Cell1>
+												<UserAvatar
+													src={ICON_LVL_1}
+												/>
+											</Col1Row1Cell1>
+											<Col1Row1Cell2>
+												<span>Lvl 3 dúx</span>
+												<span className="bold username">
+													Njallskarp123
+												</span>
+											</Col1Row1Cell2>
+										</Col1Row1>
+										<Col1Row2>
+											<div className="advance-info">
+												<span>
+													{state.game
+														.currentRound - 1}
+													/
+													{
+														state.game
+															.totalRounds
+													}
+												</span>
+												<span>
+													<i className="fas fa-chevron-right" />
+													<i className="fas fa-chevron-right" />
+													Lvl 4 Kennari
+												</span>
+											</div>
+											<GameProgress />
+										</Col1Row2>
+										<Col1Row3>
+											<h1 className="italic">
+												Næsta verkefni
+											</h1>
+											<p>
+												Þér hefur tekist að gera
+												foo og bar, en getur þú
+												gert foobar? Það eru
+												þúsundir schpoinkels
+												valsandi um miðbæinn, getur
+												þú stoppað þau?
+											</p>
+											<GlowBtnWrapper>
+												<NavLink to="/spila">
+													<PlayButton>
+														Spila
+													</PlayButton>
+												</NavLink>
+											</GlowBtnWrapper>
+										</Col1Row3>
+									</Explain>
 								</DashboardCol1>
 								<DashboardCol2>
 									<ScoreCard />

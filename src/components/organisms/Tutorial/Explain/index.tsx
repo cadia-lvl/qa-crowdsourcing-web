@@ -5,7 +5,8 @@ import { Outer, ChildWrapper } from "./styles";
 export const Explain = ({ children }: IProps) => {
 	return (
 		<Outer>
-			<ChildWrapper>{children}</ChildWrapper>
+			<ChildWrapper></ChildWrapper>
+			{children}
 		</Outer>
 	);
 };

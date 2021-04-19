@@ -180,3 +180,17 @@ $shooting-time: 3000ms;
 		box-shadow: 0px 0px 25px rgba(246, 78, 96, 0.85);
 	}
 }
+
+@keyframes pulse-border {
+	0% {
+		border: 4px dashed rgba(246, 78, 96, 0.1);
+	}
+
+	35% {
+		border: 4px dashed rgba(246, 78, 96, 1);
+	}
+
+	100% {
+		border: 4px dashed rgba(246, 78, 96, 0);
+	}
+}
