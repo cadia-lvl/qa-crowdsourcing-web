@@ -9,14 +9,17 @@ import {
 	NextTaskInner,
 	ButtonWrapper,
 	NextTaskTopLine,
-	NextTaskTopLineAvatarContainer,
+	DescriptionBox,
+	AnnouncerAvatarWrapper,
+	DescriptionBoxPara,
+	BulletSection,
 } from "./styles";
 import { FlexLoader, TextPrompt, PlayButton } from "../../../../";
 import { IProps } from "./interface";
 import { getPrevText, getCurrText, LOADING_TIMER } from "./utils";
 import { UserAvatar } from "../../../../atoms";
-import { ICON_LVL_1 } from "../../../../../static";
 import { UserLevelService } from "../../../../../services";
+import Bullet from "./Bullet";
 
 export const GameAnnouncer = ({ children }: IProps) => {
 	/**
@@ -100,40 +103,53 @@ export const GameAnnouncer = ({ children }: IProps) => {
 	};
 
 	if (showAnnouncement)
-		return (
-			<Outer theme={{ flexDirection }}>
-				{announcePrevGame ? (
-					<LoadingItems>
-						<LoadingContainer>
-							<FlexLoader size={40} />
-						</LoadingContainer>
-						<TextPrompt>{getPrevText(prevGame)}</TextPrompt>
-					</LoadingItems>
-				) : (
-					<NextTaskInner>
-						<NextTaskTopLine>
-							<NextTaskTopLineAvatarContainer>
-								<UserAvatar
-									src={UserLevelService.mapLevelToIconURL(
-										level
-									)}
-								/>
-							</NextTaskTopLineAvatarContainer>
-							<h1 className="italic">
-								{getCurrText(
-									username,
-									currGame
-								).title.toUpperCase()}
-							</h1>
-						</NextTaskTopLine>
-						<p>{getCurrText(username, currGame).text}</p>
-						<ButtonWrapper>
-							<PlayButton onClick={handleOpenTask}>
-								Áfram
-							</PlayButton>
-						</ButtonWrapper>
-					</NextTaskInner>
-				)}
+		return announcePrevGame ? (
+			<LoadingItems>
+				<LoadingContainer>
+					<FlexLoader size={40} />
+				</LoadingContainer>
+				<TextPrompt>{getPrevText(prevGame)}</TextPrompt>
+			</LoadingItems>
+		) : (
+			<Outer>
+				<NextTaskInner>
+					<NextTaskTopLine>
+						<h1 className="italic">
+							{getCurrText(
+								username,
+								currGame
+							).title.toUpperCase()}
+						</h1>
+					</NextTaskTopLine>
+					<DescriptionBox>
+						<AnnouncerAvatarWrapper>
+							<UserAvatar
+								src={UserLevelService.mapLevelToIconURL(
+									level
+								)}
+							/>
+						</AnnouncerAvatarWrapper>
+						<DescriptionBoxPara>
+							{getCurrText(username, currGame).text}
+						</DescriptionBoxPara>
+					</DescriptionBox>
+					<BulletSection>
+						<Bullet type="good">
+							This is something. This is something. This is
+							something. This is something. This is something
+						</Bullet>
+						<Bullet type="good">This is something</Bullet>
+						<Bullet type="good">This is something</Bullet>
+						<Bullet type="bad">This is something</Bullet>
+						<Bullet type="bad">This is something</Bullet>
+						<Bullet type="bad">This is something</Bullet>
+					</BulletSection>
+					<ButtonWrapper>
+						<PlayButton onClick={handleOpenTask}>
+							Áfram
+						</PlayButton>
+					</ButtonWrapper>
+				</NextTaskInner>
 			</Outer>
 		);
 

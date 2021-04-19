@@ -4,7 +4,6 @@ import { Colors } from "../../../../../styles";
 export const Outer = styled.div`
 	width: 600px;
 	margin: 0 auto;
-	height: 350px;
 	background-color: #fff;
 	border-radius: 5px;
 	box-shadow: 0px 0px 20px rgba(${Colors.HIGHLIGHT_RGB}, 0.15);
@@ -28,12 +27,6 @@ export const NextTaskTopLine = styled.div`
 	align-items: center;
 `;
 
-export const NextTaskTopLineAvatarContainer = styled.div`
-	height: 60px;
-	width: 60px;
-	margin-right: 20px;
-`;
-
 export const NextTaskInner = styled.div`
 	width: 600px;
 	margin: 0 auto;
@@ -49,4 +42,28 @@ export const ButtonWrapper = styled.div`
 	flex: 1;
 	justify-content: flex-end;
 	align-items: flex-end;
+`;
+
+export const DescriptionBox = styled.div`
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	border-top: 1px solid #ececec;
+	border-bottom: 1px solid #ececec;
+	padding: 20px 0;
+`;
+
+export const AnnouncerAvatarWrapper = styled.div`
+	height: 70px;
+	width: 70px;
+`;
+
+export const DescriptionBoxPara = styled.p`
+	flex: 1;
+	margin-left: 15px;
+	margin-top: 0;
+`;
+
+export const BulletSection = styled.div`
+	padding: 20px 0;
 `;
