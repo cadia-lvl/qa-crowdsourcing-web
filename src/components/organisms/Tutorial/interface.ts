@@ -28,4 +28,4 @@ export type TutorialExplanations =
 
 type TutorialExplanationIDs =
 	| "FRONTPAGE:DASHBOARD:INTRO:PROGRESS"
-	| "FRONGPAGE:DASHBOARD:INTRO:NEXTJOB";
+	| "FRONTPAGE:DASHBOARD:INTRO:NEXTJOB";

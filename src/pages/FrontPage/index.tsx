@@ -36,9 +36,11 @@ import { NavLink } from "react-router-dom";
 import { StoreState } from "../../reducers";
 import { useSelector } from "react-redux";
 import { UserLevelService } from "../../services";
+import TUTORIAL_ITEMS from "./tutorialItems";
 
 export const FrontPage = () => {
-	const state = useSelector((state: StoreState) => state);
+	const auth = useSelector((state: StoreState) => state.auth);
+	const game = useSelector((state: StoreState) => state.game);
 	return (
 		<Outer>
 			{/* Space to the Left of the screen */}
@@ -55,21 +57,21 @@ export const FrontPage = () => {
 								optionally into rows and lastly always cells */}
 								<DashboardCol1>
 									{" "}
-									<Explain items={[]}>
+									<Explain items={TUTORIAL_ITEMS}>
 										<Col1Row1>
 											<Col1Row1Cell1>
 												<UserAvatar
 													src={UserLevelService.mapLevelToIconURL(
-														state.auth.level
+														auth.level
 													)}
 												/>
 											</Col1Row1Cell1>
 
 											<Col1Row1Cell2>
 												<span>
-													Lvl {state.auth.level}{" "}
+													Lvl {auth.level}{" "}
 													{UserLevelService.mapLevelToString(
-														state.auth.level
+														auth.level
 													)}
 												</span>
 												<span className="bold username">
@@ -80,22 +82,15 @@ export const FrontPage = () => {
 										<Col1Row2>
 											<div className="advance-info">
 												<span>
-													{state.game
-														.currentRound - 1}
-													/
-													{
-														state.game
-															.totalRounds
-													}
+													{game.currentRound - 1}
+													/{game.totalRounds}
 												</span>
 												<span>
 													<i className="fas fa-chevron-right" />
 													<i className="fas fa-chevron-right" />
-													Lvl{" "}
-													{state.auth.level + 1}{" "}
+													Lvl {auth.level + 1}{" "}
 													{UserLevelService.mapLevelToString(
-														state.auth.level +
-															1
+														auth.level + 1
 													)}
 												</span>
 											</div>
