@@ -1,7 +1,7 @@
 import React from "react";
 import { ICON_LVL_1 } from "../../../../static";
 import { UserAvatar } from "../../../atoms";
-import { Outer, Inner } from "./styles";
+import { Outer, Inner, DialogContainer } from "./styles";
 import TutorialBubble from "../TutorialBubble";
 import { StoreState } from "../../../../reducers";
 import { useSelector } from "react-redux";
@@ -29,7 +29,17 @@ export const TutorialGuide = () => {
 		<Outer>
 			<Inner>
 				{isExplaining ? (
-					<TutorialBubble>{bubbleChild}</TutorialBubble>
+					<TutorialBubble>
+						{bubbleChild}
+						<DialogContainer>
+							{firstItem.dialog.map((x) => (
+								<span>
+									<i className="fas fa-chevron-right" />{" "}
+									{x.text}
+								</span>
+							))}
+						</DialogContainer>
+					</TutorialBubble>
 				) : null}
 
 				<UserAvatar src={ICON_LVL_1} />

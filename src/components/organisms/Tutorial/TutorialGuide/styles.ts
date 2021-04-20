@@ -16,3 +16,14 @@ export const Inner = styled.div`
 	height: inherit;
 	width: inherit;
 `;
+
+export const DialogContainer = styled.div`
+	margin-top: 10px;
+	color: #666;
+	font-weight: 700;
+	cursor: pointer;
+	transition: 0.3s;
+	:hover {
+		color: ${Colors.HIGHLIGHT};
+	}
+`;

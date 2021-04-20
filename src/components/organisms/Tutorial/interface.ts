@@ -4,11 +4,7 @@ interface TutorialDialogItem {
 }
 
 // allow only 0-3 items
-type TutorialDialog =
-	| []
-	| [TutorialDialogItem]
-	| [TutorialDialogItem, TutorialDialogItem]
-	| [TutorialDialogItem, TutorialDialogItem, TutorialDialogItem];
+type TutorialDialog = TutorialDialogItem[];
 
 export type TutorialExplanations =
 	| {
