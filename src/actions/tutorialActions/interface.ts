@@ -10,3 +10,8 @@ export interface RemoveTutorialItemIDsAction {
 	type: ActionTypes.removeTutorialItemIDs;
 	payload: string[];
 }
+
+export interface ReplaceFirstInQueueAction {
+	type: ActionTypes.replaceFirstInQueue;
+	payload: TutorialExplanations;
+}

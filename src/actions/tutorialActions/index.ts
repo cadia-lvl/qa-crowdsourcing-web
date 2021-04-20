@@ -3,6 +3,7 @@ import { ActionTypes } from "../types";
 import {
 	QueueTutorialItemsAction,
 	RemoveTutorialItemIDsAction,
+	ReplaceFirstInQueueAction,
 } from "./interface";
 
 export const queueTutorialItems = (
@@ -17,6 +18,13 @@ export const removeTutorialItemIDs = (
 ): RemoveTutorialItemIDsAction => ({
 	type: ActionTypes.removeTutorialItemIDs,
 	payload: items,
+});
+
+export const replaceFirstInQueue = (
+	item: TutorialExplanations
+): ReplaceFirstInQueueAction => ({
+	type: ActionTypes.replaceFirstInQueue,
+	payload: item,
 });
 
 export * from "./interface";

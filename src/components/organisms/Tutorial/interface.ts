@@ -1,6 +1,6 @@
-interface TutorialDialogItem {
+export interface TutorialDialogItem {
 	text: string;
-	item?: TutorialExplanationIDs;
+	item?: TutorialExplanations;
 }
 
 // allow only 0-3 items
@@ -24,4 +24,5 @@ export type TutorialExplanations =
 
 type TutorialExplanationIDs =
 	| "FRONTPAGE:DASHBOARD:INTRO:PROGRESS"
+	| "FRONTPAGE:DASHBOARD:INTRO:PROGRESS:2"
 	| "FRONTPAGE:DASHBOARD:INTRO:NEXTJOB";

@@ -32,6 +32,7 @@ export enum ActionTypes {
 	setShowAvatarInHeader,
 	queueTutorialItems,
 	removeTutorialItemIDs,
+	replaceFirstInQueue,
 }
 
 export type Actions =
@@ -59,4 +60,5 @@ export type Actions =
 	| GameActions.SetShowAvatarInHeaderAction
 	| ChartDataActions.FetchAnswersPerDayAction
 	| TutorialActions.QueueTutorialItemsAction
+	| TutorialActions.ReplaceFirstInQueueAction
 	| TutorialActions.RemoveTutorialItemIDsAction;

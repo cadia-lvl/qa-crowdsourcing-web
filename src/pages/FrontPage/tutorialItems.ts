@@ -10,7 +10,18 @@ const items: TutorialExplanations[] = [
 		dialog: [
 			{
 				text: "Allt í góðu",
-				item: undefined,
+				item: {
+					type: "str",
+					payload:
+						"Því fleiri verkefni sem þú klárar, því fleiri stigum safnarðu!",
+					id: "FRONTPAGE:DASHBOARD:INTRO:PROGRESS:2",
+					highlight: false,
+					dialog: [
+						{
+							text: "Ég skil",
+						},
+					],
+				},
 			},
 		],
 	},

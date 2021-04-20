@@ -22,6 +22,12 @@ const reducer = (
 					(item) => !action.payload.includes(item.id)
 				),
 			};
+		case ActionTypes.replaceFirstInQueue:
+			state.queue[0] = action.payload;
+			return {
+				...state,
+				queue: [...state.queue],
+			};
 		default:
 			return state;
 	}
