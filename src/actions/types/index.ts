@@ -4,6 +4,7 @@ import * as WriteQuestionActions from "../writeQuestionActions";
 import * as GameActions from "../gameActions";
 import * as VerifyAnswerLocationsActions from "../verifyAnswerLocationActions";
 import * as ChartDataActions from "../chartDataActions";
+import * as TutorialActions from "../tutorialActions";
 
 export enum ActionTypes {
 	fetchUserFromToken,
@@ -29,6 +30,7 @@ export enum ActionTypes {
 	fetchAnswersPerDay,
 	setGameLoadingState,
 	setShowAvatarInHeader,
+	queueTutorialItems,
 }
 
 export type Actions =
@@ -54,4 +56,5 @@ export type Actions =
 	| GameActions.CompleteRoundFromAPIAction
 	| GameActions.SetGameLoadingStateAction
 	| GameActions.SetShowAvatarInHeaderAction
-	| ChartDataActions.FetchAnswersPerDayAction;
+	| ChartDataActions.FetchAnswersPerDayAction
+	| TutorialActions.QueueTutorialItemsAction;

@@ -34,13 +34,11 @@ import { AuthConditionalRender } from "../../hoc";
 import { SignUpForm } from "../../forms";
 import { NavLink } from "react-router-dom";
 import { StoreState } from "../../reducers";
-import { useDispatch, useSelector } from "react-redux";
-import { ICON_LVL_1 } from "../../static";
+import { useSelector } from "react-redux";
 import { UserLevelService } from "../../services";
 
 export const FrontPage = () => {
 	const state = useSelector((state: StoreState) => state);
-
 	return (
 		<Outer>
 			{/* Space to the Left of the screen */}
@@ -57,7 +55,7 @@ export const FrontPage = () => {
 								optionally into rows and lastly always cells */}
 								<DashboardCol1>
 									{" "}
-									<Explain>
+									<Explain items={[]}>
 										<Col1Row1>
 											<Col1Row1Cell1>
 												<UserAvatar
