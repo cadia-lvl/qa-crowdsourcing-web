@@ -16,12 +16,14 @@ export type TutorialExplanations =
 			dialog: TutorialDialog;
 			id: TutorialExplanationIDs;
 			highlight: boolean;
+			payload: () => JSX.Element;
 	  }
 	| {
 			type: "str";
 			dialog: TutorialDialog;
 			id: TutorialExplanationIDs;
 			highlight: boolean;
+			payload: string;
 	  };
 
 type TutorialExplanationIDs =
