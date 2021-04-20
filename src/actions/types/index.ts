@@ -31,6 +31,7 @@ export enum ActionTypes {
 	setGameLoadingState,
 	setShowAvatarInHeader,
 	queueTutorialItems,
+	removeTutorialItemIDs,
 }
 
 export type Actions =
@@ -57,4 +58,5 @@ export type Actions =
 	| GameActions.SetGameLoadingStateAction
 	| GameActions.SetShowAvatarInHeaderAction
 	| ChartDataActions.FetchAnswersPerDayAction
-	| TutorialActions.QueueTutorialItemsAction;
+	| TutorialActions.QueueTutorialItemsAction
+	| TutorialActions.RemoveTutorialItemIDsAction;

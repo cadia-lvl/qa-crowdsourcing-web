@@ -15,6 +15,13 @@ const reducer = (
 				...state,
 				queue: [...state.queue, ...action.payload],
 			};
+		case ActionTypes.removeTutorialItemIDs:
+			return {
+				...state,
+				queue: state.queue.filter(
+					(item) => !action.payload.includes(item.id)
+				),
+			};
 		default:
 			return state;
 	}

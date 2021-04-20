@@ -5,3 +5,8 @@ export interface QueueTutorialItemsAction {
 	type: ActionTypes.queueTutorialItems;
 	payload: TutorialExplanations[];
 }
+
+export interface RemoveTutorialItemIDsAction {
+	type: ActionTypes.removeTutorialItemIDs;
+	payload: string[];
+}
