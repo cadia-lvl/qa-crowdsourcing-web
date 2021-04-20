@@ -10,6 +10,11 @@ const reducer = (
 	action: Actions
 ): TutorialState => {
 	switch (action.type) {
+		case ActionTypes.queueTutorialItems:
+			return {
+				...state,
+				queue: [...state.queue, ...action.payload],
+			};
 		default:
 			return state;
 	}
