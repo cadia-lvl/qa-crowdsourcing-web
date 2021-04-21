@@ -25,3 +25,8 @@ export interface SetTutorialItemToFrontAction {
 	type: ActionTypes.setTutorialItemToFront;
 	payload: TutorialExplanations;
 }
+
+export interface AddPersistantTutorialItems {
+	type: ActionTypes.addPersistantTutorialItems;
+	payload: TutorialExplanations[];
+}

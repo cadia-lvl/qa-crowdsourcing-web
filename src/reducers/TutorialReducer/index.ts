@@ -3,6 +3,7 @@ import { Actions, ActionTypes } from "../../actions";
 
 export const initialState: TutorialState = {
 	queue: [],
+	persistant: [],
 };
 
 const reducer = (
@@ -19,6 +20,9 @@ const reducer = (
 			return {
 				...state,
 				queue: state.queue.filter(
+					(item) => !action.payload.includes(item.id)
+				),
+				persistant: state.persistant.filter(
 					(item) => !action.payload.includes(item.id)
 				),
 			};

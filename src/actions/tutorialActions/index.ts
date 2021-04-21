@@ -6,6 +6,7 @@ import {
 	ReplaceFirstInQueueAction,
 	ReplaceQueueAction,
 	SetTutorialItemToFrontAction,
+	AddPersistantTutorialItems,
 } from "./interface";
 
 export const queueTutorialItems = (
@@ -41,6 +42,13 @@ export const setTutorialItemToFront = (
 ): SetTutorialItemToFrontAction => ({
 	type: ActionTypes.setTutorialItemToFront,
 	payload: item,
+});
+
+export const addPersistantTutorialItems = (
+	items: TutorialExplanations[]
+): AddPersistantTutorialItems => ({
+	type: ActionTypes.addPersistantTutorialItems,
+	payload: items,
 });
 
 export * from "./interface";

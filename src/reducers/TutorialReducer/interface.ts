@@ -2,4 +2,5 @@ import { TutorialExplanations } from "../../components/organisms/Tutorial/interf
 
 export interface TutorialState {
 	queue: TutorialExplanations[];
+	persistant: TutorialExplanations[];
 }

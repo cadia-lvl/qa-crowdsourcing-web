@@ -35,6 +35,7 @@ export enum ActionTypes {
 	replaceFirstInQueue,
 	replaceQueue,
 	setTutorialItemToFront,
+	addPersistantTutorialItems,
 }
 
 export type Actions =
@@ -65,4 +66,5 @@ export type Actions =
 	| TutorialActions.ReplaceFirstInQueueAction
 	| TutorialActions.ReplaceQueueAction
 	| TutorialActions.SetTutorialItemToFrontAction
+	| TutorialActions.AddPersistantTutorialItems
 	| TutorialActions.RemoveTutorialItemIDsAction;
