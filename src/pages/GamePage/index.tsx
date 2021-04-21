@@ -15,8 +15,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCurrentGameRound, fetchScoreCard } from "../../actions";
 import { StoreState } from "../../reducers";
-import { ProgressBarContainer, IconContainer } from "./styles";
-import { ICON_LVL_1 } from "../../static";
+import { ProgressBarContainer } from "./styles";
 
 export const GamePage = () => {
 	const dispatch = useDispatch();

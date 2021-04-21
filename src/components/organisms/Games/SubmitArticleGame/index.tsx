@@ -1,4 +1,10 @@
-import React, { FormEvent, useEffect, useRef, useState } from "react";
+import React, {
+	FormEvent,
+	useEffect,
+	useRef,
+	useState,
+	useMemo,
+} from "react";
 import { TextTag, GoogleTextInput } from "../../../";
 import { GOOGLE_LOGO } from "../../../../static";
 import { SearchForm, Paragraph } from "./styles";
@@ -12,6 +18,7 @@ import { getHighlightWords } from "./utils";
 import {
 	fetchArticlesQuery,
 	writeArticleSearchQuery,
+	markQuestionAsImpossible,
 } from "../../../../actions";
 import { TaskInfoBox } from "../GameUtils";
 import { Explain } from "../../Tutorial";
@@ -24,8 +31,14 @@ export const SubmitArticleGame = () => {
 	const firstArticleRef = useRef<null | HTMLDivElement>(null);
 
 	const {
-		submitArticle: { previewArticle, query, articles, text },
-		game: { _id: GameRoundId },
+		submitArticle: {
+			previewArticle,
+			query,
+			articles,
+			text,
+			_id: questionId,
+		},
+		game: { _id: gameRoundId },
 	} = state;
 
 	const hasPreview = !!previewArticle;
@@ -46,6 +59,14 @@ export const SubmitArticleGame = () => {
 		e.preventDefault();
 		dispatch(fetchArticlesQuery());
 	};
+
+	const persistantSearchResultTutorial = useMemo(
+		() =>
+			TUTORIAL.markasNotAnswerableClosure(() =>
+				dispatch(markQuestionAsImpossible(gameRoundId, questionId))
+			),
+		[questionId]
+	);
 
 	return (
 		<GameWrapper type={GameTypes.submitArticle}>
@@ -79,26 +100,37 @@ export const SubmitArticleGame = () => {
 					</React.Fragment>
 				)}
 
-				{articles.map((item, i) =>
-					/**
-					 * logical equivalence of
-					 * if (there is article in preview) then this is the article being preview
-					 * if that proposition is true then we display the preview item
-					 *
-					 * else we don't display anything, i.e. if no preview
-					 * we display all, if we have a preview then we display
-					 * said preview
-					 */
-					!hasPreview || previewArticle?.key === item.key ? (
-						<div ref={i == 0 ? firstArticleRef : null}>
-							<ArticlePreview
-								{...item}
-								key={item.key}
-								_key={item.key}
-							/>
-						</div>
-					) : null
-				)}
+				{articles.length > 0 ? (
+					<Explain
+						priority="clear-others"
+						items={TUTORIAL.explainResults}
+						// closure returns array of elements but gives
+						// items access to callback to mark as impossible
+						persist={persistantSearchResultTutorial}
+					>
+						{articles.map((item, i) =>
+							/**
+							 * logical equivalence of
+							 * if (there is article in preview) then this is the article being preview
+							 * if that proposition is true then we display the preview item
+							 *
+							 * else we don't display anything, i.e. if no preview
+							 * we display all, if we have a preview then we display
+							 * said preview
+							 */
+							!hasPreview ||
+							previewArticle?.key === item.key ? (
+								<div ref={i == 0 ? firstArticleRef : null}>
+									<ArticlePreview
+										{...item}
+										key={item.key}
+										_key={item.key}
+									/>
+								</div>
+							) : null
+						)}
+					</Explain>
+				) : null}
 				{hasPreview ? (
 					<React.Fragment>
 						<PreviewReader />

@@ -21,9 +21,9 @@ export interface ReplaceQueueAction {
 	payload: TutorialExplanations[];
 }
 
-export interface SetTutorialItemToFrontAction {
+export interface SetTutorialItemsToFrontAction {
 	type: ActionTypes.setTutorialItemToFront;
-	payload: TutorialExplanations;
+	payload: TutorialExplanations[];
 }
 
 export interface AddPersistantTutorialItems {

@@ -16,6 +16,9 @@ export const TutorialGuide = () => {
 			<Inner>
 				<BubbleContainer>
 					<TutorialBubble explain={firstItem} />
+					{state.persistant.map((item) => (
+						<TutorialBubble explain={item} />
+					))}
 				</BubbleContainer>
 				<UserAvatar src={ICON_AGENT} />
 			</Inner>

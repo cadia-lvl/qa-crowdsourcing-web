@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Colors } from "../../../../styles";
 
 export const SearchForm = styled.form`
 	margin: 0 auto;
@@ -47,4 +48,16 @@ export const Paragraph = styled.p`
 	span.query {
 		font-weight: 600;
 	}
+`;
+
+export const ContinueSpanText = styled.span`
+	transition: 0.3s;
+`;
+
+export const ContinueClick = styled.p`
+	i {
+		margin-left: 5px;
+		color: ${Colors.WARNING};
+	}
+	cursor: pointer;
 `;

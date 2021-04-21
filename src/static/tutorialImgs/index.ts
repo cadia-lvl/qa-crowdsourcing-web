@@ -1,0 +1,2 @@
+export { default as TUTORIAL_IMG_ANSWER_IS_HERE } from "./TUTORIAL_IMG_ANSWER_IS_HERE.png";
+export { default as TUTORIAL_IMG_CONFIRM_ANSWER } from "./TUTORIAL_IMG_CONFIRM_ANSWER.png";

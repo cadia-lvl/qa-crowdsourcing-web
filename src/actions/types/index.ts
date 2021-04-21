@@ -65,6 +65,6 @@ export type Actions =
 	| TutorialActions.QueueTutorialItemsAction
 	| TutorialActions.ReplaceFirstInQueueAction
 	| TutorialActions.ReplaceQueueAction
-	| TutorialActions.SetTutorialItemToFrontAction
+	| TutorialActions.SetTutorialItemsToFrontAction
 	| TutorialActions.AddPersistantTutorialItems
 	| TutorialActions.RemoveTutorialItemIDsAction;

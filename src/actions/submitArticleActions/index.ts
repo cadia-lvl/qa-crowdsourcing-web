@@ -40,7 +40,7 @@ export const closePreviewArticleToSubmit = (): ClosePreviewArticleToSubmitAction
 };
 
 export const selectParagraphToPreview = (
-	paragraphId: number
+	paragraphId?: number
 ): SelectParagraphInArticleAction => {
 	return {
 		type: ActionTypes.selectParagraphInArticle,

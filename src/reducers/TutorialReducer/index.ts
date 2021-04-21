@@ -41,7 +41,7 @@ const reducer = (
 		case ActionTypes.setTutorialItemToFront:
 			return {
 				...state,
-				queue: [action.payload, ...state.queue],
+				queue: [...action.payload, ...state.queue],
 			};
 		case ActionTypes.addPersistantTutorialItems:
 			return {

@@ -21,6 +21,7 @@ const reducer = (
 				previewArticle: undefined,
 			};
 		case ActionTypes.selectParagraphInArticle:
+			console.log("a");
 			return {
 				...state,
 				previewParagraphIndex: action.payload,

@@ -7,6 +7,7 @@ export const Outer = styled.div`
 	margin: 0;
 	padding: 0;
 	border: none;
+	box-shadow: none;
 `;
 
 export const ChildWrapper = styled.div`

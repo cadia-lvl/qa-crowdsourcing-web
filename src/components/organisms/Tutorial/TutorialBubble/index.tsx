@@ -38,11 +38,14 @@ const TutorialBubble = ({ explain }: IProps) => {
 		<Outer>
 			{bubbleChild}
 			<DialogContainer>
-				{explain.dialog.map((item) => (
-					<span onClick={() => handleDialogClick(item)}>
-						<i className="fas fa-chevron-right" /> {item.text}
-					</span>
-				))}
+				{explain.dialog.length > 0
+					? explain.dialog.map((item) => (
+							<span onClick={() => handleDialogClick(item)}>
+								<i className="fas fa-chevron-right" />{" "}
+								{item.text}
+							</span>
+					  ))
+					: null}
 			</DialogContainer>
 			<ArrowDown />
 		</Outer>

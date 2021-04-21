@@ -12,7 +12,7 @@ export interface ClosePreviewArticleToSubmitAction {
 
 export interface SelectParagraphInArticleAction {
 	type: ActionTypes.selectParagraphInArticle;
-	payload: number;
+	payload?: number;
 }
 
 export interface WriteArticleSearchQueryAction {
