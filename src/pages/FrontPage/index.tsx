@@ -75,7 +75,7 @@ export const FrontPage = () => {
 													)}
 												</span>
 												<span className="bold username">
-													Njallskarp123
+													{auth.username}
 												</span>
 											</Col1Row1Cell2>
 										</Col1Row1>

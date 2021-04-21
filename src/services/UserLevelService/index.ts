@@ -1,4 +1,12 @@
-import { ICON_LVL_1, ICON_LVL_2, ICON_LVL_3 } from "../../static";
+import {
+	ICON_LVL_1,
+	ICON_LVL_2,
+	ICON_LVL_3,
+	ICON_LVL_4,
+	ICON_LVL_5,
+	ICON_LVL_6,
+	ICON_LVL_7,
+} from "../../static";
 
 const LEVEL_NAMES = [
 	"Byrjandi",
@@ -10,7 +18,15 @@ const LEVEL_NAMES = [
 	"Galdrakall",
 ];
 
-const LEVEL_ICONS = [ICON_LVL_1, ICON_LVL_2, ICON_LVL_3];
+const LEVEL_ICONS = [
+	ICON_LVL_1,
+	ICON_LVL_2,
+	ICON_LVL_3,
+	ICON_LVL_4,
+	ICON_LVL_5,
+	ICON_LVL_6,
+	ICON_LVL_7,
+];
 
 export const mapLevelToString = (level: number) => {
 	const string = LEVEL_NAMES[level - 1];

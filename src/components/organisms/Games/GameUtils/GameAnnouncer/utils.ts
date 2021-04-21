@@ -34,14 +34,16 @@ export const getCurrText = (username: string, game?: GameTypes) => {
 			return {
 				title: "Leitað á vefnum",
 
-				text: `Nú þarft þú að fara yfir svar við spurningu. Bæði spurningin og svarið voru send inn af mismunandi notendum. Þú munt sjá heila efnisgrein sem fundin var á vefnum, ástamt svarinu í textanum. Við höfum merkt svarið frá notandanum í fjólubláu.`,
+				text: `Við erum með spurningu handa þér sem okkur vantar svar við. Þú munt geta notað Google leitarvél til þess að finna upplýsingar á vefnum. Ef þú finnur ekki svarið eftir að leita tvisvar sinnum með Google þá er allt í lagi að halda áfram.`,
 				dos: [
-					"Efnisgreinin getur innihaldið upplýsingar sem eru ekki í svarinu, það er í góðu lagi",
-					"Það er í lagi að svarið byggi á heimildum sem eru nokkura ára gamlar",
+					"Reyndu að búa til góðan leitarstreng svo að Google finni réttar vefsíður.",
+					"Reyndu 2-3 mismunandi leitarstrengi ef erfitt er að finna svarið",
 				],
-				infos: ["Svarið er merkt í fjólubláum stöfum"],
+				infos: [
+					"Þú þarft að opna vefsíðuna með svarin og svo merkja svarið í textanum",
+				],
 				donts: [
-					"Ef svarið er háð gildismati þá er svarið ekki rétt",
+					"Ekki reyna of lengi, haltu áfram ef þú finnur svarið ekki innan 1-2 mín",
 				],
 			};
 		case GameTypes.verifyAnswerLocation:

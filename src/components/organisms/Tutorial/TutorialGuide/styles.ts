@@ -17,13 +17,12 @@ export const Inner = styled.div`
 	width: inherit;
 `;
 
-export const DialogContainer = styled.div`
-	margin-top: 10px;
-	color: #666;
-	font-weight: 700;
-	cursor: pointer;
-	transition: 0.3s;
-	:hover {
-		color: ${Colors.HIGHLIGHT};
-	}
+export const BubbleContainer = styled.div`
+	width: 350px;
+	display: flex;
+	flex-direction: column-reverse;
+	position: absolute;
+	top: -20px;
+	right: 0;
+	transform: translateY(-100%);
 `;
