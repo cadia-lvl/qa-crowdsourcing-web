@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { StoreState } from "../../../../../reducers";
-import { TextInput, HighlightSubText, Explain } from "../../../../";
+import { HighlightSubText, Explain } from "../../../../";
 import {
 	Outer,
 	Inner,
@@ -24,7 +24,6 @@ const PreviewHeader = () => {
 	const dispatch = useDispatch();
 
 	const NO_SELECTION_INDICATOR = -1;
-	const [searchString, setSearchString] = useState("");
 	const [selectedParagraph, setSelectedParagraph] = useState(
 		NO_SELECTION_INDICATOR
 	);
@@ -38,7 +37,11 @@ const PreviewHeader = () => {
 		_id,
 	} = state.submitArticle;
 
-	console.log(previewParagraphIndex);
+	useEffect(() => {
+		return () => {
+			dispatch(selectParagraphToPreview(undefined));
+		};
+	}, []);
 
 	const isPreviewSelected = previewParagraphIndex === undefined;
 	if (!previewArticle) return null;
@@ -151,7 +154,7 @@ const PreviewHeader = () => {
 								<HighlightSubText
 									returnNoneOnNoMatch
 									string={paragraph}
-									subString={searchString}
+									subString={""}
 								/>
 							</SingleParagraph>
 						</ParagraphContainer>
