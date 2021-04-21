@@ -33,6 +33,8 @@ export enum ActionTypes {
 	queueTutorialItems,
 	removeTutorialItemIDs,
 	replaceFirstInQueue,
+	replaceQueue,
+	setTutorialItemToFront,
 }
 
 export type Actions =
@@ -61,4 +63,6 @@ export type Actions =
 	| ChartDataActions.FetchAnswersPerDayAction
 	| TutorialActions.QueueTutorialItemsAction
 	| TutorialActions.ReplaceFirstInQueueAction
+	| TutorialActions.ReplaceQueueAction
+	| TutorialActions.SetTutorialItemToFrontAction
 	| TutorialActions.RemoveTutorialItemIDsAction;

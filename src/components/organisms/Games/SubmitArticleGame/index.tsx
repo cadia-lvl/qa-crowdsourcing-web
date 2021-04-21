@@ -1,12 +1,7 @@
 import React, { FormEvent, useEffect, useRef, useState } from "react";
-import {
-	TextPrompt,
-	TextTag,
-	GoogleTextInput,
-	FilledAlert,
-} from "../../../";
+import { TextTag, GoogleTextInput, FilledAlert } from "../../../";
 import { GOOGLE_LOGO } from "../../../../static";
-import { Paragraph, SearchForm, AlertContainer } from "./styles";
+import { SearchForm, AlertContainer, Paragraph } from "./styles";
 import ArticlePreview from "./ArticlePreview";
 import { useDispatch, useSelector } from "react-redux";
 import { StoreState } from "../../../../reducers";
@@ -53,19 +48,6 @@ export const SubmitArticleGame = () => {
 			});
 	}, [articles.length]);
 
-	const alertBar = (
-		<AlertContainer
-			onClick={() =>
-				dispatch(markQuestionAsImpossible(GameRoundId, questionId))
-			}
-		>
-			<FilledAlert
-				type="danger"
-				label="Finnst svarið bara alls ekki? Smelltu hér til að merkja spurninguna sem ósvaranlega"
-			/>
-		</AlertContainer>
-	);
-
 	const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		dispatch(fetchArticlesQuery());
@@ -73,13 +55,16 @@ export const SubmitArticleGame = () => {
 
 	return (
 		<GameWrapper type={GameTypes.submitArticle}>
-			<TaskInfoBox title="Nota leitarvél til þess að finna grein með svari við spurningunni">
-				<TextPrompt>{text}</TextPrompt>
+			<TaskInfoBox title="FINNA SVAR Á VEFNUM">
 				<Paragraph>
-					Væri ekki gaman ef þú gætir fundið svarið við þessari
-					spurningu? Notaðu Google leitarvélina til þess að finna
-					vefsíður sem kunna að innihalda svarið.
+					Spurningin er{" "}
+					<span className="query">
+						„{text.charAt(0).toLocaleLowerCase()}
+						{text.substring(1)}“
+					</span>
+					.
 				</Paragraph>
+
 				<SearchForm onSubmit={handleSubmit}>
 					<img src={GOOGLE_LOGO} alt="myndmerki google" />
 					<GoogleTextInput
@@ -95,14 +80,8 @@ export const SubmitArticleGame = () => {
 						{highlightWords.map((word, i) => (
 							<TextTag key={`${word}-${i}`}>{word}</TextTag>
 						))}
-						<Paragraph>
-							Smelltu á grein til þess að sjá hvort svarið
-							leynist þar. Ef ekkert svar er að finna nein
-							staðar þá getur þú smellt hér.
-						</Paragraph>
 					</React.Fragment>
 				)}
-				{previewOpenCount >= 2 && !hasPreview ? alertBar : null}
 
 				{articles.map((item, i) =>
 					/**
@@ -124,16 +103,8 @@ export const SubmitArticleGame = () => {
 						</div>
 					) : null
 				)}
-				{articles.length > 0 && !hasPreview ? alertBar : null}
 				{hasPreview ? (
 					<React.Fragment>
-						<Paragraph>
-							Þessa grein er að finna á Wikipedia. Sérðu
-							svarið? Ef svo er, smelltu á þá efnisgrein sem
-							inniheldur svarið. Þú getur einnig leitað í
-							innihaldi greinarinnar.Lokaðu greininni til að
-							fara til baka í leitina
-						</Paragraph>
 						<PreviewReader />
 					</React.Fragment>
 				) : null}

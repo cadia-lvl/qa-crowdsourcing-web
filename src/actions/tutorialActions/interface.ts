@@ -15,3 +15,13 @@ export interface ReplaceFirstInQueueAction {
 	type: ActionTypes.replaceFirstInQueue;
 	payload: TutorialExplanations;
 }
+
+export interface ReplaceQueueAction {
+	type: ActionTypes.replaceQueue;
+	payload: TutorialExplanations[];
+}
+
+export interface SetTutorialItemToFrontAction {
+	type: ActionTypes.setTutorialItemToFront;
+	payload: TutorialExplanations;
+}
