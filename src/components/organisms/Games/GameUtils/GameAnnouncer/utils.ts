@@ -20,14 +20,15 @@ export const getCurrText = (username: string, game?: GameTypes) => {
 			return {
 				title: "Staðfesta spurningu",
 
-				text: `Nú þarft þú að fara yfir svar við spurningu. Bæði spurningin og svarið voru send inn af mismunandi notendum. Þú munt sjá heila efnisgrein sem fundin var á vefnum, ástamt svarinu í textanum. Við höfum merkt svarið frá notandanum í fjólubláu.`,
+				text: `Nú þarft þú að fara yfir spurningu. Ástæðan er sú að við viljum tryggja að spurningin sé bæði góð spurning, ásamt að tryggja það að spurningin hafi svar óháð því hver svarar henni.`,
 				dos: [
-					"Efnisgreinin getur innihaldið upplýsingar sem eru ekki í svarinu, það er í góðu lagi",
-					"Það er í lagi að svarið byggi á heimildum sem eru nokkura ára gamlar",
+					"Spurningin á að vera svaranleg í að mesta lagi nokkrum orðum",
 				],
-				infos: ["Svarið er merkt í fjólubláum stöfum"],
+				infos: [
+					"Spurningin þarf að vera á ágætis íslensku, en ekki endilega of formleg heldur",
+				],
 				donts: [
-					"Ef svarið er háð gildismati þá er svarið ekki rétt",
+					"Svarið á ekki að vera háð tilfinningum þess sem svarar spurningunni",
 				],
 			};
 		case GameTypes.submitArticle:
