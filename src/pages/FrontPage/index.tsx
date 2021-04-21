@@ -36,7 +36,7 @@ import { NavLink } from "react-router-dom";
 import { StoreState } from "../../reducers";
 import { useSelector } from "react-redux";
 import { UserLevelService } from "../../services";
-import TUTORIAL_ITEMS from "./tutorialItems";
+import * as TUTORIAL from "./tutorialItems";
 
 export const FrontPage = () => {
 	const auth = useSelector((state: StoreState) => state.auth);
@@ -57,7 +57,7 @@ export const FrontPage = () => {
 								optionally into rows and lastly always cells */}
 								<DashboardCol1>
 									{" "}
-									<Explain items={TUTORIAL_ITEMS}>
+									<Explain items={TUTORIAL.userProgress}>
 										<Col1Row1>
 											<Col1Row1Cell1>
 												<UserAvatar
@@ -97,33 +97,44 @@ export const FrontPage = () => {
 											<GameProgress />
 										</Col1Row2>
 									</Explain>
-									<Col1Row3>
-										<h1 className="italic">
-											Næsta verkefni
-										</h1>
-										<p>
-											Þér hefur tekist að gera foo og
-											bar, en getur þú gert foobar?
-											Það eru þúsundir schpoinkels
-											valsandi um miðbæinn, getur þú
-											stoppað þau?
-										</p>
-										<GlowBtnWrapper>
-											<NavLink to="/spila">
-												<PlayButton>
-													Spila
-												</PlayButton>
-											</NavLink>
-										</GlowBtnWrapper>
-									</Col1Row3>
+									<Explain items={TUTORIAL.userTask}>
+										<Col1Row3>
+											<h1 className="italic">
+												Næsta verkefni
+											</h1>
+											<p>
+												Þér hefur tekist að gera
+												foo og bar, en getur þú
+												gert foobar? Það eru
+												þúsundir schpoinkels
+												valsandi um miðbæinn, getur
+												þú stoppað þau?
+											</p>
+											<GlowBtnWrapper>
+												<NavLink to="/spila">
+													<PlayButton>
+														Spila
+													</PlayButton>
+												</NavLink>
+											</GlowBtnWrapper>
+										</Col1Row3>
+									</Explain>
 								</DashboardCol1>
 								<DashboardCol2>
-									<ScoreCard />
+									<Explain items={TUTORIAL.scorecard}>
+										<ScoreCard />
+									</Explain>
 								</DashboardCol2>
 								<DashboardCol3>
 									{" "}
 									<Col3Cell1>
-										<QAsPerDay />
+										<Explain
+											items={
+												TUTORIAL.communityProgress
+											}
+										>
+											<QAsPerDay />
+										</Explain>
 									</Col3Cell1>
 								</DashboardCol3>
 							</DashBoardOuter>

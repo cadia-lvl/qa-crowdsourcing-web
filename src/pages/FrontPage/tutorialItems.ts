@@ -1,6 +1,6 @@
 import { TutorialExplanations } from "../../components/organisms/Tutorial/interface";
 
-const items: TutorialExplanations[] = [
+export const userProgress: TutorialExplanations[] = [
 	{
 		type: "str",
 		payload:
@@ -27,4 +27,49 @@ const items: TutorialExplanations[] = [
 	},
 ];
 
-export default items;
+export const userTask: TutorialExplanations[] = [
+	{
+		type: "str",
+		payload: "Hér getur þú smellt til þess að spila leikinn",
+		id: "FRONTPAGE:DASHBOARD:INTRO:NEXTTASKBOX",
+		dialog: [
+			{
+				text: "Allt í góðu",
+				item: undefined,
+			},
+		],
+		highlight: true,
+	},
+];
+
+export const scorecard: TutorialExplanations[] = [
+	{
+		type: "str",
+		payload:
+			"... og hér munt þú sjá tölur um hversu mikið þú hefur lagt til þess að bjarga íslensku",
+		id: "FRONTPAGE:DASHBOARD:INTRO:SCORECARD",
+		dialog: [
+			{
+				text: "Allt í góðu",
+				item: undefined,
+			},
+		],
+		highlight: true,
+	},
+];
+
+export const communityProgress: TutorialExplanations[] = [
+	{
+		type: "str",
+		payload:
+			"Þetta línurit sýnir þér hversu nálægt samfélagið er 100.000 spurninga markmiðinu",
+		id: "FRONTPAGE:DASHBOARD:INTRO:COMMUNITYPROGRESS",
+		dialog: [
+			{
+				text: "Ég skil",
+				item: undefined,
+			},
+		],
+		highlight: true,
+	},
+];

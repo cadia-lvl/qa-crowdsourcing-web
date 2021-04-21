@@ -6,6 +6,7 @@ export const Outer = styled.div`
 	position: relative;
 	margin: 0;
 	padding: 0;
+	border: none;
 `;
 
 export const ChildWrapper = styled.div`
