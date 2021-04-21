@@ -1,7 +1,7 @@
 import React, { FormEvent, useEffect, useRef, useState } from "react";
-import { TextTag, GoogleTextInput, FilledAlert } from "../../../";
+import { TextTag, GoogleTextInput } from "../../../";
 import { GOOGLE_LOGO } from "../../../../static";
-import { SearchForm, AlertContainer, Paragraph } from "./styles";
+import { SearchForm, Paragraph } from "./styles";
 import ArticlePreview from "./ArticlePreview";
 import { useDispatch, useSelector } from "react-redux";
 import { StoreState } from "../../../../reducers";
@@ -11,10 +11,11 @@ import PreviewReader from "./PreviewReader";
 import { getHighlightWords } from "./utils";
 import {
 	fetchArticlesQuery,
-	markQuestionAsImpossible,
 	writeArticleSearchQuery,
 } from "../../../../actions";
 import { TaskInfoBox } from "../GameUtils";
+import { Explain } from "../../Tutorial";
+import * as TUTORIAL from "./tutorialItems";
 
 export const SubmitArticleGame = () => {
 	const [highlightWords, setHighlightWords] = useState<string[]>([]);
@@ -23,14 +24,7 @@ export const SubmitArticleGame = () => {
 	const firstArticleRef = useRef<null | HTMLDivElement>(null);
 
 	const {
-		submitArticle: {
-			previewArticle,
-			query,
-			previewOpenCount,
-			_id: questionId,
-			articles,
-			text,
-		},
+		submitArticle: { previewArticle, query, articles, text },
 		game: { _id: GameRoundId },
 	} = state;
 
@@ -66,14 +60,16 @@ export const SubmitArticleGame = () => {
 				</Paragraph>
 
 				<SearchForm onSubmit={handleSubmit}>
-					<img src={GOOGLE_LOGO} alt="myndmerki google" />
-					<GoogleTextInput
-						value={query}
-						onChange={(text) =>
-							dispatch(writeArticleSearchQuery(text))
-						}
-					/>
-					<input type="submit" value="Google leit" />
+					<Explain items={TUTORIAL.explainGoogle}>
+						<img src={GOOGLE_LOGO} alt="myndmerki google" />
+						<GoogleTextInput
+							value={query}
+							onChange={(text) =>
+								dispatch(writeArticleSearchQuery(text))
+							}
+						/>
+						<input type="submit" value="Google leit" />
+					</Explain>
 				</SearchForm>
 				{hasPreview ? null : (
 					<React.Fragment>

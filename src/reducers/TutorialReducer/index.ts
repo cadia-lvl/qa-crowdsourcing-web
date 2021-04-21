@@ -32,6 +32,22 @@ const reducer = (
 				...state,
 				queue: [...state.queue],
 			};
+		case ActionTypes.replaceQueue:
+			return {
+				...state,
+				queue: action.payload,
+			};
+
+		case ActionTypes.setTutorialItemToFront:
+			return {
+				...state,
+				queue: [action.payload, ...state.queue],
+			};
+		case ActionTypes.addPersistantTutorialItems:
+			return {
+				...state,
+				persistant: [...state.persistant, ...action.payload],
+			};
 		default:
 			return state;
 	}

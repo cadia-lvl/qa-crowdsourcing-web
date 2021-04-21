@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { Colors } from "../../../../styles";
 
 export const SearchForm = styled.form`
 	margin: 0 auto;
