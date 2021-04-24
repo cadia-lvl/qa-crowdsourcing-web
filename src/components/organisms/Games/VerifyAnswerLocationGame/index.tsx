@@ -79,11 +79,13 @@ export const VerifyAnswerLocationGame = () => {
 						<BaseButton
 							label="Áfram"
 							onClick={() =>
-								submitSpan(
-									gameRoundId,
-									answerId,
-									firstWord!,
-									lastWord!
+								dispatch(
+									submitSpan(
+										gameRoundId,
+										answerId,
+										firstWord!,
+										lastWord!
+									)
 								)
 							}
 							isInactive={
