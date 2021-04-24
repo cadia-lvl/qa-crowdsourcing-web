@@ -6,7 +6,6 @@ import {
 	Question,
 	CheckListActionButton,
 } from "./styles";
-import { TextTag } from "../../../../";
 import { ReviewActions, State } from "./stateUtils";
 
 export const ReviewCheckList = <T extends {}>({
@@ -56,7 +55,7 @@ export const ReviewCheckList = <T extends {}>({
 			{items.slice(0, state.currentQuestion + 1).map((item) => (
 				<React.Fragment key={item.question}>
 					{state.finished.includes(item.key) ? (
-						<TextTag>{item.correctAnswerPrompt}</TextTag>
+						<p>{item.correctAnswerPrompt}</p>
 					) : (
 						<Question>{item.question}</Question>
 					)}
