@@ -34,6 +34,7 @@ export const ScoreCard = () => {
 				label="Svör"
 				color={Colors.SUCCESS}
 				key="answer"
+				amount={answers}
 			/>
 			<SmallProgressBar
 				ratio={calculateProgressRatio(questionVerifications, 0.25)}

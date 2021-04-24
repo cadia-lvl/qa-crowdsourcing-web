@@ -5,7 +5,3 @@ export const Paragraph = styled.p`
 		font-weight: 600;
 	}
 `;
-
-export const CheckListContainer = styled.div`
-	margin: 20px 0;
-`;

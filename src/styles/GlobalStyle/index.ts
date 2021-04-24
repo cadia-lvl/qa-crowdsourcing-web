@@ -38,6 +38,11 @@ export const GlobalStyle = createGlobalStyle`
         @media only screen and (max-width: 1300px) {
             font-size: 16px;
         }
+
+
+        span.query {
+            font-weight: 600;
+        }
         
     }
 

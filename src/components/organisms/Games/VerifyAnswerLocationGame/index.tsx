@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { BaseButton } from "../../..";
 import {
@@ -31,7 +31,15 @@ export const VerifyAnswerLocationGame = () => {
 
 	return (
 		<GameWrapper type={GameTypes.verifyAnswerLocation}>
-			<TaskInfoBox title="Finna svar í grein sem notandi hefur sent inn">
+			<TaskInfoBox title="Finna svar í efnisgrein">
+				<p>
+					Spurningin er{" "}
+					<span className="query">
+						„{text.charAt(0).toLocaleLowerCase()}
+						{text.substring(1)}“
+					</span>
+					.
+				</p>
 				<SpanSelector
 					{...state.verifyAnswerLocation}
 					question={text}
@@ -46,55 +54,24 @@ export const VerifyAnswerLocationGame = () => {
 					}
 					immutable={!isSelectingSpan}
 				/>
-				<ButtonContainer>
-					{isSelectingSpan ? (
-						<React.Fragment>
-							<BaseButton
-								label="Til baka"
-								type="danger"
-								onClick={() => {
-									setIsSelectingSpan(false);
-									dispatch(clearIndexRangeInParagraph());
-								}}
-							/>
-							<BaseButton
-								label="Staðfesta svar"
-								onClick={() =>
-									dispatch(
-										submitSpan(
-											gameRoundId,
-											answerId,
-											firstWord ?? -1,
-											lastWord ?? -1
-										)
-									)
-								}
-								type="highlight"
-								isInactive={!canUserProceed}
-							/>
-						</React.Fragment>
-					) : (
-						<React.Fragment>
-							<BaseButton
-								label="Svarið er ekki í þessari efnisgrein"
-								type="danger"
-								onClick={() =>
-									dispatch(
-										archiveAnswer(
-											gameRoundId,
-											answerId
-										)
-									)
-								}
-							/>
-							<BaseButton
-								label="Svarið er í þessari efnisgrein"
-								onClick={() => setIsSelectingSpan(true)}
-								type="highlight"
-							/>
-						</React.Fragment>
-					)}
-				</ButtonContainer>
+				{!isSelectingSpan ? (
+					<ButtonContainer>
+						<BaseButton
+							label="Ég sé ekki svarið"
+							type="danger"
+							onClick={() =>
+								dispatch(
+									archiveAnswer(gameRoundId, answerId)
+								)
+							}
+						/>
+						<BaseButton
+							label="Ég sé svarið"
+							onClick={() => setIsSelectingSpan(true)}
+							type="highlight"
+						/>
+					</ButtonContainer>
+				) : null}
 			</TaskInfoBox>
 		</GameWrapper>
 	);

@@ -3,16 +3,23 @@ import { Colors } from "../../../../../styles";
 
 export const Outer = styled.div`
 	p {
-		font-size: 24px;
+		font-size: 19px;
 		span {
 			cursor: pointer;
 			padding-right: 2px;
 			padding-left: 2px;
-		}
 
-		@media only screen and (max-width: 1300px) {
-			font-size: 21px;
+			-webkit-touch-callout: none;
+			-webkit-user-select: none;
+			-khtml-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
 		}
+	}
+	h2 {
+		margin-bottom: 10px;
+		margin-top: 15px;
 	}
 `;
 
@@ -22,18 +29,13 @@ export const Word = styled.span`
 			? `
 			color: ${Colors.HIGHLIGHT};
 			font-weight: bold;
-			text-shadow: 0px 0px 5px rgba(250, 0, 0, 0.4);
 			`
-			: ""}
-	${(props) =>
-		props.theme.openRange
-			? `
-
-			background: rgb(137,80,252);
-			background: linear-gradient(90deg, rgba(137,80,252,1) 63%, rgba(0,212,255,0) 100%);             color: ${Colors.FG_WHITE};`
 			: ""}
 `;
 
 export const InstructionWrapper = styled.div`
-	${(props) => (props.theme.isDone ? `opacity: 0.3` : ``)};
+	i {
+		color: ${Colors.WARNING};
+		margin-right: 15px;
+	}
 `;

@@ -5,7 +5,10 @@ export const ButtonContainer = styled.div`
 	flex-direction: row;
 	> button {
 		margin-right: 20px;
-		width: 300px;
+		border-radius: 25px;
+		width: auto;
+		padding-left: 25px;
+		padding-right: 25px;
 	}
 	margin-top: 40px;
 `;
