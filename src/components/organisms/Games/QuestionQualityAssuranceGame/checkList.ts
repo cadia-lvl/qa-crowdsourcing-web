@@ -43,11 +43,11 @@ const checkList: CheckList<QAquestionItems> = {
 		},
 		{
 			question:
-				"Finnst þér líklegt að skoðun fólks hafi áhrif svarið?",
+				"Finnst þér líklegt að skoðanir fólks hafi áhrif svarið?",
 			expectedAnswer: "no",
 			key: "is-opinionated",
-			correctAnswerPrompt: "Svarið er ekki háð skoðun fólks",
-			badAnswerPrompt: "Svarið er líklega háð skoðun fólks",
+			correctAnswerPrompt: "Svarið er ekki háð skoðunum fólks",
+			badAnswerPrompt: "Svarið er líklega háð skoðunum fólks",
 		},
 		{
 			question: "Finnst þér málfarið vera slæmt?",
