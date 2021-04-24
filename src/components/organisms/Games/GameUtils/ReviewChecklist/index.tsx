@@ -7,9 +7,9 @@ import {
 	CheckListActionButton,
 } from "./styles";
 import { ReviewActions, State } from "./stateUtils";
+import { CheckListBullet } from "../../../../";
 
 export const ReviewCheckList = <T extends {}>({
-	title,
 	items,
 	onBadAnswer,
 	onComplete,
@@ -18,7 +18,6 @@ export const ReviewCheckList = <T extends {}>({
 	const initialState: State<T> = {
 		finished: [],
 		currentQuestion: 0,
-		questionIsBad: false,
 	};
 
 	useEffect(() => {
@@ -28,18 +27,19 @@ export const ReviewCheckList = <T extends {}>({
 	const reducer = (state: State<T>, action: ReviewActions): State<T> => {
 		switch (action.type) {
 			case "answer-question":
-				const badAnswer =
-					action.payload !==
+				const goodAnswer =
+					action.payload ===
 					items[state.currentQuestion].expectedAnswer;
 				return {
 					...state,
 					finished: [
 						...state.finished,
-						items[state.currentQuestion].key,
+						{
+							key: items[state.currentQuestion].key,
+							goodAnswer,
+						},
 					],
-					questionIsBad: badAnswer,
-					currentQuestion:
-						state.currentQuestion + (!badAnswer ? 1 : 0),
+					currentQuestion: state.currentQuestion + 1,
 				};
 			case "reset-state":
 				return { ...initialState };
@@ -50,43 +50,53 @@ export const ReviewCheckList = <T extends {}>({
 
 	const [state, dispatch] = useReducer(reducer, initialState);
 
+	const question = items[state.currentQuestion]?.question;
+	const hasQuestion = question !== undefined;
+	const isFinished = !hasQuestion;
 	return (
 		<Outer>
-			{items.slice(0, state.currentQuestion + 1).map((item) => (
+			{items.slice(0, state.currentQuestion).map((item, i) => (
 				<React.Fragment key={item.question}>
-					{state.finished.includes(item.key) ? (
-						<p>{item.correctAnswerPrompt}</p>
+					{state.finished[i].goodAnswer ? (
+						<CheckListBullet type="good">
+							{item.correctAnswerPrompt}
+						</CheckListBullet>
 					) : (
-						<Question>{item.question}</Question>
+						<CheckListBullet type="bad">
+							{item.badAnswerPrompt}
+						</CheckListBullet>
 					)}
 				</React.Fragment>
 			))}
-			<ButtonDiv>
-				<CheckListActionButton
-					type="no"
-					onClick={() =>
-						dispatch({
-							type: "answer-question",
-							payload: "no",
-						})
-					}
-				>
-					<i className="fas fa-times" />
-					<span>Nei</span>
-				</CheckListActionButton>
-				<CheckListActionButton
-					type="yes"
-					onClick={() =>
-						dispatch({
-							type: "answer-question",
-							payload: "yes",
-						})
-					}
-				>
-					<i className="fas fa-check" />
-					<span>Já</span>
-				</CheckListActionButton>
-			</ButtonDiv>
+			{hasQuestion ? (
+				<React.Fragment>
+					<p>{question}</p>
+					<ButtonDiv>
+						<CheckListActionButton
+							type="no"
+							onClick={() =>
+								dispatch({
+									type: "answer-question",
+									payload: "no",
+								})
+							}
+						>
+							<span>Nei</span>
+						</CheckListActionButton>
+						<CheckListActionButton
+							type="yes"
+							onClick={() =>
+								dispatch({
+									type: "answer-question",
+									payload: "yes",
+								})
+							}
+						>
+							<span>Já</span>
+						</CheckListActionButton>
+					</ButtonDiv>
+				</React.Fragment>
+			) : null}
 		</Outer>
 	);
 };

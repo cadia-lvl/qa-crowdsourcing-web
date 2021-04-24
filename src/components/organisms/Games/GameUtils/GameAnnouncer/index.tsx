@@ -14,12 +14,16 @@ import {
 	DescriptionBoxPara,
 	BulletSection,
 } from "./styles";
-import { FlexLoader, TextPrompt, PlayButton } from "../../../../";
+import {
+	FlexLoader,
+	TextPrompt,
+	PlayButton,
+	CheckListBullet as Bullet,
+} from "../../../../";
 import { IProps } from "./interface";
 import { getPrevText, getCurrText, LOADING_TIMER } from "./utils";
 import { UserAvatar } from "../../../../atoms";
 import { UserLevelService } from "../../../../../services";
-import Bullet from "./Bullet";
 
 export const GameAnnouncer = ({ children }: IProps) => {
 	/**

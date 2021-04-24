@@ -33,28 +33,7 @@ export const CheckListActionButton = styled.div<ICheckListActionButton>`
 	cursor: pointer;
 	margin-right: 25px;
 	font-weight: 600;
-	${(props) =>
-		props.type === "yes"
-			? `
-		
-		border: 2px solid ${Colors.SUCCESS};
-		color: ${Colors.SUCCESS};
-		i {
-			color: ${Colors.SUCCESS};
-			margin-right: 20px;
-		}
-		`
-			: `
-		
-		border: 2px solid ${Colors.DANGER};
-		color: ${Colors.DANGER};
-		i {
-			color: ${Colors.DANGER};
-			margin-right: 20px;
-		}
-			
-			
-			
-			`}
-	}
+
+	background-color: ${Colors.HIGHLIGHT};
+	color: #fff;
 `;

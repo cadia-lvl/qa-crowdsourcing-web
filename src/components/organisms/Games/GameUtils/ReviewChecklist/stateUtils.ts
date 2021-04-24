@@ -3,9 +3,8 @@ import { AnswerTypes } from "./interface";
 export type ReviewActionsTypes = "answer-question" | "reset-state";
 
 export interface State<T> {
-	finished: T[];
+	finished: { key: T; goodAnswer: boolean }[];
 	currentQuestion: number;
-	questionIsBad: boolean;
 }
 
 export interface AnswerQuestionAction {
