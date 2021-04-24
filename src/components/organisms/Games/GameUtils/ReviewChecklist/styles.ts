@@ -19,13 +19,10 @@ export const Question = styled.p`
 	margin: 10px 0;
 `;
 
-interface ICheckListActionButton {
-	type: "yes" | "no";
-}
-
-export const CheckListActionButton = styled.div<ICheckListActionButton>`
+export const CheckListActionButton = styled.div`
 	height: 38px;
-	width: 114px;
+	min-width: 114px;
+	padding: 0 15px;
 	border-radius: 23px;
 	display: flex;
 	align-items: center;
@@ -36,4 +33,17 @@ export const CheckListActionButton = styled.div<ICheckListActionButton>`
 
 	background-color: ${Colors.HIGHLIGHT};
 	color: #fff;
+`;
+
+export const CheckListQuestionContainer = styled.div`
+	height: 80px;
+	width: 100%;
+	margin: 20px 0 0 0;
+	#flex-loader {
+		justify-content: flex-start;
+	}
+`;
+
+export const CheckListContainer = styled.div`
+	margin: 20px 0;
 `;

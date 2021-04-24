@@ -6,6 +6,7 @@ import { GameWrapper } from "../../../../hoc";
 import { StoreState } from "../../../../reducers";
 import { CheckListItem, ReviewCheckList, TaskInfoBox } from "../GameUtils";
 import checkList, { QAquestionItems } from "./checkList";
+import { Paragraph } from "./styles";
 
 export const QuestionQualityAssuranceGame = () => {
 	const state = useSelector((store: StoreState) => store);
@@ -34,7 +35,15 @@ export const QuestionQualityAssuranceGame = () => {
 	};
 	return (
 		<GameWrapper type={GameTypes.questionQualityAssurance}>
-			<TaskInfoBox title="Yfirferð á spurningu frá öðrum notanda">
+			<TaskInfoBox title="Staðfesta Spurningu">
+				<Paragraph>
+					Spurningin er{" "}
+					<span className="query">
+						„{text.charAt(0).toLocaleLowerCase()}
+						{text.substring(1)}“
+					</span>
+					.
+				</Paragraph>
 				<ReviewCheckList<QAquestionItems>
 					items={getCheckListItems()}
 					_key={_id}

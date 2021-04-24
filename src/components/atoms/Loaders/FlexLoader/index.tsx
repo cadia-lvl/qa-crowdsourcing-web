@@ -6,7 +6,7 @@ import { Outer } from "./styles";
 
 export const FlexLoader = ({ size }: IProps) => {
 	return (
-		<Outer>
+		<Outer id="flex-loader">
 			<PuffLoader color={Colors.DANGER} loading={true} size={size} />
 		</Outer>
 	);

@@ -6,6 +6,7 @@ export type QAquestionItems =
 	| "is-impossible"
 	| "has-short-answer"
 	| "is-opinionated"
+	| "good-grammar"
 	| "is-yes-or-no";
 
 const checkList: CheckList<QAquestionItems> = {
@@ -47,6 +48,13 @@ const checkList: CheckList<QAquestionItems> = {
 			key: "is-opinionated",
 			correctAnswerPrompt: "Svarið er ekki háð skoðun fólks",
 			badAnswerPrompt: "Svarið er líklega háð skoðun fólks",
+		},
+		{
+			question: "Finnst þér málfarið vera slæmt?",
+			expectedAnswer: "no",
+			key: "good-grammar",
+			correctAnswerPrompt: "Málfar spurningarinnar er slæmt",
+			badAnswerPrompt: "Málfar spurningarinnar er gott",
 		},
 	],
 };
