@@ -17,17 +17,12 @@ import { ButtonContainer } from "./styles";
 export const VerifyAnswerLocationGame = () => {
 	const state = useSelector((state: StoreState) => state);
 	const [isSelectingSpan, setIsSelectingSpan] = useState(false);
-
 	const dispatch = useDispatch();
 
 	const {
 		verifyAnswerLocation: { _id: answerId, text, firstWord, lastWord },
 		game: { _id: gameRoundId },
 	} = state;
-
-	const canUserProceed = !(
-		firstWord === undefined || lastWord === undefined
-	);
 
 	return (
 		<GameWrapper type={GameTypes.verifyAnswerLocation}>
@@ -43,7 +38,7 @@ export const VerifyAnswerLocationGame = () => {
 				<SpanSelector
 					{...state.verifyAnswerLocation}
 					question={text}
-					onClearRange={(word) =>
+					onClearRange={() =>
 						dispatch(clearIndexRangeInParagraph())
 					}
 					onFirstWordChange={(index) =>
@@ -71,7 +66,34 @@ export const VerifyAnswerLocationGame = () => {
 							type="highlight"
 						/>
 					</ButtonContainer>
-				) : null}
+				) : (
+					<ButtonContainer>
+						<BaseButton
+							label="til baka"
+							type="danger"
+							onClick={() => {
+								setIsSelectingSpan(false);
+								dispatch(clearIndexRangeInParagraph());
+							}}
+						/>
+						<BaseButton
+							label="Áfram"
+							onClick={() =>
+								submitSpan(
+									gameRoundId,
+									answerId,
+									firstWord!,
+									lastWord!
+								)
+							}
+							isInactive={
+								firstWord === undefined ||
+								lastWord === undefined
+							}
+							type="highlight"
+						/>{" "}
+					</ButtonContainer>
+				)}
 			</TaskInfoBox>
 		</GameWrapper>
 	);
