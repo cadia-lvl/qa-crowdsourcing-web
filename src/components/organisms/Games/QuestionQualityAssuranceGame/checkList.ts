@@ -12,41 +12,41 @@ const checkList: CheckList<QAquestionItems> = {
 	title: "Review question quality",
 	items: [
 		{
-			question: "Er spurningin skrifuð á ágætis íslensku?",
+			question: "Skilur þú spurninguna?",
 			expectedAnswer: "yes",
 			key: "grammar-correct",
-			correctAnswerPrompt: "Ágætis íslenska!",
-			badAnswerPrompt: "Málfarið er slæmt",
+			correctAnswerPrompt: "Þú skilur spurninguna",
+			badAnswerPrompt: "Þú skilur ekki spurninguna",
 		},
 		{
 			question: "Er spurningin óviðeigandi?",
 			expectedAnswer: "no",
 			key: "appropriate",
-			correctAnswerPrompt: "Spurningin er ekki óviðeigandi",
-			badAnswerPrompt: "Spurningin er óviðeigandi",
+			correctAnswerPrompt: "Mér finnst spurningin viðeigandi",
+			badAnswerPrompt: "Mér finnst spurningin óviðeigandi",
 		},
 		{
-			question: "Er spurningin ómöguleg eða ósvaranleg?",
-			expectedAnswer: "no",
+			question: "Heldurðu að spurningin hafi svar?",
+			expectedAnswer: "yes",
 			key: "is-impossible",
-			correctAnswerPrompt: "Spurningin er svaranleg",
-			badAnswerPrompt: "Spurningin er ómöguleg",
+			correctAnswerPrompt: "Spurningin hefur líklegast svar",
+			badAnswerPrompt: "Spurningin hefur mögulega ekki svar",
 		},
 		{
 			question:
-				"Væri mögulegt að svara spurningunni í nokkrum orðum?",
-			expectedAnswer: "yes",
+				"Heldurðu að svarið við spurningunni sé lengra en ein setning?",
+			expectedAnswer: "no",
 			key: "has-short-answer",
-			correctAnswerPrompt: "Svarið væri ekki of langt",
-			badAnswerPrompt: "Svarið væri of langt",
+			correctAnswerPrompt: "Svarið er mögulega ekki of langt",
+			badAnswerPrompt: "Svarið er líklega of langt",
 		},
 		{
-			question: "Er svarið háð gildismati þess sem svarar henni?",
+			question:
+				"Finnst þér líklegt að skoðun fólks hafi áhrif svarið?",
 			expectedAnswer: "no",
 			key: "is-opinionated",
-			correctAnswerPrompt:
-				"Spurningin er ekki að biðja um gildismat",
-			badAnswerPrompt: "Svarið er háð gildismati",
+			correctAnswerPrompt: "Svarið er ekki háð skoðun fólks",
+			badAnswerPrompt: "Svarið er líklega háð skoðun fólks",
 		},
 	],
 };

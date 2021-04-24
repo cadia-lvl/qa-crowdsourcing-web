@@ -2,13 +2,11 @@ import React, { useReducer, useEffect } from "react";
 import { IProps } from "./interface";
 import {
 	Outer,
-	VerticalBar,
 	ButtonDiv,
 	Question,
-	BadQuestionPrompt,
-	GoodQuestionPrompt,
+	CheckListActionButton,
 } from "./styles";
-import { TextPrompt, BaseButton, TextTag } from "../../../../";
+import { TextTag } from "../../../../";
 import { ReviewActions, State } from "./stateUtils";
 
 export const ReviewCheckList = <T extends {}>({
@@ -53,86 +51,43 @@ export const ReviewCheckList = <T extends {}>({
 
 	const [state, dispatch] = useReducer(reducer, initialState);
 
-	const checkListDone =
-		state.finished.length === items.length || state.questionIsBad;
-
 	return (
 		<Outer>
-			<TextPrompt>{title}</TextPrompt>
-
-			{state.questionIsBad ? (
-				<BadQuestionPrompt>
-					{items[
-						state.currentQuestion
-					].badAnswerPrompt.toLocaleUpperCase()}
-				</BadQuestionPrompt>
-			) : checkListDone ? (
-				<GoodQuestionPrompt>
-					Þetta er góð spurning!
-				</GoodQuestionPrompt>
-			) : (
-				<React.Fragment>
-					{items
-						.slice(0, state.currentQuestion + 1)
-						.map((item) => (
-							<React.Fragment key={item.question}>
-								<VerticalBar />
-								{state.finished.includes(item.key) ? (
-									<TextTag>
-										{item.correctAnswerPrompt}
-									</TextTag>
-								) : (
-									<Question>{item.question}</Question>
-								)}
-							</React.Fragment>
-						))}
-					<ButtonDiv>
-						<BaseButton
-							label="Nei"
-							type="danger"
-							onClick={() =>
-								dispatch({
-									type: "answer-question",
-									payload: "no",
-								})
-							}
-						/>
-						<BaseButton
-							label="Já"
-							type="highlight"
-							onClick={() =>
-								dispatch({
-									type: "answer-question",
-									payload: "yes",
-								})
-							}
-						/>
-					</ButtonDiv>
+			{items.slice(0, state.currentQuestion + 1).map((item) => (
+				<React.Fragment key={item.question}>
+					{state.finished.includes(item.key) ? (
+						<TextTag>{item.correctAnswerPrompt}</TextTag>
+					) : (
+						<Question>{item.question}</Question>
+					)}
 				</React.Fragment>
-			)}
-
-			{checkListDone ? (
-				<ButtonDiv>
-					<BaseButton
-						label="Úps, ég gerði mistök"
-						type="danger"
-						onClick={() =>
-							dispatch({
-								type: "reset-state",
-							})
-						}
-					/>
-					<BaseButton
-						label="Sammála!"
-						type="highlight"
-						onClick={() =>
-							(state.questionIsBad
-								? onBadAnswer
-								: onComplete)()
-						}
-					/>
-				</ButtonDiv>
-			) : null}
+			))}
+			<ButtonDiv>
+				<CheckListActionButton
+					type="no"
+					onClick={() =>
+						dispatch({
+							type: "answer-question",
+							payload: "no",
+						})
+					}
+				>
+					<i className="fas fa-times" />
+					<span>Nei</span>
+				</CheckListActionButton>
+				<CheckListActionButton
+					type="yes"
+					onClick={() =>
+						dispatch({
+							type: "answer-question",
+							payload: "yes",
+						})
+					}
+				>
+					<i className="fas fa-check" />
+					<span>Já</span>
+				</CheckListActionButton>
+			</ButtonDiv>
 		</Outer>
 	);
 };

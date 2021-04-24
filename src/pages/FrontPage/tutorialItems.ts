@@ -6,7 +6,7 @@ export const userProgress: TutorialExplanations[] = [
 		payload:
 			"Hér getur þú séð þinn árangur og hvaða Lvl þú ert komin/n á!",
 		id: "FRONTPAGE:DASHBOARD:INTRO:PROGRESS",
-		highlight: false,
+		highlight: true,
 		dialog: [
 			{
 				text: "Allt í góðu",
