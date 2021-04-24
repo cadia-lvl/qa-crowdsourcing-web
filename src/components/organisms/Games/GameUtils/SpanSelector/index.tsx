@@ -11,6 +11,7 @@ export const SpanSelector = ({
 	onFirstWordChange,
 	onLastWordChange,
 	onClearRange,
+	onComplete,
 }: IProps) => {
 	let selectionState: SelectionStates;
 
@@ -45,6 +46,21 @@ export const SpanSelector = ({
 		false
 	);
 
+	const userInstructions = [
+		["Smelltu á fyrsta orðið sem myndar svarið"],
+		["Smelltu á síðasta orðið sem myndar svarið"],
+		[
+			"Smelltu á textann til þess að velja aftur",
+			"Smelltu á „áfram“ til þess að staðfesta orða val",
+		],
+	];
+
+	const getStage = () => {
+		if (selectionState === "select-first") return 0;
+		else if (selectionState === "select-last") return 1;
+		return 2;
+	};
+
 	useEffect(() => {
 		const LOADING_TIMEOUT = 1000;
 		if (areInstructionsLoading) {
@@ -63,20 +79,9 @@ export const SpanSelector = ({
 		setAreInstructionsLoading(true);
 	}, [selectionState]);
 
-	const userInstructions = [
-		["Smelltu á fyrsta orðið sem myndar svarið"],
-		["Smelltu á síðasta orðið sem myndar svarið"],
-		[
-			"Smelltu á textann til þess að velja aftur",
-			"Smelltu á „áfram“ til þess að staðfesta orða val",
-		],
-	];
-
-	const getStage = () => {
-		if (selectionState === "select-first") return 0;
-		else if (selectionState === "select-last") return 1;
-		return 2;
-	};
+	useEffect(() => {
+		if (getStage() === 2 && onComplete !== undefined) onComplete();
+	}, [getStage()]);
 
 	return (
 		<Outer>
