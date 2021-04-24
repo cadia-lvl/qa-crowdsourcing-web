@@ -51,14 +51,15 @@ export const getCurrText = (username: string, game?: GameTypes) => {
 			return {
 				title: "Merkja svar í efnisgrein",
 
-				text: `Nú þarft þú að fara yfir svar við spurningu. Bæði spurningin og svarið voru send inn af mismunandi notendum. Þú munt sjá heila efnisgrein sem fundin var á vefnum, ástamt svarinu í textanum. Við höfum merkt svarið frá notandanum í fjólubláu.`,
-				dos: [
-					"Efnisgreinin getur innihaldið upplýsingar sem eru ekki í svarinu, það er í góðu lagi",
-					"Það er í lagi að svarið byggi á heimildum sem eru nokkura ára gamlar",
+				text: `Við erum með efnisgrein sem annar notandi hefur fundið til þess að svara spurningu. Þú þarft að skoða efnisgreinina og athuga hvort þér finnst svarið við spurningunni vera til staðar. Ef svo er, þá velurðu síðan orðin sem mynda svarið.`,
+				dos: ["Reyndu að velja aðeins orðin sem skipta máli"],
+				infos: [
+					"Þú munt aðeins sjá eina efnisgrein af vefsíðunni sem inniheldur svarið",
+					"Ef svarið er til staðar, en það vantar samhengi úr annari efnisgrein þá er það í lagi",
+					"Ef svarið byggist á heimild sem er nokkura ára gömul, þá er svarið samt gilt",
 				],
-				infos: ["Svarið er merkt í fjólubláum stöfum"],
 				donts: [
-					"Ef svarið er háð gildismati þá er svarið ekki rétt",
+					"Ekki velja fleiri orð en þarf til að svara spurningunni.",
 				],
 			};
 		case GameTypes.completed:

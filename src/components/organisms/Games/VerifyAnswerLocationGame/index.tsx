@@ -26,7 +26,7 @@ export const VerifyAnswerLocationGame = () => {
 
 	return (
 		<GameWrapper type={GameTypes.verifyAnswerLocation}>
-			<TaskInfoBox title="Finna svar í efnisgrein">
+			<TaskInfoBox title="Merkja svar í efnisgrein">
 				<p>
 					Spurningin er{" "}
 					<span className="query">
