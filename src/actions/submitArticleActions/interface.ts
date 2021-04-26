@@ -24,3 +24,7 @@ export interface FetchArticlesQueryAction {
 	type: ActionTypes.fetchArticlesQuery;
 	payload: ArticlePreview[];
 }
+
+export interface SetGoogleSearchErrorAction {
+	type: ActionTypes.setGoogleSearchError;
+}

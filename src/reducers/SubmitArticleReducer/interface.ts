@@ -9,4 +9,6 @@ export interface SubmitArticleState {
 	query: string;
 	_id: string;
 	previewOpenCount: number;
+	searchError: boolean;
+	noResults: boolean;
 }

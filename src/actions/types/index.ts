@@ -36,6 +36,7 @@ export enum ActionTypes {
 	replaceQueue,
 	setTutorialItemToFront,
 	addPersistantTutorialItems,
+	setGoogleSearchError,
 }
 
 export type Actions =
@@ -49,6 +50,7 @@ export type Actions =
 	| SubmitArticleActions.SelectParagraphInArticleAction
 	| SubmitArticleActions.WriteArticleSearchQueryAction
 	| SubmitArticleActions.FetchArticlesQueryAction
+	| SubmitArticleActions.SetGoogleSearchErrorAction
 	| VerifyAnswerLocationsActions.SelectFirstWordIndexInParagraphAction
 	| VerifyAnswerLocationsActions.SelectSecondWordIndexInParagraphAction
 	| VerifyAnswerLocationsActions.ClearIndexRangeInParagraph

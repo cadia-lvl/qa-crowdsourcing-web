@@ -5,7 +5,7 @@ import React, {
 	useState,
 	useMemo,
 } from "react";
-import { TextTag, GoogleTextInput } from "../../../";
+import { TextTag, GoogleTextInput, FilledAlert } from "../../../";
 import { GOOGLE_LOGO } from "../../../../static";
 import { SearchForm, Paragraph } from "./styles";
 import ArticlePreview from "./ArticlePreview";
@@ -37,6 +37,8 @@ export const SubmitArticleGame = () => {
 			articles,
 			text,
 			_id: questionId,
+			searchError,
+			noResults,
 		},
 		game: { _id: gameRoundId },
 	} = state;
@@ -100,6 +102,12 @@ export const SubmitArticleGame = () => {
 					</React.Fragment>
 				)}
 
+				{searchError ? (
+					<FilledAlert
+						label="Það kom um villa við leitina, prufaðu annan leitarstreng"
+						type="danger"
+					/>
+				) : null}
 				{articles.length > 0 ? (
 					<Explain
 						priority="clear-others"
@@ -130,6 +138,11 @@ export const SubmitArticleGame = () => {
 							) : null
 						)}
 					</Explain>
+				) : noResults ? (
+					<FilledAlert
+						label="Það fundust engar niðurstöður hjá Google. Prufaðu annan leitarstreng"
+						type="warning"
+					/>
 				) : null}
 				{hasPreview ? (
 					<React.Fragment>

@@ -8,6 +8,8 @@ export const initialState: SubmitArticleState = {
 	query: "",
 	_id: "",
 	previewOpenCount: 0,
+	searchError: false,
+	noResults: false,
 };
 
 const reducer = (
@@ -21,7 +23,6 @@ const reducer = (
 				previewArticle: undefined,
 			};
 		case ActionTypes.selectParagraphInArticle:
-			console.log("a");
 			return {
 				...state,
 				previewParagraphIndex: action.payload,
@@ -55,8 +56,12 @@ const reducer = (
 			return {
 				...state,
 				articles: action.payload,
+				searchError: false,
+				noResults: action.payload.length === 0,
 			};
 		}
+		case ActionTypes.setGoogleSearchError:
+			return { ...state, searchError: true };
 		default:
 			return state;
 	}

@@ -9,6 +9,7 @@ import {
 	SelectParagraphInArticleAction,
 	WriteArticleSearchQueryAction,
 	FetchArticlesQueryAction,
+	SetGoogleSearchErrorAction,
 } from "./interface";
 
 export const previewArticleToSubmit = (
@@ -71,9 +72,8 @@ export const fetchArticlesQuery = () => {
 				payload: data.filter((item) => !!item.source),
 			});
 		} catch (error) {
-			dispatch<FetchArticlesQueryAction>({
-				type: ActionTypes.fetchArticlesQuery,
-				payload: [],
+			dispatch<SetGoogleSearchErrorAction>({
+				type: ActionTypes.setGoogleSearchError,
 			});
 		}
 	};
