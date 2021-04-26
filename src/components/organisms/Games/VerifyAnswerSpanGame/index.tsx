@@ -12,10 +12,11 @@ import {
 	verifyAnswerSpan,
 	verifyYesNoQuestion,
 } from "../../../../actions";
-import { TextPrompt, BaseButton, FlexLoader } from "../../../";
-import { ButtonContainer, TextPromptWrapper } from "./styles";
+import { BaseButton, FlexLoader } from "../../../";
+import { ButtonContainer } from "./styles";
 import SelectionStage from "./SelectionStage";
-import { useTheme } from "styled-components";
+import * as TUTORIAL from "./tutorialItems";
+import { Explain } from "../../Tutorial";
 
 export type SelectionStates =
 	| "select-first"
@@ -50,6 +51,10 @@ export const VerifyAnswerSpanGame = () => {
 
 	const handleVerifyYesOrNo = (answer: boolean) => {
 		dispatch(verifyYesNoQuestion(gameRoundId, answerId, answer));
+	};
+
+	const handleArchive = () => {
+		dispatch(archiveAnswer(gameRoundId, answerId));
 	};
 
 	const handleVerifyAnswerIsPresent = () => {
@@ -120,12 +125,7 @@ export const VerifyAnswerSpanGame = () => {
 								<BaseButton
 									type="danger"
 									label="Svarið er ekki hér"
-									onClick={() =>
-										archiveAnswer(
-											gameRoundId,
-											answerId
-										)
-									}
+									onClick={handleArchive}
 								/>
 								<BaseButton
 									type="success"
@@ -140,18 +140,18 @@ export const VerifyAnswerSpanGame = () => {
 								<BaseButton
 									type="danger"
 									label="Ég held að svarið sé rangt"
-									onClick={() =>
-										archiveAnswer(
-											gameRoundId,
-											answerId
-										)
-									}
+									onClick={handleArchive}
 								/>
-								<BaseButton
-									type="success"
-									label="Ég held að svarið sé rétt"
-									onClick={handleVerifyAnswerIsPresent}
-								/>
+
+								<Explain items={TUTORIAL.answerIsPurple}>
+									<BaseButton
+										type="success"
+										label="Ég held að svarið sé rétt"
+										onClick={
+											handleVerifyAnswerIsPresent
+										}
+									/>
+								</Explain>
 							</React.Fragment>
 						)
 					) : selectionStage ===
@@ -162,7 +162,7 @@ export const VerifyAnswerSpanGame = () => {
 						<React.Fragment>
 							<BaseButton
 								type="highlight"
-								label="Tila baka"
+								label="Til baka"
 								onClick={handleResetSelectionStage}
 							/>
 							<BaseButton
@@ -170,11 +170,15 @@ export const VerifyAnswerSpanGame = () => {
 								label="Svarið gæti verið styttra"
 								onClick={() => handleVerifyDispatch(true)}
 							/>
-							<BaseButton
-								type="success"
-								label="Svarið er hnitmiðað"
-								onClick={() => handleVerifyDispatch(false)}
-							/>
+							<Explain items={TUTORIAL.tooLongExample}>
+								<BaseButton
+									type="success"
+									label="Svarið er hnitmiðað"
+									onClick={() =>
+										handleVerifyDispatch(false)
+									}
+								/>
+							</Explain>
 						</React.Fragment>
 					) : selectionStage ===
 					  SelectionStage.getAnswerForYesOrNo ? (
@@ -183,7 +187,7 @@ export const VerifyAnswerSpanGame = () => {
 						<React.Fragment>
 							<BaseButton
 								type="highlight"
-								label="Tila baka"
+								label="Til baka"
 								onClick={handleResetSelectionStage}
 							/>
 							<BaseButton

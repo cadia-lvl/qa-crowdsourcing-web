@@ -29,6 +29,18 @@ export const GlobalStyle = createGlobalStyle`
         }
     }
 
+    .success {
+        color: ${Colors.SUCCESS};
+    }
+
+    .danger {
+        color: ${Colors.DANGER};
+    }
+
+    .bold {
+        font-weight: 600;
+    }
+
     p {
         line-height: 1.5;
         margin-top: 15px;

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { BaseButton } from "../../..";
+import { BaseButton, Explain } from "../../..";
 import {
 	clearIndexRangeInParagraph,
 	selectFirstWordIndexInParagraph,
@@ -13,6 +13,7 @@ import { GameWrapper } from "../../../../hoc";
 import { StoreState } from "../../../../reducers";
 import { SpanSelector, TaskInfoBox } from "../GameUtils";
 import { ButtonContainer } from "./styles";
+import * as TUTORIAL from "./tutorialItems";
 
 export const VerifyAnswerLocationGame = () => {
 	const state = useSelector((state: StoreState) => state);
@@ -68,14 +69,16 @@ export const VerifyAnswerLocationGame = () => {
 					</ButtonContainer>
 				) : (
 					<ButtonContainer>
-						<BaseButton
-							label="til baka"
-							type="danger"
-							onClick={() => {
-								setIsSelectingSpan(false);
-								dispatch(clearIndexRangeInParagraph());
-							}}
-						/>
+						<Explain items={TUTORIAL.tooLongExample}>
+							<BaseButton
+								label="til baka"
+								type="danger"
+								onClick={() => {
+									setIsSelectingSpan(false);
+									dispatch(clearIndexRangeInParagraph());
+								}}
+							/>
+						</Explain>
 						<BaseButton
 							label="Áfram"
 							onClick={() =>
