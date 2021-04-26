@@ -1,19 +1,36 @@
 import { GameTypes } from "../../../../../declerations";
+import { StoreState } from "../../../../../reducers";
+import store from "../../../../../store";
 
 export const getCurrText = (username: string, game?: GameTypes) => {
 	username = username.toUpperCase();
 	switch (game) {
 		case GameTypes.verifyAnswerSpan:
+			// TODO: write text and fix wording
 			return {
 				title: "Yfirfara svar",
-				text: `Nú þarft þú að fara yfir svar við spurningu. Bæði spurningin og svarið voru send inn af mismunandi notendum. Þú munt sjá heila efnisgrein sem fundin var á vefnum, ástamt svarinu í textanum. Við höfum merkt svarið frá notandanum í fjólubláu.`,
+				text: `Nú þarft þú að fara yfir svar við spurningu. Þú munt sjá heila efnisgrein sem inniheldur ${
+					store
+						.getState()
+						.verifyAnswerLocation.paragraph.split(" ").length
+				} orð. ${
+					store.getState().verifyAnswerLocation.isYesOrNo
+						? `Spurningin er já/nei spurning. Verkefnið þitt er að lesa yfir efnisgreinina og sjá hvort hún innihaldi svarið við þessari já/nei spurningu`
+						: `Svarið sjálft er ${(({
+								verifyAnswerLocation: state,
+						  }: StoreState) =>
+								state.lastWord! - state.firstWord! + 1)(
+								store.getState()
+						  )} orð. Svarið er merkt í fjólubláum stöfum. Við sýnum þér efnisgreinina í kringum svarið einungis til þess að gefa svarinu samhengi`
+				}
+				`,
 				dos: [
 					"Efnisgreinin getur innihaldið upplýsingar sem eru ekki í svarinu, það er í góðu lagi",
 					"Það er í lagi að svarið byggi á heimildum sem eru nokkura ára gamlar",
 				],
 				infos: ["Svarið er merkt í fjólubláum stöfum"],
 				donts: [
-					"Ef svarið er háð gildismati þá er svarið ekki rétt",
+					"Ef svarið er háð tilfinningum og skoðunum fólks þá er svarið ekki rétt",
 				],
 			};
 		case GameTypes.questionQualityAssurance:
@@ -52,7 +69,10 @@ export const getCurrText = (username: string, game?: GameTypes) => {
 				title: "Merkja svar í efnisgrein",
 
 				text: `Við erum með efnisgrein sem annar notandi hefur fundið til þess að svara spurningu. Þú þarft að skoða efnisgreinina og athuga hvort þér finnst svarið við spurningunni vera til staðar. Ef svo er, þá velurðu síðan orðin sem mynda svarið.`,
-				dos: ["Reyndu að velja aðeins orðin sem skipta máli"],
+				dos: [
+					"Reyndu að velja aðeins orðin sem skipta máli",
+					"Ef svarið er í pörtum, veldu þá partinn sem svarar spurningunni best",
+				],
 				infos: [
 					"Þú munt aðeins sjá eina efnisgrein af vefsíðunni sem inniheldur svarið",
 					"Ef svarið er til staðar, en það vantar samhengi úr annari efnisgrein þá er það í lagi",
@@ -63,6 +83,7 @@ export const getCurrText = (username: string, game?: GameTypes) => {
 				],
 			};
 		case GameTypes.completed:
+			// TODO: write text and fix wording
 			return {
 				title: "Þetta tókst",
 
@@ -77,6 +98,7 @@ export const getCurrText = (username: string, game?: GameTypes) => {
 				],
 			};
 		case GameTypes.writeQuestion:
+			// TODO: write text and fix wording
 			return {
 				title: "Búa til nýja spurningu",
 
