@@ -28,3 +28,8 @@ export interface FetchArticlesQueryAction {
 export interface SetGoogleSearchErrorAction {
 	type: ActionTypes.setGoogleSearchError;
 }
+
+export interface SetIsPerformingSearch {
+	type: ActionTypes.setIsPerformingSearch;
+	payload: boolean;
+}

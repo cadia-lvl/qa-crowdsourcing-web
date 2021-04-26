@@ -11,4 +11,5 @@ export interface SubmitArticleState {
 	previewOpenCount: number;
 	searchError: boolean;
 	noResults: boolean;
+	isPerformingSearch: boolean;
 }

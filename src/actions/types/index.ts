@@ -37,6 +37,7 @@ export enum ActionTypes {
 	setTutorialItemToFront,
 	addPersistantTutorialItems,
 	setGoogleSearchError,
+	setIsPerformingSearch,
 }
 
 export type Actions =
@@ -51,6 +52,7 @@ export type Actions =
 	| SubmitArticleActions.WriteArticleSearchQueryAction
 	| SubmitArticleActions.FetchArticlesQueryAction
 	| SubmitArticleActions.SetGoogleSearchErrorAction
+	| SubmitArticleActions.SetIsPerformingSearch
 	| VerifyAnswerLocationsActions.SelectFirstWordIndexInParagraphAction
 	| VerifyAnswerLocationsActions.SelectSecondWordIndexInParagraphAction
 	| VerifyAnswerLocationsActions.ClearIndexRangeInParagraph

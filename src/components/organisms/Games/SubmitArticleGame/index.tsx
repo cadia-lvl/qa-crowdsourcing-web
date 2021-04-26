@@ -23,6 +23,7 @@ import {
 import { TaskInfoBox } from "../GameUtils";
 import { Explain } from "../../Tutorial";
 import * as TUTORIAL from "./tutorialItems";
+import { FlexLoader } from "../../../atoms";
 
 export const SubmitArticleGame = () => {
 	const [highlightWords, setHighlightWords] = useState<string[]>([]);
@@ -39,6 +40,7 @@ export const SubmitArticleGame = () => {
 			_id: questionId,
 			searchError,
 			noResults,
+			isPerformingSearch,
 		},
 		game: { _id: gameRoundId },
 	} = state;
@@ -102,13 +104,14 @@ export const SubmitArticleGame = () => {
 					</React.Fragment>
 				)}
 
-				{searchError ? (
+				{isPerformingSearch ? (
+					<FlexLoader size={40} />
+				) : searchError ? (
 					<FilledAlert
 						label="Það kom um villa við leitina, prufaðu annan leitarstreng"
 						type="danger"
 					/>
-				) : null}
-				{articles.length > 0 ? (
+				) : articles.length > 0 ? (
 					<Explain
 						priority="clear-others"
 						items={TUTORIAL.explainResults}

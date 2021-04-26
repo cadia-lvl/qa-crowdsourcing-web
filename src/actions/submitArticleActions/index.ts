@@ -10,6 +10,7 @@ import {
 	WriteArticleSearchQueryAction,
 	FetchArticlesQueryAction,
 	SetGoogleSearchErrorAction,
+	SetIsPerformingSearch,
 } from "./interface";
 
 export const previewArticleToSubmit = (
@@ -61,6 +62,10 @@ export const writeArticleSearchQuery = (
 export const fetchArticlesQuery = () => {
 	return async function (dispatch: Dispatch) {
 		try {
+			dispatch<SetIsPerformingSearch>({
+				type: ActionTypes.setIsPerformingSearch,
+				payload: true,
+			});
 			const { data } = await Api.get<ArticlePreview[]>(
 				`/api/v1/articles?query=${
 					store.getState().submitArticle.query
