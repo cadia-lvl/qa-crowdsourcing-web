@@ -8,6 +8,7 @@ export const ButtonContainer = styled.div`
 		margin-right: 20px;
 		width: 300px;
 	}
+	margin-top: 20px;
 `;
 
 export const TextPromptWrapper = styled.div`

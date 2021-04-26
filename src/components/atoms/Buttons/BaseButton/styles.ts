@@ -8,8 +8,9 @@ export const Button = styled.button`
 	width: 100%;
 	padding: 12px 0;
 	border: none;
-	border-radius: 5px;
+	border-radius: 25px;
 	cursor: pointer;
 	${(props) => (props.theme.isInactive ? `opacity: 0.3` : "")};
 	transition: 0.3s;
+	font-weight: 500;
 `;

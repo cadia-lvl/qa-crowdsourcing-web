@@ -21,7 +21,7 @@ export const getCurrText = (username: string, game?: GameTypes) => {
 						  }: StoreState) =>
 								state.lastWord! - state.firstWord! + 1)(
 								store.getState()
-						  )} orð. Svarið er merkt í fjólubláum stöfum. Við sýnum þér efnisgreinina í kringum svarið einungis til þess að gefa svarinu samhengi`
+						  )} orð og er merkt í fjólubláum stöfum. Við sýnum þér efnisgreinina í kringum svarið einungis til þess að gefa svarinu samhengi`
 				}
 				`,
 				dos: [

@@ -2,10 +2,10 @@ import { Colors } from "../../../../styles";
 import { AlertColorMap } from "./interface";
 
 export const FillColorMap: AlertColorMap = {
-	success: Colors.SUCCESS_BG,
-	danger: Colors.DANGER_BG,
-	highlight: Colors.HIGHLIGHT_BG,
-	warning: Colors.WARNING_BG,
+	success: "#fff",
+	danger: "#fff",
+	highlight: "#fff",
+	warning: "#fff",
 };
 
 export const TextColorMap: AlertColorMap = {
