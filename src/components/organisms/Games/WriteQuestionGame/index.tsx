@@ -4,15 +4,13 @@ import { submitQuestion, writeQuestion } from "../../../../actions";
 import { GameTypes } from "../../../../declerations";
 import { GameWrapper } from "../../../../hoc";
 import { StoreState } from "../../../../reducers";
-import { SubmitButton, TextPrompt, TextTag } from "../../../";
+import { SubmitButton, TextTag } from "../../../";
 import {
-	Paragraph,
 	InputContainer,
 	QuestionInput,
 	ButtonContainer,
 	ErrorLabel,
 	IdeaBoxInner,
-	IdeaBoxOuter,
 } from "./styles";
 import { TaskInfoBox } from "../GameUtils";
 
@@ -50,64 +48,45 @@ export const WriteQuestionGame = () => {
 		}
 	}, [question, questionType, isYesNoQuestion]);
 
-	const getPrompt = () => {
-		if (isYesNoQuestion)
-			return (
-				<React.Fragment>
-					Spurðu okkur <i>{questionType.toLocaleUpperCase()}</i>{" "}
-					spurningu
-				</React.Fragment>
-			);
-		else
-			return (
-				<React.Fragment>
-					Spurðu okkur spurningar sem byrjar á{" "}
-					<i>{questionType.toLocaleUpperCase()}</i>
-				</React.Fragment>
-			);
-	};
 	return (
 		<GameWrapper type={GameTypes.writeQuestion}>
-			<TextPrompt>{getPrompt()}</TextPrompt>
-			<IdeaBoxOuter>
-				<TaskInfoBox title="Hugmyndakassi">
-					<IdeaBoxInner>
-						{ideaWords.map((word) => (
-							<TextTag key={word}>{word}</TextTag>
-						))}
-					</IdeaBoxInner>
-				</TaskInfoBox>
-			</IdeaBoxOuter>
-			<InputContainer>
-				<QuestionInput
-					type="text"
-					placeholder={`${questionType} ?`}
-					onChange={(e) =>
-						dispatch(writeQuestion(e.target.value))
-					}
-					value={question}
-				/>
-			</InputContainer>
+			<TaskInfoBox title="Búa til spurningu">
+				<IdeaBoxInner>
+					{ideaWords.map((word) => (
+						<TextTag key={word}>{word}</TextTag>
+					))}
+				</IdeaBoxInner>
+				<InputContainer>
+					<QuestionInput
+						type="text"
+						placeholder={`${questionType} ?`}
+						onChange={(e) =>
+							dispatch(writeQuestion(e.target.value))
+						}
+						value={question}
+					/>
+				</InputContainer>
 
-			<ButtonContainer>
-				{errorMessage ? (
-					<ErrorLabel>{errorMessage}</ErrorLabel>
-				) : null}
-				<SubmitButton
-					label="Áfram"
-					onClick={() =>
-						dispatch(
-							submitQuestion(
-								gameRoundId,
-								question,
-								isYesNoQuestion
+				<ButtonContainer>
+					{errorMessage ? (
+						<ErrorLabel>{errorMessage}</ErrorLabel>
+					) : null}
+					<SubmitButton
+						label="Áfram"
+						onClick={() =>
+							dispatch(
+								submitQuestion(
+									gameRoundId,
+									question,
+									isYesNoQuestion
+								)
 							)
-						)
-					}
-					inactive={!!errorMessage}
-					invertColorScheme
-				/>
-			</ButtonContainer>
+						}
+						inactive={!!errorMessage}
+						invertColorScheme
+					/>
+				</ButtonContainer>
+			</TaskInfoBox>
 		</GameWrapper>
 	);
 };

@@ -1,13 +1,6 @@
 import styled from "styled-components";
 import { Colors } from "../../../../styles";
 
-export const Paragraph = styled.p`
-	font-size: 24px;
-	width: 800px;
-	color: ${Colors.SUB_HEADING_COLOR};
-	margin-top: 50px;
-`;
-
 export const InputContainer = styled.div`
 	margin-top: 50px;
 	width: 100%;
@@ -51,8 +44,4 @@ export const ButtonContainer = styled.div`
 
 export const IdeaBoxInner = styled.div`
 	margin-top: 20px;
-`;
-
-export const IdeaBoxOuter = styled.div`
-	display: flex;
 `;

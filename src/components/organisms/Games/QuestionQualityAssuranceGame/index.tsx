@@ -47,7 +47,8 @@ export const QuestionQualityAssuranceGame = () => {
 				<ReviewCheckList<QAquestionItems>
 					items={getCheckListItems()}
 					_key={_id}
-					title={text}
+					title={checkList.title}
+					first={checkList.first}
 					onBadAnswer={() => handleDispatch(false)}
 					onComplete={() => handleDispatch(true)}
 				/>

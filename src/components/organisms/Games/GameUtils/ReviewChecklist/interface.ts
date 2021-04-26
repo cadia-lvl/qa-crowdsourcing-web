@@ -9,6 +9,7 @@ export interface IProps<T> extends CheckList<T> {
 export interface CheckList<T> {
 	title: string;
 	items: CheckListItem<T>[];
+	first?: CheckListItem<T>[];
 }
 
 export interface CheckListItem<T> {

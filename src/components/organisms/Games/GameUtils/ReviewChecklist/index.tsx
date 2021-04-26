@@ -16,6 +16,7 @@ export const ReviewCheckList = <T extends {}>({
 	onBadAnswer,
 	onComplete,
 	_key,
+	first,
 }: IProps<T>) => {
 	const initialState: State<T> = {
 		finished: [],
@@ -88,7 +89,7 @@ export const ReviewCheckList = <T extends {}>({
 	useEffect(() => {
 		const items = [...itemProps];
 		shuffle(items);
-		setQuestions(items);
+		setQuestions([...(first ?? []), ...items]);
 	}, []);
 
 	const question = questions[state.currentQuestion]?.question;
