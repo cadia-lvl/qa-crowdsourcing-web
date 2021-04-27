@@ -38,6 +38,10 @@ export enum ActionTypes {
 	addPersistantTutorialItems,
 	setGoogleSearchError,
 	setIsPerformingSearch,
+	verifyUser,
+	setIsWaitingForNewAuthCode,
+	setIsWaitingForVerification,
+	setAuthCodeErrorMessage,
 }
 
 export type Actions =
@@ -45,6 +49,10 @@ export type Actions =
 	| AuthActions.LogOutUserAction
 	| AuthActions.RegisterUserAction
 	| AuthActions.FetchScoreCardAction
+	| AuthActions.VerifyUserAction
+	| AuthActions.SetAuthCodeErrorMessageAction
+	| AuthActions.SetIsWaitingForNewAuthCodeAction
+	| AuthActions.SetIsWaitingForVerificationAction
 	| WriteQuestionActions.WriteQuestionAction
 	| SubmitArticleActions.PreviewArticleToSubmitAction
 	| SubmitArticleActions.ClosePreviewArticleToSubmitAction

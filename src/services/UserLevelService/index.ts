@@ -9,13 +9,13 @@ import {
 } from "../../static";
 
 const LEVEL_NAMES = [
+	"Smábarn",
 	"Byrjandi",
 	"Nemandi",
-	"Stjörnu nemandi",
+	"Menntskælingur",
 	"Dúx",
 	"Kennari",
 	"Prófessor",
-	"Galdrakall",
 ];
 
 const LEVEL_ICONS = [
@@ -30,7 +30,7 @@ const LEVEL_ICONS = [
 
 export const mapLevelToString = (level: number) => {
 	const string = LEVEL_NAMES[level - 1];
-	if (string === undefined) return "Gandalfur";
+	if (string === undefined) return "Galdrakall";
 	return string;
 };
 

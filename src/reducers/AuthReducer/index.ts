@@ -15,6 +15,9 @@ export const initialState: AuthState = {
 		hiscoreRank: -2,
 	},
 	level: 1,
+	isAuthCodeRegenerationLoading: false,
+	isAuthCodeSubmissionLoading: false,
+	authCodeErrorMessage: "",
 };
 
 const reducer = (
@@ -25,14 +28,31 @@ const reducer = (
 		case ActionTypes.logOutUser:
 			return { ...initialState, type: "guest" };
 		case ActionTypes.fetchUserFromToken:
-			return action.payload;
+			return { ...initialState, ...action.payload };
 		case ActionTypes.registerUser:
-			return action.payload;
+			return { ...initialState, ...action.payload };
 		case ActionTypes.fetchScoreCard:
 			return {
 				...state,
 				scoreCard: action.payload,
 			};
+		case ActionTypes.setIsWaitingForNewAuthCode:
+			return {
+				...state,
+				isAuthCodeRegenerationLoading: action.payload,
+			};
+		case ActionTypes.setAuthCodeErrorMessage: {
+			return {
+				...state,
+				authCodeErrorMessage: action.payload,
+			};
+		}
+		case ActionTypes.setIsWaitingForVerification: {
+			return {
+				...state,
+				isAuthCodeSubmissionLoading: action.payload,
+			};
+		}
 		default:
 			return state;
 	}
