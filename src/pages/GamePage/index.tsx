@@ -26,6 +26,9 @@ export const GamePage = () => {
 
 	useEffect(() => {
 		dispatch(fetchScoreCard());
+		return () => {
+			dispatch(fetchCurrentGameRound());
+		};
 	}, [state.currentRound]);
 
 	return (

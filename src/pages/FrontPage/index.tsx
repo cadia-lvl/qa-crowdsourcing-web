@@ -39,8 +39,13 @@ import { UserLevelService } from "../../services";
 import * as TUTORIAL from "./tutorialItems";
 
 export const FrontPage = () => {
-	const auth = useSelector((state: StoreState) => state.auth);
-	const game = useSelector((state: StoreState) => state.game);
+	const { level, username } = useSelector(
+		(state: StoreState) => state.auth
+	);
+	const { currentRound, totalRounds } = useSelector(
+		(state: StoreState) => state.game
+	);
+
 	return (
 		<Outer>
 			{/* Space to the Left of the screen */}
@@ -62,35 +67,35 @@ export const FrontPage = () => {
 											<Col1Row1Cell1>
 												<UserAvatar
 													src={UserLevelService.mapLevelToIconURL(
-														auth.level
+														level
 													)}
 												/>
 											</Col1Row1Cell1>
 
 											<Col1Row1Cell2>
 												<span>
-													Lvl {auth.level}{" "}
+													Lvl {level}{" "}
 													{UserLevelService.mapLevelToString(
-														auth.level
+														level
 													)}
 												</span>
 												<span className="bold username">
-													{auth.username}
+													{username}
 												</span>
 											</Col1Row1Cell2>
 										</Col1Row1>
 										<Col1Row2>
 											<div className="advance-info">
 												<span>
-													{game.currentRound - 1}
-													/{game.totalRounds}
+													{currentRound - 1}/
+													{totalRounds}
 												</span>
 												<span>
 													<i className="fas fa-chevron-right" />
 													<i className="fas fa-chevron-right" />
-													Lvl {auth.level + 1}{" "}
+													Lvl {level + 1}{" "}
 													{UserLevelService.mapLevelToString(
-														auth.level + 1
+														level + 1
 													)}
 												</span>
 											</div>

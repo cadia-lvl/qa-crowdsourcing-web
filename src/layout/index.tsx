@@ -12,23 +12,27 @@ import { FlexLoader, TutorialGuide } from "../components";
 import { fetchAnswersPerDay } from "../actions/chartDataActions";
 
 export const LayoutWrapper = ({ children }: IProps) => {
-	const state = useSelector((state: StoreState) => state.auth);
+	const { type, _id } = useSelector((state: StoreState) => state.auth);
 	const dispatch = useDispatch();
 
 	useEffect(() => {
-		if (state.type === "loading")
-			setTimeout(
+		dispatch(fetchAnswersPerDay());
+		if (type === "loading") {
+			const t = setTimeout(
 				() => dispatch(fetchUserFromToken()),
 				FETCH_USER_FROM_TOKEN_WAIT_MS
 			);
-	}, [state._id, dispatch, state.type]);
-
-	useEffect(() => {
-		dispatch(fetchAnswersPerDay());
-		dispatch(fetchCurrentGameRound());
+			return () => {
+				clearTimeout(t);
+			};
+		}
 	}, []);
 
-	if (state.type === "loading")
+	useEffect(() => {
+		dispatch(fetchCurrentGameRound());
+	}, [_id]);
+
+	if (type === "loading")
 		return (
 			<LoadingOuter>
 				<GlobalStyle />

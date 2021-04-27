@@ -1,6 +1,13 @@
 import { FormRecipe, InputElementTypes } from "../../declerations";
 
 export const form: FormRecipe = {
+	email: {
+		type: InputElementTypes.text,
+		label: "Netfang",
+		placeholder: "eg@netfang.is",
+		value: "",
+		required: true,
+	},
 	username: {
 		type: InputElementTypes.text,
 		label: "Notendanafn",
@@ -8,17 +15,17 @@ export const form: FormRecipe = {
 		value: "",
 		required: true,
 	},
-	email: {
-		type: InputElementTypes.text,
-		label: "Netfang",
-		placeholder: "Netfangið þitt",
-		value: "",
-		required: true,
-	},
 	password: {
 		type: InputElementTypes.hidden,
 		label: "Lykilorð",
 		placeholder: "Veldu öruggt lykilorð",
+		value: "",
+		required: true,
+	},
+	password2: {
+		type: InputElementTypes.hidden,
+		label: "Lykilorð (aftur)",
+		placeholder: "Endurtaktu lykilorðið",
 		value: "",
 		required: true,
 	},

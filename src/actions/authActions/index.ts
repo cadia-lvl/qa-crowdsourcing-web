@@ -12,7 +12,6 @@ export const fetchUserFromToken = () => {
 	return async function (dispatch: Dispatch) {
 		try {
 			const res = await Api.get<User>("/api/v1/users/current");
-
 			dispatch<FetchUserFromTokenAction>({
 				type: ActionTypes.fetchUserFromToken,
 				payload: res.data,
