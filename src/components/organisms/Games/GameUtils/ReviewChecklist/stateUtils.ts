@@ -3,9 +3,9 @@ import { AnswerTypes } from "./interface";
 export type ReviewActionsTypes = "answer-question" | "reset-state";
 
 export interface State<T> {
-	finished: T[];
+	finished: { key: T; goodAnswer: boolean }[];
 	currentQuestion: number;
-	questionIsBad: boolean;
+	isLoading: boolean;
 }
 
 export interface AnswerQuestionAction {
@@ -13,8 +13,16 @@ export interface AnswerQuestionAction {
 	payload: AnswerTypes;
 }
 
+export interface SetLoadingAction {
+	type: "set-loading";
+	payload: boolean;
+}
+
 export interface RestartAction {
 	type: "reset-state";
 }
 
-export type ReviewActions = AnswerQuestionAction | RestartAction;
+export type ReviewActions =
+	| AnswerQuestionAction
+	| RestartAction
+	| SetLoadingAction;

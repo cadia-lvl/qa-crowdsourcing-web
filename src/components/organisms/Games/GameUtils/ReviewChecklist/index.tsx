@@ -1,28 +1,29 @@
-import React, { useReducer, useEffect } from "react";
-import { IProps } from "./interface";
+import React, { useReducer, useEffect, useState } from "react";
+import { CheckListItem, IProps } from "./interface";
 import {
 	Outer,
-	VerticalBar,
 	ButtonDiv,
-	Question,
-	BadQuestionPrompt,
-	GoodQuestionPrompt,
+	CheckListQuestionContainer,
+	CheckListActionButton,
+	CheckListContainer,
 } from "./styles";
-import { TextPrompt, BaseButton, TextTag } from "../../../../";
 import { ReviewActions, State } from "./stateUtils";
+import { CheckListBullet, FlexLoader } from "../../../../";
+import { shuffle } from "./utils";
 
 export const ReviewCheckList = <T extends {}>({
-	title,
-	items,
+	items: itemProps,
 	onBadAnswer,
 	onComplete,
 	_key,
 }: IProps<T>) => {
 	const initialState: State<T> = {
 		finished: [],
+		isLoading: true,
 		currentQuestion: 0,
-		questionIsBad: false,
 	};
+
+	const [questions, setQuestions] = useState<CheckListItem<T>[]>([]);
 
 	useEffect(() => {
 		dispatch({ type: "reset-state" });
@@ -31,21 +32,25 @@ export const ReviewCheckList = <T extends {}>({
 	const reducer = (state: State<T>, action: ReviewActions): State<T> => {
 		switch (action.type) {
 			case "answer-question":
-				const badAnswer =
-					action.payload !==
-					items[state.currentQuestion].expectedAnswer;
+				const goodAnswer =
+					action.payload ===
+					questions[state.currentQuestion].expectedAnswer;
 				return {
 					...state,
 					finished: [
 						...state.finished,
-						items[state.currentQuestion].key,
+						{
+							key: questions[state.currentQuestion].key,
+							goodAnswer,
+						},
 					],
-					questionIsBad: badAnswer,
-					currentQuestion:
-						state.currentQuestion + (!badAnswer ? 1 : 0),
+					isLoading: true,
+					currentQuestion: state.currentQuestion + 1,
 				};
 			case "reset-state":
 				return { ...initialState };
+			case "set-loading":
+				return { ...state, isLoading: action.payload };
 			default:
 				return state;
 		}
@@ -53,86 +58,120 @@ export const ReviewCheckList = <T extends {}>({
 
 	const [state, dispatch] = useReducer(reducer, initialState);
 
-	const checkListDone =
-		state.finished.length === items.length || state.questionIsBad;
+	/**
+	 * Handles setting loading to false
+	 * after a fixed timer
+	 * after isLoading has been set
+	 * to true
+	 */
+	useEffect(() => {
+		const LOADING_TIMER = 1000;
+		if (state.isLoading) {
+			const t = setTimeout(
+				() =>
+					dispatch({
+						type: "set-loading",
+						payload: false,
+					}),
+				LOADING_TIMER
+			);
+			// clean up
+			return () => {
+				clearTimeout(t);
+			};
+		}
+	}, [state.isLoading]);
 
+	/**
+	 * Shuffles the question when component is loaded
+	 */
+	useEffect(() => {
+		const items = [...itemProps];
+		shuffle(items);
+		setQuestions(items);
+	}, []);
+
+	const question = questions[state.currentQuestion]?.question;
+	const hasQuestion = question !== undefined;
 	return (
 		<Outer>
-			<TextPrompt>{title}</TextPrompt>
-
-			{state.questionIsBad ? (
-				<BadQuestionPrompt>
-					{items[
-						state.currentQuestion
-					].badAnswerPrompt.toLocaleUpperCase()}
-				</BadQuestionPrompt>
-			) : checkListDone ? (
-				<GoodQuestionPrompt>
-					Þetta er góð spurning!
-				</GoodQuestionPrompt>
+			{/* {} */}
+			{hasQuestion ? (
+				<CheckListQuestionContainer>
+					{state.isLoading ? (
+						<FlexLoader size={40} />
+					) : (
+						<React.Fragment>
+							<p>{question}</p>
+							<ButtonDiv>
+								<CheckListActionButton
+									onClick={() =>
+										dispatch({
+											type: "answer-question",
+											payload: "no",
+										})
+									}
+								>
+									<span>Nei</span>
+								</CheckListActionButton>
+								<CheckListActionButton
+									onClick={() =>
+										dispatch({
+											type: "answer-question",
+											payload: "yes",
+										})
+									}
+								>
+									<span>Já</span>
+								</CheckListActionButton>
+							</ButtonDiv>
+						</React.Fragment>
+					)}
+				</CheckListQuestionContainer>
 			) : (
-				<React.Fragment>
-					{items
-						.slice(0, state.currentQuestion + 1)
-						.map((item) => (
+				<CheckListContainer>
+					{questions
+						.slice(0, state.currentQuestion)
+						.map((item, i) => (
 							<React.Fragment key={item.question}>
-								<VerticalBar />
-								{state.finished.includes(item.key) ? (
-									<TextTag>
+								{state.finished[i].goodAnswer ? (
+									<CheckListBullet type="good">
 										{item.correctAnswerPrompt}
-									</TextTag>
+									</CheckListBullet>
 								) : (
-									<Question>{item.question}</Question>
+									<CheckListBullet type="bad">
+										{item.badAnswerPrompt}
+									</CheckListBullet>
 								)}
 							</React.Fragment>
 						))}
 					<ButtonDiv>
-						<BaseButton
-							label="Nei"
-							type="danger"
+						<CheckListActionButton
 							onClick={() =>
 								dispatch({
-									type: "answer-question",
-									payload: "no",
+									type: "reset-state",
 								})
 							}
-						/>
-						<BaseButton
-							label="Já"
-							type="highlight"
+						>
+							<span>Breyta svörum</span>
+						</CheckListActionButton>
+						<CheckListActionButton
 							onClick={() =>
-								dispatch({
-									type: "answer-question",
-									payload: "yes",
-								})
+								// calls relevant callback
+								// based on if all answers were
+								// good or not
+								state.finished.every(
+									(item) => item.goodAnswer
+								)
+									? onComplete()
+									: onBadAnswer()
 							}
-						/>
+						>
+							<span>Staðfesta svör</span>
+						</CheckListActionButton>
 					</ButtonDiv>
-				</React.Fragment>
+				</CheckListContainer>
 			)}
-
-			{checkListDone ? (
-				<ButtonDiv>
-					<BaseButton
-						label="Úps, ég gerði mistök"
-						type="danger"
-						onClick={() =>
-							dispatch({
-								type: "reset-state",
-							})
-						}
-					/>
-					<BaseButton
-						label="Sammála!"
-						type="highlight"
-						onClick={() =>
-							(state.questionIsBad
-								? onBadAnswer
-								: onComplete)()
-						}
-					/>
-				</ButtonDiv>
-			) : null}
 		</Outer>
 	);
 };

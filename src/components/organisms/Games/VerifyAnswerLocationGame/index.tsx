@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { BaseButton } from "../../..";
+import { BaseButton, Explain } from "../../..";
 import {
 	clearIndexRangeInParagraph,
 	selectFirstWordIndexInParagraph,
@@ -13,11 +13,11 @@ import { GameWrapper } from "../../../../hoc";
 import { StoreState } from "../../../../reducers";
 import { SpanSelector, TaskInfoBox } from "../GameUtils";
 import { ButtonContainer } from "./styles";
+import * as TUTORIAL from "./tutorialItems";
 
 export const VerifyAnswerLocationGame = () => {
 	const state = useSelector((state: StoreState) => state);
 	const [isSelectingSpan, setIsSelectingSpan] = useState(false);
-
 	const dispatch = useDispatch();
 
 	const {
@@ -25,17 +25,21 @@ export const VerifyAnswerLocationGame = () => {
 		game: { _id: gameRoundId },
 	} = state;
 
-	const canUserProceed = !(
-		firstWord === undefined || lastWord === undefined
-	);
-
 	return (
 		<GameWrapper type={GameTypes.verifyAnswerLocation}>
-			<TaskInfoBox title="Finna svar í grein sem notandi hefur sent inn">
+			<TaskInfoBox title="Merkja svar í efnisgrein">
+				<p>
+					Spurningin er{" "}
+					<span className="query">
+						„{text.charAt(0).toLocaleLowerCase()}
+						{text.substring(1)}“
+					</span>
+					.
+				</p>
 				<SpanSelector
 					{...state.verifyAnswerLocation}
 					question={text}
-					onClearRange={(word) =>
+					onClearRange={() =>
 						dispatch(clearIndexRangeInParagraph())
 					}
 					onFirstWordChange={(index) =>
@@ -46,55 +50,55 @@ export const VerifyAnswerLocationGame = () => {
 					}
 					immutable={!isSelectingSpan}
 				/>
-				<ButtonContainer>
-					{isSelectingSpan ? (
-						<React.Fragment>
+				{!isSelectingSpan ? (
+					<ButtonContainer>
+						<BaseButton
+							label="Ég sé ekki svarið"
+							type="danger"
+							onClick={() =>
+								dispatch(
+									archiveAnswer(gameRoundId, answerId)
+								)
+							}
+						/>
+						<BaseButton
+							label="Ég sé svarið"
+							onClick={() => setIsSelectingSpan(true)}
+							type="highlight"
+						/>
+					</ButtonContainer>
+				) : (
+					<ButtonContainer>
+						<Explain items={TUTORIAL.tooLongExample}>
 							<BaseButton
-								label="Til baka"
+								label="til baka"
 								type="danger"
 								onClick={() => {
 									setIsSelectingSpan(false);
 									dispatch(clearIndexRangeInParagraph());
 								}}
 							/>
-							<BaseButton
-								label="Staðfesta svar"
-								onClick={() =>
-									dispatch(
-										submitSpan(
-											gameRoundId,
-											answerId,
-											firstWord ?? -1,
-											lastWord ?? -1
-										)
+						</Explain>
+						<BaseButton
+							label="Áfram"
+							onClick={() =>
+								dispatch(
+									submitSpan(
+										gameRoundId,
+										answerId,
+										firstWord!,
+										lastWord!
 									)
-								}
-								type="highlight"
-								isInactive={!canUserProceed}
-							/>
-						</React.Fragment>
-					) : (
-						<React.Fragment>
-							<BaseButton
-								label="Svarið er ekki í þessari efnisgrein"
-								type="danger"
-								onClick={() =>
-									dispatch(
-										archiveAnswer(
-											gameRoundId,
-											answerId
-										)
-									)
-								}
-							/>
-							<BaseButton
-								label="Svarið er í þessari efnisgrein"
-								onClick={() => setIsSelectingSpan(true)}
-								type="highlight"
-							/>
-						</React.Fragment>
-					)}
-				</ButtonContainer>
+								)
+							}
+							isInactive={
+								firstWord === undefined ||
+								lastWord === undefined
+							}
+							type="highlight"
+						/>{" "}
+					</ButtonContainer>
+				)}
 			</TaskInfoBox>
 		</GameWrapper>
 	);

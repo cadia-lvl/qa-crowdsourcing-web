@@ -14,6 +14,7 @@ export const initialState: AuthState = {
 		articles: 0,
 		hiscoreRank: -2,
 	},
+	level: 1,
 };
 
 const reducer = (

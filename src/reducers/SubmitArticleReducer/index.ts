@@ -8,6 +8,9 @@ export const initialState: SubmitArticleState = {
 	query: "",
 	_id: "",
 	previewOpenCount: 0,
+	searchError: false,
+	noResults: false,
+	isPerformingSearch: false,
 };
 
 const reducer = (
@@ -54,8 +57,24 @@ const reducer = (
 			return {
 				...state,
 				articles: action.payload,
+				searchError: false,
+				noResults: action.payload.length === 0,
+				isPerformingSearch: false,
 			};
 		}
+		case ActionTypes.setIsPerformingSearch: {
+			return {
+				...state,
+				isPerformingSearch: action.payload,
+			};
+		}
+		case ActionTypes.setGoogleSearchError:
+			return {
+				...state,
+				searchError: true,
+				articles: [],
+				isPerformingSearch: false,
+			};
 		default:
 			return state;
 	}

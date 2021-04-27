@@ -1,17 +1,6 @@
 import styled from "styled-components";
 import { Colors } from "../../../../styles";
 
-export const Paragraph = styled.p`
-	font-size: 24px;
-	width: 800px;
-	color: ${Colors.SUB_HEADING_COLOR};
-	margin-bottom: 20px;
-
-	@media only screen and (max-width: 1300px) {
-		font-size: 16px;
-	}
-`;
-
 export const SearchForm = styled.form`
 	margin: 0 auto;
 	border-radius: 5px;
@@ -52,5 +41,23 @@ export const SearchForm = styled.form`
 
 export const AlertContainer = styled.div`
 	margin-top: 40px;
+	cursor: pointer;
+`;
+
+export const Paragraph = styled.p`
+	span.query {
+		font-weight: 600;
+	}
+`;
+
+export const ContinueSpanText = styled.span`
+	transition: 0.3s;
+`;
+
+export const ContinueClick = styled.p`
+	i {
+		margin-left: 5px;
+		color: ${Colors.WARNING};
+	}
 	cursor: pointer;
 `;

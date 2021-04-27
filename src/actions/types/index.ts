@@ -4,6 +4,7 @@ import * as WriteQuestionActions from "../writeQuestionActions";
 import * as GameActions from "../gameActions";
 import * as VerifyAnswerLocationsActions from "../verifyAnswerLocationActions";
 import * as ChartDataActions from "../chartDataActions";
+import * as TutorialActions from "../tutorialActions";
 
 export enum ActionTypes {
 	fetchUserFromToken,
@@ -29,6 +30,14 @@ export enum ActionTypes {
 	fetchAnswersPerDay,
 	setGameLoadingState,
 	setShowAvatarInHeader,
+	queueTutorialItems,
+	removeTutorialItemIDs,
+	replaceFirstInQueue,
+	replaceQueue,
+	setTutorialItemToFront,
+	addPersistantTutorialItems,
+	setGoogleSearchError,
+	setIsPerformingSearch,
 }
 
 export type Actions =
@@ -42,6 +51,8 @@ export type Actions =
 	| SubmitArticleActions.SelectParagraphInArticleAction
 	| SubmitArticleActions.WriteArticleSearchQueryAction
 	| SubmitArticleActions.FetchArticlesQueryAction
+	| SubmitArticleActions.SetGoogleSearchErrorAction
+	| SubmitArticleActions.SetIsPerformingSearch
 	| VerifyAnswerLocationsActions.SelectFirstWordIndexInParagraphAction
 	| VerifyAnswerLocationsActions.SelectSecondWordIndexInParagraphAction
 	| VerifyAnswerLocationsActions.ClearIndexRangeInParagraph
@@ -54,4 +65,10 @@ export type Actions =
 	| GameActions.CompleteRoundFromAPIAction
 	| GameActions.SetGameLoadingStateAction
 	| GameActions.SetShowAvatarInHeaderAction
-	| ChartDataActions.FetchAnswersPerDayAction;
+	| ChartDataActions.FetchAnswersPerDayAction
+	| TutorialActions.QueueTutorialItemsAction
+	| TutorialActions.ReplaceFirstInQueueAction
+	| TutorialActions.ReplaceQueueAction
+	| TutorialActions.SetTutorialItemsToFrontAction
+	| TutorialActions.AddPersistantTutorialItems
+	| TutorialActions.RemoveTutorialItemIDsAction;

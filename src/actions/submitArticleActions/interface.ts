@@ -12,7 +12,7 @@ export interface ClosePreviewArticleToSubmitAction {
 
 export interface SelectParagraphInArticleAction {
 	type: ActionTypes.selectParagraphInArticle;
-	payload: number;
+	payload?: number;
 }
 
 export interface WriteArticleSearchQueryAction {
@@ -23,4 +23,13 @@ export interface WriteArticleSearchQueryAction {
 export interface FetchArticlesQueryAction {
 	type: ActionTypes.fetchArticlesQuery;
 	payload: ArticlePreview[];
+}
+
+export interface SetGoogleSearchErrorAction {
+	type: ActionTypes.setGoogleSearchError;
+}
+
+export interface SetIsPerformingSearch {
+	type: ActionTypes.setIsPerformingSearch;
+	payload: boolean;
 }

@@ -29,6 +29,18 @@ export const GlobalStyle = createGlobalStyle`
         }
     }
 
+    .success {
+        color: ${Colors.SUCCESS};
+    }
+
+    .danger {
+        color: ${Colors.DANGER};
+    }
+
+    .bold {
+        font-weight: 600;
+    }
+
     p {
         line-height: 1.5;
         margin-top: 15px;
@@ -37,6 +49,11 @@ export const GlobalStyle = createGlobalStyle`
 
         @media only screen and (max-width: 1300px) {
             font-size: 16px;
+        }
+
+
+        span.query {
+            font-weight: 600;
         }
         
     }

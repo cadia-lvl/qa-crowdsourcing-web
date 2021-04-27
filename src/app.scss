@@ -83,6 +83,16 @@ $shooting-time: 3000ms;
 	}
 }
 
+.shake {
+	/* Start the shake animation and make the animation last for 0.5 seconds */
+
+	animation: shake 0.5s;
+
+	/* When the animation is finished, start again */
+
+	animation-iteration-count: infinite;
+}
+
 @keyframes tail {
 	0% {
 		width: 0;
@@ -169,14 +179,28 @@ $shooting-time: 3000ms;
 
 @keyframes pulse {
 	0% {
-		box-shadow: 0px 0px 25px rgba(246, 78, 96, 0.85);
+		box-shadow: 0px 0px 25px rgba(27, 197, 189, 0.45);
 	}
 
 	50% {
-		box-shadow: 0px 0px 20px rgba(246, 78, 96, 0.45);
+		box-shadow: 0px 0px 20px rgba(137, 80, 252, 0.65);
 	}
 
 	100% {
-		box-shadow: 0px 0px 25px rgba(246, 78, 96, 0.85);
+		box-shadow: 0px 0px 25px rgba(27, 197, 189, 0.45);
+	}
+}
+
+@keyframes pulse-border {
+	0% {
+		border: 4px dashed rgba(246, 78, 96, 0.1);
+	}
+
+	35% {
+		border: 4px dashed rgba(246, 78, 96, 1);
+	}
+
+	100% {
+		border: 4px dashed rgba(246, 78, 96, 0);
 	}
 }

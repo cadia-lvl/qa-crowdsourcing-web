@@ -7,6 +7,7 @@ export interface IProps {
 	onFirstWordChange: (index: number) => void;
 	onLastWordChange: (index: number) => void;
 	onClearRange: (index: number) => void;
+	onComplete?: () => void;
 }
 
 export type SelectionStates =

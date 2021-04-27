@@ -1,12 +1,13 @@
-import React, { FormEvent, useEffect, useRef, useState } from "react";
-import {
-	TextPrompt,
-	TextTag,
-	GoogleTextInput,
-	FilledAlert,
-} from "../../../";
+import React, {
+	FormEvent,
+	useEffect,
+	useRef,
+	useState,
+	useMemo,
+} from "react";
+import { TextTag, GoogleTextInput, FilledAlert } from "../../../";
 import { GOOGLE_LOGO } from "../../../../static";
-import { Paragraph, SearchForm, AlertContainer } from "./styles";
+import { SearchForm, Paragraph } from "./styles";
 import ArticlePreview from "./ArticlePreview";
 import { useDispatch, useSelector } from "react-redux";
 import { StoreState } from "../../../../reducers";
@@ -16,10 +17,13 @@ import PreviewReader from "./PreviewReader";
 import { getHighlightWords } from "./utils";
 import {
 	fetchArticlesQuery,
-	markQuestionAsImpossible,
 	writeArticleSearchQuery,
+	markQuestionAsImpossible,
 } from "../../../../actions";
 import { TaskInfoBox } from "../GameUtils";
+import { Explain } from "../../Tutorial";
+import * as TUTORIAL from "./tutorialItems";
+import { FlexLoader } from "../../../atoms";
 
 export const SubmitArticleGame = () => {
 	const [highlightWords, setHighlightWords] = useState<string[]>([]);
@@ -31,12 +35,14 @@ export const SubmitArticleGame = () => {
 		submitArticle: {
 			previewArticle,
 			query,
-			previewOpenCount,
-			_id: questionId,
 			articles,
 			text,
+			_id: questionId,
+			searchError,
+			noResults,
+			isPerformingSearch,
 		},
-		game: { _id: GameRoundId },
+		game: { _id: gameRoundId },
 	} = state;
 
 	const hasPreview = !!previewArticle;
@@ -53,87 +59,96 @@ export const SubmitArticleGame = () => {
 			});
 	}, [articles.length]);
 
-	const alertBar = (
-		<AlertContainer
-			onClick={() =>
-				dispatch(markQuestionAsImpossible(GameRoundId, questionId))
-			}
-		>
-			<FilledAlert
-				type="danger"
-				label="Finnst svarið bara alls ekki? Smelltu hér til að merkja spurninguna sem ósvaranlega"
-			/>
-		</AlertContainer>
-	);
-
 	const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		dispatch(fetchArticlesQuery());
 	};
 
+	const persistantSearchResultTutorial = useMemo(
+		() =>
+			TUTORIAL.markasNotAnswerableClosure(() =>
+				dispatch(markQuestionAsImpossible(gameRoundId, questionId))
+			),
+		[questionId]
+	);
+
 	return (
 		<GameWrapper type={GameTypes.submitArticle}>
-			<TaskInfoBox title="Nota leitarvél til þess að finna grein með svari við spurningunni">
-				<TextPrompt>{text}</TextPrompt>
+			<TaskInfoBox title="FINNA SVAR Á VEFNUM">
 				<Paragraph>
-					Væri ekki gaman ef þú gætir fundið svarið við þessari
-					spurningu? Notaðu Google leitarvélina til þess að finna
-					vefsíður sem kunna að innihalda svarið.
+					Spurningin er{" "}
+					<span className="query">
+						„{text.charAt(0).toLocaleLowerCase()}
+						{text.substring(1)}“
+					</span>
+					.
 				</Paragraph>
+
 				<SearchForm onSubmit={handleSubmit}>
-					<img src={GOOGLE_LOGO} alt="myndmerki google" />
-					<GoogleTextInput
-						value={query}
-						onChange={(text) =>
-							dispatch(writeArticleSearchQuery(text))
-						}
-					/>
-					<input type="submit" value="Google leit" />
+					<Explain items={TUTORIAL.explainGoogle}>
+						<img src={GOOGLE_LOGO} alt="myndmerki google" />
+						<GoogleTextInput
+							value={query}
+							onChange={(text) =>
+								dispatch(writeArticleSearchQuery(text))
+							}
+						/>
+						<input type="submit" value="Google leit" />
+					</Explain>
 				</SearchForm>
 				{hasPreview ? null : (
 					<React.Fragment>
 						{highlightWords.map((word, i) => (
 							<TextTag key={`${word}-${i}`}>{word}</TextTag>
 						))}
-						<Paragraph>
-							Smelltu á grein til þess að sjá hvort svarið
-							leynist þar. Ef ekkert svar er að finna nein
-							staðar þá getur þú smellt hér.
-						</Paragraph>
 					</React.Fragment>
 				)}
-				{previewOpenCount >= 2 && !hasPreview ? alertBar : null}
 
-				{articles.map((item, i) =>
-					/**
-					 * logical equivalence of
-					 * if (there is article in preview) then this is the article being preview
-					 * if that proposition is true then we display the preview item
-					 *
-					 * else we don't display anything, i.e. if no preview
-					 * we display all, if we have a preview then we display
-					 * said preview
-					 */
-					!hasPreview || previewArticle?.key === item.key ? (
-						<div ref={i == 0 ? firstArticleRef : null}>
-							<ArticlePreview
-								{...item}
-								key={item.key}
-								_key={item.key}
-							/>
-						</div>
-					) : null
-				)}
-				{articles.length > 0 && !hasPreview ? alertBar : null}
+				{isPerformingSearch ? (
+					<FlexLoader size={40} />
+				) : searchError ? (
+					<FilledAlert
+						label="Það kom um villa við leitina, prufaðu annan leitarstreng"
+						type="danger"
+					/>
+				) : articles.length > 0 ? (
+					<Explain
+						priority="clear-others"
+						items={TUTORIAL.explainResults}
+						// closure returns array of elements but gives
+						// items access to callback to mark as impossible
+						persist={persistantSearchResultTutorial}
+					>
+						{articles.map((item, i) =>
+							/**
+							 * logical equivalence of
+							 * if (there is article in preview) then this is the article being preview
+							 * if that proposition is true then we display the preview item
+							 *
+							 * else we don't display anything, i.e. if no preview
+							 * we display all, if we have a preview then we display
+							 * said preview
+							 */
+							!hasPreview ||
+							previewArticle?.key === item.key ? (
+								<div ref={i == 0 ? firstArticleRef : null}>
+									<ArticlePreview
+										{...item}
+										key={item.key}
+										_key={item.key}
+									/>
+								</div>
+							) : null
+						)}
+					</Explain>
+				) : noResults ? (
+					<FilledAlert
+						label="Það fundust engar niðurstöður hjá Google. Prufaðu annan leitarstreng"
+						type="warning"
+					/>
+				) : null}
 				{hasPreview ? (
 					<React.Fragment>
-						<Paragraph>
-							Þessa grein er að finna á Wikipedia. Sérðu
-							svarið? Ef svo er, smelltu á þá efnisgrein sem
-							inniheldur svarið. Þú getur einnig leitað í
-							innihaldi greinarinnar.Lokaðu greininni til að
-							fara til baka í leitina
-						</Paragraph>
 						<PreviewReader />
 					</React.Fragment>
 				) : null}

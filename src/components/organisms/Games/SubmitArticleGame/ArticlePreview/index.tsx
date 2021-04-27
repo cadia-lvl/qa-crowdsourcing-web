@@ -40,7 +40,7 @@ const ArticlePreview = (article: IProps) => {
 				<RightBox>
 					<h3>{title}</h3>
 					<ExtractPara theme={{ isPreviewOpen }}>
-						{snippet} asdf<b>{previewHoverText}</b>
+						{snippet} <b>{previewHoverText}</b>
 					</ExtractPara>
 				</RightBox>
 			</Outer>

@@ -1,4 +1,8 @@
 import styled from "styled-components";
+import {
+	TUTORIAL_IMG_ANSWER_IS_HERE,
+	TUTORIAL_IMG_CONFIRM_ANSWER,
+} from "../../../../../static";
 import { Colors } from "../../../../../styles";
 
 export const Outer = styled.div`
@@ -105,4 +109,20 @@ export const SingleParagraph = styled.div`
     `
 			: ``}
 	position: relative;
+`;
+
+export const ExplainAnswerIsHereImg = styled.div`
+	background-image: url(${TUTORIAL_IMG_ANSWER_IS_HERE});
+	background-size: contain;
+	background-repeat: no-repeat;
+	width: 100%;
+	height: 140px;
+`;
+
+export const ExpalinConfirmAnswer = styled.div`
+	background-image: url(${TUTORIAL_IMG_CONFIRM_ANSWER});
+	background-size: contain;
+	background-repeat: no-repeat;
+	width: 100%;
+	height: 140px;
 `;

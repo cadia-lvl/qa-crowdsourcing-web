@@ -3,8 +3,12 @@ import { Button } from "./styles";
 import { IProps } from "./interface";
 import { FillColorMap, TextColorMap } from "./utils";
 
-export const BaseButton = ({ label, onClick, type, isInactive }: IProps) => {
-	onClick = isInactive ? () => null : onClick;
+export const BaseButton = ({
+	label,
+	onClick,
+	type,
+	isInactive,
+}: IProps) => {
 	return (
 		<Button
 			onClick={onClick}

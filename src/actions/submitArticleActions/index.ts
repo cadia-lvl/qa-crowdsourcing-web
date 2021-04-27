@@ -9,6 +9,8 @@ import {
 	SelectParagraphInArticleAction,
 	WriteArticleSearchQueryAction,
 	FetchArticlesQueryAction,
+	SetGoogleSearchErrorAction,
+	SetIsPerformingSearch,
 } from "./interface";
 
 export const previewArticleToSubmit = (
@@ -40,7 +42,7 @@ export const closePreviewArticleToSubmit = (): ClosePreviewArticleToSubmitAction
 };
 
 export const selectParagraphToPreview = (
-	paragraphId: number
+	paragraphId?: number
 ): SelectParagraphInArticleAction => {
 	return {
 		type: ActionTypes.selectParagraphInArticle,
@@ -60,6 +62,10 @@ export const writeArticleSearchQuery = (
 export const fetchArticlesQuery = () => {
 	return async function (dispatch: Dispatch) {
 		try {
+			dispatch<SetIsPerformingSearch>({
+				type: ActionTypes.setIsPerformingSearch,
+				payload: true,
+			});
 			const { data } = await Api.get<ArticlePreview[]>(
 				`/api/v1/articles?query=${
 					store.getState().submitArticle.query
@@ -71,9 +77,8 @@ export const fetchArticlesQuery = () => {
 				payload: data.filter((item) => !!item.source),
 			});
 		} catch (error) {
-			dispatch<FetchArticlesQueryAction>({
-				type: ActionTypes.fetchArticlesQuery,
-				payload: [],
+			dispatch<SetGoogleSearchErrorAction>({
+				type: ActionTypes.setGoogleSearchError,
 			});
 		}
 	};

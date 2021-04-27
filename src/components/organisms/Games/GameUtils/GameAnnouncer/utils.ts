@@ -1,47 +1,124 @@
 import { GameTypes } from "../../../../../declerations";
+import { StoreState } from "../../../../../reducers";
+import store from "../../../../../store";
 
 export const getCurrText = (username: string, game?: GameTypes) => {
 	username = username.toUpperCase();
 	switch (game) {
-		case GameTypes.answerQualityAssurance:
+		case GameTypes.verifyAnswerSpan:
+			// TODO: write text and fix wording
 			return {
 				title: "Yfirfara svar",
-				text: `Hérna er ég með spurningu sem er komin á lokasprettinn, ${username}. Það er búið að yfirfara hana, finna svar á veraldarvefnum og merkja svarið í textanum. En nú þarft þú að lesa svarið og staðfesta að það sé rétt. Við viljum að svarið sé stutt og hnitmiðað. Til dæmis "Hann fæddist árið 1973" ætti frekar að vera "árið 1973"`,
+				text: `Nú þarft þú að fara yfir svar við spurningu. Þú munt sjá heila efnisgrein sem inniheldur ${
+					store
+						.getState()
+						.verifyAnswerLocation.paragraph.split(" ").length
+				} orð. ${
+					store.getState().verifyAnswerLocation.isYesOrNo
+						? `Spurningin er já/nei spurning. Verkefnið þitt er að lesa yfir efnisgreinina og sjá hvort hún innihaldi svarið við þessari já/nei spurningu`
+						: `Svarið sjálft er ${(({
+								verifyAnswerLocation: state,
+						  }: StoreState) =>
+								state.lastWord! - state.firstWord! + 1)(
+								store.getState()
+						  )} orð og er merkt í fjólubláum stöfum. Við sýnum þér efnisgreinina í kringum svarið einungis til þess að gefa svarinu samhengi`
+				}
+				`,
+				dos: [
+					"Efnisgreinin getur innihaldið upplýsingar sem eru ekki í svarinu, það er í góðu lagi",
+					"Það er í lagi að svarið byggi á heimildum sem eru nokkura ára gamlar",
+				],
+				infos: ["Svarið er merkt í fjólubláum stöfum"],
+				donts: [
+					"Ef svarið er háð tilfinningum og skoðunum fólks þá er svarið ekki rétt",
+				],
 			};
 		case GameTypes.questionQualityAssurance:
 			return {
 				title: "Staðfesta spurningu",
-				text: `${username}, við treystum á þig. Við fengum senda inn spurningu frá öðrum notenda og þurfum á þér að halda til þess að fara yfir spurninguna. Það er mikilvægt að spurningin sé á ágætis íslensku, en orðalagið þarf alls ekki að vera formlegt. Einnig má spurningin ekki vera óviðeigandi né háð gildismati eða tilfinningum þess sem svarar henni.`,
+
+				text: `Nú þarft þú að fara yfir spurningu. Ástæðan er sú að við viljum tryggja að spurningin sé bæði góð spurning, ásamt að tryggja það að spurningin hafi svar óháð því hver svarar henni.`,
+				dos: [
+					"Spurningin á að vera svaranleg í að mesta lagi nokkrum orðum",
+				],
+				infos: [
+					"Spurningin þarf að vera á ágætis íslensku, en ekki endilega of formleg heldur",
+				],
+				donts: [
+					"Svarið á ekki að vera háð tilfinningum þess sem svarar spurningunni",
+				],
 			};
 		case GameTypes.submitArticle:
 			return {
 				title: "Leitað á vefnum",
-				text: `Þessi spurning sem ég er með handa þér hefur verið yfirarin og nú verðum við að fá að vita svarið við henni! Í þessu skrefi sérðu leitarvél frá Google. Þú þarft að nota ímyndunaraflið og búa til góðan leitarstreng til þess að finna svarið með Google leitarvélinni. Síðan þarftu að velja vefsíðuna og efnisgreinina þar sem svarið liggur`,
-			};
-		case GameTypes.verifyAnswerSpan:
-			return {
-				title: "Yfirfara svar",
-				text: `Hérna er ég með spurningu sem er komin á lokasprettinn, ${username}. Það er búið að yfirfara hana, finna svar á veraldarvefnum og merkja svarið í textanum. En nú þarft þú að lesa svarið og staðfesta að það sé rétt. Við viljum að svarið sé stutt og hnitmiðað. Til dæmis "Hann fæddist árið 1973" ætti frekar að vera "árið 1973". Ertu tilbúin/n?`,
+
+				text: `Við erum með spurningu handa þér sem okkur vantar svar við. Þú munt geta notað Google leitarvél til þess að finna upplýsingar á vefnum. Ef þú finnur ekki svarið eftir að leita tvisvar sinnum með Google þá er allt í lagi að halda áfram.`,
+				dos: [
+					"Reyndu að búa til góðan leitarstreng svo að Google finni réttar vefsíður.",
+					"Reyndu 2-3 mismunandi leitarstrengi ef erfitt er að finna svarið",
+				],
+				infos: [
+					"Þú þarft að opna vefsíðuna með svarin og svo merkja svarið í textanum",
+				],
+				donts: [
+					"Ekki reyna of lengi, haltu áfram ef þú finnur svarið ekki innan 1-2 mín",
+				],
 			};
 		case GameTypes.verifyAnswerLocation:
 			return {
 				title: "Merkja svar í efnisgrein",
-				text: `Einn af okkar útsendurum fann efnisgrein á veraldarvefnum sem svaraði þessari tilteknu spurningu. Getur þú valið orðabilið þar sem svarið er að finna? Það er mikilvægt að vita að þótt að upplýsingar séu ekki endilega nýlegar þá er það í lagi`,
+
+				text: `Við erum með efnisgrein sem annar notandi hefur fundið til þess að svara spurningu. Þú þarft að skoða efnisgreinina og athuga hvort þér finnst svarið við spurningunni vera til staðar. Ef svo er, þá velurðu síðan orðin sem mynda svarið.`,
+				dos: [
+					"Reyndu að velja aðeins orðin sem skipta máli",
+					"Ef svarið er í pörtum, veldu þá partinn sem svarar spurningunni best",
+				],
+				infos: [
+					"Þú munt aðeins sjá eina efnisgrein af vefsíðunni sem inniheldur svarið",
+					"Ef svarið er til staðar, en það vantar samhengi úr annari efnisgrein þá er það í lagi",
+					"Ef svarið byggist á heimild sem er nokkura ára gömul, þá er svarið samt gilt",
+				],
+				donts: [
+					"Ekki velja fleiri orð en þarf til að svara spurningunni.",
+				],
 			};
 		case GameTypes.completed:
+			// TODO: write text and fix wording
 			return {
 				title: "Þetta tókst",
-				text: `Glæsilegt ${username}, þú ert einn af okkar efnilegri útsendurum. Þú átt stöðuhækkunina svo sannarlega skilið, ýttu á áfram takkann til þess að taka við henni.`,
+
+				text: `Nú þarft þú að fara yfir svar við spurningu. Bæði spurningin og svarið voru send inn af mismunandi notendum. Þú munt sjá heila efnisgrein sem fundin var á vefnum, ástamt svarinu í textanum. Við höfum merkt svarið frá notandanum í fjólubláu.`,
+				dos: [
+					"Efnisgreinin getur innihaldið upplýsingar sem eru ekki í svarinu, það er í góðu lagi",
+					"Það er í lagi að svarið byggi á heimildum sem eru nokkura ára gamlar",
+				],
+				infos: ["Svarið er merkt í fjólubláum stöfum"],
+				donts: [
+					"Ef svarið er háð gildismati þá er svarið ekki rétt",
+				],
 			};
 		case GameTypes.writeQuestion:
+			// TODO: write text and fix wording
 			return {
 				title: "Búa til nýja spurningu",
-				text: `${username}, við þurfum að safna 100.000 spurningum til þess að bjarga tungumálinu okkar. Hér í næsta skrefi þá þurfum við á þér að halda ${username} til þess að búa eina slíka til. Þér verða gefin hugmynda orð sem þú getur notað, ef þú vilt, til þess að spyrja um. Ef þér dettur í hug spurningu tengda einhverju öðru þá er það líka frábært. Passaðu þig að hafa spurninguna ekki of formlega, en þó á góðri íslensku.`,
+
+				text: `Nú þarft þú að fara yfir svar við spurningu. Bæði spurningin og svarið voru send inn af mismunandi notendum. Þú munt sjá heila efnisgrein sem fundin var á vefnum, ástamt svarinu í textanum. Við höfum merkt svarið frá notandanum í fjólubláu.`,
+				dos: [
+					"Efnisgreinin getur innihaldið upplýsingar sem eru ekki í svarinu, það er í góðu lagi",
+					"Það er í lagi að svarið byggi á heimildum sem eru nokkura ára gamlar",
+				],
+				infos: ["Svarið er merkt í fjólubláum stöfum"],
+				donts: [
+					"Ef svarið er háð gildismati þá er svarið ekki rétt",
+				],
 			};
 		default:
 			return {
 				text: "__ERROR__",
 				title: "__ERROR__",
+				dos: [],
+				infos: [],
+				donts: [],
 			};
 	}
 };

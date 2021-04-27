@@ -10,7 +10,6 @@ export const Outer = styled.div`
 	transition: 0.3s;
 `;
 
-export const TitleContainer = styled.p`
+export const TitleBox = styled.div`
 	border-bottom: 1px solid #ececec;
-	padding-bottom: 10px;
 `;
