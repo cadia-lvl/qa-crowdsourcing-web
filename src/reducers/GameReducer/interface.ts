@@ -6,4 +6,5 @@ export interface GameState {
 	totalRounds: number;
 	_id: string;
 	isLoading: boolean;
+	showAvatarInHeader: boolean;
 }

@@ -6,6 +6,11 @@ export const GlobalStyle = createGlobalStyle`
         margin: 0;
         padding: 0;
     }
+
+    body {
+
+        overflow: none;
+    }
     
     html, body {
         font-family: 'Quicksand', sans-serif;
@@ -37,8 +42,13 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     h1 {
-        color: ${Colors.HIGHLIGHT}
+        color: ${Colors.HIGHLIGHT};
     }
+    h1.italic {
+            font-family: "Merriweather", serif !important;
+            font-style: italic !important;
+            margin-bottom: 0  !important;
+        }
 
     label {
         color: ${Colors.SUB_HEADING_COLOR};
@@ -79,4 +89,6 @@ export const GlobalStyle = createGlobalStyle`
         text-decoration:none; 
         cursor:pointer;  
     }
+
+
 `;

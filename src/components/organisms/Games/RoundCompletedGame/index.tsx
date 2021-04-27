@@ -1,37 +1,45 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { SmallProgressBar, TextPrompt, ScoreCard } from "../../..";
-import { fetchCurrentGameRound } from "../../../../actions";
+import { TextPrompt, ScoreCard, ShootingStars } from "../../..";
 import { GameTypes } from "../../../../declerations";
 import { GameWrapper } from "../../../../hoc";
-import { Colors } from "../../../../styles";
-import { BaseButton } from "../../../atoms";
-import { Outer, TrophyCont, PromptOuter, ButtonContainer } from "./styles";
+import { ICON_LVL_1 } from "../../../../static";
+import { UserAvatar } from "../../../atoms";
+import {
+	Outer,
+	PromptOuter,
+	IconBoxOuter,
+	TextPromptWrapper,
+	TopBox,
+	TextPromptInner,
+	IconWrapper,
+} from "./styles";
 
 export const RoundCompletedGame = () => {
 	const dispatch = useDispatch();
-
 	return (
 		<GameWrapper type={GameTypes.completed}>
 			<Outer>
-				<PromptOuter>
-					<TrophyCont>
-						<i className="fas fa-trophy"></i>
-					</TrophyCont>
-					<TextPrompt>
-						<i>Vel gert!</i> þú náðir að klára þessa umferð! Nú
-						erum við einu skrefi nær því að koma íslensku inn í{" "}
-						<i>nútímann</i>.
-					</TextPrompt>
-				</PromptOuter>
+				<PromptOuter></PromptOuter>
+				<TopBox>
+					<IconBoxOuter>
+						<IconWrapper>
+							<UserAvatar src={ICON_LVL_1} />
+						</IconWrapper>
+						<ShootingStars />
+					</IconBoxOuter>
+					<TextPromptWrapper>
+						<TextPromptInner>
+							<TextPrompt>
+								<i>Vel gert!</i> Þú hefur náð Lvl 4! Nú
+								erum við einu skrefi nær því að koma
+								íslensku inn í <i>nútímann</i>.
+							</TextPrompt>
+						</TextPromptInner>
+					</TextPromptWrapper>
+				</TopBox>
+
 				<ScoreCard />
-				<ButtonContainer>
-					<BaseButton
-						type="highlight"
-						label="Halda áfram"
-						onClick={() => dispatch(fetchCurrentGameRound())}
-					/>
-				</ButtonContainer>
 			</Outer>
 		</GameWrapper>
 	);

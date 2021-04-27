@@ -9,4 +9,5 @@ export const Outer = styled.div`
 	padding: 20px;
 	display: flex;
 	flex: 1;
+	position: relative;
 `;

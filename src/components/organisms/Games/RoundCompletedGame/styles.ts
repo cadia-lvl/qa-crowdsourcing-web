@@ -9,20 +9,15 @@ export const Outer = styled.div`
 	box-shadow: 0px 0px 25px rgba(255, 168, 0, 0.1);
 	width: 100%;
 	margin-bottom: 85px;
+	position: relative;
+	z-index: 2;
+	overflow: hidden;
 `;
 
 export const PromptOuter = styled.div`
 	display: flex;
 	flex-direction: row;
 	align-items: center;
-`;
-
-export const TrophyCont = styled.div`
-	width: 80px;
-	padding: 0 20px;
-	margin-right: 20px;
-	font-size: 80px;
-	color: ${Colors.WARNING};
 `;
 
 export const ButtonContainer = styled.div`
@@ -33,4 +28,39 @@ export const ButtonContainer = styled.div`
 	flex-direction: row;
 	justify-content: flex-end;
 	margin-top: 40px;
+`;
+
+export const IconBoxOuter = styled.div`
+	width: 500px;
+	margin: 0 auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	margin-top: 50px;
+	margin-bottom: 100px;
+`;
+
+export const TextPromptWrapper = styled.div`
+	text-align: center;
+	margin: 0 auto;
+	font-size: 22px !important;
+	margin-top: 40px;
+	width: 100%;
+`;
+
+export const TextPromptInner = styled.div`
+	width: 600px;
+	margin: 0 auto;
+`;
+
+export const TopBox = styled.div`
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+`;
+
+export const IconWrapper = styled.div`
+	height: 200px;
+	width: 200px;
 `;

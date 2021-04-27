@@ -45,3 +45,8 @@ export interface SetGameLoadingStateAction {
 	type: ActionTypes.setGameLoadingState;
 	payload: boolean;
 }
+
+export interface SetShowAvatarInHeaderAction {
+	type: ActionTypes.setShowAvatarInHeader;
+	payload: boolean;
+}

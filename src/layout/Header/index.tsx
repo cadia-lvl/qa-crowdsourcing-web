@@ -2,19 +2,28 @@ import React from "react";
 import {
 	Outer,
 	HeaderItem,
-	PlayButton,
+	UserIconWrapper,
 	HeaderItemContainer,
+	Badge,
 } from "./styles";
 import { headerItems } from "./utils";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logOutUser } from "../../actions";
+import { UserAvatar } from "../../components";
 import { StoreState } from "../../reducers";
+import { ICON_LVL_1 } from "../../static";
+import { Colors } from "../../styles";
 
 const Header = () => {
 	const dispatch = useDispatch();
-	const userType = useSelector((state: StoreState) => state.auth.type);
-	const isAuth = !["guest", "loading"].includes(userType);
+	const state = useSelector((state: StoreState) => state);
+
+	const {
+		auth,
+		game: { showAvatarInHeader },
+	} = state;
+	const isAuth = !["guest", "loading"].includes(auth.type);
 	return (
 		<Outer>
 			<HeaderItemContainer>
@@ -27,17 +36,25 @@ const Header = () => {
 				))}
 			</HeaderItemContainer>
 			<HeaderItemContainer>
-				{isAuth ? (
-					<div onClick={() => dispatch(logOutUser())}>
-						<HeaderItem className="header-itm">
-							Útskrá
-						</HeaderItem>
-					</div>
-				) : null}
-
-				<Link to="/spila">
-					<PlayButton>Spila</PlayButton>
-				</Link>
+				<UserIconWrapper>
+					{showAvatarInHeader ? (
+						<React.Fragment>
+							{/* <HeaderItem className="header-profile-itm">
+								<span>Lvl 3</span>
+							</HeaderItem>
+							<HeaderItem className="header-profile-itm">
+								<span>Njallskarp</span>
+							</HeaderItem>
+							<UserAvatar
+								src={ICON_LVL_1}
+								color={Colors.DANGER}
+							/>
+							<Badge>
+								<i className="fas fa-award"></i>
+							</Badge> */}
+						</React.Fragment>
+					) : null}
+				</UserIconWrapper>
 			</HeaderItemContainer>
 		</Outer>
 	);

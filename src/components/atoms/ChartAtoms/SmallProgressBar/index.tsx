@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Outer, Bar, InfoOuter, Label, BarOuter } from "./styles";
 import { IProps } from "./interface";
 
@@ -11,6 +11,7 @@ export const SmallProgressBar = ({
 	const [ratio, setRatio] = useState(0);
 
 	useEffect(() => {
+		console.log(size, label);
 		setRatio(size);
 	}, [size]);
 

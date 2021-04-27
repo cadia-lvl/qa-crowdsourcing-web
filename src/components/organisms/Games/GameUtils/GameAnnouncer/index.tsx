@@ -2,15 +2,20 @@ import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { GameTypes } from "../../../../../declerations";
 import { StoreState } from "../../../../../reducers";
-import { Inner, LoadingContainer } from "./styles";
 import {
-	WhiteFlexCard,
-	FlexLoader,
-	TextPrompt,
-	BaseButton,
-} from "../../../../";
+	Outer,
+	LoadingContainer,
+	LoadingItems,
+	NextTaskInner,
+	ButtonWrapper,
+	NextTaskTopLine,
+	NextTaskTopLineAvatarContainer,
+} from "./styles";
+import { FlexLoader, TextPrompt, PlayButton } from "../../../../";
 import { IProps } from "./interface";
 import { getPrevText, getCurrText, LOADING_TIMER } from "./utils";
+import { UserAvatar } from "../../../../atoms";
+import { ICON_LVL_1 } from "../../../../../static";
 
 export const GameAnnouncer = ({ children }: IProps) => {
 	/**
@@ -34,13 +39,20 @@ export const GameAnnouncer = ({ children }: IProps) => {
 		undefined
 	);
 
-	const state = useSelector((state: StoreState) => state.game);
+	const state = useSelector((state: StoreState) => state);
+
+	const {
+		game: { isLoading, current },
+		auth: { username },
+	} = state;
 
 	const announceCurrGame = currGame !== undefined;
 	// makes sure both are defined
 	const announcePrevGame =
-		!(prevGame === undefined || currGame === undefined) ||
-		state.isLoading;
+		!(prevGame === undefined || currGame === undefined) || isLoading;
+
+	const showAnnouncement = announcePrevGame || announceCurrGame;
+	const flexDirection = announcePrevGame ? "row" : "column";
 
 	/**
 	 * If the state in REDUX has changed
@@ -48,10 +60,10 @@ export const GameAnnouncer = ({ children }: IProps) => {
 	 * in local state
 	 */
 	useEffect(() => {
-		if (state.current !== undefined) {
-			setCurrGame(state.current);
+		if (current !== undefined) {
+			setCurrGame(current);
 		}
-	}, [state.current]);
+	}, [current]);
 
 	/**
 	 * Hook clears the current state when previous
@@ -67,13 +79,13 @@ export const GameAnnouncer = ({ children }: IProps) => {
 	 */
 	useEffect(() => {
 		// do not show next screen if is loading
-		if (announcePrevGame && !state.isLoading) {
+		if (announcePrevGame && !isLoading) {
 			const timeout = setTimeout(() => {
 				setPrevGame(undefined);
 			}, LOADING_TIMER);
 			return () => clearTimeout(timeout);
 		}
-	}, [announcePrevGame, state.isLoading]);
+	}, [announcePrevGame, isLoading]);
 
 	/**
 	 * Sets the prev game as undefined
@@ -85,33 +97,40 @@ export const GameAnnouncer = ({ children }: IProps) => {
 	const handleOpenTask = () => {
 		setPrevGame(currGame);
 	};
-	if (announcePrevGame)
-		return (
-			<WhiteFlexCard>
-				<Inner theme={{ flexDirection: "row" }}>
-					<LoadingContainer>
-						<FlexLoader size={40} />
-					</LoadingContainer>
 
-					<TextPrompt>{getPrevText(prevGame)}</TextPrompt>
-				</Inner>
-			</WhiteFlexCard>
-		);
-	else if (announceCurrGame)
+	if (showAnnouncement)
 		return (
-			<WhiteFlexCard>
-				<Inner theme={{ flexDirection: "column" }}>
-					<TextPrompt>
-						<i>NÆSTA VERKEFNI</i>
-					</TextPrompt>
-					<TextPrompt>{getCurrText(currGame)}</TextPrompt>
-					<BaseButton
-						label="Áfram"
-						onClick={handleOpenTask}
-						type="success"
-					/>
-				</Inner>
-			</WhiteFlexCard>
+			<Outer theme={{ flexDirection }}>
+				{announcePrevGame ? (
+					<LoadingItems>
+						<LoadingContainer>
+							<FlexLoader size={40} />
+						</LoadingContainer>
+						<TextPrompt>{getPrevText(prevGame)}</TextPrompt>
+					</LoadingItems>
+				) : (
+					<NextTaskInner>
+						<NextTaskTopLine>
+							<NextTaskTopLineAvatarContainer>
+								<UserAvatar src={ICON_LVL_1} />
+							</NextTaskTopLineAvatarContainer>
+							<h1 className="italic">
+								{getCurrText(
+									username,
+									currGame
+								).title.toUpperCase()}
+							</h1>
+						</NextTaskTopLine>
+						<p>{getCurrText(username, currGame).text}</p>
+						<ButtonWrapper>
+							<PlayButton onClick={handleOpenTask}>
+								Áfram
+							</PlayButton>
+						</ButtonWrapper>
+					</NextTaskInner>
+				)}
+			</Outer>
 		);
-	else return <React.Fragment>{children}</React.Fragment>;
+
+	return <React.Fragment>{children}</React.Fragment>;
 };

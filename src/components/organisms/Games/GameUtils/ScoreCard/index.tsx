@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { useSelector } from "react-redux";
 import { SmallProgressBar } from "../../../..";
 import { StoreState } from "../../../../../reducers";
@@ -33,7 +33,7 @@ export const ScoreCard = () => {
 				ratio={calculateProgressRatio(answers, 0.25)}
 				label="Svör"
 				color={Colors.SUCCESS}
-				amount={answers}
+				key="answer"
 			/>
 			<SmallProgressBar
 				ratio={calculateProgressRatio(questionVerifications, 0.25)}
