@@ -15,6 +15,8 @@ export const initialState: AuthState = {
 		hiscoreRank: -2,
 	},
 	level: 1,
+	isAuthCodeRegenerationLoading: false,
+	isAuthCodeSubmissionLoading: false,
 };
 
 const reducer = (
@@ -25,9 +27,9 @@ const reducer = (
 		case ActionTypes.logOutUser:
 			return { ...initialState, type: "guest" };
 		case ActionTypes.fetchUserFromToken:
-			return action.payload;
+			return { ...initialState, ...action.payload };
 		case ActionTypes.registerUser:
-			return action.payload;
+			return { ...initialState, ...action.payload };
 		case ActionTypes.fetchScoreCard:
 			return {
 				...state,

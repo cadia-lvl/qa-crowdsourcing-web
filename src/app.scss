@@ -204,3 +204,12 @@ $shooting-time: 3000ms;
 		border: 4px dashed rgba(246, 78, 96, 0);
 	}
 }
+
+@keyframes spin {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}

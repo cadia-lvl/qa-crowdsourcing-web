@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Colors } from "../styles";
 
 export const Outer = styled.div`
 	max-width: 1200px;
@@ -27,6 +28,17 @@ export const AuthCodeOuter = styled.div`
 	width: 400px;
 	button {
 		margin-top: 10px;
+	}
+	i {
+		font-size: 13px;
+		animation: 2s spin infinite;
+	}
+	.hov {
+		cursor: pointer;
+		transition: 0.3s;
+	}
+	.hov:hover {
+		color: ${Colors.HIGHLIGHT};
 	}
 `;
 

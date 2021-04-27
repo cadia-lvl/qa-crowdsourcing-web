@@ -70,6 +70,10 @@ export const LayoutWrapper = ({ children }: IProps) => {
 					<AuthCodeOuter>
 						<WhiteBoxWithTitle title="Staðfestingarkóði">
 							<p>Við sendum staðfestingarkóða á {email}</p>
+							<p className="hov">
+								<i className="fas fa-sync hov" /> Senda
+								aftur
+							</p>
 							<AuthCodeInner>
 								<AuthCodeInput
 									value={authCode}
@@ -77,6 +81,7 @@ export const LayoutWrapper = ({ children }: IProps) => {
 									length={AUTHCODE_LENGTH}
 								/>
 							</AuthCodeInner>
+							<FlexLoader size={20} />
 							<BaseButton
 								label="Staðfesta"
 								onClick={() =>
