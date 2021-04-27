@@ -19,3 +19,8 @@ export interface FetchScoreCardAction {
 	type: ActionTypes.fetchScoreCard;
 	payload: ScoreCard;
 }
+
+export interface VerifyUserAction {
+	type: ActionTypes.verifyUser;
+	payload: User;
+}

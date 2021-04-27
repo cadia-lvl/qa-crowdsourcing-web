@@ -60,4 +60,23 @@ export const logOutUser = () => {
 		}
 	};
 };
+
+export const verifyUser = (verificationCode: string) => {
+	return async function (dispatch: Dispatch) {
+		try {
+			const { data: user } = await Api.post<User>(
+				"/api/v1/users/verification_code",
+				{
+					verificationCode,
+				}
+			);
+			// reuse action
+			dispatch<FetchUserFromTokenAction>({
+				type: ActionTypes.fetchUserFromToken,
+				payload: user,
+			});
+		} catch (error) {}
+	};
+};
+
 export * from "./interface";

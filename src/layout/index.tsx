@@ -12,7 +12,12 @@ import {
 } from "./styles";
 import { useSelector, useDispatch } from "react-redux";
 import { StoreState } from "../reducers";
-import { fetchCurrentGameRound, fetchUserFromToken } from "../actions";
+import {
+	fetchCurrentGameRound,
+	fetchUserFromToken,
+	logOutUser,
+	verifyUser,
+} from "../actions";
 import { FETCH_USER_FROM_TOKEN_WAIT_MS } from "./utils";
 import {
 	AuthCodeInput,
@@ -74,12 +79,14 @@ export const LayoutWrapper = ({ children }: IProps) => {
 							</AuthCodeInner>
 							<BaseButton
 								label="Staðfesta"
-								onClick={() => 1}
+								onClick={() =>
+									dispatch(verifyUser(authCode))
+								}
 								type="highlight"
 							/>
 							<BaseButton
 								label="Útskrá"
-								onClick={() => 1}
+								onClick={() => dispatch(logOutUser())}
 								type="danger"
 							/>
 						</WhiteBoxWithTitle>

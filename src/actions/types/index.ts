@@ -38,6 +38,7 @@ export enum ActionTypes {
 	addPersistantTutorialItems,
 	setGoogleSearchError,
 	setIsPerformingSearch,
+	verifyUser,
 }
 
 export type Actions =
@@ -45,6 +46,7 @@ export type Actions =
 	| AuthActions.LogOutUserAction
 	| AuthActions.RegisterUserAction
 	| AuthActions.FetchScoreCardAction
+	| AuthActions.VerifyUserAction
 	| WriteQuestionActions.WriteQuestionAction
 	| SubmitArticleActions.PreviewArticleToSubmitAction
 	| SubmitArticleActions.ClosePreviewArticleToSubmitAction
