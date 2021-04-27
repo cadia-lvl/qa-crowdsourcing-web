@@ -51,13 +51,14 @@ export interface HiddenInputRecipe extends HiddenInputBase {
 
 export interface AuthCodeInputBase extends InputBaseInterface {
 	value: string;
+	length: number;
 }
 
-export interface AuthCodeInputProps extends HiddenInputBase {
+export interface AuthCodeInputProps extends AuthCodeInputBase {
 	onChange: (v: string) => void;
 }
 
-export interface AuthCodeInputRecipe extends HiddenInputBase {
+export interface AuthCodeInputRecipe extends AuthCodeInputBase {
 	type: InputElementTypes.authCode;
 	label: string;
 }

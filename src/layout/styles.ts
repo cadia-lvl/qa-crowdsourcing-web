@@ -15,3 +15,21 @@ export const LoadingOuter = styled.div`
 	align-items: center;
 	justify-content: center;
 `;
+
+export const FlexCenter = styled.div`
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+`;
+
+export const AuthCodeOuter = styled.div`
+	width: 400px;
+	button {
+		margin-top: 10px;
+	}
+`;
+
+export const AuthCodeInner = styled.div`
+	margin: 25px 0;
+`;

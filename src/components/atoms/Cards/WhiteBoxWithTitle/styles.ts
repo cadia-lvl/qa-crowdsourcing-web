@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Colors } from "../../../../../styles";
+import { Colors } from "../../../../styles";
 
 export const Outer = styled.div`
 	background-color: #fff;

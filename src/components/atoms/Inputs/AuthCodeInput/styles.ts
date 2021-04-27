@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Colors } from "../../../../styles";
 
 export const Outer = styled.div`
 	display: flex;
@@ -7,7 +8,11 @@ export const Outer = styled.div`
 	justify-content: space-between;
 `;
 
-export const DigitContainer = styled.div`
+interface IDigitContainer {
+	current?: boolean;
+}
+
+export const DigitContainer = styled.div<IDigitContainer>`
 	height: 60px;
 	border: 1px solid #cecece;
 	border-radius: 3px;
@@ -15,4 +20,7 @@ export const DigitContainer = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	cursor: pointer;
+	border-color: ${({ current }) =>
+		current ? Colors.HIGHLIGHT : "#cecece"};
 `;

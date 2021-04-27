@@ -1,18 +1,36 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { GlobalStyle } from "../styles";
 import { IProps } from "./interface";
 import Header from "./Header";
 import Footer from "./Footer";
-import { LoadingOuter, Outer } from "./styles";
+import {
+	LoadingOuter,
+	Outer,
+	AuthCodeOuter,
+	FlexCenter,
+	AuthCodeInner,
+} from "./styles";
 import { useSelector, useDispatch } from "react-redux";
 import { StoreState } from "../reducers";
 import { fetchCurrentGameRound, fetchUserFromToken } from "../actions";
 import { FETCH_USER_FROM_TOKEN_WAIT_MS } from "./utils";
-import { AuthCodeInput, FlexLoader, TutorialGuide } from "../components";
+import {
+	AuthCodeInput,
+	FlexLoader,
+	TutorialGuide,
+	WhiteBoxWithTitle,
+	BaseButton,
+} from "../components";
 import { fetchAnswersPerDay } from "../actions/chartDataActions";
 
 export const LayoutWrapper = ({ children }: IProps) => {
-	const { type, _id } = useSelector((state: StoreState) => state.auth);
+	const { type, _id, email } = useSelector(
+		(state: StoreState) => state.auth
+	);
+
+	const [authCode, setAuthCode] = useState("");
+	const AUTHCODE_LENGTH = 6;
+
 	const dispatch = useDispatch();
 
 	useEffect(() => {
@@ -43,9 +61,30 @@ export const LayoutWrapper = ({ children }: IProps) => {
 		<Outer>
 			<GlobalStyle />
 			{type === "not-verified" ? (
-				<React.Fragment>
-					<AuthCodeInput value="" onChange={() => null} />
-				</React.Fragment>
+				<FlexCenter>
+					<AuthCodeOuter>
+						<WhiteBoxWithTitle title="Staðfestingarkóði">
+							<p>Við sendum staðfestingarkóða á {email}</p>
+							<AuthCodeInner>
+								<AuthCodeInput
+									value={authCode}
+									onChange={setAuthCode}
+									length={AUTHCODE_LENGTH}
+								/>
+							</AuthCodeInner>
+							<BaseButton
+								label="Staðfesta"
+								onClick={() => 1}
+								type="highlight"
+							/>
+							<BaseButton
+								label="Útskrá"
+								onClick={() => 1}
+								type="danger"
+							/>
+						</WhiteBoxWithTitle>
+					</AuthCodeOuter>
+				</FlexCenter>
 			) : (
 				<React.Fragment>
 					<Header />
