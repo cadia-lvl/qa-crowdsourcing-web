@@ -17,7 +17,7 @@ const reducer = (
 			return {
 				...state,
 				...action.payload.taskInfo,
-				question: questionType === "Já/Nei" ? "" : questionType,
+				question: "",
 			};
 		case ActionTypes.writeQuestion:
 			return {
