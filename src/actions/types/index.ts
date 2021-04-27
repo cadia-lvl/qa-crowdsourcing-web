@@ -39,6 +39,9 @@ export enum ActionTypes {
 	setGoogleSearchError,
 	setIsPerformingSearch,
 	verifyUser,
+	setIsWaitingForNewAuthCode,
+	setIsWaitingForVerification,
+	setAuthCodeErrorMessage,
 }
 
 export type Actions =
@@ -47,6 +50,9 @@ export type Actions =
 	| AuthActions.RegisterUserAction
 	| AuthActions.FetchScoreCardAction
 	| AuthActions.VerifyUserAction
+	| AuthActions.SetAuthCodeErrorMessageAction
+	| AuthActions.SetIsWaitingForNewAuthCodeAction
+	| AuthActions.SetIsWaitingForVerificationAction
 	| WriteQuestionActions.WriteQuestionAction
 	| SubmitArticleActions.PreviewArticleToSubmitAction
 	| SubmitArticleActions.ClosePreviewArticleToSubmitAction

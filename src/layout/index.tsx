@@ -16,6 +16,7 @@ import {
 	fetchCurrentGameRound,
 	fetchUserFromToken,
 	logOutUser,
+	requestNewVerificationCode,
 	verifyUser,
 } from "../actions";
 import { FETCH_USER_FROM_TOKEN_WAIT_MS } from "./utils";
@@ -25,13 +26,19 @@ import {
 	TutorialGuide,
 	WhiteBoxWithTitle,
 	BaseButton,
+	FilledAlert,
 } from "../components";
 import { fetchAnswersPerDay } from "../actions/chartDataActions";
 
 export const LayoutWrapper = ({ children }: IProps) => {
-	const { type, _id, email } = useSelector(
-		(state: StoreState) => state.auth
-	);
+	const {
+		type,
+		_id,
+		email,
+		isAuthCodeRegenerationLoading,
+		authCodeErrorMessage,
+		isAuthCodeSubmissionLoading,
+	} = useSelector((state: StoreState) => state.auth);
 
 	const [authCode, setAuthCode] = useState("");
 	const AUTHCODE_LENGTH = 6;
@@ -53,6 +60,7 @@ export const LayoutWrapper = ({ children }: IProps) => {
 
 	useEffect(() => {
 		dispatch(fetchCurrentGameRound());
+		setAuthCode("");
 	}, [_id]);
 
 	if (type === "loading")
@@ -67,12 +75,26 @@ export const LayoutWrapper = ({ children }: IProps) => {
 			<GlobalStyle />
 			{type === "not-verified" ? (
 				<FlexCenter>
-					<AuthCodeOuter>
+					<AuthCodeOuter {...{ isAuthCodeRegenerationLoading }}>
 						<WhiteBoxWithTitle title="Staðfestingarkóði">
+							{authCodeErrorMessage ? (
+								<FilledAlert
+									label={authCodeErrorMessage}
+									type="danger"
+								/>
+							) : null}
+
 							<p>Við sendum staðfestingarkóða á {email}</p>
-							<p className="hov">
-								<i className="fas fa-sync hov" /> Senda
-								aftur
+							<p
+								className="hov"
+								onClick={() =>
+									dispatch(requestNewVerificationCode())
+								}
+							>
+								{isAuthCodeRegenerationLoading ? (
+									<i className="fas fa-sync hov" />
+								) : null}
+								Senda aftur
 							</p>
 							<AuthCodeInner>
 								<AuthCodeInput
@@ -81,14 +103,18 @@ export const LayoutWrapper = ({ children }: IProps) => {
 									length={AUTHCODE_LENGTH}
 								/>
 							</AuthCodeInner>
-							<FlexLoader size={20} />
-							<BaseButton
-								label="Staðfesta"
-								onClick={() =>
-									dispatch(verifyUser(authCode))
-								}
-								type="highlight"
-							/>
+							{isAuthCodeSubmissionLoading ? (
+								<FlexLoader size={20} />
+							) : (
+								<BaseButton
+									label="Staðfesta"
+									onClick={() =>
+										dispatch(verifyUser(authCode))
+									}
+									type="highlight"
+								/>
+							)}
+
 							<BaseButton
 								label="Útskrá"
 								onClick={() => dispatch(logOutUser())}

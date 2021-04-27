@@ -24,14 +24,20 @@ export const FlexCenter = styled.div`
 	justify-content: center;
 `;
 
-export const AuthCodeOuter = styled.div`
+interface IAuthCodeOuter {
+	isAuthCodeRegenerationLoading: boolean;
+}
+
+export const AuthCodeOuter = styled.div<IAuthCodeOuter>`
 	width: 400px;
 	button {
 		margin-top: 10px;
 	}
 	i {
+		margin-right: 5px;
 		font-size: 13px;
-		animation: 2s spin infinite;
+		${({ isAuthCodeRegenerationLoading: spin }) =>
+			spin ? "animation: 2s spin infinite;" : ""}
 	}
 	.hov {
 		cursor: pointer;

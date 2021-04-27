@@ -17,6 +17,7 @@ export const initialState: AuthState = {
 	level: 1,
 	isAuthCodeRegenerationLoading: false,
 	isAuthCodeSubmissionLoading: false,
+	authCodeErrorMessage: "",
 };
 
 const reducer = (
@@ -35,6 +36,23 @@ const reducer = (
 				...state,
 				scoreCard: action.payload,
 			};
+		case ActionTypes.setIsWaitingForNewAuthCode:
+			return {
+				...state,
+				isAuthCodeRegenerationLoading: action.payload,
+			};
+		case ActionTypes.setAuthCodeErrorMessage: {
+			return {
+				...state,
+				authCodeErrorMessage: action.payload,
+			};
+		}
+		case ActionTypes.setIsWaitingForVerification: {
+			return {
+				...state,
+				isAuthCodeSubmissionLoading: action.payload,
+			};
+		}
 		default:
 			return state;
 	}

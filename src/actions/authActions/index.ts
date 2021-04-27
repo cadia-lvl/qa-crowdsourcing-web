@@ -3,6 +3,9 @@ import {
 	FetchUserFromTokenAction,
 	LogOutUserAction,
 	FetchScoreCardAction,
+	SetIsWaitingForNewAuthCodeAction,
+	SetIsWaitingForVerificationAction,
+	SetAuthCodeErrorMessageAction,
 } from "./interface";
 import { ScoreCard, User } from "../../declerations";
 import { Dispatch } from "redux";
@@ -64,6 +67,10 @@ export const logOutUser = () => {
 export const verifyUser = (verificationCode: string) => {
 	return async function (dispatch: Dispatch) {
 		try {
+			dispatch<SetIsWaitingForVerificationAction>({
+				type: ActionTypes.setIsWaitingForVerification,
+				payload: true,
+			});
 			const { data: user } = await Api.post<User>(
 				"/api/v1/users/verification_code",
 				{
@@ -75,7 +82,57 @@ export const verifyUser = (verificationCode: string) => {
 				type: ActionTypes.fetchUserFromToken,
 				payload: user,
 			});
-		} catch (error) {}
+		} catch (error) {
+			// set error message on error
+			dispatch<SetAuthCodeErrorMessageAction>({
+				type: ActionTypes.setAuthCodeErrorMessage,
+				payload: error.response?.data.message ?? "Unknown error",
+			});
+		} finally {
+			// remove loading after timeout
+			const TIMEOUT_MS = 1250;
+			setTimeout(
+				() =>
+					dispatch<SetIsWaitingForVerificationAction>({
+						type: ActionTypes.setIsWaitingForVerification,
+						payload: false,
+					}),
+				TIMEOUT_MS
+			);
+		}
+	};
+};
+
+export const requestNewVerificationCode = () => {
+	return async function (dispatch: Dispatch) {
+		try {
+			// reuse action
+			dispatch<SetIsWaitingForNewAuthCodeAction>({
+				type: ActionTypes.setIsWaitingForNewAuthCode,
+				payload: true,
+			});
+			// request code
+			await Api.get<User>(
+				"/api/v1/users/verification_code/generate"
+			);
+		} catch (error) {
+			// set error message on error
+			dispatch<SetAuthCodeErrorMessageAction>({
+				type: ActionTypes.setAuthCodeErrorMessage,
+				payload: error.response?.data.message ?? "Unknown error",
+			});
+		} finally {
+			// remove loading after timeout
+			const TIMEOUT_MS = 1250;
+			setTimeout(
+				() =>
+					dispatch<SetIsWaitingForNewAuthCodeAction>({
+						type: ActionTypes.setIsWaitingForNewAuthCode,
+						payload: false,
+					}),
+				TIMEOUT_MS
+			);
+		}
 	};
 };
 
