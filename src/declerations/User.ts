@@ -16,4 +16,9 @@ export interface ScoreCard {
 	hiscoreRank: number;
 }
 
-export type UserType = "user" | "admin" | "loading" | "guest";
+export type UserType =
+	| "user"
+	| "admin"
+	| "loading"
+	| "guest"
+	| "not-verified";

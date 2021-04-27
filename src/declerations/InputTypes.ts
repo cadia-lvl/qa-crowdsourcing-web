@@ -1,6 +1,7 @@
 export enum InputElementTypes {
 	text,
 	hidden,
+	authCode,
 }
 
 export interface InputBaseInterface {
@@ -45,10 +46,33 @@ export interface HiddenInputRecipe extends HiddenInputBase {
 }
 
 /**
+ * AUTHCODE INPUTS
+ */
+
+export interface AuthCodeInputBase extends InputBaseInterface {
+	value: string;
+}
+
+export interface AuthCodeInputProps extends HiddenInputBase {
+	onChange: (v: string) => void;
+}
+
+export interface AuthCodeInputRecipe extends HiddenInputBase {
+	type: InputElementTypes.authCode;
+	label: string;
+}
+
+/**
  * Putting it all together
  */
-export type InputElementProps = TextInputBase | HiddenInputBase;
+export type InputElementProps =
+	| TextInputBase
+	| HiddenInputBase
+	| AuthCodeInputBase;
 
-export type InputElementRecipe = TextInputRecipe | HiddenInputRecipe;
+export type InputElementRecipe =
+	| TextInputRecipe
+	| HiddenInputRecipe
+	| AuthCodeInputRecipe;
 
 export type FormRecipe = { [key: string]: InputElementRecipe };

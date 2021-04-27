@@ -10,7 +10,6 @@ import {
 	VerifyAnswerSpanGame,
 	RoundCompletedGame,
 	GameAnnouncer,
-	UserAvatar,
 } from "../../components";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCurrentGameRound, fetchScoreCard } from "../../actions";

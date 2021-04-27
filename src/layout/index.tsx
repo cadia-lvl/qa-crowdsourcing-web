@@ -8,7 +8,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { StoreState } from "../reducers";
 import { fetchCurrentGameRound, fetchUserFromToken } from "../actions";
 import { FETCH_USER_FROM_TOKEN_WAIT_MS } from "./utils";
-import { FlexLoader, TutorialGuide } from "../components";
+import { AuthCodeInput, FlexLoader, TutorialGuide } from "../components";
 import { fetchAnswersPerDay } from "../actions/chartDataActions";
 
 export const LayoutWrapper = ({ children }: IProps) => {
@@ -42,10 +42,18 @@ export const LayoutWrapper = ({ children }: IProps) => {
 	return (
 		<Outer>
 			<GlobalStyle />
-			<Header />
-			{children}
-			<TutorialGuide />
-			<Footer />
+			{type === "not-verified" ? (
+				<React.Fragment>
+					<AuthCodeInput value="" onChange={() => null} />
+				</React.Fragment>
+			) : (
+				<React.Fragment>
+					<Header />
+					{children}
+					<TutorialGuide />
+					<Footer />{" "}
+				</React.Fragment>
+			)}
 		</Outer>
 	);
 };
