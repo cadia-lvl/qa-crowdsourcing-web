@@ -7,7 +7,8 @@ export type QAquestionItems =
 	| "has-short-answer"
 	| "is-opinionated"
 	| "good-grammar"
-	| "is-yes-or-no";
+	| "is-yes-or-no"
+	| "is-question";
 
 const checkList: CheckList<QAquestionItems> = {
 	title: "Review question quality",
@@ -55,6 +56,15 @@ const checkList: CheckList<QAquestionItems> = {
 			key: "good-grammar",
 			correctAnswerPrompt: "Málfar spurningarinnar er slæmt",
 			badAnswerPrompt: "Málfar spurningarinnar er gott",
+		},
+	],
+	first: [
+		{
+			question: "Er þetta spurning?",
+			expectedAnswer: "yes",
+			key: "is-question",
+			correctAnswerPrompt: "Þetta er gild spurning",
+			badAnswerPrompt: "Þetta er ekki spurning",
 		},
 	],
 };

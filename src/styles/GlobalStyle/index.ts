@@ -41,6 +41,13 @@ export const GlobalStyle = createGlobalStyle`
         font-weight: 600;
     }
 
+    .no-margin {
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+        margin-right: 0 !important;
+        margin-left: 0 !important;
+    }
+
     p {
         line-height: 1.5;
         margin-top: 15px;

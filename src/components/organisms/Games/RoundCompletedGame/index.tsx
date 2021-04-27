@@ -1,7 +1,12 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setConstantValue } from "typescript";
-import { TextPrompt, ScoreCard, ShootingStars } from "../../..";
+import {
+	TextPrompt,
+	ScoreCard,
+	ShootingStars,
+	UserAvatar,
+	BaseButton,
+} from "../../..";
 import {
 	fetchCurrentGameRound,
 	fetchUserFromToken,
@@ -11,8 +16,6 @@ import { GameWrapper } from "../../../../hoc";
 import { usePrev } from "../../../../hooks";
 import { StoreState } from "../../../../reducers";
 import { UserLevelService } from "../../../../services";
-import { ICON_LVL_1 } from "../../../../static";
-import { UserAvatar } from "../../../atoms";
 import {
 	Outer,
 	PromptOuter,
@@ -56,11 +59,9 @@ export const RoundCompletedGame = () => {
 		}
 	}, [auth.level]);
 
-	// @ts-ignore
 	useEffect(() => {
 		dispatch(fetchUserFromToken());
 		handleSetURL(URL);
-		// return () => dispatch(fetchCurrentGameRound());
 	}, []);
 	return (
 		<GameWrapper type={GameTypes.completed}>
@@ -98,6 +99,11 @@ export const RoundCompletedGame = () => {
 				</TopBox>
 
 				<ScoreCard />
+				<BaseButton
+					label="Áfram"
+					type="highlight"
+					onClick={() => dispatch(fetchCurrentGameRound())}
+				/>
 			</Outer>
 		</GameWrapper>
 	);
