@@ -1,6 +1,7 @@
 import { TutorialExplanations } from "../../..";
 import React from "react";
 import { ContinueSpanPara, ContinueClick } from "./styles";
+import { TutorialItemClickEvent } from "../../Tutorial";
 
 export const explainGoogle: TutorialExplanations[] = [
 	{
@@ -33,7 +34,8 @@ export const explainResults: TutorialExplanations[] = [
 ];
 
 export const markasNotAnswerableClosure = (
-	dispatchCB: () => any
+	handleGoToNext: () => any,
+	handleClose: (e: TutorialItemClickEvent) => any
 ): TutorialExplanations[] => [
 	{
 		type: "jsx",
@@ -44,8 +46,8 @@ export const markasNotAnswerableClosure = (
 					lagi að halda áfram
 				</ContinueSpanPara>
 				<ContinueSpanPara>
-					Þúdþá merkjum við spurninguna sem erfiða og þú færð
-					annað verkefni
+					þá merkjum við spurninguna sem erfiða og þú færð annað
+					verkefni
 				</ContinueSpanPara>
 				{/* <ContinueClick onClick={dispatchCB}>
 					Halda áfram <i className="fas fa-arrow-right" />{" "}
@@ -59,14 +61,14 @@ export const markasNotAnswerableClosure = (
 				text: "Næsta verkefni",
 				onClick: (event) => {
 					event.preventDefault();
-					console.log("IN NEXT");
+					handleGoToNext();
 				},
 			},
 			{
 				text: "Loka",
 				onClick: (event) => {
 					event.preventDefault();
-					console.log("IN CLOSE");
+					handleClose(event);
 				},
 			},
 		],

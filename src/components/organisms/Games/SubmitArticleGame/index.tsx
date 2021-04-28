@@ -5,28 +5,32 @@ import React, {
 	useState,
 	useMemo,
 } from "react";
-import { TextTag, GoogleTextInput, FilledAlert } from "../../../";
+import {
+	GoogleTextInput,
+	FilledAlert,
+	ModalWithTitle,
+	FlexLoader,
+} from "../../../";
 import { GOOGLE_LOGO } from "../../../../static";
-import { SearchForm, Paragraph } from "./styles";
+import { SearchForm, Paragraph, ContinueBox } from "./styles";
 import ArticlePreview from "./ArticlePreview";
 import { useDispatch, useSelector } from "react-redux";
 import { StoreState } from "../../../../reducers";
 import { GameWrapper } from "../../../../hoc";
 import { GameTypes } from "../../../../declerations";
 import PreviewReader from "./PreviewReader";
-import { getHighlightWords } from "./utils";
 import {
 	fetchArticlesQuery,
 	writeArticleSearchQuery,
 	markQuestionAsImpossible,
 } from "../../../../actions";
 import { TaskInfoBox } from "../GameUtils";
-import { Explain } from "../../Tutorial";
+import { Explain, TutorialItemClickEvent } from "../../Tutorial";
 import * as TUTORIAL from "./tutorialItems";
-import { FlexLoader } from "../../../atoms";
 
 export const SubmitArticleGame = () => {
-	const [highlightWords, setHighlightWords] = useState<string[]>([]);
+	const [showContinueModal, setContinueModal] = useState(false);
+
 	const state = useSelector((state: StoreState) => state);
 	const dispatch = useDispatch();
 	const firstArticleRef = useRef<null | HTMLDivElement>(null);
@@ -43,14 +47,13 @@ export const SubmitArticleGame = () => {
 			isPerformingSearch,
 		},
 		game: { _id: gameRoundId },
+		auth: { _id: userId },
 	} = state;
 
+	// is true if we should show article in preview viewer
 	const hasPreview = !!previewArticle;
 
-	useEffect(() => {
-		if (text !== "") getHighlightWords(text).then(setHighlightWords);
-	}, [text]);
-
+	// scroll to first article when loaded
 	useEffect(() => {
 		if (articles.length > 0)
 			firstArticleRef.current?.scrollIntoView({
@@ -59,24 +62,79 @@ export const SubmitArticleGame = () => {
 			});
 	}, [articles.length]);
 
+	// handles the submission
 	const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		dispatch(fetchArticlesQuery());
 	};
 
+	/**
+	 * Call back that takes care of removing
+	 * tutorial that has to be closed and marking it so it is not
+	 * opened again
+	 */
+	const CACHEKEY = `${userId}-NEVER:SHOW:PERSISTANT:TUTORIAL`;
+
+	const showCloseResultTutorial =
+		localStorage.getItem(CACHEKEY) === null;
+
+	const handleCloseResultTutorial = (e: TutorialItemClickEvent) => {
+		localStorage.setItem(CACHEKEY, "1");
+		e.markAsFinished();
+		e.removeItem();
+	};
+
+	// gets the tutorial that explains google results
 	const persistantSearchResultTutorial = useMemo(
 		() =>
-			TUTORIAL.markasNotAnswerableClosure(() =>
-				dispatch(markQuestionAsImpossible(gameRoundId, questionId))
-			),
+			showCloseResultTutorial
+				? TUTORIAL.markasNotAnswerableClosure(
+						() => setContinueModal(true),
+						handleCloseResultTutorial
+				  )
+				: [],
 		[questionId]
 	);
 
 	return (
 		<GameWrapper type={GameTypes.submitArticle}>
+			{/*
+			
+			This is the modal that is shown to user
+				when he wants to continue, this is 
+			done as a failsafe so he can back out of
+			marking the question as unanswerable 
+			
+			*/}
+			<ModalWithTitle
+				onClose={() => setContinueModal(false)}
+				buttons={[
+					{
+						label: "Nei",
+						type: "highlight",
+						onClick: () => setContinueModal(false),
+					},
+					{
+						label: "Já",
+						type: "highlight",
+						onClick: () =>
+							dispatch(
+								markQuestionAsImpossible(
+									gameRoundId,
+									questionId
+								)
+							),
+					},
+				]}
+				title={"Viltu halda áfram?"}
+				open={showContinueModal}
+			>
+				Það er algengt að svar finnist ekki við spurningu. Ef þú
+				heldur áfram þá merkjum við spurninguna sem erfiða eða
+				ósvaranlega.
+			</ModalWithTitle>
 			<TaskInfoBox title="FINNA SVAR Á VEFNUM">
 				<Paragraph>
-					Spurningin er{" "}
 					<span className="query">
 						„{text.charAt(0).toLocaleLowerCase()}
 						{text.substring(1)}“
@@ -96,13 +154,6 @@ export const SubmitArticleGame = () => {
 						<input type="submit" value="Google leit" />
 					</Explain>
 				</SearchForm>
-				{hasPreview ? null : (
-					<React.Fragment>
-						{highlightWords.map((word, i) => (
-							<TextTag key={`${word}-${i}`}>{word}</TextTag>
-						))}
-					</React.Fragment>
-				)}
 
 				{isPerformingSearch ? (
 					<FlexLoader size={40} />
@@ -119,6 +170,27 @@ export const SubmitArticleGame = () => {
 						// items access to callback to mark as impossible
 						persist={persistantSearchResultTutorial}
 					>
+						<React.Fragment>
+							{!showCloseResultTutorial ? (
+								<ContinueBox
+									hideDetails={false}
+									onClick={() => setContinueModal(true)}
+								>
+									<h3>Finnur þú ekki svarið?</h3>
+									<p>
+										Það gerist að öðru hverju að svar
+										finnist ekki í leitinni. Ef þú
+										lendir í því þá getur þú haldið
+										áfram í næsta verkefni og við
+										merkjum spurninguna sem erfiða /
+										ósvaranlega.{" "}
+									</p>
+									Halda áfram í næsta verkefni
+									<i className="fas fa-chevron-right" />
+								</ContinueBox>
+							) : null}
+						</React.Fragment>
+
 						{articles.map((item, i) =>
 							/**
 							 * logical equivalence of

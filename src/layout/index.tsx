@@ -126,8 +126,8 @@ export const LayoutWrapper = ({ children }: IProps) => {
 			) : (
 				<React.Fragment>
 					<Header />
-					{children}
 					<TutorialGuide />
+					{children}
 					<Footer />{" "}
 				</React.Fragment>
 			)}

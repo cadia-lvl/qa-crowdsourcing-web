@@ -17,7 +17,7 @@ export const ModalWithTitle = ({
 	if (!open) return null;
 	return (
 		<BackDrop onClick={onClose}>
-			<Outer>
+			<Outer onClick={(e) => e.stopPropagation()}>
 				<WhiteBoxWithTitle title={title}>
 					<Inner>
 						{children}

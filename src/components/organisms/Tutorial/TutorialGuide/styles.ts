@@ -22,6 +22,7 @@ export const Outer = styled.div<IOuter>`
 		width: 100px;
 	`
 			: ""}
+	z-index: 1;
 `;
 
 export const Inner = styled.div`

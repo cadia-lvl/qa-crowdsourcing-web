@@ -7,7 +7,6 @@ import { Colors } from "../../../../../styles";
 
 export const Outer = styled.div`
 	box-sizing: border-box;
-	padding-right: 40px;
 	margin-bottom: 80px;
 `;
 
