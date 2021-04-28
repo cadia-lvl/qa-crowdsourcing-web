@@ -21,13 +21,6 @@ const checkList: CheckList<QAquestionItems> = {
 			badAnswerPrompt: "Þú skilur ekki spurninguna",
 		},
 		{
-			question: "Er spurningin óviðeigandi?",
-			expectedAnswer: "no",
-			key: "appropriate",
-			correctAnswerPrompt: "Mér finnst spurningin viðeigandi",
-			badAnswerPrompt: "Mér finnst spurningin óviðeigandi",
-		},
-		{
 			question: "Heldurðu að spurningin hafi svar?",
 			expectedAnswer: "yes",
 			key: "is-impossible",
@@ -54,8 +47,8 @@ const checkList: CheckList<QAquestionItems> = {
 			question: "Finnst þér málfarið vera slæmt?",
 			expectedAnswer: "no",
 			key: "good-grammar",
-			correctAnswerPrompt: "Málfar spurningarinnar er slæmt",
-			badAnswerPrompt: "Málfar spurningarinnar er gott",
+			correctAnswerPrompt: "Málfar spurningarinnar er gott",
+			badAnswerPrompt: "Málfar spurningarinnar er slæmt",
 		},
 	],
 	first: [

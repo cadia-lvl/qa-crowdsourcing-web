@@ -10,6 +10,7 @@ import {
 import { ReviewActions, State } from "./stateUtils";
 import { CheckListBullet, FlexLoader } from "../../../../";
 import { shuffle } from "./utils";
+import PageDots from "./PagesDots";
 
 export const ReviewCheckList = <T extends {}>({
 	items: itemProps,
@@ -66,7 +67,7 @@ export const ReviewCheckList = <T extends {}>({
 	 * to true
 	 */
 	useEffect(() => {
-		const LOADING_TIMER = 1000;
+		const LOADING_TIMER = 650;
 		if (state.isLoading) {
 			const t = setTimeout(
 				() =>
@@ -128,6 +129,10 @@ export const ReviewCheckList = <T extends {}>({
 							</ButtonDiv>
 						</React.Fragment>
 					)}
+					<PageDots
+						current={state.currentQuestion + 1}
+						total={questions.length}
+					/>
 				</CheckListQuestionContainer>
 			) : (
 				<CheckListContainer>

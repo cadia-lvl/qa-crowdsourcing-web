@@ -106,7 +106,7 @@ export const GameAnnouncer = ({ children }: IProps) => {
 		setPrevGame(currGame);
 	};
 
-	if (showAnnouncement)
+	if (showAnnouncement && currGame !== GameTypes.completed)
 		return announcePrevGame ? (
 			<LoadingItems>
 				<LoadingContainer>
