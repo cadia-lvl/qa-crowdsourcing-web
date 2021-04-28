@@ -10,7 +10,10 @@ export interface State<T> {
 
 export interface AnswerQuestionAction {
 	type: "answer-question";
-	payload: AnswerTypes;
+	payload: {
+		answer: AnswerTypes;
+		questionNumber: number;
+	};
 }
 
 export interface SetLoadingAction {
