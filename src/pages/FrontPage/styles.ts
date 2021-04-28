@@ -159,6 +159,16 @@ export const Col3Cell1 = styled.div`
 	flex: 0.4;
 `;
 
+export const Col3Cell2 = styled.div`
+	flex: 0.6;
+	padding: 15px;
+	box-sizing: border-box;
+	i {
+		font-size: 30px;
+		color: ${Colors.HIGHLIGHT};
+		margin-right: 15px;
+	}
+`;
 export const GlowBtnWrapper = styled.div`
 	display: flex;
 	flex-direction: column;
