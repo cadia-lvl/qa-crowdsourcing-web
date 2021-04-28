@@ -1,18 +1,10 @@
 import React from "react";
-import {
-	Outer,
-	HeaderItem,
-	UserIconWrapper,
-	HeaderItemContainer,
-	Badge,
-} from "./styles";
+import { Outer, HeaderItem, HeaderItemContainer, Badge } from "./styles";
 import { headerItems } from "./utils";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logOutUser } from "../../actions";
-import { UserAvatar } from "../../components";
 import { StoreState } from "../../reducers";
-import { ICON_LVL_1 } from "../../static";
 import { Colors } from "../../styles";
 
 const Header = () => {
@@ -23,7 +15,9 @@ const Header = () => {
 		auth,
 		game: { showAvatarInHeader },
 	} = state;
-	const isAuth = !["guest", "loading"].includes(auth.type);
+	const isAuth = !["guest", "loading", "not-verified"].includes(
+		auth.type
+	);
 	return (
 		<Outer>
 			<HeaderItemContainer>
@@ -36,25 +30,18 @@ const Header = () => {
 				))}
 			</HeaderItemContainer>
 			<HeaderItemContainer>
-				<UserIconWrapper>
-					{showAvatarInHeader ? (
-						<React.Fragment>
-							{/* <HeaderItem className="header-profile-itm">
-								<span>Lvl 3</span>
+				{showAvatarInHeader ? (
+					<React.Fragment>
+						{isAuth ? (
+							<HeaderItem
+								className="header-profile-itm"
+								onClick={() => dispatch(logOutUser())}
+							>
+								Útskrá
 							</HeaderItem>
-							<HeaderItem className="header-profile-itm">
-								<span>Njallskarp</span>
-							</HeaderItem>
-							<UserAvatar
-								src={ICON_LVL_1}
-								color={Colors.DANGER}
-							/>
-							<Badge>
-								<i className="fas fa-award"></i>
-							</Badge> */}
-						</React.Fragment>
-					) : null}
-				</UserIconWrapper>
+						) : null}
+					</React.Fragment>
+				) : null}
 			</HeaderItemContainer>
 		</Outer>
 	);

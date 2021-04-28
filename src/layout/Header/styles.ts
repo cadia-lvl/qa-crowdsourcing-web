@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { ICON_LVL_1 } from "../../static/icons";
 import { Colors } from "../../styles";
 
 export const Outer = styled.div`
@@ -20,42 +19,11 @@ export const HeaderItemContainer = styled.div`
 	flex-direction: row;
 	align-items: center;
 	justify-content: flex-start;
-	.header-profile-itm {
-		color: ${Colors.FG_WHITE} !important;
-		font-weight: 700;
-		font-size: 15px;
-		padding: 3px 20px 3px 14px;
-		background-color: ${Colors.DANGER};
-		transform: translateX(-78%);
-		position: absolute;
-		left: 0;
-		top: 60%;
-		z-index: -1;
-		:nth-child(2) {
-			color: ${Colors.FG_WHITE} !important;
-			font-weight: 700;
-			font-size: 15px;
-			padding: 3px 20px 3px 14px;
-			background-color: ${Colors.DANGER};
-			transform: translateX(-90%);
-			position: absolute;
-			left: 0;
-			top: 20%;
-			z-index: -1;
-		}
-	}
+	cursor: pointer;
 `;
 
 export const HeaderItem = styled.div`
 	padding: 0 20px 0 0;
-`;
-
-export const UserIconWrapper = styled.div`
-	height: 82px;
-	width: 82px;
-
-	position: relative;
-	/* Start the shake animation and make the animation last for 0.5 seconds */
 `;
 
 export const Badge = styled.div`
