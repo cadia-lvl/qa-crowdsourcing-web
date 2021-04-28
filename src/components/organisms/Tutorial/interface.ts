@@ -1,6 +1,14 @@
+export interface TutorialItemClickEvent {
+	__preventDefault: boolean;
+	preventDefault: () => void;
+	removeItem: () => void;
+	markAsFinished: () => void;
+}
+
 export interface TutorialDialogItem {
 	text: string;
 	item?: TutorialExplanations;
+	onClick?: (e: TutorialItemClickEvent) => void;
 }
 
 // allow only 0-3 items

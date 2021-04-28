@@ -14,8 +14,5 @@ export const Outer = styled.div<OuterProps>`
 	background-size: contain;
 	box-sizing: border-box;
 	overflow: hidden;
-	:hover {
-		transform: rotateY(180deg);
-	}
 	cursor: pointer;
 `;

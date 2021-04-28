@@ -50,8 +50,8 @@ export const Paragraph = styled.p`
 	}
 `;
 
-export const ContinueSpanText = styled.span`
-	transition: 0.3s;
+export const ContinueSpanPara = styled.div`
+	margin-bottom: 10px;
 `;
 
 export const ContinueClick = styled.p`
