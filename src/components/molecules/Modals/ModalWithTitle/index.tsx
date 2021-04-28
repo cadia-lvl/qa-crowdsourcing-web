@@ -12,6 +12,7 @@ export const ModalWithTitle = ({
 	onClose,
 	open,
 	title,
+	buttons,
 }: IProps) => {
 	if (!open) return null;
 	return (
@@ -21,21 +22,9 @@ export const ModalWithTitle = ({
 					<Inner>
 						{children}
 						<ButtonContainer>
-							<BaseButton
-								label="hello"
-								type="danger"
-								onClick={() => null}
-							/>
-							<BaseButton
-								label="hello"
-								type="danger"
-								onClick={() => null}
-							/>
-							<BaseButton
-								label="hello"
-								type="danger"
-								onClick={() => null}
-							/>
+							{buttons.map((item) => (
+								<BaseButton {...item} />
+							))}
 						</ButtonContainer>
 					</Inner>
 				</WhiteBoxWithTitle>

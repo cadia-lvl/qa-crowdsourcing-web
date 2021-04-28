@@ -27,7 +27,6 @@ import {
 	WhiteBoxWithTitle,
 	BaseButton,
 	FilledAlert,
-	ModalWithTitle,
 } from "../components";
 import { fetchAnswersPerDay } from "../actions/chartDataActions";
 
@@ -73,10 +72,6 @@ export const LayoutWrapper = ({ children }: IProps) => {
 		);
 	return (
 		<Outer>
-			<ModalWithTitle title={"Do you want to continue?"} open={true}>
-				4asdf asdf asfd awef asdf asdf wef asdf safasdf asf awef
-				asdf awef asdf awfe asfdadfsdf awef asdf safd
-			</ModalWithTitle>
 			<GlobalStyle />
 			{type === "not-verified" ? (
 				<FlexCenter>
