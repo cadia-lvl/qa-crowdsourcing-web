@@ -12,6 +12,7 @@ export const Bar = styled.div`
 	width: ${(props) => props.theme.ratio * 100}%;
 	height: 10px;
 	border-radius: 4px;
+	transition: 0.3s;
 `;
 
 export const BarOuter = styled.div`

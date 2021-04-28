@@ -11,8 +11,13 @@ export const SmallProgressBar = ({
 	const [ratio, setRatio] = useState(0);
 
 	useEffect(() => {
-		console.log("HELLO1");
-		if (ratio !== size) setRatio(size);
+		const ANIM_DELAY = 600;
+		if (ratio !== size) {
+			const t = setTimeout(() => setRatio(size), ANIM_DELAY);
+			return () => {
+				clearTimeout(t);
+			};
+		}
 	}, [size]);
 
 	return (
