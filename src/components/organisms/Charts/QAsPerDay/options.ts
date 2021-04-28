@@ -21,6 +21,7 @@ const options = {
 			},
 		],
 	},
+	animation: false,
 };
 
 export default options;

@@ -35,19 +35,19 @@ export const ReviewCheckList = <T extends {}>({
 		switch (action.type) {
 			case "answer-question":
 				const goodAnswer =
-					action.payload ===
-					questions[state.currentQuestion].expectedAnswer;
+					action.payload.answer ===
+					questions[action.payload.questionNumber]
+						.expectedAnswer;
+				const { finished } = state;
+				finished[action.payload.questionNumber] = {
+					key: questions[action.payload.questionNumber].key,
+					goodAnswer,
+				};
 				return {
 					...state,
-					finished: [
-						...state.finished,
-						{
-							key: questions[state.currentQuestion].key,
-							goodAnswer,
-						},
-					],
+					finished: [...finished],
 					isLoading: true,
-					currentQuestion: state.currentQuestion + 1,
+					currentQuestion: finished.length,
 				};
 			case "reset-state":
 				return { ...initialState };
@@ -104,13 +104,17 @@ export const ReviewCheckList = <T extends {}>({
 						<FlexLoader size={40} />
 					) : (
 						<React.Fragment>
-							<p>{question}</p>
+							<span>{question}</span>
 							<ButtonDiv>
 								<CheckListActionButton
 									onClick={() =>
 										dispatch({
 											type: "answer-question",
-											payload: "no",
+											payload: {
+												answer: "no",
+												questionNumber:
+													state.currentQuestion,
+											},
 										})
 									}
 								>
@@ -120,7 +124,11 @@ export const ReviewCheckList = <T extends {}>({
 									onClick={() =>
 										dispatch({
 											type: "answer-question",
-											payload: "yes",
+											payload: {
+												answer: "yes",
+												questionNumber:
+													state.currentQuestion,
+											},
 										})
 									}
 								>
@@ -138,19 +146,17 @@ export const ReviewCheckList = <T extends {}>({
 				<CheckListContainer>
 					{questions
 						.slice(0, state.currentQuestion)
-						.map((item, i) => (
-							<React.Fragment key={item.question}>
-								{state.finished[i].goodAnswer ? (
-									<CheckListBullet type="good">
-										{item.correctAnswerPrompt}
-									</CheckListBullet>
-								) : (
-									<CheckListBullet type="bad">
-										{item.badAnswerPrompt}
-									</CheckListBullet>
-								)}
-							</React.Fragment>
-						))}
+						.map((item, i) =>
+							state.finished[i].goodAnswer ? (
+								<CheckListBullet type="good">
+									{item.correctAnswerPrompt}
+								</CheckListBullet>
+							) : (
+								<CheckListBullet type="bad">
+									{item.badAnswerPrompt}
+								</CheckListBullet>
+							)
+						)}
 					<ButtonDiv>
 						<CheckListActionButton
 							onClick={() =>

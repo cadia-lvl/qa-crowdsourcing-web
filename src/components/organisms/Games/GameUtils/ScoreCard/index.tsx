@@ -5,14 +5,15 @@ import { StoreState } from "../../../../../reducers";
 import { Colors } from "../../../../../styles";
 
 export const ScoreCard = () => {
-	const state = useSelector((state: StoreState) => state);
-	const {
-		questionVerifications,
-		answerVerifications,
-		answers,
-		questions,
-		articles,
-	} = state.auth.scoreCard;
+	const state = useSelector((state: StoreState) => state.auth.scoreCard);
+
+	const stats = useMemo(() => ({ ...state }), [
+		state.questionVerifications,
+		state.answerVerifications,
+		state.answers,
+		state.questions,
+		state.articles,
+	]);
 
 	const calculateProgressRatio = (
 		count: number,
@@ -24,35 +25,41 @@ export const ScoreCard = () => {
 	return (
 		<React.Fragment>
 			<SmallProgressBar
-				ratio={calculateProgressRatio(questions, 0.25)}
+				ratio={calculateProgressRatio(stats.questions, 0.25)}
 				label="Spurningar"
 				color={Colors.HIGHLIGHT}
-				amount={questions}
+				amount={stats.questions}
 			/>
 			<SmallProgressBar
-				ratio={calculateProgressRatio(answers, 0.25)}
+				ratio={calculateProgressRatio(stats.answers, 0.25)}
 				label="Svör"
 				color={Colors.SUCCESS}
 				key="answer"
-				amount={answers}
+				amount={stats.answers}
 			/>
 			<SmallProgressBar
-				ratio={calculateProgressRatio(questionVerifications, 0.25)}
+				ratio={calculateProgressRatio(
+					stats.questionVerifications,
+					0.25
+				)}
 				label="Yfirfarnar spurningar"
 				color={Colors.DANGER}
-				amount={questionVerifications}
+				amount={stats.questionVerifications}
 			/>
 			<SmallProgressBar
-				ratio={calculateProgressRatio(answerVerifications, 0.25)}
+				ratio={calculateProgressRatio(
+					stats.answerVerifications,
+					0.25
+				)}
 				label="Yfirfarnin svör"
 				color={Colors.DANGER}
-				amount={answerVerifications}
+				amount={stats.answerVerifications}
 			/>
 			<SmallProgressBar
-				ratio={calculateProgressRatio(articles, 0.25)}
+				ratio={calculateProgressRatio(stats.articles, 0.25)}
 				label="Greinar"
 				color={Colors.WARNING}
-				amount={articles}
+				amount={stats.articles}
 			/>
 		</React.Fragment>
 	);

@@ -4,7 +4,7 @@ import { TUTORIAL_IMG_ANSWER_IS_PURPLE } from "../../../../static";
 export const ButtonContainer = styled.div`
 	display: flex;
 	flex-direction: row;
-	justify-content: flex-end;
+	justify-content: flex-start;
 	button {
 		margin-right: 20px;
 		width: 300px;

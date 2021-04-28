@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useMemo } from "react";
 import {
 	Outer,
 	LeftSpaceWrapper,
@@ -13,6 +13,7 @@ import {
 	DashboardCol2,
 	DashboardCol3,
 	Col3Cell1,
+	Col3Cell2,
 	Col1Row1,
 	Col1Row2,
 	Col1Row1Cell1,
@@ -39,12 +40,19 @@ import { UserLevelService } from "../../services";
 import * as TUTORIAL from "./tutorialItems";
 
 export const FrontPage = () => {
-	const { level, username } = useSelector(
-		(state: StoreState) => state.auth
-	);
+	const {
+		level,
+		username,
+		scoreCard: { hiscoreRank },
+	} = useSelector((state: StoreState) => state.auth);
 	const { currentRound, totalRounds } = useSelector(
 		(state: StoreState) => state.game
 	);
+
+	const roundInfo = useMemo(() => ({ currentRound, totalRounds }), [
+		currentRound,
+		totalRounds,
+	]);
 
 	return (
 		<Outer>
@@ -87,8 +95,10 @@ export const FrontPage = () => {
 										<Col1Row2>
 											<div className="advance-info">
 												<span>
-													{currentRound - 1}/
-													{totalRounds}
+													{roundInfo.currentRound -
+														1}
+													/
+													{roundInfo.totalRounds}
 												</span>
 												<span>
 													<i className="fas fa-chevron-right" />
@@ -141,6 +151,21 @@ export const FrontPage = () => {
 											<QAsPerDay />
 										</Explain>
 									</Col3Cell1>
+									<Col3Cell2>
+										<h1 className="italic">
+											<i className="fas fa-sort-numeric-up" />
+											Stigataflan
+										</h1>
+										<p>Þú ert númer #{hiscoreRank}</p>
+										<p>
+											Samfélagið á spurningar.is er
+											stanslaust að búa til
+											spurningar og finna svör. Því
+											fleiri spurningar og svör sem
+											þú skapar því betra sæti nærð
+											þú á stigatöflunni
+										</p>
+									</Col3Cell2>
 								</DashboardCol3>
 							</DashBoardOuter>
 
