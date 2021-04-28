@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useMemo } from "react";
 import {
 	Outer,
 	LeftSpaceWrapper,
@@ -49,6 +49,11 @@ export const FrontPage = () => {
 		(state: StoreState) => state.game
 	);
 
+	const roundInfo = useMemo(() => ({ currentRound, totalRounds }), [
+		currentRound,
+		totalRounds,
+	]);
+
 	return (
 		<Outer>
 			{/* Space to the Left of the screen */}
@@ -90,8 +95,10 @@ export const FrontPage = () => {
 										<Col1Row2>
 											<div className="advance-info">
 												<span>
-													{currentRound - 1}/
-													{totalRounds}
+													{roundInfo.currentRound -
+														1}
+													/
+													{roundInfo.totalRounds}
 												</span>
 												<span>
 													<i className="fas fa-chevron-right" />
