@@ -36,7 +36,6 @@ export const CheckListActionButton = styled.div`
 `;
 
 export const CheckListQuestionContainer = styled.div`
-	height: 80px;
 	width: 100%;
 	margin: 20px 0 0 0;
 	#flex-loader {

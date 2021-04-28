@@ -20,9 +20,13 @@ export const DialogContainer = styled.div`
 	color: #666;
 	font-weight: 700;
 	cursor: pointer;
-	transition: 0.3s;
-	:hover {
-		color: ${Colors.HIGHLIGHT};
+
+	span {
+		margin-right: 15px;
+		transition: 0.3s;
+		:hover {
+			color: ${Colors.HIGHLIGHT};
+		}
 	}
 `;
 

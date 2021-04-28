@@ -1,6 +1,7 @@
 import { TutorialExplanations } from "../../..";
 import React from "react";
-import { ContinueSpanText, ContinueClick } from "./styles";
+import { ContinueSpanPara, ContinueClick } from "./styles";
+import { TutorialItemClickEvent } from "../../Tutorial";
 
 export const explainGoogle: TutorialExplanations[] = [
 	{
@@ -33,23 +34,43 @@ export const explainResults: TutorialExplanations[] = [
 ];
 
 export const markasNotAnswerableClosure = (
-	dispatchCB: () => any
+	handleGoToNext: () => any,
+	handleClose: (e: TutorialItemClickEvent) => any
 ): TutorialExplanations[] => [
 	{
 		type: "jsx",
 		payload: () => (
 			<React.Fragment>
-				<ContinueSpanText>
+				<ContinueSpanPara>
 					Ef þú finnur ekki svarið innan 2-3 mínútna, þá er í
 					lagi að halda áfram
-				</ContinueSpanText>
-				<ContinueClick onClick={dispatchCB}>
+				</ContinueSpanPara>
+				<ContinueSpanPara>
+					þá merkjum við spurninguna sem erfiða og þú færð annað
+					verkefni
+				</ContinueSpanPara>
+				{/* <ContinueClick onClick={dispatchCB}>
 					Halda áfram <i className="fas fa-arrow-right" />{" "}
-				</ContinueClick>
+				</ContinueClick> */}
 			</React.Fragment>
 		),
 		id: "GAME:SEARCH:EXPLAINNOTANSWERABLE",
 		highlight: false,
-		dialog: [],
+		dialog: [
+			{
+				text: "Næsta verkefni",
+				onClick: (event) => {
+					event.preventDefault();
+					handleGoToNext();
+				},
+			},
+			{
+				text: "Loka",
+				onClick: (event) => {
+					event.preventDefault();
+					handleClose(event);
+				},
+			},
+		],
 	},
 ];

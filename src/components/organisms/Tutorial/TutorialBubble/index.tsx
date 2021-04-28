@@ -1,7 +1,7 @@
 import React from "react";
 import { IProps } from "./interface";
 import { Outer, ArrowDown, DialogContainer } from "./styles";
-import { TutorialDialogItem } from "../interface";
+import { TutorialDialogItem, TutorialItemClickEvent } from "../interface";
 import {
 	removeTutorialItemIDs,
 	replaceFirstInQueue,
@@ -27,7 +27,26 @@ const TutorialBubble = ({ explain }: IProps) => {
 			bubbleChild = null;
 	}
 
+	const getEvent = () => {
+		const event: TutorialItemClickEvent = {
+			__preventDefault: false,
+			preventDefault: function () {
+				this.__preventDefault = true;
+			},
+			removeItem: function () {
+				dispatch(removeTutorialItemIDs([explain.id]));
+			},
+			markAsFinished: function () {
+				TutorialUtils.markAsFinished(explain);
+			},
+		};
+		return event;
+	};
+
 	const handleDialogClick = (action: TutorialDialogItem) => {
+		const event = getEvent();
+		action.onClick?.(event);
+		if (event.__preventDefault) return;
 		if (action.item === undefined)
 			dispatch(removeTutorialItemIDs([explain.id]));
 		else dispatch(replaceFirstInQueue(action.item));

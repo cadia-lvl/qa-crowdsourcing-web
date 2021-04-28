@@ -50,8 +50,8 @@ export const Paragraph = styled.p`
 	}
 `;
 
-export const ContinueSpanText = styled.span`
-	transition: 0.3s;
+export const ContinueSpanPara = styled.div`
+	margin-bottom: 10px;
 `;
 
 export const ContinueClick = styled.p`
@@ -60,4 +60,34 @@ export const ContinueClick = styled.p`
 		color: ${Colors.WARNING};
 	}
 	cursor: pointer;
+`;
+
+interface IContinueBox {
+	hideDetails?: boolean;
+}
+
+export const ContinueBox = styled.div<IContinueBox>`
+	background: ${Colors.HIGHLIGHT};
+	border-radius: 5px;
+	padding: 20px;
+	box-sizing: border-box;
+	color: #fff;
+	font-weight: 600;
+	cursor: pointer;
+	margin-top: 20px;
+	:hover i {
+		margin-left: 25px;
+	}
+	i {
+		margin-left: 15px;
+		transition: 0.3s;
+	}
+	p {
+		color: white;
+		margin-bottom: 15px;
+		${({ hideDetails }) => (hideDetails ? "display: none" : "")};
+	}
+	h3 {
+		margin-top: 0;
+	}
 `;
