@@ -15,7 +15,11 @@ import {
 	Icon3,
 	Icon4,
 } from "./styles";
-import { FrontPageDashBoard, PlayButton } from "../../components";
+import {
+	FrontPageDashBoard,
+	PlayButton,
+	WinningsDashBoard,
+} from "../../components";
 import { AuthConditionalRender } from "../../hoc";
 import { useSelector } from "react-redux";
 import { StoreState } from "../../reducers";
@@ -51,7 +55,7 @@ export const FrontPage = () => {
 								totalRounds={totalRounds}
 								currentRound={currentRound}
 							/>
-							{/* -- END OF DASHBOARD -- */}
+							<WinningsDashBoard />
 						</WhenIsAuth>
 
 						{/* When user is not authenticated */}
@@ -111,21 +115,12 @@ export const FrontPage = () => {
 										<ConvertButton />
 									</Margins>
 									<LogoGrid className="shine-wrap no-pointer-events no-highlight">
-										<LogoBox />
-										<LogoBox />
-										<LogoBox />
-										<LogoBox />
-										<LogoBox />
-										<LogoBox />
-										<LogoBox />
-										<LogoBox />
-										<LogoBox />
-										<LogoBox />
-										<LogoBox />
-										<LogoBox />
-										<LogoBox />
-										<LogoBox />
-										<LogoBox />
+										{
+											/// tmp until we get actual price logos
+											[...new Array(12)].map(() => (
+												<LogoBox />
+											))
+										}
 									</LogoGrid>
 								</Section>
 								<Section>
