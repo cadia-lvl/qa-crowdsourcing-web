@@ -7,6 +7,7 @@ export const DashBoardOuter = styled.div`
 	background-color: white;
 	display: flex;
 	flex-direction: row;
+	border-radius: 5px;
 	> div {
 		box-sizing: border-box;
 		padding: 15px;
