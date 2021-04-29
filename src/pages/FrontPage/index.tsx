@@ -9,16 +9,29 @@ import {
 	Margins,
 	LogoBox,
 	LogoGrid,
+	PlayIcon,
 } from "./styles";
 import { FrontPageDashBoard, PlayButton } from "../../components";
 import { AuthConditionalRender } from "../../hoc";
 import { useSelector } from "react-redux";
 import { StoreState } from "../../reducers";
+import { NavLink } from "react-router-dom";
 
 export const FrontPage = () => {
 	const user = useSelector((state: StoreState) => state.auth);
 	const { currentRound, totalRounds } = useSelector(
 		(state: StoreState) => state.game
+	);
+
+	const ConvertButton = () => (
+		<NavLink to="/spila">
+			<TextBoxPara>
+				<i className="play">
+					<PlayIcon className="fas fa-chevron-right" />
+					Spila leikinn
+				</i>
+			</TextBoxPara>
+		</NavLink>
 	);
 
 	return (
@@ -61,26 +74,11 @@ export const FrontPage = () => {
 											gervigreind fyrir
 											spurningasvörun.
 										</TextBoxPara>{" "}
+										<ConvertButton />
 									</Margins>
-
 									<GameExample className="shine-wrap no-pointer-events no-highlight" />
 								</Section>
 
-								{/* <LogInBoxContainer>
-									<WhiteFlexCard>
-										<FormContainer>
-											<h1 className="italic">
-												Búðu til aðgang
-											</h1>
-											<SignUpForm />
-											<SignInLinkContainer>
-												<NavLink to="/innskra">
-													Ég er með aðgang
-												</NavLink>
-											</SignInLinkContainer>
-										</FormContainer>
-									</WhiteFlexCard>
-								</LogInBoxContainer> */}
 								<Section>
 									<Margins>
 										<h1 className="italic">
@@ -104,6 +102,7 @@ export const FrontPage = () => {
 											Allt frá kassa af <i>NOCCO</i>{" "}
 											upp í <i>BOSE</i> heyrnatól.
 										</TextBoxPara>
+										<ConvertButton />
 									</Margins>
 									<LogoGrid className="shine-wrap no-pointer-events no-highlight">
 										<LogoBox />
@@ -145,6 +144,7 @@ export const FrontPage = () => {
 											<i>100 þúsund spurninga</i>{" "}
 											markinu.
 										</TextBoxPara>
+										<ConvertButton />
 									</Margins>
 
 									<DashBoardExample className="shine-wrap no-pointer-events no-highlight">
@@ -174,26 +174,29 @@ export const FrontPage = () => {
 											Taktu þátt!
 										</h1>
 										<TextBoxPara>
-											Það eru fjögur þrep af
-											vinningum samtals, þar sem
-											hvert þrep er veglegra en
-											þrepið á undan því. Skráðu þig
-											í leikinn til þess að eiga
-											möguleika á fyrsta þrepi. Því
-											fleiri Lvl sem þú klárar í
-											leiknum, því fleiri vinninga
-											getur þú átt möguleika á að
-											vinna.
+											Spurningar.is gengur út á það
+											að spyrja samfélagið spurninga,
+											fara yfir spurningar og finna
+											svör. Þú{" "}
+											<i>bætir þekkinguna</i> þína í
+											hinum ótrúlegustu málefnum og á
+											meðan þá ertu að{" "}
+											<i>styrkja stöðu íslensk</i>u í
+											nútímanum.
 										</TextBoxPara>
 										<TextBoxPara>
-											Það eru samtals{" "}
-											<i>23 vinningar</i> í boði.
-											Allt frá kassa af <i>NOCCO</i>{" "}
-											upp í <i>BOSE</i> heyrnatól.
+											Á meðan þú spilar leikinn þá
+											safnar þú stigum og Lvl-um sem
+											gefa þér möguleika{" "}
+											<i>glæsilegum vinningum</i>.
 										</TextBoxPara>
 									</Margins>
-
-									<PlayButton>Spila</PlayButton>
+									<NavLink to="/spila">
+										<PlayButton>
+											<PlayIcon className="fas fa-puzzle-piece" />
+											Spila
+										</PlayButton>
+									</NavLink>
 								</Section>
 							</Inner>
 						</WhenNotAuth>

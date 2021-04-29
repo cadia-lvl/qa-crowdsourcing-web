@@ -15,11 +15,24 @@ export const Inner = styled.div`
 	align-items: center;
 `;
 
+export const PlayIcon = styled.i`
+	font-size: 20px;
+	margin-right: 10px;
+`;
+
 export const TextBoxPara = styled.p`
 	i {
 		color: ${Colors.HIGHLIGHT};
 		font-weight: 700;
 		font-style: normal;
+	}
+	${PlayIcon} {
+		font-size: 20px;
+		color: ${Colors.HIGHLIGHT};
+	}
+	i.play {
+		cursor: pointer;
+		margin-bottom: 20px !important;
 	}
 `;
 
@@ -35,21 +48,6 @@ export const TopLine = styled.span`
 	color: ${Colors.WARNING};
 	display: flex;
 	align-items: center;
-`;
-
-export const Thick = styled.span`
-	font-weight: 700;
-	font-size: 36px;
-	margin-right: 30px;
-`;
-
-export const Light = styled.span`
-	font-weight: 300;
-	font-size: 26px;
-`;
-
-export const FormContainer = styled.div`
-	width: 100%;
 `;
 
 export const SignInLinkContainer = styled.div`
@@ -76,7 +74,7 @@ export const Section = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	> button {
+	> a > button {
 		margin-top: 70px !important;
 	}
 `;
