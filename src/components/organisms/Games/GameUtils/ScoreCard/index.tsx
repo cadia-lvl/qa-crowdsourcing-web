@@ -1,19 +1,10 @@
-import React, { useMemo } from "react";
-import { useSelector } from "react-redux";
+import React from "react";
 import { SmallProgressBar } from "../../../..";
-import { StoreState } from "../../../../../reducers";
 import { Colors } from "../../../../../styles";
+import { IProps } from "./interface";
 
-export const ScoreCard = () => {
-	const state = useSelector((state: StoreState) => state.auth.scoreCard);
-
-	const stats = useMemo(() => ({ ...state }), [
-		state.questionVerifications,
-		state.answerVerifications,
-		state.answers,
-		state.questions,
-		state.articles,
-	]);
+export const ScoreCard = (props: IProps) => {
+	const stats = props;
 
 	const calculateProgressRatio = (
 		count: number,

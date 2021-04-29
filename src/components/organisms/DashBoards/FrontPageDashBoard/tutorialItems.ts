@@ -1,4 +1,4 @@
-import { TutorialExplanations } from "../../components/organisms/Tutorial/interface";
+import { TutorialExplanations } from "../../Tutorial/interface";
 
 export const userProgress: TutorialExplanations[] = [
 	{

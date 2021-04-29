@@ -98,7 +98,7 @@ export const RoundCompletedGame = () => {
 					</TextPromptWrapper>
 				</TopBox>
 
-				<ScoreCard />
+				<ScoreCard {...auth.scoreCard} />
 				<BaseButton
 					label="Áfram"
 					type="highlight"

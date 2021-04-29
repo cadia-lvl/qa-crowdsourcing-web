@@ -19,6 +19,8 @@ export const Explain = ({
 	priority,
 }: IProps) => {
 	const state = useSelector((state: StoreState) => state.tutorial);
+	const user = useSelector((state: StoreState) => state.auth);
+
 	const dispatch = useDispatch();
 
 	const action = (() => {
@@ -62,6 +64,8 @@ export const Explain = ({
 		TutorialUtils.toIDArray(items).includes(state.queue[0]?.id) &&
 		state.queue[0]?.highlight;
 
+	if (["guest", "loading"].includes(user.type))
+		return <React.Fragment>{children}</React.Fragment>;
 	return (
 		<Outer>
 			{shouldHighlight ? <ChildWrapper></ChildWrapper> : null}
