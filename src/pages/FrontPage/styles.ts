@@ -8,8 +8,9 @@ export const Outer = styled.div`
 
 export const Inner = styled.div`
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
 	width: 100%;
+	align-items: center;
 `;
 
 export const LeftSpaceWrapper = styled.div`
@@ -17,7 +18,8 @@ export const LeftSpaceWrapper = styled.div`
 	flex: 1;
 	flex-direction: column;
 	color: ${Colors.PARAGRAPH_TEXT_COLOR};
-	padding-right: 70px;
+	width: 650px;
+	margin-bottom: 100px;
 `;
 
 export const TextBoxPara = styled.p`
@@ -51,11 +53,6 @@ export const Thick = styled.span`
 export const Light = styled.span`
 	font-weight: 300;
 	font-size: 26px;
-`;
-
-export const ButtonContainer = styled.div`
-	margin-top: 35px;
-	width: 300px;
 `;
 
 export const FormContainer = styled.div`

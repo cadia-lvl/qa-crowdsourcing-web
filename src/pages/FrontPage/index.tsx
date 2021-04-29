@@ -5,7 +5,6 @@ import {
 	LogInBoxContainer,
 	TextBoxPara,
 	Inner,
-	ButtonContainer,
 	FormContainer,
 	SignInLinkContainer,
 	DashBoardOuter,
@@ -23,7 +22,6 @@ import {
 } from "./styles";
 import {
 	WhiteFlexCard,
-	BaseButton,
 	ScoreCard,
 	QAsPerDay,
 	GameProgress,
@@ -176,44 +174,27 @@ export const FrontPage = () => {
 						<WhenNotAuth>
 							<Inner>
 								<LeftSpaceWrapper>
-									<h1>Spurðu mig spurninga!</h1>
+									<h1 className="italic">
+										Spurðu mig spurninga!
+									</h1>
 									<TextBoxPara>
 										Flest höfum við gaman af
 										spurningjaleikjum. Hér getur þú
 										aflað þér allskyns þekkingar og um
 										leið styrkt íslensku í nútímanum.
-										Þær spurningar og svör sem verða
-										til á þessari síðu nýtast síðan til
-										þess að þjálfa gervigreind sem mun
-										læra að svara hinum ýmsu
-										spurningum, ekki aðeins þeim sem
-										hér birtast.
-									</TextBoxPara>
-									<TextBoxPara>
-										Afurð þessara verkefnis mun því
-										ekki einungis læra svörin við þínum
-										spurningum, heldur um leið læra að
-										svara spurningum sem það hefur
-										aldrei séð áður
 									</TextBoxPara>
 									<TextBoxPara>
 										Hálpaðu okkur að koma íslensku inn
 										í nútímann, markmiðið er að safna{" "}
 										<i>100.000 spurningum</i> árið 2021
 									</TextBoxPara>
-									<ButtonContainer>
-										<NavLink to="/spila">
-											<BaseButton
-												label="Áfram"
-												onClick={() => null}
-												type="success"
-											/>
-										</NavLink>
-									</ButtonContainer>
 								</LeftSpaceWrapper>
 								<LogInBoxContainer>
 									<WhiteFlexCard>
 										<FormContainer>
+											<h1 className="italic">
+												Búðu til aðgang
+											</h1>
 											<SignUpForm />
 											<SignInLinkContainer>
 												<NavLink to="/innskra">
