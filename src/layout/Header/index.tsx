@@ -1,11 +1,11 @@
 import React from "react";
-import { Outer, HeaderItem, HeaderItemContainer, Badge } from "./styles";
+import { Outer, HeaderItem, HeaderItemContainer } from "./styles";
 import { headerItems } from "./utils";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logOutUser } from "../../actions";
 import { StoreState } from "../../reducers";
-import { Colors } from "../../styles";
+import { PlayButton } from "../../components";
 
 const Header = () => {
 	const dispatch = useDispatch();
@@ -43,6 +43,7 @@ const Header = () => {
 					</React.Fragment>
 				) : null}
 			</HeaderItemContainer>
+			<PlayButton>Spila</PlayButton>
 		</Outer>
 	);
 };

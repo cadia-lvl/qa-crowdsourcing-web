@@ -114,5 +114,16 @@ export const GlobalStyle = createGlobalStyle`
         cursor:pointer;  
     }
 
+    .no-pointer-events {
+
+        pointer-events: none;
+    }
+
+    .no-highlight {
+        -webkit-user-select: none; /* Safari */
+        -ms-user-select: none; /* IE 10 and IE 11 */
+        user-select: none; /* Standard syntax */
+    }
+
 
 `;

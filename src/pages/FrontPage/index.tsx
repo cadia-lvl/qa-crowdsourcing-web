@@ -1,56 +1,25 @@
-import React, { useMemo } from "react";
+import React from "react";
 import {
 	Outer,
-	LeftSpaceWrapper,
-	LogInBoxContainer,
+	Section,
 	TextBoxPara,
 	Inner,
-	FormContainer,
-	SignInLinkContainer,
-	DashBoardOuter,
-	DashboardCol1,
-	DashboardCol2,
-	DashboardCol3,
-	Col3Cell1,
-	Col3Cell2,
-	Col1Row1,
-	Col1Row2,
-	Col1Row1Cell1,
-	Col1Row1Cell2,
-	Col1Row3,
-	GlowBtnWrapper,
+	GameExample,
+	DashBoardExample,
+	Margins,
+	LogoBox,
+	LogoGrid,
 } from "./styles";
-import {
-	WhiteFlexCard,
-	ScoreCard,
-	QAsPerDay,
-	GameProgress,
-	UserAvatar,
-	PlayButton,
-	Explain,
-} from "../../components";
+import { FrontPageDashBoard, PlayButton } from "../../components";
 import { AuthConditionalRender } from "../../hoc";
-import { SignUpForm } from "../../forms";
-import { NavLink } from "react-router-dom";
-import { StoreState } from "../../reducers";
 import { useSelector } from "react-redux";
-import { UserLevelService } from "../../services";
-import * as TUTORIAL from "./tutorialItems";
+import { StoreState } from "../../reducers";
 
 export const FrontPage = () => {
-	const {
-		level,
-		username,
-		scoreCard: { hiscoreRank },
-	} = useSelector((state: StoreState) => state.auth);
+	const user = useSelector((state: StoreState) => state.auth);
 	const { currentRound, totalRounds } = useSelector(
 		(state: StoreState) => state.game
 	);
-
-	const roundInfo = useMemo(() => ({ currentRound, totalRounds }), [
-		currentRound,
-		totalRounds,
-	]);
 
 	return (
 		<Outer>
@@ -60,136 +29,44 @@ export const FrontPage = () => {
 					<React.Fragment>
 						{/* When user is Authenticated */}
 						<WhenIsAuth>
-							<DashBoardOuter>
-								{/* -- START OF DASHBOARD --
-									
-								This is sort of a home made grid
-								where things are split into columns first and then
-								optionally into rows and lastly always cells */}
-								<DashboardCol1>
-									{" "}
-									<Explain items={TUTORIAL.userProgress}>
-										<Col1Row1>
-											<Col1Row1Cell1>
-												<UserAvatar
-													src={UserLevelService.mapLevelToIconURL(
-														level
-													)}
-												/>
-											</Col1Row1Cell1>
-
-											<Col1Row1Cell2>
-												<span>
-													Lvl {level}{" "}
-													{UserLevelService.mapLevelToString(
-														level
-													)}
-												</span>
-												<span className="bold username">
-													{username}
-												</span>
-											</Col1Row1Cell2>
-										</Col1Row1>
-										<Col1Row2>
-											<div className="advance-info">
-												<span>
-													{roundInfo.currentRound -
-														1}
-													/
-													{roundInfo.totalRounds}
-												</span>
-												<span>
-													<i className="fas fa-chevron-right" />
-													<i className="fas fa-chevron-right" />
-													Lvl {level + 1}{" "}
-													{UserLevelService.mapLevelToString(
-														level + 1
-													)}
-												</span>
-											</div>
-											<GameProgress />
-										</Col1Row2>
-									</Explain>
-									<Explain items={TUTORIAL.userTask}>
-										<Col1Row3>
-											<h1 className="italic">
-												Næsta verkefni
-											</h1>
-											<p>
-												Þér hefur tekist að gera
-												foo og bar, en getur þú
-												gert foobar? Það eru
-												þúsundir schpoinkels
-												valsandi um miðbæinn, getur
-												þú stoppað þau?
-											</p>
-											<GlowBtnWrapper>
-												<NavLink to="/spila">
-													<PlayButton>
-														Spila
-													</PlayButton>
-												</NavLink>
-											</GlowBtnWrapper>
-										</Col1Row3>
-									</Explain>
-								</DashboardCol1>
-								<DashboardCol2>
-									<Explain items={TUTORIAL.scorecard}>
-										<ScoreCard />
-									</Explain>
-								</DashboardCol2>
-								<DashboardCol3>
-									{" "}
-									<Col3Cell1>
-										<Explain
-											items={
-												TUTORIAL.communityProgress
-											}
-										>
-											<QAsPerDay />
-										</Explain>
-									</Col3Cell1>
-									<Col3Cell2>
-										<h1 className="italic">
-											<i className="fas fa-sort-numeric-up" />
-											Stigataflan
-										</h1>
-										<p>Þú ert númer #{hiscoreRank}</p>
-										<p>
-											Samfélagið á spurningar.is er
-											stanslaust að búa til
-											spurningar og finna svör. Því
-											fleiri spurningar og svör sem
-											þú skapar því betra sæti nærð
-											þú á stigatöflunni
-										</p>
-									</Col3Cell2>
-								</DashboardCol3>
-							</DashBoardOuter>
-
+							<FrontPageDashBoard
+								{...user}
+								totalRounds={totalRounds}
+								currentRound={currentRound}
+							/>
 							{/* -- END OF DASHBOARD -- */}
 						</WhenIsAuth>
 
 						{/* When user is not authenticated */}
 						<WhenNotAuth>
 							<Inner>
-								<LeftSpaceWrapper>
-									<h1 className="italic">
-										Spurðu mig spurninga!
-									</h1>
-									<TextBoxPara>
-										Flest höfum við gaman af
-										spurningjaleikjum. Hér getur þú
-										aflað þér allskyns þekkingar og um
-										leið styrkt íslensku í nútímanum.
-									</TextBoxPara>
-									<TextBoxPara>
-										Hálpaðu okkur að koma íslensku inn
-										í nútímann, markmiðið er að safna{" "}
-										<i>100.000 spurningum</i> árið 2021
-									</TextBoxPara>
-								</LeftSpaceWrapper>
-								<LogInBoxContainer>
+								<Section>
+									<Margins>
+										<h1 className="italic">
+											Spurningar.is
+										</h1>
+										<TextBoxPara>
+											Auktu þekkingu þína á hinum
+											ýmsum málefnum og hjálpaðu að
+											koma íslensku í nútimann í
+											leiðinni. Það eru spennandi
+											vinningar í boði og því stærra
+											sem þitt framlag verður því
+											betri vinninga getur þú unnið.
+										</TextBoxPara>
+										<TextBoxPara>
+											Markmiðið er að safna{" "}
+											<i>100.000 spurningum</i> árið
+											2021 til þess að búa til
+											gervigreind fyrir
+											spurningasvörun.
+										</TextBoxPara>{" "}
+									</Margins>
+
+									<GameExample className="shine-wrap no-pointer-events no-highlight" />
+								</Section>
+
+								{/* <LogInBoxContainer>
 									<WhiteFlexCard>
 										<FormContainer>
 											<h1 className="italic">
@@ -203,7 +80,121 @@ export const FrontPage = () => {
 											</SignInLinkContainer>
 										</FormContainer>
 									</WhiteFlexCard>
-								</LogInBoxContainer>
+								</LogInBoxContainer> */}
+								<Section>
+									<Margins>
+										<h1 className="italic">
+											Hvaða vinninga getur þú unnið?
+										</h1>
+										<TextBoxPara>
+											Það eru fjögur þrep af
+											vinningum samtals, þar sem
+											hvert þrep er veglegra en
+											þrepið á undan því. Skráðu þig
+											í leikinn til þess að eiga
+											möguleika á fyrsta þrepi. Því
+											fleiri Lvl sem þú klárar í
+											leiknum, því fleiri vinninga
+											getur þú átt möguleika á að
+											vinna.
+										</TextBoxPara>
+										<TextBoxPara>
+											Það eru samtals{" "}
+											<i>23 vinningar</i> í boði.
+											Allt frá kassa af <i>NOCCO</i>{" "}
+											upp í <i>BOSE</i> heyrnatól.
+										</TextBoxPara>
+									</Margins>
+									<LogoGrid className="shine-wrap no-pointer-events no-highlight">
+										<LogoBox />
+										<LogoBox />
+										<LogoBox />
+										<LogoBox />
+										<LogoBox />
+										<LogoBox />
+										<LogoBox />
+										<LogoBox />
+										<LogoBox />
+										<LogoBox />
+										<LogoBox />
+										<LogoBox />
+										<LogoBox />
+										<LogoBox />
+										<LogoBox />
+									</LogoGrid>
+								</Section>
+								<Section>
+									<Margins>
+										<h1 className="italic">
+											Fylgstu með mælaborðinu þínu
+										</h1>
+										<TextBoxPara>
+											Þegar þú býrð til aðgang þá
+											færðu þitt eigið mælaborð. Þar
+											getur þú séð hvert þú ert
+											kominn í leiknum, hvaða
+											vinningum þú átt rétt á og
+											hversu mikið þú hefur lagt fram
+											til samfélagsins
+										</TextBoxPara>
+										<TextBoxPara>
+											Á mælaborðinu sérðu einnig hvar
+											þú ert í stigatöflunni ásamt
+											því hversu nálægt samfélagið á
+											spurningar.is er að ná{" "}
+											<i>100 þúsund spurninga</i>{" "}
+											markinu.
+										</TextBoxPara>
+									</Margins>
+
+									<DashBoardExample className="shine-wrap no-pointer-events no-highlight">
+										<FrontPageDashBoard
+											{...{
+												...user,
+												username:
+													"Jónína Jónsdóttir",
+												level: 5,
+												scoreCard: {
+													hiscoreRank: 327,
+													questionVerifications: 12,
+													questions: 5,
+													answerVerifications: 13,
+													answers: 15,
+													articles: 10,
+												},
+											}}
+											totalRounds={7}
+											currentRound={3}
+										/>
+									</DashBoardExample>
+								</Section>
+								<Section>
+									<Margins>
+										<h1 className="italic">
+											Taktu þátt!
+										</h1>
+										<TextBoxPara>
+											Það eru fjögur þrep af
+											vinningum samtals, þar sem
+											hvert þrep er veglegra en
+											þrepið á undan því. Skráðu þig
+											í leikinn til þess að eiga
+											möguleika á fyrsta þrepi. Því
+											fleiri Lvl sem þú klárar í
+											leiknum, því fleiri vinninga
+											getur þú átt möguleika á að
+											vinna.
+										</TextBoxPara>
+										<TextBoxPara>
+											Það eru samtals{" "}
+											<i>23 vinningar</i> í boði.
+											Allt frá kassa af <i>NOCCO</i>{" "}
+											upp í <i>BOSE</i> heyrnatól.
+										</TextBoxPara>
+									</Margins>
+
+									<PlayButton>Spila</PlayButton>
+								</Section>
 							</Inner>
 						</WhenNotAuth>
 					</React.Fragment>

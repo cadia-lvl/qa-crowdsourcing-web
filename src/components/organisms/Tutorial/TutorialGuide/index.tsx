@@ -11,6 +11,7 @@ export const TutorialGuide = () => {
 	const [notificationShake, setNotificationShake] = useState(false);
 
 	const state = useSelector((state: StoreState) => state.tutorial);
+	const user = useSelector((state: StoreState) => state.auth);
 
 	const firstItem = state.queue[0];
 
@@ -28,6 +29,7 @@ export const TutorialGuide = () => {
 		setNotificationShake(false);
 	}, [showBubbles]);
 
+	if (["loading", "guest"].includes(user.type)) return null;
 	return (
 		<Outer
 			shake={notificationShake && !showBubbles && bubbleCount > 0}
