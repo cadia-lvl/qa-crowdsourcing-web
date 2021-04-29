@@ -1,6 +1,12 @@
 import styled from "styled-components";
 import { PlayButton } from "../../components";
-import { LANDING_PAGE_GAME_EXAMPLE } from "../../static";
+import {
+	ICON_LVL_2,
+	ICON_LVL_5,
+	ICON_LVL_7,
+	ICON_LVL_8,
+	LANDING_PAGE_GAME_EXAMPLE,
+} from "../../static";
 import { Colors } from "../../styles";
 
 export const Outer = styled.div`
@@ -77,6 +83,7 @@ export const Section = styled.div`
 	> a > button {
 		margin-top: 70px !important;
 	}
+	position: relative;
 `;
 
 export const Margins = styled.div`
@@ -102,4 +109,51 @@ export const LogoBox = styled.div`
 	background-color: #fff;
 	background-position: center;
 	border-radius: 5px;
+`;
+
+const ICON_BASE = `
+
+	height: 100px;
+	width: 100px;
+	position: absolute;
+	border-radius: 50%;
+	background-size: contain;
+`;
+
+export const Icon1 = styled.div`
+	${ICON_BASE};
+	top: 50px;
+	left: -100px;
+	background-image: url(${ICON_LVL_5});
+	transform: rotateZ(-20deg);
+`;
+
+export const Icon2 = styled.div`
+	${ICON_BASE};
+	top: 150px;
+	right: -100px;
+	height: 120px;
+	width: 120px;
+	background-image: url(${ICON_LVL_2});
+	transform: rotateZ(10deg);
+`;
+
+export const Icon3 = styled.div`
+	${ICON_BASE};
+	top: 50px;
+	left: 100px;
+	height: 140px;
+	width: 140px;
+	background-image: url(${ICON_LVL_7});
+	transform: rotateZ(-15deg);
+`;
+
+export const Icon4 = styled.div`
+	${ICON_BASE};
+	top: 50px;
+	right: -120px;
+	height: 140px;
+	width: 140px;
+	background-image: url(${ICON_LVL_8});
+	transform: rotateZ(15deg);
 `;

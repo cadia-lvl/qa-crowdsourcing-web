@@ -10,6 +10,10 @@ import {
 	LogoBox,
 	LogoGrid,
 	PlayIcon,
+	Icon1,
+	Icon2,
+	Icon3,
+	Icon4,
 } from "./styles";
 import { FrontPageDashBoard, PlayButton } from "../../components";
 import { AuthConditionalRender } from "../../hoc";
@@ -54,6 +58,7 @@ export const FrontPage = () => {
 						<WhenNotAuth>
 							<Inner>
 								<Section>
+									<Icon1 />
 									<Margins>
 										<h1 className="italic">
 											Spurningar.is
@@ -80,6 +85,7 @@ export const FrontPage = () => {
 								</Section>
 
 								<Section>
+									<Icon2 />
 									<Margins>
 										<h1 className="italic">
 											Hvaða vinninga getur þú unnið?
@@ -123,6 +129,7 @@ export const FrontPage = () => {
 									</LogoGrid>
 								</Section>
 								<Section>
+									<Icon3 />
 									<Margins>
 										<h1 className="italic">
 											Fylgstu með mælaborðinu þínu
@@ -169,6 +176,7 @@ export const FrontPage = () => {
 									</DashBoardExample>
 								</Section>
 								<Section>
+									<Icon4 />
 									<Margins>
 										<h1 className="italic">
 											Taktu þátt!
