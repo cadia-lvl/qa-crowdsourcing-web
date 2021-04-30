@@ -37,6 +37,37 @@ export const mapCategoryNametoCategory = (
 	categoryName: PrizeCategoryNames
 ) => PriceCategories.find((item) => item.name === categoryName);
 
+export const getUnlockedAtRoundEnd = (user: User) => {
+	let category: PrizeCategory | undefined;
+	if (user.level === 5)
+		category = PriceCategories.find((item) => item.name === "Klíkan");
+	if (user.level === 10)
+		category = PriceCategories.find(
+			(item) => item.name === "Útvaldir"
+		);
+	return category;
+};
+
+export const getUpcomingUnlocks = (user: User) => {
+	const outputArray: PrizeCategory[] = [];
+
+	if (user.level < 5)
+		outputArray.push(
+			PriceCategories.find((item) => item.name === "Klíkan")!
+		);
+	else if (user.level < 10)
+		outputArray.push(
+			PriceCategories.find((item) => item.name === "Útvaldir")!
+		);
+
+	if (user.scoreCard.invites < 10)
+		outputArray.push(
+			PriceCategories.find((item) => item.name === "Áhrifavaldar")!
+		);
+
+	return outputArray;
+};
+
 export const PrizeItems: PrizeItem[] = [
 	{
 		category: "Allir taka þátt",
@@ -274,9 +305,9 @@ export const hasUnlockedCategory = (
 		case "Klíkan":
 			return user.level >= 5;
 		case "Útvaldir":
-			return user.level >= 5;
+			return user.level >= 10;
 		case "Áhrifavaldar":
-			return false;
+			return user.scoreCard.invites >= 10;
 		default:
 			return false;
 	}

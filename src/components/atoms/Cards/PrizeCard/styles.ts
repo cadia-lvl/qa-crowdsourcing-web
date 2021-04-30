@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Colors } from "../../../../../styles";
+import { Colors } from "../../../../styles";
 
 interface IIsAvailableProps {
 	isAvailable?: boolean;

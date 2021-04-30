@@ -1,4 +1,4 @@
-import { PrizeCategory } from "../../../../../services/RewardService/interface";
+import { PrizeCategory } from "../../../../services/RewardService/interface";
 
 export interface IProps {
 	imageURL?: string;

@@ -1,8 +1,8 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { LoadingFlexIMG } from "../../../..";
-import { StoreState } from "../../../../../reducers";
-import { RewardService } from "../../../../../services";
+import { LoadingFlexIMG } from "../../..";
+import { StoreState } from "../../../../reducers";
+import { RewardService } from "../../../../services";
 import { IProps } from "./interface";
 import {
 	Outer,
@@ -12,7 +12,7 @@ import {
 	TextWrapper,
 } from "./styles";
 
-const PrizeItem = ({
+export const PrizeCard = ({
 	label,
 	imageURL,
 	category,
@@ -78,5 +78,3 @@ const PrizeItem = ({
 		</Outer>
 	);
 };
-
-export default PrizeItem;
