@@ -1,11 +1,9 @@
 import styled from "styled-components";
-import { PlayButton } from "../../components";
 import {
 	ICON_LVL_2,
 	ICON_LVL_5,
 	ICON_LVL_7,
 	ICON_LVL_8,
-	LANDING_PAGE_GAME_EXAMPLE,
 } from "../../static";
 import { Colors } from "../../styles";
 
@@ -59,15 +57,6 @@ export const TopLine = styled.span`
 export const SignInLinkContainer = styled.div`
 	margin-top: 15px;
 	text-align: center;
-`;
-
-export const GameExample = styled.div`
-	background-image: url(${LANDING_PAGE_GAME_EXAMPLE});
-	background-repeat: no-repeat;
-	background-size: cover;
-	height: 211px;
-	width: 727px;
-	margin-top: 25px;
 `;
 
 export const DashBoardExample = styled.div`

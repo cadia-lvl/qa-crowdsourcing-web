@@ -4,7 +4,6 @@ import {
 	Section,
 	TextBoxPara,
 	Inner,
-	GameExample,
 	DashBoardExample,
 	Margins,
 	LogoBox,
@@ -81,11 +80,17 @@ export const FrontPage = () => {
 											<i>100.000 spurningum</i> árið
 											2021 til þess að búa til
 											gervigreind fyrir
-											spurningasvörun.
+											spurningasvörun. Því meira sem
+											þú spilar, því meiri stuðning
+											veitir þú íslensku í nútímanum.
 										</TextBoxPara>{" "}
-										<ConvertButton />
 									</Margins>
-									<GameExample className="shine-wrap no-pointer-events no-highlight" />
+									<NavLink to="/spila">
+										<PlayButton>
+											<PlayIcon className="fas fa-puzzle-piece" />
+											Spila
+										</PlayButton>
+									</NavLink>
 								</Section>
 
 								<Section>

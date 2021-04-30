@@ -1,11 +1,10 @@
 import React from "react";
 import { Outer, HeaderItem, HeaderItemContainer } from "./styles";
 import { headerItems } from "./utils";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logOutUser } from "../../actions";
 import { StoreState } from "../../reducers";
-import { PlayButton } from "../../components";
 
 const Header = () => {
 	const dispatch = useDispatch();
@@ -39,11 +38,7 @@ const Header = () => {
 							>
 								Útskrá
 							</HeaderItem>
-						) : (
-							<NavLink to="/spila">
-								<PlayButton>Spila</PlayButton>
-							</NavLink>
-						)}
+						) : null}
 					</React.Fragment>
 				) : null}
 			</HeaderItemContainer>
