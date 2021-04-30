@@ -18,6 +18,25 @@ export const Inner = styled.div`
 	margin-top: 20px;
 `;
 
-interface IItemWrapper {
-	isAvailable?: boolean;
+export const Lists = styled.div`
+	display: flex;
+`;
+
+interface IListHeading {
+	isSelected?: boolean;
 }
+export const ListHeading = styled.h1<IListHeading>`
+	margin-right: 50px;
+	transition: 0.3s;
+	${({ isSelected }) =>
+		!isSelected
+			? `
+		color: #ccc;
+	`
+			: `
+	`}
+	cursor: pointer;
+	:hover {
+		color: ${Colors.HIGHLIGHT};
+	}
+`;

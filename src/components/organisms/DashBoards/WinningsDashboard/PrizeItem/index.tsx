@@ -53,14 +53,12 @@ const PrizeItem = ({
 			<TextWrapper className="no-highlight">
 				{isAvailable ? (
 					individualItem ? (
-						<React.Fragment>
-							Þú átt möguleika á að vinna{" "}
-							<span className="success bold">{label}</span>.{" "}
+						<span>
 							Þessi vinningur tilheyrir{" "}
 							<span className="success bold">
 								{category.name_tgf}
 							</span>
-						</React.Fragment>
+						</span>
 					) : (
 						<React.Fragment>
 							Þú átt möguleika á að vinna alla þá vinninga

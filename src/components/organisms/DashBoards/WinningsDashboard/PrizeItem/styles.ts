@@ -30,6 +30,7 @@ export const TextWrapper = styled.div`
 	padding: 0 10px;
 	text-align: center;
 	margin-top: 10px;
+	word-wrap: break-word;
 `;
 
 export const AvailabilityLabel = styled.div<IIsAvailableProps>`

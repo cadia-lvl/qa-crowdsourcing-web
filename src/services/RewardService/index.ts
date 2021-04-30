@@ -1,5 +1,5 @@
 import { User } from "../../declerations";
-import { PrizeCategory, PrizeCategoryNames } from "./interface";
+import { PrizeCategory, PrizeCategoryNames, PrizeItem } from "./interface";
 
 export const PriceCategories: PrizeCategory[] = [
 	{
@@ -32,6 +32,237 @@ export const PriceCategories: PrizeCategory[] = [
 		name_tf: "Áhrifavalda",
 	},
 ];
+
+export const mapCategoryNametoCategory = (
+	categoryName: PrizeCategoryNames
+) => PriceCategories.find((item) => item.name === categoryName);
+
+export const PrizeItems: PrizeItem[] = [
+	{
+		category: "Allir taka þátt",
+		name: "Kassi af NOCCO",
+		sponsor: "Core",
+		imageURL:
+			"https://www.fivestartrading-holland.eu/images/product_images/original_images/nocco%20tropical%20250%20tray.jpg",
+	},
+	{
+		category: "Allir taka þátt",
+		name: "Kassi af NOCCO",
+		sponsor: "Core",
+		imageURL:
+			"https://www.fivestartrading-holland.eu/images/product_images/original_images/nocco%20tropical%20250%20tray.jpg",
+	},
+	{
+		category: "Allir taka þátt",
+		name: "Kassi af NOCCO",
+		sponsor: "Core",
+		imageURL:
+			"https://www.fivestartrading-holland.eu/images/product_images/original_images/nocco%20tropical%20250%20tray.jpg",
+	},
+	{
+		category: "Allir taka þátt",
+		name: "Kassi af NOCCO",
+		sponsor: "Core",
+		imageURL:
+			"https://www.fivestartrading-holland.eu/images/product_images/original_images/nocco%20tropical%20250%20tray.jpg",
+	},
+	{
+		category: "Klíkan",
+		name: "Kassi af NOCCO",
+		sponsor: "Core",
+		imageURL:
+			"https://www.fivestartrading-holland.eu/images/product_images/original_images/nocco%20tropical%20250%20tray.jpg",
+	},
+	{
+		category: "Klíkan",
+		name: "Kassi af NOCCO",
+		sponsor: "Core",
+		imageURL:
+			"https://www.fivestartrading-holland.eu/images/product_images/original_images/nocco%20tropical%20250%20tray.jpg",
+	},
+	{
+		category: "Klíkan",
+		name: "Kassi af NOCCO",
+		sponsor: "Core",
+		imageURL:
+			"https://www.fivestartrading-holland.eu/images/product_images/original_images/nocco%20tropical%20250%20tray.jpg",
+	},
+	{
+		category: "Allir taka þátt",
+		name: "Kassi af NOCCO",
+		sponsor: "Core",
+		imageURL:
+			"https://www.fivestartrading-holland.eu/images/product_images/original_images/nocco%20tropical%20250%20tray.jpg",
+	},
+	{
+		category: "Klíkan",
+		name: "Kassi af NOCCO",
+		sponsor: "Core",
+		imageURL:
+			"https://www.fivestartrading-holland.eu/images/product_images/original_images/nocco%20tropical%20250%20tray.jpg",
+	},
+	{
+		category: "Klíkan",
+		name: "Kassi af NOCCO",
+		sponsor: "Core",
+		imageURL:
+			"https://www.fivestartrading-holland.eu/images/product_images/original_images/nocco%20tropical%20250%20tray.jpg",
+	},
+	{
+		category: "Klíkan",
+		name: "Kassi af NOCCO",
+		sponsor: "Core",
+		imageURL:
+			"https://www.fivestartrading-holland.eu/images/product_images/original_images/nocco%20tropical%20250%20tray.jpg",
+	},
+	{
+		category: "Útvaldir",
+		name: "Kassi af NOCCO",
+		sponsor: "Core",
+		imageURL:
+			"https://www.fivestartrading-holland.eu/images/product_images/original_images/nocco%20tropical%20250%20tray.jpg",
+	},
+	{
+		category: "Útvaldir",
+		name: "Kassi af NOCCO",
+		sponsor: "Core",
+		imageURL:
+			"https://www.fivestartrading-holland.eu/images/product_images/original_images/nocco%20tropical%20250%20tray.jpg",
+	},
+	{
+		category: "Útvaldir",
+		name: "Kassi af NOCCO",
+		sponsor: "Core",
+		imageURL:
+			"https://www.fivestartrading-holland.eu/images/product_images/original_images/nocco%20tropical%20250%20tray.jpg",
+	},
+	{
+		category: "Útvaldir",
+		name: "Kassi af NOCCO",
+		sponsor: "Core",
+		imageURL:
+			"https://www.fivestartrading-holland.eu/images/product_images/original_images/nocco%20tropical%20250%20tray.jpg",
+	},
+	{
+		category: "Útvaldir",
+		name: "Kassi af NOCCO",
+		sponsor: "Core",
+		imageURL:
+			"https://www.fivestartrading-holland.eu/images/product_images/original_images/nocco%20tropical%20250%20tray.jpg",
+	},
+	{
+		category: "Útvaldir",
+		name: "Kassi af NOCCO",
+		sponsor: "Core",
+		imageURL:
+			"https://www.fivestartrading-holland.eu/images/product_images/original_images/nocco%20tropical%20250%20tray.jpg",
+	},
+	{
+		category: "Útvaldir",
+		name: "Kassi af NOCCO",
+		sponsor: "Core",
+		imageURL:
+			"https://www.fivestartrading-holland.eu/images/product_images/original_images/nocco%20tropical%20250%20tray.jpg",
+	},
+	{
+		category: "Áhrifavaldar",
+		name: "Kassi af NOCCO",
+		sponsor: "Core",
+		imageURL:
+			"https://www.fivestartrading-holland.eu/images/product_images/original_images/nocco%20tropical%20250%20tray.jpg",
+	},
+	{
+		category: "Áhrifavaldar",
+		name: "Kassi af NOCCO",
+		sponsor: "Core",
+		imageURL:
+			"https://www.fivestartrading-holland.eu/images/product_images/original_images/nocco%20tropical%20250%20tray.jpg",
+	},
+	{
+		category: "Áhrifavaldar",
+		name: "Kassi af NOCCO",
+		sponsor: "Core",
+		imageURL:
+			"https://www.fivestartrading-holland.eu/images/product_images/original_images/nocco%20tropical%20250%20tray.jpg",
+	},
+	{
+		category: "Áhrifavaldar",
+		name: "Kassi af NOCCO",
+		sponsor: "Core",
+		imageURL:
+			"https://www.fivestartrading-holland.eu/images/product_images/original_images/nocco%20tropical%20250%20tray.jpg",
+	},
+	{
+		category: "Áhrifavaldar",
+		name: "Kassi af NOCCO",
+		sponsor: "Core",
+		imageURL:
+			"https://www.fivestartrading-holland.eu/images/product_images/original_images/nocco%20tropical%20250%20tray.jpg",
+	},
+	{
+		category: "Áhrifavaldar",
+		name: "Kassi af NOCCO",
+		sponsor: "Core",
+		imageURL:
+			"https://www.fivestartrading-holland.eu/images/product_images/original_images/nocco%20tropical%20250%20tray.jpg",
+	},
+	{
+		category: "Áhrifavaldar",
+		name: "Kassi af NOCCO",
+		sponsor: "Core",
+		imageURL:
+			"https://www.fivestartrading-holland.eu/images/product_images/original_images/nocco%20tropical%20250%20tray.jpg",
+	},
+	{
+		category: "Áhrifavaldar",
+		name: "Kassi af NOCCO",
+		sponsor: "Core",
+		imageURL:
+			"https://www.fivestartrading-holland.eu/images/product_images/original_images/nocco%20tropical%20250%20tray.jpg",
+	},
+	{
+		category: "Áhrifavaldar",
+		name: "Kassi af NOCCO",
+		sponsor: "Core",
+		imageURL:
+			"https://www.fivestartrading-holland.eu/images/product_images/original_images/nocco%20tropical%20250%20tray.jpg",
+	},
+	{
+		category: "Áhrifavaldar",
+		name: "Kassi af NOCCO",
+		sponsor: "Core",
+		imageURL:
+			"https://www.fivestartrading-holland.eu/images/product_images/original_images/nocco%20tropical%20250%20tray.jpg",
+	},
+	{
+		category: "Áhrifavaldar",
+		name: "Kassi af NOCCO",
+		sponsor: "Core",
+		imageURL:
+			"https://www.fivestartrading-holland.eu/images/product_images/original_images/nocco%20tropical%20250%20tray.jpg",
+	},
+	{
+		category: "Áhrifavaldar",
+		name: "Kassi af NOCCO",
+		sponsor: "Core",
+		imageURL:
+			"https://www.fivestartrading-holland.eu/images/product_images/original_images/nocco%20tropical%20250%20tray.jpg",
+	},
+	{
+		category: "Áhrifavaldar",
+		name: "Kassi af NOCCO",
+		sponsor: "Core",
+		imageURL:
+			"https://www.fivestartrading-holland.eu/images/product_images/original_images/nocco%20tropical%20250%20tray.jpg",
+	},
+];
+
+export const countPrizesPerCategory = (
+	categoryName: PrizeCategoryNames
+) => {
+	return PrizeItems.filter((item) => item.category === categoryName)
+		.length;
+};
 
 export const hasUnlockedCategory = (
 	category: PrizeCategoryNames,
