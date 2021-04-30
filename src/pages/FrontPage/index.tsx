@@ -163,6 +163,7 @@ export const FrontPage = () => {
 													answerVerifications: 13,
 													answers: 15,
 													articles: 10,
+													invites: 0,
 												},
 											}}
 											totalRounds={7}

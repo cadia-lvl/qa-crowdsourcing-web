@@ -38,7 +38,7 @@ export const IconBoxOuter = styled.div`
 	align-items: center;
 	flex-direction: column;
 	margin-top: 50px;
-	margin-bottom: 100px;
+	margin-bottom: 50px;
 `;
 
 export const TextPromptWrapper = styled.div`
