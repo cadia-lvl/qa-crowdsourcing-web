@@ -1,17 +1,6 @@
 import React from "react";
-import {
-	Outer,
-	Inner,
-	ItemWrapper,
-	AvailabilityLabel,
-	NameLabel,
-	ImageWrapper,
-	TextWrapper,
-} from "./styles";
+import { Outer, Inner } from "./styles";
 import { RewardService } from "../../../../services";
-import { StoreState } from "../../../../reducers";
-import { useSelector } from "react-redux";
-import { LoadingFlexIMG } from "../../../";
 import PrizeItem from "./PrizeItem";
 
 export const WinningsDashBoard = () => {

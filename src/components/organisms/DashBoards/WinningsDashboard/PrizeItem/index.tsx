@@ -24,7 +24,11 @@ const PrizeItem = ({
 		user
 	);
 	return (
-		<Outer isAvailable={isAvailable} title={label}>
+		<Outer
+			isAvailable={isAvailable}
+			title={label}
+			className={isAvailable ? "shine-wrap" : ""}
+		>
 			<ImageWrapper>
 				<LoadingFlexIMG src={imageURL ?? ""} />
 			</ImageWrapper>

@@ -256,7 +256,7 @@ $shooting-time: 3000ms;
 	);
 	transition: all 2s;
 	transform: rotate(-45deg);
-	animation: shine 5s infinite forwards;
+	animation: shine 5s 2 forwards;
 }
 @keyframes shine {
 	0% {
