@@ -7,3 +7,4 @@ export * from "./Texts";
 export * from "./Loaders";
 export * from "./Avatars";
 export * from "./Animations";
+export * from "./Images";

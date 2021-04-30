@@ -20,6 +20,8 @@ export interface PrizeCategory {
 	name: PrizeCategoryNames;
 	description: string;
 	prereqDescription: string;
+	name_tf: string;
+	name_tgf: string;
 }
 
 export interface PrizeItem {

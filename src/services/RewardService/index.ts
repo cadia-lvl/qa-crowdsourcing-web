@@ -6,21 +6,30 @@ export const PriceCategories: PrizeCategory[] = [
 		name: "Allir taka þátt",
 		description: "",
 		prereqDescription: "",
+		name_tgf: "Allir taka þátt",
+		name_tf: "Allir taka þátt",
 	},
 	{
 		name: "Klíkan",
 		description: "",
-		prereqDescription: "",
+		prereqDescription: "komast í Lvl 5",
+		name_tgf: "Klíkunni",
+		name_tf: "Klíkuna",
 	},
 	{
 		name: "Útvaldir",
 		description: "",
-		prereqDescription: "",
+		prereqDescription: "komast í Lvl 10",
+		name_tgf: "Útvöldum",
+		name_tf: "Útvalda",
 	},
 	{
 		name: "Áhrifavaldar",
 		description: "",
-		prereqDescription: "",
+		prereqDescription:
+			"fá 10 vini til þess að skrá sig á spurningar.is",
+		name_tgf: "Áhrifavöldum",
+		name_tf: "Áhrifavalda",
 	},
 ];
 
