@@ -103,7 +103,7 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     a {
-        color: #0060B6;
+        color: #666;
         text-decoration: none;
     }
 

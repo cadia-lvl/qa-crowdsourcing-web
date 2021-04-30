@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Colors } from "../../styles";
 
 export const Inner = styled.div`
 	display: flex;
@@ -7,5 +8,8 @@ export const Inner = styled.div`
 `;
 
 export const LinkContainer = styled.div`
-	margin-top: 20px;
+	margin-bottom: 20px;
+	i {
+		margin-right: 10px;
+	}
 `;

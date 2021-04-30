@@ -10,10 +10,14 @@ export const SignInPage = () => {
 		<AllowOnlyPage userTypes={["guest"]} fallbackUrl="/heim">
 			<SinglePageCard>
 				<Inner>
-					<SignInForm />
+					<h1 className="italic">Velkomin/n aftur</h1>
 					<LinkContainer>
-						<Link to="/nyr-notandi">Ég er ekki með aðgang</Link>
+						<Link to="/nyr-notandi">
+							<i className="fas fa-hand-point-right" />
+							Ég er ekki með aðgang (nýskráning)
+						</Link>
 					</LinkContainer>
+					<SignInForm />
 				</Inner>
 			</SinglePageCard>
 		</AllowOnlyPage>

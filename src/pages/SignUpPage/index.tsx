@@ -10,10 +10,14 @@ export const SignUpPage = () => {
 		<AllowOnlyPage userTypes={["guest"]} fallbackUrl="/heim">
 			<SinglePageCard>
 				<Inner>
-					<SignUpForm />
+					<h1 className="italic">Búa til aðgang</h1>
 					<LinkContainer>
-						<NavLink to="/innskra">Ég er með aðgang</NavLink>
+						<i className="fas fa-hand-point-right" />
+						<NavLink to="/innskra">
+							Ég er með aðgang (innskráning)
+						</NavLink>
 					</LinkContainer>
+					<SignUpForm />
 				</Inner>
 			</SinglePageCard>
 		</AllowOnlyPage>
