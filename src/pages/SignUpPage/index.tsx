@@ -2,7 +2,7 @@ import React from "react";
 import { SignUpForm } from "../../forms";
 import { SinglePageCard } from "../../components";
 import { Inner, LinkContainer } from "./styles";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { AllowOnlyPage } from "../../hoc";
 
 export const SignUpPage = () => {
@@ -12,10 +12,10 @@ export const SignUpPage = () => {
 				<Inner>
 					<h1 className="italic">Búa til aðgang</h1>
 					<LinkContainer>
-						<i className="fas fa-hand-point-right" />
-						<NavLink to="/innskra">
+						<Link to="/innskra">
+							<i className="fas fa-hand-point-right" />
 							Ég er með aðgang (innskráning)
-						</NavLink>
+						</Link>
 					</LinkContainer>
 					<SignUpForm />
 				</Inner>
