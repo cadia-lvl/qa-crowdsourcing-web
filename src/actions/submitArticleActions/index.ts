@@ -11,6 +11,7 @@ import {
 	FetchArticlesQueryAction,
 	SetGoogleSearchErrorAction,
 	SetIsPerformingSearch,
+	SetIsLoadingArticle,
 } from "./interface";
 
 export const previewArticleToSubmit = (
@@ -19,6 +20,10 @@ export const previewArticleToSubmit = (
 ) => {
 	return async function (dispatch: Dispatch) {
 		try {
+			dispatch<SetIsLoadingArticle>({
+				type: ActionTypes.setIsLoadingArticle,
+				payload: true,
+			});
 			const { data } = await Api.get<Article>(
 				`/api/v1/article_sources/${sourceIdentifier}/article/${articleKey}`
 			);
@@ -30,6 +35,11 @@ export const previewArticleToSubmit = (
 			dispatch<PreviewArticleToSubmitAction>({
 				type: ActionTypes.previewArticleToSubmit,
 				payload: undefined,
+			});
+		} finally {
+			dispatch<SetIsLoadingArticle>({
+				type: ActionTypes.setIsLoadingArticle,
+				payload: false,
 			});
 		}
 	};

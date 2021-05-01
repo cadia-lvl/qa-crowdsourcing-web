@@ -216,11 +216,7 @@ export const SubmitArticleGame = () => {
 						type="warning"
 					/>
 				) : null}
-				{hasPreview ? (
-					<React.Fragment>
-						<PreviewReader />
-					</React.Fragment>
-				) : null}
+				<PreviewReader />
 			</TaskInfoBox>
 		</GameWrapper>
 	);

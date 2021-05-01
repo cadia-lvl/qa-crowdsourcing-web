@@ -12,4 +12,5 @@ export interface SubmitArticleState {
 	searchError: boolean;
 	noResults: boolean;
 	isPerformingSearch: boolean;
+	isLoadingArticle: boolean;
 }
