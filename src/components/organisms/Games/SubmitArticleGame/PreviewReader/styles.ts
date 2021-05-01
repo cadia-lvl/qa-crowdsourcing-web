@@ -58,16 +58,7 @@ export const TopBar = styled.div`
 	align-items: center;
 	box-sizing: border-box;
 	padding: 4px 10px;
-	input[type="text"] {
-		height: 100%;
-		border-radius: 20px;
-		padding: 15px;
-		border: none;
-		:focus {
-			outline: none;
-			border: none;
-		}
-	}
+
 	justify-content: space-between;
 	span {
 		font-size: 18px;
@@ -83,6 +74,14 @@ export const TopBar = styled.div`
 			margin-right: 10px;
 		}
 	}
+`;
+
+export const IconContainer = styled.div`
+	height: 100%;
+	img {
+		height: 100%;
+	}
+	margin-left: -5px;
 `;
 
 export const ParagraphContainer = styled.div`

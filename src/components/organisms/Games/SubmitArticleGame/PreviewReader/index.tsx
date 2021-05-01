@@ -12,6 +12,7 @@ import {
 	Tabs,
 	BackDrop,
 	ShadowWrap,
+	IconContainer,
 } from "./styles";
 import {
 	submitArticleAndParagraph,
@@ -48,15 +49,24 @@ const PreviewHeader = () => {
 	const isPreviewSelected = previewParagraphIndex === undefined;
 	if (!previewArticle) return null;
 	return (
-		<BackDrop>
+		<BackDrop onClick={() => dispatch(closePreviewArticleToSubmit())}>
 			<Outer>
-				<ShadowWrap>
+				<ShadowWrap
+					onClick={(e) => {
+						e.stopPropagation();
+					}}
+				>
 					<Explain
 						items={TUTORIAL.explainFindParagraph}
 						priority="clear-others"
 					>
 						<TopBar>
-							<div />
+							<IconContainer className="no-pointer-events">
+								<img
+									src={previewArticle.source.logo}
+									alt="logo"
+								/>
+							</IconContainer>
 							<span
 								onClick={() =>
 									dispatch(closePreviewArticleToSubmit())

@@ -141,23 +141,19 @@ export const SubmitArticleGame = () => {
 					</span>
 					.
 				</Paragraph>
-				{!hasPreview ? (
-					<SearchForm onSubmit={handleSubmit}>
-						<Explain items={TUTORIAL.explainGoogle}>
-							<img
-								src={GOOGLE_LOGO}
-								alt="myndmerki google"
-							/>
-							<GoogleTextInput
-								value={query}
-								onChange={(text) =>
-									dispatch(writeArticleSearchQuery(text))
-								}
-							/>
-							<input type="submit" value="Google leit" />
-						</Explain>
-					</SearchForm>
-				) : null}
+
+				<SearchForm onSubmit={handleSubmit}>
+					<Explain items={TUTORIAL.explainGoogle}>
+						<img src={GOOGLE_LOGO} alt="myndmerki google" />
+						<GoogleTextInput
+							value={query}
+							onChange={(text) =>
+								dispatch(writeArticleSearchQuery(text))
+							}
+						/>
+						<input type="submit" value="Google leit" />
+					</Explain>
+				</SearchForm>
 
 				{isPerformingSearch ? (
 					<FlexLoader size={40} />
