@@ -26,7 +26,7 @@ const ArticlePreview = (article: IProps) => {
 	return (
 		<React.Fragment>
 			<Outer
-				theme={{ isPreviewOpen }}
+				theme={{ isPreviewOpen: false }}
 				onClick={() =>
 					dispatch(
 						previewArticleToSubmit(
@@ -36,10 +36,10 @@ const ArticlePreview = (article: IProps) => {
 					)
 				}
 			>
-				<LeftBox theme={{ imgUrl: logo, isPreviewOpen }} />
+				<LeftBox theme={{ imgUrl: logo, isPreviewOpen: false }} />
 				<RightBox>
 					<h3>{title}</h3>
-					<ExtractPara theme={{ isPreviewOpen }}>
+					<ExtractPara theme={{ isPreviewOpen: false }}>
 						{snippet} <b>{previewHoverText}</b>
 					</ExtractPara>
 				</RightBox>

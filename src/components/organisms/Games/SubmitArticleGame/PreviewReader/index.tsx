@@ -10,6 +10,8 @@ import {
 	SingleParagraph,
 	Tab,
 	Tabs,
+	BackDrop,
+	ShadowWrap,
 } from "./styles";
 import {
 	submitArticleAndParagraph,
@@ -46,122 +48,127 @@ const PreviewHeader = () => {
 	const isPreviewSelected = previewParagraphIndex === undefined;
 	if (!previewArticle) return null;
 	return (
-		<Outer>
-			<Explain
-				items={TUTORIAL.explainFindParagraph}
-				priority="clear-others"
-			>
-				<TopBar>
-					<div />
-					<span
-						onClick={() =>
-							dispatch(closePreviewArticleToSubmit())
-						}
+		<BackDrop>
+			<Outer>
+				<ShadowWrap>
+					<Explain
+						items={TUTORIAL.explainFindParagraph}
+						priority="clear-others"
 					>
-						Loka grein
-					</span>
-				</TopBar>
-				<Inner>
-					{previewArticle.paragraphs.map((paragraph, i) => (
-						<ParagraphContainer
-							theme={{
-								isFocused:
-									i === selectedParagraph ||
-									previewParagraphIndex === i ||
-									isPreviewSelected,
-							}}
-							onMouseOver={() => setSelectedParagraph(i)}
-							onMouseLeave={clearParagraphSelection}
-							onClick={() =>
-								dispatch(selectParagraphToPreview(i))
-							}
-							key={i}
-						>
-							<SingleParagraph
-								theme={{
-									isSelected:
-										previewParagraphIndex === i,
-								}}
+						<TopBar>
+							<div />
+							<span
+								onClick={() =>
+									dispatch(closePreviewArticleToSubmit())
+								}
 							>
-								<Tabs>
-									{previewParagraphIndex === i ? (
-										<React.Fragment>
-											<Tab
-												theme={{
-													background:
-														Colors.HIGHLIGHT_BG,
-													textColor:
-														Colors.HIGHLIGHT,
-												}}
-												onClick={() =>
-													dispatch(
-														submitArticleAndParagraph(
-															state.game._id,
-															previewArticle
-																?.source
-																.identifier,
-															previewArticle?.key,
-															_id, // this is the questionId
-															i
+								<i className="fas fa-window-close" />
+							</span>
+						</TopBar>
+					</Explain>
+					<Inner>
+						{previewArticle.paragraphs.map((paragraph, i) => (
+							<ParagraphContainer
+								theme={{
+									isFocused:
+										i === selectedParagraph ||
+										previewParagraphIndex === i ||
+										isPreviewSelected,
+								}}
+								onMouseOver={() => setSelectedParagraph(i)}
+								onMouseLeave={clearParagraphSelection}
+								onClick={() =>
+									dispatch(selectParagraphToPreview(i))
+								}
+								key={i}
+							>
+								<SingleParagraph
+									theme={{
+										isSelected:
+											previewParagraphIndex === i,
+									}}
+								>
+									<Tabs>
+										{previewParagraphIndex === i ? (
+											<React.Fragment>
+												<Tab
+													theme={{
+														background:
+															Colors.HIGHLIGHT_BG,
+														textColor:
+															Colors.HIGHLIGHT,
+													}}
+													onClick={() =>
+														dispatch(
+															submitArticleAndParagraph(
+																state.game
+																	._id,
+																previewArticle
+																	?.source
+																	.identifier,
+																previewArticle?.key,
+																_id, // this is the questionId
+																i
+															)
 														)
-													)
-												}
-											>
-												<Explain
-													items={
-														TUTORIAL.explainConfirmParagraph
 													}
-													priority="clear-others"
 												>
-													Staðfesta
-												</Explain>
-											</Tab>
-											<Tab
-												theme={{
-													background:
-														Colors.DANGER_BG,
-													textColor:
-														Colors.DANGER,
-												}}
-												onClick={(e) => {
-													e.stopPropagation();
-													dispatch(
-														selectParagraphToPreview(
-															undefined
-														)
-													);
-												}}
-											>
-												Velja aðra efnisgrein
-											</Tab>
-										</React.Fragment>
-									) : (
-										<React.Fragment>
-											<Tab
-												theme={{
-													background:
-														Colors.WARNING_BG,
-													textColor:
-														Colors.WARNING,
-												}}
-											>
-												Ég sé svarið hér
-											</Tab>
-										</React.Fragment>
-									)}
-								</Tabs>
+													<Explain
+														items={
+															TUTORIAL.explainConfirmParagraph
+														}
+														priority="clear-others"
+													>
+														Staðfesta
+													</Explain>
+												</Tab>
+												<Tab
+													theme={{
+														background:
+															Colors.DANGER_BG,
+														textColor:
+															Colors.DANGER,
+													}}
+													onClick={(e) => {
+														e.stopPropagation();
+														dispatch(
+															selectParagraphToPreview(
+																undefined
+															)
+														);
+													}}
+												>
+													Velja aðra efnisgrein
+												</Tab>
+											</React.Fragment>
+										) : (
+											<React.Fragment>
+												<Tab
+													theme={{
+														background:
+															Colors.WARNING_BG,
+														textColor:
+															Colors.WARNING,
+													}}
+												>
+													Ég sé svarið hér
+												</Tab>
+											</React.Fragment>
+										)}
+									</Tabs>
 
-								<HighlightSubText
-									returnNoneOnNoMatch
-									string={paragraph}
-									subString={""}
-								/>
-							</SingleParagraph>
-						</ParagraphContainer>
-					))}
-				</Inner>
-			</Explain>
-		</Outer>
+									<HighlightSubText
+										returnNoneOnNoMatch
+										string={paragraph}
+										subString={""}
+									/>
+								</SingleParagraph>
+							</ParagraphContainer>
+						))}
+					</Inner>
+				</ShadowWrap>
+			</Outer>
+		</BackDrop>
 	);
 };
 

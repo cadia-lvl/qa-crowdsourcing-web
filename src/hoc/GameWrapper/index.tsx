@@ -10,7 +10,5 @@ export const GameWrapper = ({ type, children }: IProps) => {
 	const dispatch = useDispatch();
 
 	if (state.current !== type) return null;
-	return (
-		<div style={{ position: "relative", zIndex: 0 }}>{children}</div>
-	);
+	return <div style={{ position: "relative" }}>{children}</div>;
 };

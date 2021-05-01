@@ -141,19 +141,23 @@ export const SubmitArticleGame = () => {
 					</span>
 					.
 				</Paragraph>
-
-				<SearchForm onSubmit={handleSubmit}>
-					<Explain items={TUTORIAL.explainGoogle}>
-						<img src={GOOGLE_LOGO} alt="myndmerki google" />
-						<GoogleTextInput
-							value={query}
-							onChange={(text) =>
-								dispatch(writeArticleSearchQuery(text))
-							}
-						/>
-						<input type="submit" value="Google leit" />
-					</Explain>
-				</SearchForm>
+				{!hasPreview ? (
+					<SearchForm onSubmit={handleSubmit}>
+						<Explain items={TUTORIAL.explainGoogle}>
+							<img
+								src={GOOGLE_LOGO}
+								alt="myndmerki google"
+							/>
+							<GoogleTextInput
+								value={query}
+								onChange={(text) =>
+									dispatch(writeArticleSearchQuery(text))
+								}
+							/>
+							<input type="submit" value="Google leit" />
+						</Explain>
+					</SearchForm>
+				) : null}
 
 				{isPerformingSearch ? (
 					<FlexLoader size={40} />
@@ -171,7 +175,7 @@ export const SubmitArticleGame = () => {
 						persist={persistantSearchResultTutorial}
 					>
 						<React.Fragment>
-							{!showCloseResultTutorial ? (
+							{!showCloseResultTutorial && !hasPreview ? (
 								<ContinueBox
 									hideDetails={false}
 									onClick={() => setContinueModal(true)}
@@ -191,7 +195,7 @@ export const SubmitArticleGame = () => {
 							) : null}
 						</React.Fragment>
 
-						{articles.map((item, i) =>
+						{articles.map((item, i) => (
 							/**
 							 * logical equivalence of
 							 * if (there is article in preview) then this is the article being preview
@@ -201,17 +205,14 @@ export const SubmitArticleGame = () => {
 							 * we display all, if we have a preview then we display
 							 * said preview
 							 */
-							!hasPreview ||
-							previewArticle?.key === item.key ? (
-								<div ref={i == 0 ? firstArticleRef : null}>
-									<ArticlePreview
-										{...item}
-										key={item.key}
-										_key={item.key}
-									/>
-								</div>
-							) : null
-						)}
+							<div ref={i == 0 ? firstArticleRef : null}>
+								<ArticlePreview
+									{...item}
+									key={item.key}
+									_key={item.key}
+								/>
+							</div>
+						))}
 					</Explain>
 				) : noResults ? (
 					<FilledAlert

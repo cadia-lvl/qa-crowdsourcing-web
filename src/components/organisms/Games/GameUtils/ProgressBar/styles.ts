@@ -23,6 +23,7 @@ export const ProgressBarCont = styled.div`
 	flex-direction: row;
 	justify-content: flex-start;
 	align-items: center;
+	z-index: 0;
 `;
 
 export const GoalBox = styled.div`
