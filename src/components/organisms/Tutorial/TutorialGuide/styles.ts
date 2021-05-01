@@ -8,6 +8,7 @@ export const Outer = styled.div<IOuter>`
 	height: 70px;
 	width: 70px;
 	border: 5px solid ${Colors.HIGHLIGHT};
+	background-color: ${Colors.HIGHLIGHT_BG};
 	border-radius: 50%;
 	position: fixed;
 	bottom: 50px;
