@@ -46,7 +46,13 @@ const SubRoutineViewer = ({
 				{isLoading ? (
 					<FlexLoader size={40} />
 				) : !!Component ? (
-					<Component />
+					<React.Fragment>
+						<h1 className="italic">{current.label}</h1>
+						{current.description.map((text) => (
+							<p>{text}</p>
+						))}
+						<Component />
+					</React.Fragment>
 				) : null}
 			</Content>
 			<Bottom>

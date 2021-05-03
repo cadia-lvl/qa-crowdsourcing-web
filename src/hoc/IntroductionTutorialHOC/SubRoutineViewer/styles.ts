@@ -10,6 +10,15 @@ export const Outer = styled.div`
 	min-height: 500px;
 	display: flex;
 	flex-direction: column;
+	p,
+	h1 {
+		width: 450px;
+		text-align: center;
+		margin: 0 auto;
+	}
+	h1 {
+		margin-bottom: 10px !important;
+	}
 `;
 
 export const Content = styled.div`

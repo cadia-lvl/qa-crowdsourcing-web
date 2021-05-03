@@ -7,8 +7,11 @@ const routines: IRoutine[] = [
 		key: "guide",
 		steps: [
 			{
-				label: "",
-				description: [],
+				label: "Fylgstu með þessum",
+				description: [
+					"Þetta er leiðarvísirinn. Á meðan þú spilar leikinn þá heldur hann sig neðst á skjánnum",
+					"Hann verður þar til þess að hjálpa þér. Það er mjög mikilvægt að lesa ráðin hans þegar hann hefur einhvað að segja.",
+				],
 				key: "intro",
 				Component: Steps.Guide.Intro,
 			},
