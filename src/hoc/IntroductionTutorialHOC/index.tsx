@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { IProps, IRoutineStep, RoutineKeys } from "./interface";
 import RoutinesChecklist from "./RoutinesChecklist";
 import routines from "./routines";
+import { Outer } from "./styles";
 
 export const IntroductionTutorialHOC = ({ children }: IProps) => {
 	const [routineKey, setRoutineKey] = useState<RoutineKeys | undefined>(
@@ -14,7 +15,7 @@ export const IntroductionTutorialHOC = ({ children }: IProps) => {
 
 	if (false) return <React.Fragment>{children}</React.Fragment>;
 	return (
-		<div>
+		<Outer>
 			{subRoutineList.length === 0 ? (
 				<RoutinesChecklist
 					todos={routines.map((item) => ({
@@ -23,6 +24,6 @@ export const IntroductionTutorialHOC = ({ children }: IProps) => {
 					}))}
 				/>
 			) : null}
-		</div>
+		</Outer>
 	);
 };
