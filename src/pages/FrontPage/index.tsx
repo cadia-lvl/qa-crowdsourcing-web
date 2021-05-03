@@ -14,11 +14,7 @@ import {
 	Icon3,
 	Icon4,
 } from "./styles";
-import {
-	FrontPageDashBoard,
-	PlayButton,
-	WinningsDashBoard,
-} from "../../components";
+import { FrontPageDashBoard, PlayButton } from "../../components";
 import { AuthConditionalRender } from "../../hoc";
 import { useSelector } from "react-redux";
 import { StoreState } from "../../reducers";
@@ -54,7 +50,7 @@ export const FrontPage = () => {
 								totalRounds={totalRounds}
 								currentRound={currentRound}
 							/>
-							<WinningsDashBoard />
+							{/* <WinningsDashBoard /> */}
 						</WhenIsAuth>
 
 						{/* When user is not authenticated */}

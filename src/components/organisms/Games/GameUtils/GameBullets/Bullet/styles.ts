@@ -9,7 +9,10 @@ export const Outer = styled.div<IBullet>`
 	display: flex;
 	width: 100%;
 	i {
-		width: 30px;
+		margin-right: 20px;
+	}
+	span: {
+		flex: 1;
 	}
 	color: #666;
 	margin-bottom: 7px;

@@ -3,46 +3,17 @@ import { GlobalStyle } from "../styles";
 import { IProps } from "./interface";
 import Header from "./Header";
 import Footer from "./Footer";
-import {
-	LoadingOuter,
-	Outer,
-	AuthCodeOuter,
-	FlexCenter,
-	AuthCodeInner,
-} from "./styles";
+import { LoadingOuter, Outer } from "./styles";
 import { useSelector, useDispatch } from "react-redux";
 import { StoreState } from "../reducers";
-import {
-	fetchCurrentGameRound,
-	fetchUserFromToken,
-	logOutUser,
-	requestNewVerificationCode,
-	verifyUser,
-} from "../actions";
+import { fetchCurrentGameRound, fetchUserFromToken } from "../actions";
 import { FETCH_USER_FROM_TOKEN_WAIT_MS } from "./utils";
-import {
-	AuthCodeInput,
-	FlexLoader,
-	TutorialGuide,
-	WhiteBoxWithTitle,
-	BaseButton,
-	FilledAlert,
-} from "../components";
+import { FlexLoader, TutorialGuide } from "../components";
 import { fetchAnswersPerDay } from "../actions/chartDataActions";
+import { AuthCodeHOC } from "../hoc";
 
 export const LayoutWrapper = ({ children }: IProps) => {
-	const {
-		type,
-		_id,
-		email,
-		isAuthCodeRegenerationLoading,
-		authCodeErrorMessage,
-		isAuthCodeSubmissionLoading,
-	} = useSelector((state: StoreState) => state.auth);
-
-	const [authCode, setAuthCode] = useState("");
-	const AUTHCODE_LENGTH = 6;
-
+	const { type, _id } = useSelector((state: StoreState) => state.auth);
 	const dispatch = useDispatch();
 
 	useEffect(() => {
@@ -60,7 +31,6 @@ export const LayoutWrapper = ({ children }: IProps) => {
 
 	useEffect(() => {
 		dispatch(fetchCurrentGameRound());
-		setAuthCode("");
 	}, [_id]);
 
 	if (type === "loading")
@@ -73,64 +43,12 @@ export const LayoutWrapper = ({ children }: IProps) => {
 	return (
 		<Outer>
 			<GlobalStyle />
-			{type === "not-verified" ? (
-				<FlexCenter>
-					<AuthCodeOuter {...{ isAuthCodeRegenerationLoading }}>
-						<WhiteBoxWithTitle title="Staðfestingarkóði">
-							{authCodeErrorMessage ? (
-								<FilledAlert
-									label={authCodeErrorMessage}
-									type="danger"
-								/>
-							) : null}
-
-							<p>Við sendum staðfestingarkóða á {email}</p>
-							<p
-								className="hov"
-								onClick={() =>
-									dispatch(requestNewVerificationCode())
-								}
-							>
-								{isAuthCodeRegenerationLoading ? (
-									<i className="fas fa-sync hov" />
-								) : null}
-								Senda aftur
-							</p>
-							<AuthCodeInner>
-								<AuthCodeInput
-									value={authCode}
-									onChange={setAuthCode}
-									length={AUTHCODE_LENGTH}
-								/>
-							</AuthCodeInner>
-							{isAuthCodeSubmissionLoading ? (
-								<FlexLoader size={20} />
-							) : (
-								<BaseButton
-									label="Staðfesta"
-									onClick={() =>
-										dispatch(verifyUser(authCode))
-									}
-									type="highlight"
-								/>
-							)}
-
-							<BaseButton
-								label="Útskrá"
-								onClick={() => dispatch(logOutUser())}
-								type="danger"
-							/>
-						</WhiteBoxWithTitle>
-					</AuthCodeOuter>
-				</FlexCenter>
-			) : (
-				<React.Fragment>
-					<Header />
-					<TutorialGuide />
-					{children}
-					<Footer />{" "}
-				</React.Fragment>
-			)}
+			<AuthCodeHOC>
+				<Header />
+				<TutorialGuide />
+				{children}
+				<Footer />{" "}
+			</AuthCodeHOC>
 		</Outer>
 	);
 };

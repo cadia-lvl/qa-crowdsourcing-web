@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Colors } from "../../../../styles";
 
 export const Outer = styled.div`
-	width: 300px;
+	width: 100%;
 	border: 3px solid ${Colors.HIGHLIGHT};
 	border-radius: 5px;
 	margin-top: 30px;

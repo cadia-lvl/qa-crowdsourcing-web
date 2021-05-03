@@ -7,6 +7,8 @@ export const GlobalStyle = createGlobalStyle`
         padding: 0;
     }
 
+
+
     body {
 
         overflow: none;

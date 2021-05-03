@@ -60,7 +60,8 @@ export const SignInLinkContainer = styled.div`
 `;
 
 export const DashBoardExample = styled.div`
-	transform: scale(0.73);
+	transform: scale(0.73) perspective(2000px) rotateY(-17deg)
+		rotateX(15deg);
 `;
 
 export const Section = styled.div`
@@ -86,6 +87,7 @@ export const LogoGrid = styled.div`
 	color: #444;
 	width: 700px;
 	margin-top: 70px;
+	transform: perspective(1800px) rotateY(20deg) rotateX(15deg);
 `;
 
 export const LogoBox = styled.div`
