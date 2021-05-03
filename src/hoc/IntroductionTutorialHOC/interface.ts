@@ -17,6 +17,7 @@ export interface IRoutine {
 
 export interface IRoutineStep {
 	label: string;
-	description: string;
-	Component: JSX.Element;
+	description: string[];
+	Component: () => JSX.Element;
+	key: string;
 }

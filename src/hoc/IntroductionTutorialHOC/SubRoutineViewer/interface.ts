@@ -1,0 +1,6 @@
+import { IRoutineStep } from "../interface";
+
+export interface IProps {
+	items: IRoutineStep[];
+	onComplete: () => void;
+}
