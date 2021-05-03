@@ -4,8 +4,9 @@ import { PlayButton } from "../../../components";
 import { IProps } from "./interface";
 import { IconDecorator } from "../../../hoc";
 
-const RoutinesChecklist = ({ todos }: IProps) => (
-	<IconDecorator iconCount={4}>
+const ITEM_COUNT = 4;
+const RoutinesChecklist = ({ todos, onNext }: IProps) => (
+	<IconDecorator iconCount={ITEM_COUNT}>
 		<Outer>
 			<h1 className="italic">Velkomin/n á spurningar.is</h1>
 			<p>
@@ -32,7 +33,7 @@ const RoutinesChecklist = ({ todos }: IProps) => (
 				<span>
 					<i className="fas fa-door-open" /> Útskrá
 				</span>
-				<PlayButton>Áfram</PlayButton>
+				<PlayButton onClick={onNext}>Áfram</PlayButton>
 			</Bottom>
 		</Outer>
 	</IconDecorator>

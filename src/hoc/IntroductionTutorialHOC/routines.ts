@@ -9,33 +9,77 @@ const routines: IRoutine[] = [
 			{
 				label: "",
 				description: [],
-				key: "",
+				key: "intro",
 				Component: Steps.Guide.Intro,
 			},
 			{
 				label: "",
 				description: [],
-				key: "",
+				key: "close",
 				Component: Steps.Guide.CloseBubble,
 			},
 			{
 				label: "",
 				description: [],
-				key: "",
+				key: "highlights",
 				Component: Steps.Guide.HighLights,
 			},
 			{
 				label: "",
 				description: [],
-				key: "",
+				key: "archive",
 				Component: Steps.Guide.OpenArchived,
 			},
 		],
 	},
-	{ label: "Spurningar", key: "answers", steps: [] },
-	{ label: "Svör", key: "answers", steps: [] },
-	{ label: "Leita", key: "answers", steps: [] },
-	{ label: "Vinningar í boði", key: "answers", steps: [] },
+	{
+		label: "Spurningar",
+		key: "questions",
+		steps: [
+			{
+				label: "",
+				description: [],
+				key: "close",
+				Component: Steps.Guide.CloseBubble,
+			},
+		],
+	},
+	{
+		label: "Svör",
+		key: "answers",
+		steps: [
+			{
+				label: "",
+				description: [],
+				key: "close",
+				Component: Steps.Guide.CloseBubble,
+			},
+		],
+	},
+	{
+		label: "Leita",
+		key: "search",
+		steps: [
+			{
+				label: "",
+				description: [],
+				key: "close",
+				Component: Steps.Guide.CloseBubble,
+			},
+		],
+	},
+	{
+		label: "Vinningar í boði",
+		key: "prizes",
+		steps: [
+			{
+				label: "",
+				description: [],
+				key: "close",
+				Component: Steps.Guide.CloseBubble,
+			},
+		],
+	},
 ];
 
 export default routines;

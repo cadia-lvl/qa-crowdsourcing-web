@@ -21,3 +21,5 @@ export interface IRoutineStep {
 	Component: () => JSX.Element;
 	key: string;
 }
+
+export type IntroductionState = { [key in RoutineKeys]: string[] };

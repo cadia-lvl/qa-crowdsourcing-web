@@ -3,7 +3,11 @@ import { IProps } from "./interface";
 import { FlexLoader, PageDots, PlayButton } from "../../../components";
 import { Outer, Content, Bottom, DotsContainer } from "./styles";
 
-const SubRoutineViewer = ({ items, onComplete }: IProps) => {
+const SubRoutineViewer = ({
+	items,
+	onComplete,
+	onCompleteStep,
+}: IProps) => {
 	const [currentIndex, setCurrentIndex] = useState(0);
 	const [isLoading, setIsLoading] = useState(true);
 
@@ -31,6 +35,7 @@ const SubRoutineViewer = ({ items, onComplete }: IProps) => {
 
 	// handles incrementing the step
 	const handleNextStep = () => {
+		onCompleteStep?.(current?.key ?? "unknown key");
 		setIsLoading(true);
 		setCurrentIndex((val) => val + 1);
 	};
