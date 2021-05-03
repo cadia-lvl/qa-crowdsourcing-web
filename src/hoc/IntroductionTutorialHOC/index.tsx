@@ -20,7 +20,7 @@ export const IntroductionTutorialHOC = ({ children }: IProps) => {
 
 	// list of subroutines (pages in a tutorial)
 	const [subRoutineList, setSubRoutineList] = useState<IRoutineStep[]>(
-		routines[0].steps
+		[]
 	);
 
 	// destructures REDUX state
