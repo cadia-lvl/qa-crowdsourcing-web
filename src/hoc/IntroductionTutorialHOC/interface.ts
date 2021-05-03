@@ -2,9 +2,16 @@ export interface IProps {
 	children: React.ReactNode;
 }
 
+export type RoutineKeys =
+	| "guide"
+	| "questions"
+	| "answers"
+	| "search"
+	| "prizes";
+
 export interface IRoutine {
 	label: string;
-	key: "guide" | "questions" | "answers" | "search" | "prizes";
+	key: RoutineKeys;
 	steps: IRoutineStep[];
 }
 

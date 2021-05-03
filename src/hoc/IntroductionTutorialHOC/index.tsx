@@ -1,13 +1,28 @@
-import React from "react";
-import { IProps } from "./interface";
+import React, { useState } from "react";
+import { IProps, IRoutineStep, RoutineKeys } from "./interface";
 import RoutinesChecklist from "./RoutinesChecklist";
+import routines from "./routines";
 
 export const IntroductionTutorialHOC = ({ children }: IProps) => {
-	// TODO: replace hard coded false value with logic based on data from api
+	const [routineKey, setRoutineKey] = useState<RoutineKeys | undefined>(
+		undefined
+	);
+
+	const [subRoutineList, setSubRoutineList] = useState<IRoutineStep[]>(
+		[]
+	);
+
 	if (false) return <React.Fragment>{children}</React.Fragment>;
 	return (
 		<div>
-			<RoutinesChecklist />
+			{subRoutineList.length === 0 ? (
+				<RoutinesChecklist
+					todos={routines.map((item) => ({
+						...item,
+						completed: false,
+					}))}
+				/>
+			) : null}
 		</div>
 	);
 };
