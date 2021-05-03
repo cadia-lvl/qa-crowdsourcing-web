@@ -4,3 +4,4 @@ export * from "./AllowOnlyPage";
 export * from "./GameWrapper";
 export * from "./AuthConditionalRender";
 export * from "./AuthCodeHOC";
+export * from "./IntroductionTutorialHOC";
