@@ -48,10 +48,13 @@ const routines: IRoutine[] = [
 		key: "questions",
 		steps: [
 			{
-				label: "",
-				description: [],
+				label: "Spurðu mig spurningar!",
+				description: [
+					"Þér er frjálst að spyrja um hvað sem er. En spurningar eru misgóðar, við viljum ekki spurningar sem hafa mismunandi svör eftir því hvern þú spyrð, eða hvaða dag vikunar þú spyrð",
+					"Það er mikilvægt að spurningin sé á ágætis íslnesku, en passaðu þig að hafa spurninguna ekki of formlega. Við viljum að þú spyrjir á svipaðan máta og þú myndir spyrja í talmáli.",
+				],
 				key: "close",
-				Component: Steps.Guide.CloseBubble,
+				Component: Steps.Questions.AskQuestion,
 			},
 		],
 	},
@@ -63,22 +66,22 @@ const routines: IRoutine[] = [
 				label: "",
 				description: [],
 				key: "close",
-				Component: Steps.Guide.CloseBubble,
+				Component: Steps.Questions.ReviewQuestion,
 			},
 		],
 	},
-	{
-		label: "Leita",
-		key: "search",
-		steps: [
-			{
-				label: "",
-				description: [],
-				key: "close",
-				Component: Steps.Guide.CloseBubble,
-			},
-		],
-	},
+	// {
+	// 	label: "Leita",
+	// 	key: "search",
+	// 	steps: [
+	// 		{
+	// 			label: "",
+	// 			description: [],
+	// 			key: "close",
+	// 			Component: Steps.Guide.CloseBubble,
+	// 		},
+	// 	],
+	// },
 	{
 		label: "Vinningar í boði",
 		key: "prizes",
