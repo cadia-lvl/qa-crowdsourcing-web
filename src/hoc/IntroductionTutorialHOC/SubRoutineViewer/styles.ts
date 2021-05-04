@@ -12,8 +12,9 @@ export const Outer = styled.div`
 	flex-direction: column;
 	p,
 	h1 {
-		width: 450px;
-		text-align: center;
+		width: 500px;
+		text-justify: inter-word;
+		text-align: justify;
 		margin: 0 auto;
 		margin-bottom: 10px !important;
 	}

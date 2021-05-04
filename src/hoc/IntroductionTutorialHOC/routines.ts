@@ -19,22 +19,27 @@ const routines: IRoutine[] = [
 				label: "Loka skilaboðunum",
 				description: [
 					"Þegar þú svarar skilaboðunum (hérna getur þú svarað með „Ókei“) þá hverfa skilaboðin. Þú getur svarað skilaboðunum þegar þú ert búin/n að lesa þau.",
-					"Það er oft gott að lesa skilaboðin og loka þeim svo, ef þau kunna að vera fyrir því sem er að gerast í leiknum. Ýttu á Ókei",
+					"Það er oft gott að lesa skilaboðin og loka þeim svo, ef þau kunna að vera fyrir því sem er að gerast í leiknum.",
 				],
 				key: "close",
 				Component: Steps.Guide.CloseBubble,
 			},
 			{
-				label: "",
-				description: [],
+				label: "Sjáðu þetta!",
+				description: [
+					"Stundum langar leiðarvísinum að sýna þér hluti. Þegar þú sérð rauðan ramma blikka á skjánum, þá er leiðarvísirinn að benda þér á þann hluta skjásins.",
+				],
 				key: "highlights",
 				Component: Steps.Guide.HighLights,
 			},
 			{
-				label: "",
-				description: [],
+				label: "Fela án þess að loka",
+				description: [
+					"Ef þig langar að losna við skilaboðin þá getur þú falið þau, en kallað þau fram síðar. Ýttu á gula takkan hjá leiðarvísinum til að fela skilaboðin.",
+					"Þú getur síðan ýtt á leiðarvísirinn aftur til þess að sýna skilaboðin upp á nýtt",
+				],
 				key: "archive",
-				Component: Steps.Guide.OpenArchived,
+				Component: Steps.Guide.HideBubbles,
 			},
 		],
 	},

@@ -1,4 +1,4 @@
 export * from "./Intro";
 export * from "./CloseBubble";
 export * from "./Highlights";
-export * from "./OpenArchived";
+export * from "./HideBubbles";

@@ -19,7 +19,7 @@ export const ExplainThese = styled.div`
 export const Example = styled.div`
 	border: 1px solid #bebebe;
 	border-radius: 5px;
-	height: 150px;
+	height: 65px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -28,6 +28,10 @@ export const Example = styled.div`
 		margin-left: -8px;
 		height: calc(100% - 15px);
 		margin-top: -8px;
+	}
+	span {
+		margin: 0;
+		padding: 0;
 	}
 `;
 
