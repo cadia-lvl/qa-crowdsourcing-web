@@ -16,3 +16,10 @@ export const LoadingOuter = styled.div`
 	align-items: center;
 	justify-content: center;
 `;
+
+export const TutorialGuidePlacement = styled.div`
+	z-index: 150;
+	position: fixed;
+	bottom: 50px;
+	right: 50px;
+`;

@@ -3,7 +3,7 @@ import { GlobalStyle } from "../styles";
 import { IProps } from "./interface";
 import Header from "./Header";
 import Footer from "./Footer";
-import { LoadingOuter, Outer } from "./styles";
+import { LoadingOuter, Outer, TutorialGuidePlacement } from "./styles";
 import { useSelector, useDispatch } from "react-redux";
 import { StoreState } from "../reducers";
 import { fetchCurrentGameRound, fetchUserFromToken } from "../actions";
@@ -46,7 +46,9 @@ export const LayoutWrapper = ({ children }: IProps) => {
 			<AuthCodeHOC>
 				<IntroductionTutorialHOC>
 					<Header />
-					<TutorialGuide />
+					<TutorialGuidePlacement>
+						<TutorialGuide />
+					</TutorialGuidePlacement>
 					{children}
 					<Footer />{" "}
 				</IntroductionTutorialHOC>
