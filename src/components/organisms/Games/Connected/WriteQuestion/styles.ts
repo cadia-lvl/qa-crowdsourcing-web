@@ -7,3 +7,7 @@ export const ButtonContainer = styled.div`
 	}
 	margin-top: 20px;
 `;
+
+export const TutorialPara = styled.div`
+	margin-bottom: 20px;
+`;

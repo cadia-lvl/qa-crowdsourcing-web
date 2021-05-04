@@ -24,27 +24,27 @@ export const GamePage = () => {
 
 	return (
 		<RestrictedPage userTypes={["guest"]} fallbackUrl="/innskra">
-			<GameAnnouncer>
+			<Game.Utils.GameAnnouncer>
 				{state.current === undefined ? (
 					<FlexLoader size={150} />
 				) : (
 					<React.Fragment>
 						<ProgressBarContainer>
-							<GameProgress showIcon />
+							<Game.Utils.GameProgress showIcon />
 						</ProgressBarContainer>
 						<GameWrapper type={GameTypes.writeQuestion}>
 							<Game.Utils.TaskInfoBox title="Búa til spurningu">
 								<Game.Connected.WriteQuestion />
 							</Game.Utils.TaskInfoBox>
 						</GameWrapper>
-						<SubmitArticleGame />
+						{/* <SubmitArticleGame />
 						<VerifyAnswerLocationGame />
 						<QuestionQualityAssuranceGame />
 						<VerifyAnswerSpanGame />
-						<RoundCompletedGame />
+						<RoundCompletedGame /> */}
 					</React.Fragment>
 				)}
-			</GameAnnouncer>
+			</Game.Utils.GameAnnouncer>
 		</RestrictedPage>
 	);
 };

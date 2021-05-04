@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { Explain, GameProgress, QAsPerDay, ScoreCard } from "../..";
+import { Explain, QAsPerDay, Game } from "../..";
 import { PlayButton, UserAvatar } from "../../..";
 import { UserLevelService } from "../../../../services";
 import {
@@ -71,7 +71,7 @@ export const FrontPageDashBoard = ({
 								)}
 							</span>
 						</div>
-						<GameProgress />
+						<Game.Utils.GameProgress />
 					</Col1Row2>
 				</Explain>
 				<Explain items={TUTORIAL.userTask}>
@@ -92,7 +92,7 @@ export const FrontPageDashBoard = ({
 			</DashboardCol1>
 			<DashboardCol2>
 				<Explain items={TUTORIAL.scorecard}>
-					<ScoreCard {...scoreCard} />
+					<Game.Utils.ScoreCard {...scoreCard} />
 				</Explain>
 			</DashboardCol2>
 			<DashboardCol3>

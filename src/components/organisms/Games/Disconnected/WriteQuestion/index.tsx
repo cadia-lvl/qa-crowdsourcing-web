@@ -1,33 +1,33 @@
-import React from 'react'
-import { AlertsContainer, QuestionInput } from './styles'
-import { IProps} from "./interface";
-import { FilledAlert } from '../../../..';
+import React from "react";
+import { AlertsContainer, QuestionInput } from "./styles";
+import { IProps } from "./interface";
+import { FilledAlert } from "../../../..";
 /**
  * This is a stateless component that contains
  * the UI related to writing a question in the
  * writequestiongame round
  */
-export const WriteQuestion = ({error, isYesNoQuestion, onChange, value}: IProps) => (
-        <React.Fragment>
-            <AlertsContainer>
-					{!!error ? (
-						<FilledAlert label={error} type="danger" />
-					) : null}
-					{isYesNoQuestion ? (
-						<FilledAlert
-							label="Búðu til Já/nei spurningu"
-							type="success"
-						/>
-					) : null}
-				</AlertsContainer>
-				<QuestionInput
-					type="text"
-					placeholder={`Skrifaðu spurningu sem samfélagið getur fundið svarið við`}
-					onChange={(e) =>
-						onChange?.(e.target.value)
-					}
-					value={value}
+export const WriteQuestion = ({
+	error,
+	isYesNoQuestion,
+	onChange,
+	value,
+}: IProps) => (
+	<React.Fragment>
+		<AlertsContainer>
+			{!!error ? <FilledAlert label={error} type="danger" /> : null}
+			{isYesNoQuestion ? (
+				<FilledAlert
+					label="Búðu til Já/nei spurningu"
+					type="success"
 				/>
-        </React.Fragment>
-    )
-}
+			) : null}
+		</AlertsContainer>
+		<QuestionInput
+			type="text"
+			placeholder={`Skrifaðu spurningu sem samfélagið getur fundið svarið við`}
+			onChange={(e) => onChange?.(e.target.value)}
+			value={value}
+		/>
+	</React.Fragment>
+);

@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { submitQuestion, writeQuestion } from "../../../../actions";
-import { StoreState } from "../../../../reducers";
-import { BaseButton, Explain } from "../../../";
+import { submitQuestion, writeQuestion } from "../../../../../actions";
+import { StoreState } from "../../../../../reducers";
+import { BaseButton, Explain } from "../../../../";
 import { ButtonContainer } from "./styles";
 import { ideaWordsTutorialClosure } from "./tutorialItems";
-import * as Disconnected from "../Disconnected";
+import * as Disconnected from "../../Disconnected";
 
 export const WriteQuestion = () => {
 	const state = useSelector((state: StoreState) => state);
@@ -45,16 +45,12 @@ export const WriteQuestion = () => {
 	const hasError = !!errorMessage;
 
 	return (
-		// <GameWrapper type={GameTypes.writeQuestion}>
-		// 	<TaskInfoBox title="Búa til spurningu">
-		// 	</TaskInfoBox>
-		// </GameWrapper>
 		<React.Fragment>
 			<Disconnected.WriteQuestion
 				isYesNoQuestion={isYesNoQuestion}
 				error={errorMessage}
-				onChange={(value) => dispatch(writeQuestion(value))}
 				value={question}
+				onChange={(val) => dispatch(writeQuestion(val))}
 			/>
 
 			<Explain
