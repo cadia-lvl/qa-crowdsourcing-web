@@ -7,3 +7,4 @@
  * in scenarios when redux state is not needed, f.x.
  * in introduction tutorials
  */
+export * from "./WriteQuestion";

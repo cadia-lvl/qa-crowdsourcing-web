@@ -9,18 +9,6 @@ export const QuestionInput = styled.input`
 	font-size: 20px;
 `;
 
-export const ButtonContainer = styled.div`
-	button {
-		margin-top: 15px;
-		width: 100px !important;
-	}
-	margin-top: 20px;
-`;
-
-export const TutorialPara = styled.div`
-	margin-bottom: 20px;
-`;
-
 export const AlertsContainer = styled.div`
 	margin-top: 20px;
 `;

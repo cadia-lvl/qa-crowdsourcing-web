@@ -1,20 +1,12 @@
 import React, { useEffect } from "react";
-import { RestrictedPage } from "../../hoc";
-import {
-	WriteQuestionGame,
-	GameProgress,
-	SubmitArticleGame,
-	VerifyAnswerLocationGame,
-	QuestionQualityAssuranceGame,
-	FlexLoader,
-	VerifyAnswerSpanGame,
-	RoundCompletedGame,
-	GameAnnouncer,
-} from "../../components";
+import { GameWrapper, RestrictedPage } from "../../hoc";
+import { Game, FlexLoader } from "../../components";
+
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCurrentGameRound, fetchScoreCard } from "../../actions";
 import { StoreState } from "../../reducers";
 import { ProgressBarContainer } from "./styles";
+import { GameTypes } from "../../declerations";
 
 export const GamePage = () => {
 	const dispatch = useDispatch();
@@ -40,7 +32,11 @@ export const GamePage = () => {
 						<ProgressBarContainer>
 							<GameProgress showIcon />
 						</ProgressBarContainer>
-						<WriteQuestionGame />
+						<GameWrapper type={GameTypes.writeQuestion}>
+							<Game.Utils.TaskInfoBox title="Búa til spurningu">
+								<Game.Connected.WriteQuestion />
+							</Game.Utils.TaskInfoBox>
+						</GameWrapper>
 						<SubmitArticleGame />
 						<VerifyAnswerLocationGame />
 						<QuestionQualityAssuranceGame />
