@@ -15,8 +15,6 @@ export const Outer = styled.div`
 		width: 450px;
 		text-align: center;
 		margin: 0 auto;
-	}
-	h1 {
 		margin-bottom: 10px !important;
 	}
 `;

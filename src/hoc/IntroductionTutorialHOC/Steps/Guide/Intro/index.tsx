@@ -1,5 +1,11 @@
 import React from "react";
+import { TutorialGuide } from "../../../../../components";
+import { Outer } from "./styles";
 
 export const Intro = () => {
-	return <div>a</div>;
+	return (
+		<Outer>
+			<TutorialGuide />
+		</Outer>
+	);
 };

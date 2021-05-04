@@ -16,8 +16,11 @@ const routines: IRoutine[] = [
 				Component: Steps.Guide.Intro,
 			},
 			{
-				label: "",
-				description: [],
+				label: "Loka skilaboðunum",
+				description: [
+					"Þegar þú svarar skilaboðunum (hérna getur þú svarað með „Ókei“) þá hverfa skilaboðin. Þú getur svarað skilaboðunum þegar þú ert búin/n að lesa þau.",
+					"Það er oft gott að lesa skilaboðin og loka þeim svo, ef þau kunna að vera fyrir því sem er að gerast í leiknum. Ýttu á Ókei",
+				],
 				key: "close",
 				Component: Steps.Guide.CloseBubble,
 			},
