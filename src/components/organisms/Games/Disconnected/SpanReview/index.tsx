@@ -76,7 +76,7 @@ export const SpanReview = ({
 							<BaseButton
 								type="danger"
 								label="Svarið er ekki hér"
-								onClick={handleArchive}
+								onClick={onArchive}
 							/>
 							<BaseButton
 								type="success"
