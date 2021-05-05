@@ -10,25 +10,29 @@ import {
 	FilledAlert,
 	ModalWithTitle,
 	FlexLoader,
-} from "../../../";
-import { GOOGLE_LOGO } from "../../../../static";
+} from "../../../../";
+import { GOOGLE_LOGO } from "../../../../../static";
 import { SearchForm, Paragraph, ContinueBox } from "./styles";
 import ArticlePreview from "./ArticlePreview";
 import { useDispatch, useSelector } from "react-redux";
-import { StoreState } from "../../../../reducers";
-import { GameWrapper } from "../../../../hoc";
-import { GameTypes } from "../../../../declerations";
+import { StoreState } from "../../../../../reducers";
+import { GameWrapper } from "../../../../../hoc";
+import { GameTypes } from "../../../../../declerations";
 import PreviewReader from "./PreviewReader";
 import {
 	fetchArticlesQuery,
 	writeArticleSearchQuery,
 	markQuestionAsImpossible,
-} from "../../../../actions";
-import { TaskInfoBox } from "../GameUtils";
-import { Explain, TutorialItemClickEvent } from "../../Tutorial";
+} from "../../../../../actions";
+import { TaskInfoBox } from "../../GameUtils";
+import { Explain, TutorialItemClickEvent } from "../../../Tutorial";
 import * as TUTORIAL from "./tutorialItems";
 
-export const SubmitArticleGame = () => {
+/**
+ * This round does not have an disconnected counterpart as
+ * the need for one has not risen
+ */
+export const GoogleSearch = () => {
 	const [showContinueModal, setContinueModal] = useState(false);
 
 	const state = useSelector((state: StoreState) => state);

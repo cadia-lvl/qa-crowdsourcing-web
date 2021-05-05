@@ -58,10 +58,15 @@ export const GamePage = () => {
 								<Game.Connected.SpanReview />
 							</Game.Utils.TaskInfoBox>
 						</GameWrapper>
+						{/* GOOGLE SEARCH FOR ARTICLE*/}
+						<GameWrapper type={GameTypes.submitArticle}>
+							<Game.Connected.GoogleSearch />
+						</GameWrapper>
+
+						{/* COMPLETED ROUND ANNOUNCEMENT*/}
 						<GameWrapper type={GameTypes.completed}>
 							<Game.Connected.CompletedView />
 						</GameWrapper>
-						{/* <SubmitArticleGame /> */}
 					</React.Fragment>
 				)}
 			</Game.Utils.GameAnnouncer>
