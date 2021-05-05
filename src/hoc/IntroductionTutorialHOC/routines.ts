@@ -52,8 +52,16 @@ const routines: IRoutine[] = [
 				description: [
 					"Það er mikilvægt að spurningin sé á ágætis íslesku, en passaðu þig að hafa spurninguna ekki of formlega. Við viljum að þú spyrjir á svipaðan máta og þú myndir spyrja í talmáli.",
 				],
-				key: "close",
+				key: "ask",
 				Component: Steps.Questions.AskQuestion,
+			},
+			{
+				label: "Er þessi spurning góð?",
+				description: [
+					"Þú munt að öðru hverju sjá spurningar sem við höfum fengið frá öðrum notendum, nú þarft þú að fylla út tékklista. Þessi tékklisti hjálpar okkur að tryggja það að spyrningin sé góð",
+				],
+				key: "good",
+				Component: Steps.Questions.ReviewQuestion,
 			},
 		],
 	},
