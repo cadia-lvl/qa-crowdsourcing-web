@@ -24,6 +24,10 @@ import {
 	PrizeWrapper,
 } from "./styles";
 
+/**
+ * This round does not have an disconnected counterpart
+ * as it has not proven to be necessary
+ */
 export const CompletedView = () => {
 	const { auth } = useSelector((state: StoreState) => state);
 	const dispatch = useDispatch();
