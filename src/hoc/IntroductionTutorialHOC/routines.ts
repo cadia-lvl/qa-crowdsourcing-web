@@ -44,7 +44,7 @@ const routines: IRoutine[] = [
 		],
 	},
 	{
-		label: "Spurningar",
+		label: "Spurningar & svör",
 		key: "questions",
 		steps: [
 			{
@@ -63,15 +63,13 @@ const routines: IRoutine[] = [
 				key: "good",
 				Component: Steps.Questions.ReviewQuestion,
 			},
-		],
-	},
-	{
-		label: "Svör",
-		key: "answers",
-		steps: [
+
 			{
-				label: "",
-				description: [],
+				label: "Sérðu svarið?",
+				description: [
+					"Hér sérðu heila efnisgrein. Er möguleiki að finna svarið í efnisgreininni? Þessar efnisgreinar finnast á Wikipediu, Vísindavefnum, Vísir.is og mbl.is",
+					"Þú getur gengið út frá því að upplýsingarnar í greininni séu réttar. Þú þarft bara að segja til hvort þú sjáir svarið við spurningunni eða ekki.",
+				],
 				key: "close",
 				Component: Steps.Questions.ReviewQuestion,
 			},
