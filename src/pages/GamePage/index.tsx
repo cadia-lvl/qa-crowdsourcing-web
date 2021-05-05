@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { GameWrapper, RestrictedPage } from "../../hoc";
 import { Game, FlexLoader } from "../../components";
-
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCurrentGameRound, fetchScoreCard } from "../../actions";
 import { StoreState } from "../../reducers";
@@ -35,6 +34,13 @@ export const GamePage = () => {
 						<GameWrapper type={GameTypes.writeQuestion}>
 							<Game.Utils.TaskInfoBox title="Búa til spurningu">
 								<Game.Connected.WriteQuestion />
+							</Game.Utils.TaskInfoBox>
+						</GameWrapper>
+						<GameWrapper
+							type={GameTypes.questionQualityAssurance}
+						>
+							<Game.Utils.TaskInfoBox title="Búa til spurningu">
+								<Game.Connected.QuestionReview />
 							</Game.Utils.TaskInfoBox>
 						</GameWrapper>
 						{/* <SubmitArticleGame />

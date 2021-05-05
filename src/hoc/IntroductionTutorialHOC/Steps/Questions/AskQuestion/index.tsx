@@ -1,9 +1,15 @@
 import React from "react";
-import { WriteQuestionGame } from "../../../../../components";
+import { Game } from "../../../../../components";
 export const AskQuestion = () => {
 	return (
 		<div>
-			<WriteQuestionGame />
+			<p>Prufaðu að spyrja spurningu um Öskudaginn</p>
+			<Game.Disconnected.WriteQuestion
+				error=""
+				onChange={() => null}
+				value={""}
+				placeholder="Skrifaðu spurninguna hér"
+			/>
 		</div>
 	);
 };

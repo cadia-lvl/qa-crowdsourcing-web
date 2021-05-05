@@ -1,4 +1,4 @@
-import { CheckList } from "../GameUtils";
+import { CheckList } from "../../GameUtils";
 
 export type QAquestionItems =
 	| "grammar-correct"

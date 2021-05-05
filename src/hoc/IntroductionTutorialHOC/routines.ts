@@ -50,8 +50,7 @@ const routines: IRoutine[] = [
 			{
 				label: "Spurðu mig spurningar!",
 				description: [
-					"Þér er frjálst að spyrja um hvað sem er. En spurningar eru misgóðar, við viljum ekki spurningar sem hafa mismunandi svör eftir því hvern þú spyrð, eða hvaða dag vikunar þú spyrð",
-					"Það er mikilvægt að spurningin sé á ágætis íslnesku, en passaðu þig að hafa spurninguna ekki of formlega. Við viljum að þú spyrjir á svipaðan máta og þú myndir spyrja í talmáli.",
+					"Það er mikilvægt að spurningin sé á ágætis íslesku, en passaðu þig að hafa spurninguna ekki of formlega. Við viljum að þú spyrjir á svipaðan máta og þú myndir spyrja í talmáli.",
 				],
 				key: "close",
 				Component: Steps.Questions.AskQuestion,

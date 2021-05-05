@@ -188,3 +188,4 @@ export const ReviewCheckList = <T extends {}>({
 };
 
 export * from "./interface";
+export * as Types from "./interface";

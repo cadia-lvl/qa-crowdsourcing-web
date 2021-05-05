@@ -3,4 +3,5 @@ export interface IProps {
 	value?: string;
 	error?: string;
 	isYesNoQuestion?: boolean;
+	placeholder?: string;
 }

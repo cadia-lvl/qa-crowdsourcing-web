@@ -8,3 +8,4 @@
  * in introduction tutorials
  */
 export * from "./WriteQuestion";
+export * from "./QuestionReview";

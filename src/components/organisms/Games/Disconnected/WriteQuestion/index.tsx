@@ -12,6 +12,7 @@ export const WriteQuestion = ({
 	isYesNoQuestion,
 	onChange,
 	value,
+	placeholder,
 }: IProps) => (
 	<React.Fragment>
 		<AlertsContainer>
@@ -25,7 +26,10 @@ export const WriteQuestion = ({
 		</AlertsContainer>
 		<QuestionInput
 			type="text"
-			placeholder={`Skrifaðu spurningu sem samfélagið getur fundið svarið við`}
+			placeholder={
+				placeholder ??
+				`Spurðu spurningar sem hægt er að finna svar við`
+			}
 			onChange={(e) => onChange?.(e.target.value)}
 			value={value}
 		/>
