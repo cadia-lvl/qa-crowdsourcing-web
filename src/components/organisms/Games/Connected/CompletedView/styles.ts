@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { Colors } from "../../../../styles";
 
 export const Outer = styled.div`
 	padding: 25px;
