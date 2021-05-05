@@ -1,6 +1,5 @@
 export * from "./GameUtils";
 export * from "./SubmitArticleGame";
-export * from "./VerifyAnswerLocationGame";
 export * from "./VerifyAnswerSpanGame";
 export * from "./RoundCompletedGame";
 

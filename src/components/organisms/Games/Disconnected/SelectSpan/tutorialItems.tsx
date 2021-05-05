@@ -1,6 +1,6 @@
 import React from "react";
 import { TutorialBox, TutorialParagraph } from "./styles";
-import { TutorialExplanations } from "../../Tutorial";
+import { TutorialExplanations } from "../../../Tutorial";
 
 export const tooLongExample: TutorialExplanations[] = [
 	{
