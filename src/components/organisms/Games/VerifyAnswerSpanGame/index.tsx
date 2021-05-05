@@ -6,9 +6,6 @@ import { StoreState } from "../../../../reducers";
 import { SpanSelector, TaskInfoBox } from "../GameUtils";
 import {
 	archiveAnswer,
-	clearIndexRangeInParagraph,
-	selectFirstWordIndexInParagraph,
-	selectSecondWordIndexInParagraph,
 	verifyAnswerSpan,
 	verifyYesNoQuestion,
 } from "../../../../actions";
@@ -102,15 +99,6 @@ export const VerifyAnswerSpanGame = () => {
 					firstWord={isYesOrNo ? -1 : firstWord}
 					lastWord={isYesOrNo ? -1 : lastWord}
 					question={text}
-					onClearRange={(word) =>
-						dispatch(clearIndexRangeInParagraph())
-					}
-					onFirstWordChange={(index) =>
-						dispatch(selectFirstWordIndexInParagraph(index))
-					}
-					onLastWordChange={(index) =>
-						dispatch(selectSecondWordIndexInParagraph(index))
-					}
 					immutable
 				/>
 				<ButtonContainer>
