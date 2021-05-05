@@ -43,6 +43,11 @@ export const GamePage = () => {
 								<Game.Connected.QuestionReview />
 							</Game.Utils.TaskInfoBox>
 						</GameWrapper>
+						<GameWrapper type={GameTypes.verifyAnswerLocation}>
+							<Game.Utils.TaskInfoBox title="Staðsetja svar">
+								<Game.Connected.SelectSpan />
+							</Game.Utils.TaskInfoBox>
+						</GameWrapper>
 						{/* <SubmitArticleGame />
 						<VerifyAnswerLocationGame />
 						<QuestionQualityAssuranceGame />
