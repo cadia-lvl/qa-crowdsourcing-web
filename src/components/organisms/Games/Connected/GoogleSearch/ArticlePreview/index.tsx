@@ -2,8 +2,8 @@ import React from "react";
 import { Outer, LeftBox, RightBox, ExtractPara } from "./styles";
 import { IProps } from "./interface";
 import { useDispatch, useSelector } from "react-redux";
-import { StoreState } from "../../../../../reducers";
-import { previewArticleToSubmit } from "../../../../../actions";
+import { StoreState } from "../../../../../../reducers";
+import { previewArticleToSubmit } from "../../../../../../actions";
 
 const ArticlePreview = (article: IProps) => {
 	const {

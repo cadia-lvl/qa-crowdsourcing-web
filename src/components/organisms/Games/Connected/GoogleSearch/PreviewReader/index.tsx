@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { StoreState } from "../../../../../reducers";
-import { HighlightSubText, Explain } from "../../../../";
+import { StoreState } from "../../../../../../reducers";
+import { HighlightSubText, Explain } from "../../../../../";
 import {
 	Outer,
 	Inner,
@@ -18,10 +18,10 @@ import {
 	submitArticleAndParagraph,
 	closePreviewArticleToSubmit,
 	selectParagraphToPreview,
-} from "../../../../../actions";
-import { Colors } from "../../../../../styles";
+} from "../../../../../../actions";
+import { Colors } from "../../../../../../styles";
 import * as TUTORIAL from "./tutorialItems";
-import { FlexLoader } from "../../../../atoms";
+import { FlexLoader } from "../../../../../atoms";
 
 const PreviewHeader = () => {
 	const state = useSelector((state: StoreState) => state);

@@ -73,6 +73,16 @@ const routines: IRoutine[] = [
 				key: "close",
 				Component: Steps.Answers.SelectSpan,
 			},
+
+			{
+				label: "Telur þú svarið vera rétt?",
+				description: [
+					"Hér sérðu heila efnisgrein sem við fundum á veraldarvefnum. Annar notandi hefur merkt svarið í fjólubláu stöfum",
+					"Þegar kerfið spyr útí hvort svarið mætti vera styttra, þá eigum við eingöngu um fjólubláa (merkta) svarið",
+				],
+				key: "close",
+				Component: Steps.Answers.SpanReview,
+			},
 		],
 	},
 	// {

@@ -1,7 +1,7 @@
 import { TutorialExplanations } from "../../..";
 import React from "react";
 import { ContinueSpanPara, ContinueClick } from "./styles";
-import { TutorialItemClickEvent } from "../../Tutorial";
+import { TutorialItemClickEvent } from "../../../Tutorial";
 
 export const explainGoogle: TutorialExplanations[] = [
 	{

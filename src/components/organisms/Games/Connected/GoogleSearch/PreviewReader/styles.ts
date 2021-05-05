@@ -2,8 +2,8 @@ import styled from "styled-components";
 import {
 	TUTORIAL_IMG_ANSWER_IS_HERE,
 	TUTORIAL_IMG_CONFIRM_ANSWER,
-} from "../../../../../static";
-import { Colors } from "../../../../../styles";
+} from "../../../../../../static";
+import { Colors } from "../../../../../../styles";
 
 export const BackDrop = styled.div`
 	display: flex;

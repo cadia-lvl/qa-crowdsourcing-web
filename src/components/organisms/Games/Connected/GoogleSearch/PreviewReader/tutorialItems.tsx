@@ -1,4 +1,4 @@
-import { TutorialExplanations } from "../../..";
+import { TutorialExplanations } from "../../../..";
 import React from "react";
 import { ExplainAnswerIsHereImg, ExpalinConfirmAnswer } from "./styles";
 
