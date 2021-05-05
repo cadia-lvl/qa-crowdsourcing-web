@@ -15,7 +15,7 @@ export const SpanSelector = ({
 }: IProps) => {
 	let selectionState: SelectionStates;
 
-	let action: (v: number) => any;
+	let action: ((v: number) => any) | undefined;
 	if (firstWord == undefined) {
 		action = onFirstWordChange;
 		lastWord = firstWord = -1;
@@ -89,7 +89,7 @@ export const SpanSelector = ({
 				{paragraph.split(" ").map((word, i) => (
 					<React.Fragment>
 						{i == firstWord ? <Word>„</Word> : null}
-						<ClickableSpan onClick={() => action(i)}>
+						<ClickableSpan onClick={() => action?.(i)}>
 							<Word
 								title={getToolTipString(word)}
 								theme={{

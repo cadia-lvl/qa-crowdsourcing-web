@@ -4,9 +4,9 @@ export interface IProps {
 	paragraph: string;
 	question: string;
 	immutable?: boolean;
-	onFirstWordChange: (index: number) => void;
-	onLastWordChange: (index: number) => void;
-	onClearRange: (index: number) => void;
+	onFirstWordChange?: (index: number) => void;
+	onLastWordChange?: (index: number) => void;
+	onClearRange?: (index: number) => void;
 	onComplete?: () => void;
 }
 
