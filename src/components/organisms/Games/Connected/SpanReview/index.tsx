@@ -1,19 +1,19 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { StoreState } from "../../../../reducers";
+import { StoreState } from "../../../../../reducers";
 import {
 	archiveAnswer,
 	verifyAnswerSpan,
 	verifyYesNoQuestion,
-} from "../../../../actions";
-import { Disconnected } from "../";
+} from "../../../../../actions";
+import { Disconnected } from "../../";
 
 // export type SelectionStates =
 // 	| "select-first"
 // 	| "select-last"
 // 	| "clear-selection";
 
-export const VerifyAnswerSpanGame = () => {
+export const SpanReview = () => {
 	const state = useSelector((state: StoreState) => state);
 
 	const dispatch = useDispatch();

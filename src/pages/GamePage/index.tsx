@@ -48,10 +48,12 @@ export const GamePage = () => {
 								<Game.Connected.SelectSpan />
 							</Game.Utils.TaskInfoBox>
 						</GameWrapper>
+						<GameWrapper type={GameTypes.verifyAnswerSpan}>
+							<Game.Utils.TaskInfoBox title="Yfirfara svar">
+								<Game.Connected.SpanReview />
+							</Game.Utils.TaskInfoBox>
+						</GameWrapper>
 						{/* <SubmitArticleGame />
-						<VerifyAnswerLocationGame />
-						<QuestionQualityAssuranceGame />
-						<VerifyAnswerSpanGame />
 						<RoundCompletedGame /> */}
 					</React.Fragment>
 				)}
