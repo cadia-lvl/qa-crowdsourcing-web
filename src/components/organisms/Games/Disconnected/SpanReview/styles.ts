@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { TUTORIAL_IMG_ANSWER_IS_PURPLE } from "../../../../static";
+import { TUTORIAL_IMG_ANSWER_IS_PURPLE } from "../../../../../static";
 
 export const ButtonContainer = styled.div`
 	display: flex;

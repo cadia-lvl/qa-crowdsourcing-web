@@ -1,5 +1,5 @@
 import React from "react";
-import { TutorialExplanations } from "../../Tutorial";
+import { TutorialExplanations } from "../../../Tutorial";
 import {
 	ExplainPurpleImg,
 	TutorialParagraph,
