@@ -71,7 +71,7 @@ const routines: IRoutine[] = [
 					"Þú getur gengið út frá því að upplýsingarnar í greininni séu réttar. Þú þarft bara að segja til hvort þú sjáir svarið við spurningunni eða ekki.",
 				],
 				key: "close",
-				Component: Steps.Questions.ReviewQuestion,
+				Component: Steps.Answers.SelectSpan,
 			},
 		],
 	},
