@@ -11,6 +11,7 @@ export const initialState: SubmitArticleState = {
 	searchError: false,
 	noResults: false,
 	isPerformingSearch: false,
+	isLoadingArticle: false,
 };
 
 const reducer = (
@@ -74,6 +75,11 @@ const reducer = (
 				searchError: true,
 				articles: [],
 				isPerformingSearch: false,
+			};
+		case ActionTypes.setIsLoadingArticle:
+			return {
+				...state,
+				isLoadingArticle: action.payload,
 			};
 		default:
 			return state;

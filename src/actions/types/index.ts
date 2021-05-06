@@ -42,6 +42,7 @@ export enum ActionTypes {
 	setIsWaitingForNewAuthCode,
 	setIsWaitingForVerification,
 	setAuthCodeErrorMessage,
+	setIsLoadingArticle,
 }
 
 export type Actions =
@@ -61,6 +62,7 @@ export type Actions =
 	| SubmitArticleActions.FetchArticlesQueryAction
 	| SubmitArticleActions.SetGoogleSearchErrorAction
 	| SubmitArticleActions.SetIsPerformingSearch
+	| SubmitArticleActions.SetIsLoadingArticle
 	| VerifyAnswerLocationsActions.SelectFirstWordIndexInParagraphAction
 	| VerifyAnswerLocationsActions.SelectSecondWordIndexInParagraphAction
 	| VerifyAnswerLocationsActions.ClearIndexRangeInParagraph

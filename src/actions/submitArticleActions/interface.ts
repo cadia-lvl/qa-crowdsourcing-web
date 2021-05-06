@@ -33,3 +33,8 @@ export interface SetIsPerformingSearch {
 	type: ActionTypes.setIsPerformingSearch;
 	payload: boolean;
 }
+
+export interface SetIsLoadingArticle {
+	type: ActionTypes.setIsLoadingArticle;
+	payload: boolean;
+}

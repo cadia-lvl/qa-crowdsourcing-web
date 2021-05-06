@@ -5,10 +5,10 @@ export const Outer = styled.div`
 	padding: 25px;
 	box-sizing: border-box;
 	border-radius: 5px;
-	background-color: ${Colors.FG_WHITE};
+	background-color: #fff;
 	box-shadow: 0px 0px 25px rgba(255, 168, 0, 0.1);
 	width: 100%;
-	margin-bottom: 85px;
+	margin-bottom: 35px;
 	position: relative;
 	z-index: 2;
 	overflow: hidden;
@@ -38,7 +38,7 @@ export const IconBoxOuter = styled.div`
 	align-items: center;
 	flex-direction: column;
 	margin-top: 50px;
-	margin-bottom: 100px;
+	margin-bottom: 0px;
 `;
 
 export const TextPromptWrapper = styled.div`
@@ -63,4 +63,16 @@ export const TopBox = styled.div`
 export const IconWrapper = styled.div`
 	height: 200px;
 	width: 200px;
+`;
+
+export const PrizeWrapper = styled.div`
+	display: flex;
+	justify-content: center;
+	margin: 0 0 40px 0;
+	h1 {
+		display: none;
+	}
+	> div {
+		background-color: rgba(0, 0, 0, 0);
+	}
 `;

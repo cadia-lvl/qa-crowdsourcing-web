@@ -5,18 +5,47 @@ import {
 } from "../../../../../static";
 import { Colors } from "../../../../../styles";
 
+export const BackDrop = styled.div`
+	display: flex;
+	z-index: 10;
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100vh;
+	width: 100vw;
+	background-color: rgba(0, 0, 0, 0.2);
+	align-items: center;
+	justify-content: center;
+`;
+
 export const Outer = styled.div`
 	box-sizing: border-box;
-	margin-bottom: 80px;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 70%;
+	left: 15%;
+	top: 5vh;
+	height: 90vh;
+	display: flex;
+	align-items: center;
+`;
+
+export const ShadowWrap = styled.div`
+	box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.3);
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	max-height: 100%;
 `;
 
 export const Inner = styled.div`
 	overflow-y: scroll;
-	max-height: 500px;
 	padding: 40px 20px;
 	box-sizing: border-box;
 	border: 2px solid ${Colors.SUCCESS};
 	background-color: white;
+	height: 100vh;
 `;
 
 export const TopBar = styled.div`
@@ -29,28 +58,30 @@ export const TopBar = styled.div`
 	align-items: center;
 	box-sizing: border-box;
 	padding: 4px 10px;
-	input[type="text"] {
-		height: 100%;
-		border-radius: 20px;
-		padding: 15px;
-		border: none;
-		:focus {
-			outline: none;
-			border: none;
-		}
-	}
+
 	justify-content: space-between;
 	span {
 		font-size: 18px;
 		transition: 0.2s;
-		color: ${Colors.FG_WHITE};
+		color: #fff;
 		cursor: pointer;
 		padding: 3px;
-		font-weight: 600;
+		font-weight: 650;
 		:hover {
 			color: ${Colors.SUCCESS_BG};
 		}
+		i {
+			margin-right: 10px;
+		}
 	}
+`;
+
+export const IconContainer = styled.div`
+	height: 100%;
+	img {
+		height: 100%;
+	}
+	margin-left: -5px;
 `;
 
 export const ParagraphContainer = styled.div`

@@ -49,7 +49,6 @@ export const DescriptionBox = styled.div`
 	display: flex;
 	flex-direction: row;
 	border-top: 1px solid #ececec;
-	border-bottom: 1px solid #ececec;
 	padding: 20px 0;
 `;
 

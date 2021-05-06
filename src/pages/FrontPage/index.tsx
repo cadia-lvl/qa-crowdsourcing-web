@@ -4,7 +4,6 @@ import {
 	Section,
 	TextBoxPara,
 	Inner,
-	GameExample,
 	DashBoardExample,
 	Margins,
 	LogoBox,
@@ -51,7 +50,7 @@ export const FrontPage = () => {
 								totalRounds={totalRounds}
 								currentRound={currentRound}
 							/>
-							{/* -- END OF DASHBOARD -- */}
+							{/* <WinningsDashBoard /> */}
 						</WhenIsAuth>
 
 						{/* When user is not authenticated */}
@@ -77,11 +76,17 @@ export const FrontPage = () => {
 											<i>100.000 spurningum</i> árið
 											2021 til þess að búa til
 											gervigreind fyrir
-											spurningasvörun.
+											spurningasvörun. Því meira sem
+											þú spilar, því meiri stuðning
+											veitir þú íslensku í nútímanum.
 										</TextBoxPara>{" "}
-										<ConvertButton />
 									</Margins>
-									<GameExample className="shine-wrap no-pointer-events no-highlight" />
+									<NavLink to="/spila">
+										<PlayButton>
+											<PlayIcon className="fas fa-puzzle-piece" />
+											Spila
+										</PlayButton>
+									</NavLink>
 								</Section>
 
 								<Section>
@@ -111,21 +116,12 @@ export const FrontPage = () => {
 										<ConvertButton />
 									</Margins>
 									<LogoGrid className="shine-wrap no-pointer-events no-highlight">
-										<LogoBox />
-										<LogoBox />
-										<LogoBox />
-										<LogoBox />
-										<LogoBox />
-										<LogoBox />
-										<LogoBox />
-										<LogoBox />
-										<LogoBox />
-										<LogoBox />
-										<LogoBox />
-										<LogoBox />
-										<LogoBox />
-										<LogoBox />
-										<LogoBox />
+										{
+											/// tmp until we get actual price logos
+											[...new Array(12)].map(() => (
+												<LogoBox />
+											))
+										}
 									</LogoGrid>
 								</Section>
 								<Section>
@@ -168,6 +164,7 @@ export const FrontPage = () => {
 													answerVerifications: 13,
 													answers: 15,
 													articles: 10,
+													invites: 0,
 												},
 											}}
 											totalRounds={7}

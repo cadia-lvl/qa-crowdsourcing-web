@@ -7,7 +7,7 @@ export const explainGoogle: TutorialExplanations[] = [
 	{
 		type: "str",
 		payload:
-			"Þessi Google leitarvél birtir niðurstöðurnar inn á þessari síðu.",
+			"Þessi Google leitarvél birtir niðurstöðurnar inn á þessari síðu. Hún leitar aðeins á Wikipedia, Vísindavefnum, mbl.is og Vísir.is",
 		id: "GAME:SEARCH:EXPLAINGOOGLE",
 		highlight: false,
 		dialog: [

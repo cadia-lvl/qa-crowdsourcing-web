@@ -14,6 +14,7 @@ export interface ScoreCard {
 	questionVerifications: number;
 	articles: number;
 	hiscoreRank: number;
+	invites: number;
 }
 
 export type UserType =

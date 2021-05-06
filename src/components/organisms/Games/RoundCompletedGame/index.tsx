@@ -6,6 +6,7 @@ import {
 	ShootingStars,
 	UserAvatar,
 	BaseButton,
+	WinningsDashBoard,
 } from "../../..";
 import {
 	fetchCurrentGameRound,
@@ -24,6 +25,7 @@ import {
 	TopBox,
 	TextPromptInner,
 	IconWrapper,
+	PrizeWrapper,
 } from "./styles";
 
 export const RoundCompletedGame = () => {
@@ -97,8 +99,10 @@ export const RoundCompletedGame = () => {
 						</TextPromptInner>
 					</TextPromptWrapper>
 				</TopBox>
+				<PrizeWrapper>
+					<WinningsDashBoard />
+				</PrizeWrapper>
 
-				<ScoreCard {...auth.scoreCard} />
 				<BaseButton
 					label="Áfram"
 					type="highlight"

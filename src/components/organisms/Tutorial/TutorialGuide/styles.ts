@@ -8,10 +8,8 @@ export const Outer = styled.div<IOuter>`
 	height: 70px;
 	width: 70px;
 	border: 5px solid ${Colors.HIGHLIGHT};
+	background-color: ${Colors.HIGHLIGHT_BG};
 	border-radius: 50%;
-	position: fixed;
-	bottom: 50px;
-	right: 50px;
 	transition: 0.3s;
 	${({ shake }) =>
 		shake
@@ -22,7 +20,6 @@ export const Outer = styled.div<IOuter>`
 		width: 100px;
 	`
 			: ""}
-	z-index: 1;
 `;
 
 export const Inner = styled.div`

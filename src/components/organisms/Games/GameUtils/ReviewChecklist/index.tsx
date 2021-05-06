@@ -8,9 +8,8 @@ import {
 	CheckListContainer,
 } from "./styles";
 import { ReviewActions, State } from "./stateUtils";
-import { CheckListBullet, FlexLoader } from "../../../../";
+import { CheckListBullet, FlexLoader, PageDots } from "../../../../";
 import { shuffle } from "./utils";
-import PageDots from "./PagesDots";
 
 export const ReviewCheckList = <T extends {}>({
 	items: itemProps,

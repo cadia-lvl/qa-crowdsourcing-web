@@ -1,11 +1,9 @@
 import styled from "styled-components";
-import { PlayButton } from "../../components";
 import {
 	ICON_LVL_2,
 	ICON_LVL_5,
 	ICON_LVL_7,
 	ICON_LVL_8,
-	LANDING_PAGE_GAME_EXAMPLE,
 } from "../../static";
 import { Colors } from "../../styles";
 
@@ -61,17 +59,9 @@ export const SignInLinkContainer = styled.div`
 	text-align: center;
 `;
 
-export const GameExample = styled.div`
-	background-image: url(${LANDING_PAGE_GAME_EXAMPLE});
-	background-repeat: no-repeat;
-	background-size: cover;
-	height: 211px;
-	width: 727px;
-	margin-top: 25px;
-`;
-
 export const DashBoardExample = styled.div`
-	transform: scale(0.73);
+	transform: scale(0.73) perspective(2000px) rotateY(-17deg)
+		rotateX(15deg);
 `;
 
 export const Section = styled.div`
@@ -97,6 +87,7 @@ export const LogoGrid = styled.div`
 	color: #444;
 	width: 700px;
 	margin-top: 70px;
+	transform: perspective(1800px) rotateY(20deg) rotateX(15deg);
 `;
 
 export const LogoBox = styled.div`

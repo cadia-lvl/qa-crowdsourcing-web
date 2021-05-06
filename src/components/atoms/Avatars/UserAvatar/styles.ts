@@ -15,4 +15,5 @@ export const Outer = styled.div<OuterProps>`
 	box-sizing: border-box;
 	overflow: hidden;
 	cursor: pointer;
+	background-repeat: no-repeat;
 `;

@@ -13,6 +13,7 @@ export const initialState: AuthState = {
 		questionVerifications: 0,
 		articles: 0,
 		hiscoreRank: -2,
+		invites: 0,
 	},
 	level: 1,
 	isAuthCodeRegenerationLoading: false,

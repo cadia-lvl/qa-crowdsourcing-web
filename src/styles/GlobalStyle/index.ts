@@ -7,6 +7,8 @@ export const GlobalStyle = createGlobalStyle`
         padding: 0;
     }
 
+
+
     body {
 
         overflow: none;
@@ -103,7 +105,7 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     a {
-        color: #0060B6;
+        color: #666;
         text-decoration: none;
     }
 

@@ -7,3 +7,5 @@ export * from "./Texts";
 export * from "./Loaders";
 export * from "./Avatars";
 export * from "./Animations";
+export * from "./Images";
+export * from "./Pagination";

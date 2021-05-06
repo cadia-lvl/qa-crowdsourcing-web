@@ -12,18 +12,14 @@ import {
 	DescriptionBox,
 	AnnouncerAvatarWrapper,
 	DescriptionBoxPara,
-	BulletSection,
 } from "./styles";
-import {
-	FlexLoader,
-	TextPrompt,
-	PlayButton,
-	CheckListBullet as Bullet,
-} from "../../../../";
+import { FlexLoader, TextPrompt, PlayButton } from "../../../../";
 import { IProps } from "./interface";
-import { getPrevText, getCurrText, LOADING_TIMER } from "./utils";
+import { getPrevText, LOADING_TIMER } from "./utils";
 import { UserAvatar } from "../../../../atoms";
 import { UserLevelService } from "../../../../../services";
+import gameInfos from "../GameInfos";
+import { GameBullets } from "../GameBullets";
 
 export const GameAnnouncer = ({ children }: IProps) => {
 	/**
@@ -119,10 +115,7 @@ export const GameAnnouncer = ({ children }: IProps) => {
 				<NextTaskInner>
 					<NextTaskTopLine>
 						<h1 className="italic">
-							{getCurrText(
-								username,
-								currGame
-							).title.toUpperCase()}
+							{gameInfos().title.toUpperCase()}
 						</h1>
 					</NextTaskTopLine>
 					<DescriptionBox>
@@ -134,27 +127,9 @@ export const GameAnnouncer = ({ children }: IProps) => {
 							/>
 						</AnnouncerAvatarWrapper>
 						<DescriptionBoxPara>
-							{getCurrText(username, currGame).text}
+							{gameInfos().text}
 						</DescriptionBoxPara>
 					</DescriptionBox>
-					<BulletSection>
-						{getCurrText(username, currGame).dos.map(
-							(text) => (
-								<Bullet type="good">{text}</Bullet>
-							)
-						)}
-						{getCurrText(username, currGame).infos.map(
-							(text) => (
-								<Bullet type="neutral">{text}</Bullet>
-							)
-						)}
-
-						{getCurrText(username, currGame).donts.map(
-							(text) => (
-								<Bullet type="bad">{text}</Bullet>
-							)
-						)}
-					</BulletSection>
 					<ButtonWrapper>
 						<PlayButton onClick={handleOpenTask}>
 							Áfram
