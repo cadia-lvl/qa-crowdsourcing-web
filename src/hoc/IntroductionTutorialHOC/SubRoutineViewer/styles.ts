@@ -30,6 +30,7 @@ export const Bottom = styled.div`
 	position: relative;
 	display: flex;
 	justify-content: flex-end;
+	height: 60px;
 `;
 
 export const DotsContainer = styled.div`

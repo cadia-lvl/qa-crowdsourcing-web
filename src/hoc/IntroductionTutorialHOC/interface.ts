@@ -3,7 +3,8 @@ export interface IProps {
 }
 
 export interface SoubRoutineProps {
-	onHideBottomBar?: () => void;
+	onHideButton: () => void;
+	onShowButton: () => void;
 	onContinue?: () => void;
 }
 
@@ -23,7 +24,7 @@ export interface IRoutine {
 export interface IRoutineStep {
 	label: string;
 	description: string[];
-	Component: () => JSX.Element;
+	Component: (props: SoubRoutineProps) => JSX.Element;
 	key: string;
 }
 

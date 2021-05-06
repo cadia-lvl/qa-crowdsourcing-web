@@ -1,12 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Explain, TutorialGuide } from "../../../../../components";
+import { SoubRoutineProps } from "../../../interface";
 import { Outer } from "./styles";
 import * as TUTORIAL from "./tutorialItems";
 
-export const CloseBubble = (props: SoubRoutineProps) => {
+export const CloseBubble = ({
+	onHideButton,
+	onShowButton,
+}: SoubRoutineProps) => {
+	useEffect(() => {
+		onHideButton();
+	}, []);
+
+	const items = TUTORIAL.explainCloseClosure(onShowButton);
 	return (
 		<Outer>
-			<Explain items={TUTORIAL.explainClose}> </Explain>
+			<Explain items={items}> </Explain>
 			<TutorialGuide />
 		</Outer>
 	);

@@ -1,6 +1,8 @@
 import { TutorialExplanations } from "../../../../../components";
 
-export const explainClose: TutorialExplanations[] = [
+export const explainCloseClosure = (
+	cb: () => void
+): TutorialExplanations[] => [
 	{
 		type: "str",
 		payload: "Prufa að loka þessu skilaboði!",
@@ -9,6 +11,7 @@ export const explainClose: TutorialExplanations[] = [
 		dialog: [
 			{
 				text: "Ókei",
+				onClick: cb,
 			},
 		],
 	},
