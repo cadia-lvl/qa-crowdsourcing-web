@@ -85,27 +85,36 @@ const routines: IRoutine[] = [
 		],
 	},
 
-	// {
-	// 	label: "Leita",
-	// 	key: "search",
-	// 	steps: [
-	// 		{
-	// 			label: "",
-	// 			description: [],
-	// 			key: "close",
-	// 			Component: Steps.Guide.CloseBubble,
-	// 		},
-	// 	],
-	// },
 	{
 		label: "Vinningar í boði",
 		key: "prizes",
 		steps: [
 			{
-				label: "",
-				description: [],
-				key: "close",
-				Component: Steps.Guide.CloseBubble,
+				label: "Vinningarnir",
+				description: [
+					"Það eru ýmsir vinningar í boði. Þú getur ekki aðeins bætt alfræði þekkingu þín heldur getur þú einnig unnið þér inn flotta vinninga og um leið stutt íslenska tungu í nútímanum",
+					"Því meira sem þú spilar og lærir með okkur, því fleiri vinninga getur þú unnið.",
+					"Vinningunum er skipt í flokka. Flestir flokkarnir eru læstir, en þegar þú nærð ákveðnum áföngum þá aflæsast vinningar. ",
+				],
+				key: "explain",
+				Component: Steps.Rewards.Explain,
+			},
+			{
+				label: "Komin/n í pottinn",
+				description: [
+					"Þessi kassi táknar verðlauna flokk. Eins þú sérð, þá er hann grænn. Grænir kassar tákna það að þú sért komin/n í pottinn og átt möugleika á að vera dregin út sem vinningshafi.",
+				],
+				key: "unlocked",
+				Component: Steps.Rewards.Unlocked,
+			},
+			{
+				label: "Getur þú aflæst þessa vinninga?",
+				description: [
+					"Þegar kassarnir eru rauðir, þá táknar það að þú sért ekki enn búin/n að aflæsa þessi verðlaun",
+					"Því lengra sem þú kemst því flottari verðlaun getur þú unnið, og um leið ertu líklegri til þess að vinna vinninga.",
+				],
+				key: "locked",
+				Component: Steps.Rewards.Locked,
 			},
 		],
 	},

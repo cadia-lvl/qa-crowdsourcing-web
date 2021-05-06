@@ -1,6 +1,8 @@
 import { User } from "../../declerations";
 import { PrizeCategory, PrizeCategoryNames, PrizeItem } from "./interface";
 
+export const ALLIR_TAKA_THATT: PrizeCategoryNames = "Allir taka þátt";
+
 export const PriceCategories: PrizeCategory[] = [
 	{
 		name: "Allir taka þátt",
@@ -312,3 +314,5 @@ export const hasUnlockedCategory = (
 			return false;
 	}
 };
+
+export * from "./interface";
