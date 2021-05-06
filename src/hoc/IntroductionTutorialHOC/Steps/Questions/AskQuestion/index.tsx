@@ -1,15 +1,27 @@
-import React from "react";
-import { Game } from "../../../../../components";
+import React, { useEffect, useState } from "react";
+import { Game, FilledAlert } from "../../../../../components";
 import { SoubRoutineProps } from "../../../interface";
 
-export const AskQuestion = (props: SoubRoutineProps) => {
+export const AskQuestion = ({
+	onHideButton,
+	onShowButton,
+}: SoubRoutineProps) => {
+	const [question, setQuestion] = useState("");
+
+	const PRESCRIBED_QUESTION = "Hvenær er öskudagurinn?";
+
+	useEffect(() => {
+		if (question === PRESCRIBED_QUESTION) onShowButton();
+		else onHideButton();
+	}, [question]);
+
 	return (
 		<div>
-			<p>Prufaðu að spyrja spurningu um Öskudaginn</p>
+			<p>Prufaðu að spyrja „{PRESCRIBED_QUESTION}“</p>
 			<Game.Disconnected.WriteQuestion
 				error=""
-				onChange={() => null}
-				value={""}
+				onChange={setQuestion}
+				value={question}
 				placeholder="Skrifaðu spurninguna hér"
 			/>
 		</div>

@@ -24,6 +24,9 @@ export const Content = styled.div`
 	flex: 1;
 	flex-direction: column;
 	display: flex;
+	.page-dots {
+		display: none;
+	}
 `;
 
 export const Bottom = styled.div`
