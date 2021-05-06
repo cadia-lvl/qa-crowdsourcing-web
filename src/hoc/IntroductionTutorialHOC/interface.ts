@@ -2,6 +2,12 @@ export interface IProps {
 	children: React.ReactNode;
 }
 
+export interface SoubRoutineProps {
+	onHideButton: () => void;
+	onShowButton: () => void;
+	onContinue?: () => void;
+}
+
 export type RoutineKeys =
 	| "guide"
 	| "questions"
@@ -18,7 +24,7 @@ export interface IRoutine {
 export interface IRoutineStep {
 	label: string;
 	description: string[];
-	Component: () => JSX.Element;
+	Component: (props: SoubRoutineProps) => JSX.Element;
 	key: string;
 }
 

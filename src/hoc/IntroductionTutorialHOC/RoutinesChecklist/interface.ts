@@ -7,4 +7,5 @@ interface Todo extends IRoutine {
 export interface IProps {
 	todos: Todo[];
 	onNext?: () => void;
+	completed?: boolean;
 }

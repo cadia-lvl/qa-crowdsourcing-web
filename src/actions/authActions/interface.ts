@@ -38,3 +38,12 @@ export interface SetAuthCodeErrorMessageAction {
 	type: ActionTypes.setAuthCodeErrorMessage;
 	payload: string;
 }
+
+export interface SetIsWaitingForCompletingTutorialAction {
+	type: ActionTypes.setIsWaitingForCompletingTutorial;
+	payload: boolean;
+}
+
+export interface CompleteTutorialAction {
+	type: ActionTypes.completeTutorial;
+}

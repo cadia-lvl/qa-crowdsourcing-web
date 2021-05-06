@@ -24,12 +24,16 @@ export const Content = styled.div`
 	flex: 1;
 	flex-direction: column;
 	display: flex;
+	.page-dots {
+		display: none;
+	}
 `;
 
 export const Bottom = styled.div`
 	position: relative;
 	display: flex;
 	justify-content: flex-end;
+	height: 60px;
 `;
 
 export const DotsContainer = styled.div`

@@ -1,42 +1,62 @@
 import React from "react";
 import { Outer, RoutineOuter, Bottom } from "./styles";
-import { PlayButton } from "../../../components";
+import { BaseButton, PlayButton, FlexLoader } from "../../../components";
 import { IProps } from "./interface";
 import { IconDecorator } from "../../../hoc";
+import { useDispatch, useSelector } from "react-redux";
+import * as Utils from "./utils";
+import { completeTutorial } from "../../../actions";
+import { StoreState } from "../../../reducers";
 
 const ITEM_COUNT = 4;
-const RoutinesChecklist = ({ todos, onNext }: IProps) => (
-	<IconDecorator iconCount={ITEM_COUNT}>
-		<Outer>
-			<h1 className="italic">Velkomin/n á spurningar.is</h1>
-			<p>
-				Okkur langar að kenna þér að spila leikinn. Smelltu á áfram
-				og við sýnum þér hvernig spurningaleikurinn virkar. Í
-				seinasta skrefinu sérð þú upplýsingar um hvaða vinninga þú
-				getur unnið og hvernig þú getur unnið þér inn möguleika á
-				ennþá flottari vinningum.
-			</p>
-			{/* Maps todo items and applies the
+const RoutinesChecklist = ({ todos, onNext, completed }: IProps) => {
+	const { isTutorialCompletedLoading } = useSelector(
+		(state: StoreState) => state.auth
+	);
+	const dispatch = useDispatch();
+	const accessor = completed ? "completed" : "notCompleted";
+	return (
+		<IconDecorator iconCount={ITEM_COUNT}>
+			<Outer>
+				<h1 className="italic">{Utils.TEXT[accessor].title}</h1>
+				<p>{Utils.TEXT[accessor].paragraph}</p>
+				{/* Maps todo items and applies the
 		    relevant icon */}
-			{todos.map((item) => (
-				<RoutineOuter>
-					<span>{item.label}</span>
-					{item.completed ? (
-						<i className="fas fa-check-circle" />
+				{todos.map((item) => (
+					<RoutineOuter>
+						<span>{item.label}</span>
+						{item.completed ? (
+							<i className="fas fa-check-circle" />
+						) : (
+							<i className="far fa-circle" />
+						)}
+					</RoutineOuter>
+				))}
+				<Bottom>
+					{completed ? (
+						isTutorialCompletedLoading ? (
+							<FlexLoader size={40} />
+						) : (
+							<BaseButton
+								type="highlight"
+								label={Utils.TEXT[accessor].button}
+								onClick={() =>
+									dispatch(completeTutorial())
+								}
+							/>
+						)
 					) : (
-						<i className="far fa-circle" />
+						<React.Fragment>
+							<span>
+								<i className="fas fa-door-open" /> Útskrá
+							</span>
+							<PlayButton onClick={onNext}>Áfram</PlayButton>
+						</React.Fragment>
 					)}
-				</RoutineOuter>
-			))}
-
-			<Bottom>
-				<span>
-					<i className="fas fa-door-open" /> Útskrá
-				</span>
-				<PlayButton onClick={onNext}>Áfram</PlayButton>
-			</Bottom>
-		</Outer>
-	</IconDecorator>
-);
+				</Bottom>
+			</Outer>
+		</IconDecorator>
+	);
+};
 
 export default RoutinesChecklist;

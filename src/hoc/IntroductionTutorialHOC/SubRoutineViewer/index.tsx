@@ -8,6 +8,7 @@ const SubRoutineViewer = ({
 	onComplete,
 	onCompleteStep,
 }: IProps) => {
+	const [showButton, setShowButton] = useState(true);
 	const [currentIndex, setCurrentIndex] = useState(0);
 	const [isLoading, setIsLoading] = useState(true);
 
@@ -22,6 +23,8 @@ const SubRoutineViewer = ({
 
 	// handles the process of emitting onComplete event
 	useEffect(() => {
+		// also set showbutton to true
+		setShowButton(true);
 		const LOAD_TIMEOUT = 750;
 		if (currentIndex >= items.length) {
 			const t = setTimeout(onComplete, LOAD_TIMEOUT);
@@ -40,6 +43,9 @@ const SubRoutineViewer = ({
 		setCurrentIndex((val) => val + 1);
 	};
 
+	const handleHideButton = () => setShowButton(false);
+	const handleShowButton = () => setShowButton(true);
+
 	return (
 		<Outer>
 			<Content>
@@ -51,7 +57,10 @@ const SubRoutineViewer = ({
 						{current.description.map((text) => (
 							<p>{text}</p>
 						))}
-						<Component />
+						<Component
+							onHideButton={handleHideButton}
+							onShowButton={handleShowButton}
+						/>
 					</React.Fragment>
 				) : null}
 			</Content>
@@ -62,7 +71,9 @@ const SubRoutineViewer = ({
 						total={items.length}
 					/>
 				</DotsContainer>
-				<PlayButton onClick={handleNextStep}>Áfram</PlayButton>
+				{showButton ? (
+					<PlayButton onClick={handleNextStep}>Áfram</PlayButton>
+				) : null}
 			</Bottom>
 		</Outer>
 	);

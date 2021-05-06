@@ -6,6 +6,8 @@ import {
 	SetIsWaitingForNewAuthCodeAction,
 	SetIsWaitingForVerificationAction,
 	SetAuthCodeErrorMessageAction,
+	CompleteTutorialAction,
+	SetIsWaitingForCompletingTutorialAction,
 } from "./interface";
 import { ScoreCard, User } from "../../declerations";
 import { Dispatch } from "redux";
@@ -132,6 +134,28 @@ export const requestNewVerificationCode = () => {
 					}),
 				TIMEOUT_MS
 			);
+		}
+	};
+};
+
+export const completeTutorial = () => {
+	return async function (dispatch: Dispatch) {
+		try {
+			dispatch<SetIsWaitingForCompletingTutorialAction>({
+				type: ActionTypes.setIsWaitingForCompletingTutorial,
+				payload: true,
+			});
+			await Api.patch("/api/v1/users/complete_tutorial");
+			dispatch<CompleteTutorialAction>({
+				type: ActionTypes.completeTutorial,
+			});
+		} catch (error) {
+			//
+		} finally {
+			dispatch<SetIsWaitingForCompletingTutorialAction>({
+				type: ActionTypes.setIsWaitingForCompletingTutorial,
+				payload: false,
+			});
 		}
 	};
 };

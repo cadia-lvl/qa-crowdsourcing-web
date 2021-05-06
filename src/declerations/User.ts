@@ -5,6 +5,7 @@ export interface User {
 	type: UserType;
 	scoreCard: ScoreCard;
 	level: number;
+	hasCompletedTutorial: boolean;
 }
 
 export interface ScoreCard {

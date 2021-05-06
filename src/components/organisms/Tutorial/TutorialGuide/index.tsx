@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { ICON_AGENT } from "../../../../static";
 import { UserAvatar } from "../../../atoms";
 import { Outer, Inner, BubbleContainer, CloseOpenIcon } from "./styles";
 import TutorialBubble from "../TutorialBubble";
 import { StoreState } from "../../../../reducers";
 import { useSelector } from "react-redux";
+import { IProps } from "./interface";
 
-export const TutorialGuide = () => {
+export const TutorialGuide = ({ onHideMessages }: IProps) => {
 	const [showBubbles, setShowBubbles] = useState(true);
 	const [notificationShake, setNotificationShake] = useState(false);
 
@@ -29,6 +30,15 @@ export const TutorialGuide = () => {
 		setNotificationShake(false);
 	}, [showBubbles]);
 
+	const handleToogleBubbles = () => {
+		if (showBubbles) {
+			onHideMessages?.();
+			setShowBubbles(false);
+		} else {
+			setShowBubbles(true);
+		}
+	};
+
 	if (["loading", "guest"].includes(user.type)) return null;
 	return (
 		<Outer
@@ -50,7 +60,7 @@ export const TutorialGuide = () => {
 				{bubbleCount > 0 ? (
 					<CloseOpenIcon
 						closed={!showBubbles}
-						onClick={() => setShowBubbles((val) => !val)}
+						onClick={handleToogleBubbles}
 					>
 						{showBubbles ? (
 							<i className="fas fa-chevron-down" />

@@ -11,6 +11,9 @@ export const BackDrop = styled.div`
 	background-color: rgba(0, 0, 0, 0.2);
 	align-items: center;
 	justify-content: center;
+	h1 {
+		margin: 0 !important;
+	}
 `;
 
 export const Outer = styled.div`

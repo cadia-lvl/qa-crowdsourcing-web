@@ -44,53 +44,77 @@ const routines: IRoutine[] = [
 		],
 	},
 	{
-		label: "Spurningar",
+		label: "Spurningar & svör",
 		key: "questions",
 		steps: [
 			{
 				label: "Spurðu mig spurningar!",
 				description: [
-					"Þér er frjálst að spyrja um hvað sem er. En spurningar eru misgóðar, við viljum ekki spurningar sem hafa mismunandi svör eftir því hvern þú spyrð, eða hvaða dag vikunar þú spyrð",
-					"Það er mikilvægt að spurningin sé á ágætis íslnesku, en passaðu þig að hafa spurninguna ekki of formlega. Við viljum að þú spyrjir á svipaðan máta og þú myndir spyrja í talmáli.",
+					"Það er mikilvægt að spurningin sé á ágætis íslesku, en passaðu þig að hafa spurninguna ekki of formlega. Við viljum að þú spyrjir á svipaðan máta og þú myndir spyrja í talmáli.",
 				],
-				key: "close",
+				key: "ask",
 				Component: Steps.Questions.AskQuestion,
 			},
-		],
-	},
-	{
-		label: "Svör",
-		key: "answers",
-		steps: [
 			{
-				label: "",
-				description: [],
-				key: "close",
+				label: "Er þessi spurning góð?",
+				description: [
+					"Þú munt að öðru hverju sjá spurningar sem við höfum fengið frá öðrum notendum, nú þarft þú að fylla út tékklista. Þessi tékklisti hjálpar okkur að tryggja það að spyrningin sé góð",
+				],
+				key: "good",
 				Component: Steps.Questions.ReviewQuestion,
+			},
+
+			{
+				label: "Sérðu svarið?",
+				description: [
+					"Hér sérðu heila efnisgrein. Er möguleiki að finna svarið í efnisgreininni? Þessar efnisgreinar finnast á Wikipediu, Vísindavefnum, Vísir.is og mbl.is",
+					"Þú getur gengið út frá því að upplýsingarnar í greininni séu réttar. Þú þarft bara að segja til hvort þú sjáir svarið við spurningunni eða ekki.",
+				],
+				key: "mark",
+				Component: Steps.Answers.SelectSpan,
+			},
+			{
+				label: "Telur þú svarið vera rétt?",
+				description: [
+					"Hér sérðu heila efnisgrein sem við fundum á veraldarvefnum. Annar notandi hefur merkt svarið í fjólubláu stöfum",
+					"Þegar kerfið spyr útí hvort svarið mætti vera styttra, þá eigum við eingöngu um fjólubláa (merkta) svarið",
+				],
+				key: "verify",
+				Component: Steps.Answers.SpanReview,
 			},
 		],
 	},
-	// {
-	// 	label: "Leita",
-	// 	key: "search",
-	// 	steps: [
-	// 		{
-	// 			label: "",
-	// 			description: [],
-	// 			key: "close",
-	// 			Component: Steps.Guide.CloseBubble,
-	// 		},
-	// 	],
-	// },
+
 	{
 		label: "Vinningar í boði",
 		key: "prizes",
 		steps: [
 			{
-				label: "",
-				description: [],
-				key: "close",
-				Component: Steps.Guide.CloseBubble,
+				label: "Vinningarnir",
+				description: [
+					"Það eru ýmsir vinningar í boði. Þú getur ekki aðeins bætt alfræði þekkingu þín heldur getur þú einnig unnið þér inn flotta vinninga og um leið stutt íslenska tungu í nútímanum",
+					"Því meira sem þú spilar og lærir með okkur, því fleiri vinninga getur þú unnið.",
+					"Vinningunum er skipt í flokka. Flestir flokkarnir eru læstir, en þegar þú nærð ákveðnum áföngum þá aflæsast vinningar. ",
+				],
+				key: "explain",
+				Component: Steps.Rewards.Explain,
+			},
+			{
+				label: "Komin/n í pottinn",
+				description: [
+					"Þessi kassi táknar verðlauna flokk. Eins þú sérð, þá er hann grænn. Grænir kassar tákna það að þú sért komin/n í pottinn og átt möugleika á að vera dregin út sem vinningshafi.",
+				],
+				key: "unlocked",
+				Component: Steps.Rewards.Unlocked,
+			},
+			{
+				label: "Getur þú aflæst þessa vinninga?",
+				description: [
+					"Þegar kassarnir eru rauðir, þá táknar það að þú sért ekki enn búin/n að aflæsa þessi verðlaun",
+					"Því lengra sem þú kemst því flottari verðlaun getur þú unnið, og um leið ertu líklegri til þess að vinna vinninga.",
+				],
+				key: "locked",
+				Component: Steps.Rewards.Locked,
 			},
 		],
 	},
