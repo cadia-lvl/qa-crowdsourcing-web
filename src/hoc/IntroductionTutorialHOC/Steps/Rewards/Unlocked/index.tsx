@@ -1,10 +1,11 @@
 import React from "react";
 import { PrizeCard } from "../../../../../components";
 import { RewardService } from "../../../../../services";
+import { Outer } from "./styles";
 
 export const Unlocked = () => {
 	return (
-		<div>
+		<Outer>
 			{RewardService.PriceCategories.slice(0, 1).map((cat) => (
 				<PrizeCard
 					label={cat.name}
@@ -14,6 +15,6 @@ export const Unlocked = () => {
 					}
 				/>
 			))}
-		</div>
+		</Outer>
 	);
 };

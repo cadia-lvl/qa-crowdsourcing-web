@@ -10,7 +10,7 @@ export const SpanReview = ({
 
 	useEffect(() => {
 		onHideButton();
-	}, [onHideButton]);
+	}, []);
 
 	const QUESTION = "Hvaða ár dó Díana prinsessa?";
 	const TEXT =

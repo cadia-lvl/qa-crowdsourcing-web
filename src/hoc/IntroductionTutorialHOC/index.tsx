@@ -24,7 +24,11 @@ export const IntroductionTutorialHOC = ({ children }: IProps) => {
 	);
 
 	// destructures REDUX state
-	const { _id: userId } = useSelector((state: StoreState) => state.auth);
+	const {
+		_id: userId,
+		hasCompletedTutorial,
+		type: userType,
+	} = useSelector((state: StoreState) => state.auth);
 
 	// a cache key for the intro tutorial state in local storage
 	const CACHE_KEY = `${userId}:INTRODUCTION:TUTORIAL`;
@@ -87,7 +91,11 @@ export const IntroductionTutorialHOC = ({ children }: IProps) => {
 	};
 
 	// return children if user has completed tutorial
-	if (false) return <React.Fragment>{children}</React.Fragment>;
+	if (
+		hasCompletedTutorial ||
+		["loading", "guest", "not-verified"].includes(userType)
+	)
+		return <React.Fragment>{children}</React.Fragment>;
 	return (
 		<Outer>
 			{subRoutineList.length > 0 ? (
@@ -103,6 +111,7 @@ export const IntroductionTutorialHOC = ({ children }: IProps) => {
 						completed: allCompleted(item.key, item.steps),
 					}))}
 					onNext={handleNext}
+					completed={!nextItem}
 				/>
 			)}
 		</Outer>

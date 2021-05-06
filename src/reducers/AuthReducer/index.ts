@@ -18,7 +18,9 @@ export const initialState: AuthState = {
 	level: 1,
 	isAuthCodeRegenerationLoading: false,
 	isAuthCodeSubmissionLoading: false,
+	isTutorialCompletedLoading: false,
 	authCodeErrorMessage: "",
+	hasCompletedTutorial: false,
 };
 
 const reducer = (
@@ -52,6 +54,18 @@ const reducer = (
 			return {
 				...state,
 				isAuthCodeSubmissionLoading: action.payload,
+			};
+		}
+		case ActionTypes.setIsWaitingForCompletingTutorial: {
+			return {
+				...state,
+				isTutorialCompletedLoading: action.payload,
+			};
+		}
+		case ActionTypes.completeTutorial: {
+			return {
+				...state,
+				hasCompletedTutorial: true,
 			};
 		}
 		default:
