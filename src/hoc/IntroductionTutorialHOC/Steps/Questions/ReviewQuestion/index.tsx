@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useState } from "react";
 import { Game, ModalWithTitle } from "../../../../../components";
 import { SoubRoutineProps } from "../../../interface";
 
@@ -38,7 +38,7 @@ export const ReviewQuestion = ({
 			</ModalWithTitle>
 			<Game.Disconnected.QuestionReview<Keys>
 				onComplete={handleComplete}
-				question="Hver er höfuðborg Aþenu?"
+				question="Hvað heita meðlimir ClubDub?"
 				// spread the same props as in the
 				// connected version for user familiarity
 				{...Game.Connected.CheckList}

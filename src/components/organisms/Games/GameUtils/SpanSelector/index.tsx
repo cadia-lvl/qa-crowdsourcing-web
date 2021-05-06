@@ -47,8 +47,8 @@ export const SpanSelector = ({
 	);
 
 	const userInstructions = [
-		["Smelltu á fyrsta orðið sem myndar svarið"],
-		["Smelltu á síðasta orðið sem myndar svarið"],
+		["Smelltu á fyrsta stafinn sem myndar svarið"],
+		["Smelltu á síðasta stafinn sem myndar svarið"],
 		[
 			"Smelltu á textann til þess að velja aftur",
 			"Smelltu á „áfram“ til þess að staðfesta orða val",
@@ -62,7 +62,7 @@ export const SpanSelector = ({
 	};
 
 	useEffect(() => {
-		const LOADING_TIMEOUT = 1000;
+		const LOADING_TIMEOUT = 350;
 		if (areInstructionsLoading) {
 			const t = setTimeout(
 				() => setAreInstructionsLoading(false),
@@ -88,7 +88,7 @@ export const SpanSelector = ({
 			<p>
 				{paragraph.split(" ").map((word, i) => (
 					<React.Fragment>
-						{i == firstWord ? <Word>„</Word> : null}
+						{i === firstWord ? <Word>„</Word> : null}
 						<ClickableSpan onClick={() => action?.(i)}>
 							<Word
 								title={getToolTipString(word)}
@@ -103,14 +103,14 @@ export const SpanSelector = ({
 								 * last word then we want to trim any space
 								 * and remove punctuation
 								 */
-								i == lastWord || i == firstWord
-									? word.trim().replace(/[,\.:;]/g, "")
+								i === lastWord || i === firstWord
+									? word.trim()
 									: word + " "
 							}`}</Word>
 						</ClickableSpan>
 						{
 							// checks for lastword and adds quotation mark
-							i == lastWord ? <Word>“ </Word> : null
+							i === lastWord ? <Word>“ </Word> : null
 						}
 					</React.Fragment>
 				))}

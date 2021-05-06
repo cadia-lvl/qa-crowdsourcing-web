@@ -12,7 +12,7 @@ export const BackDrop = styled.div`
 	align-items: center;
 	justify-content: center;
 	h1 {
-		margin: 0;
+		margin: 0 !important;
 	}
 `;
 

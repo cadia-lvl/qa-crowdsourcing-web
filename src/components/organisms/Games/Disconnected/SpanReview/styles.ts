@@ -7,7 +7,9 @@ export const ButtonContainer = styled.div`
 	justify-content: flex-start;
 	button {
 		margin-right: 20px;
-		width: 300px;
+		width: auto;
+		padding-left: 25px !important;
+		padding-right: 25px !important;
 	}
 	margin-top: 20px;
 `;
