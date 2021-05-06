@@ -59,7 +59,7 @@ export const SpanReview = ({
 			<Utils.QuestionIs question={question} />
 			<Utils.SpanSelector
 				firstWord={isYesOrNo ? -1 : firstWord}
-				lastWord={lastWord ? -1 : lastWord}
+				lastWord={isYesOrNo ? -1 : lastWord}
 				paragraph={text}
 				question={question}
 				immutable

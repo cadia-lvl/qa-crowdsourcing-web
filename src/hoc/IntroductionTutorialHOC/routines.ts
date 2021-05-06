@@ -70,21 +70,21 @@ const routines: IRoutine[] = [
 					"Hér sérðu heila efnisgrein. Er möguleiki að finna svarið í efnisgreininni? Þessar efnisgreinar finnast á Wikipediu, Vísindavefnum, Vísir.is og mbl.is",
 					"Þú getur gengið út frá því að upplýsingarnar í greininni séu réttar. Þú þarft bara að segja til hvort þú sjáir svarið við spurningunni eða ekki.",
 				],
-				key: "close",
+				key: "mark",
 				Component: Steps.Answers.SelectSpan,
 			},
-
 			{
 				label: "Telur þú svarið vera rétt?",
 				description: [
 					"Hér sérðu heila efnisgrein sem við fundum á veraldarvefnum. Annar notandi hefur merkt svarið í fjólubláu stöfum",
 					"Þegar kerfið spyr útí hvort svarið mætti vera styttra, þá eigum við eingöngu um fjólubláa (merkta) svarið",
 				],
-				key: "close",
+				key: "verify",
 				Component: Steps.Answers.SpanReview,
 			},
 		],
 	},
+
 	// {
 	// 	label: "Leita",
 	// 	key: "search",
