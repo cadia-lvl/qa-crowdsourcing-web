@@ -2,6 +2,11 @@ export interface IProps {
 	children: React.ReactNode;
 }
 
+export interface SoubRoutineProps {
+	onHideBottomBar?: () => void;
+	onContinue?: () => void;
+}
+
 export type RoutineKeys =
 	| "guide"
 	| "questions"

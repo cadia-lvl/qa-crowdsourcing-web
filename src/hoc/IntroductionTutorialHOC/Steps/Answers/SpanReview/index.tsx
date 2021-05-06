@@ -1,7 +1,8 @@
 import React from "react";
 import { Game } from "../../../../../components";
+import { SoubRoutineProps } from "../../../interface";
 
-export const SpanReview = () => {
+export const SpanReview = (props: SoubRoutineProps) => {
 	return (
 		<Game.Disconnected.SpanReview
 			question={""}

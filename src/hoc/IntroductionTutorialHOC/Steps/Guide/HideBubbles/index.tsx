@@ -3,7 +3,7 @@ import { Explain, TutorialGuide } from "../../../../../components";
 import { Outer } from "./styles";
 import * as TUTORIAL from "./tutorialItems";
 
-export const HideBubbles = () => {
+export const HideBubbles = (props: SoubRoutineProps) => {
 	return (
 		<Outer>
 			<Explain items={TUTORIAL.explainHide}>

@@ -1,7 +1,8 @@
 import React from "react";
 import { Game } from "../../../../../components";
+import { SoubRoutineProps } from "../../../interface";
 
-export const ReviewQuestion = () => {
+export const ReviewQuestion = (props: SoubRoutineProps) => {
 	// use the same type as in the connected version
 	// for user familiarity
 	type Keys = Game.Connected.QAquestionItems;

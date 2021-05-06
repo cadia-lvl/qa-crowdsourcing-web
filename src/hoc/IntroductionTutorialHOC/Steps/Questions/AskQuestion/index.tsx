@@ -1,6 +1,8 @@
 import React from "react";
 import { Game } from "../../../../../components";
-export const AskQuestion = () => {
+import { SoubRoutineProps } from "../../../interface";
+
+export const AskQuestion = (props: SoubRoutineProps) => {
 	return (
 		<div>
 			<p>Prufaðu að spyrja spurningu um Öskudaginn</p>

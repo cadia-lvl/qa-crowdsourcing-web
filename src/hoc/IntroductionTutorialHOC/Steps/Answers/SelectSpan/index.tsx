@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Game } from "../../../../../components";
+import { SoubRoutineProps } from "../../../interface";
 
-export const SelectSpan = () => {
+export const SelectSpan = (props: SoubRoutineProps) => {
 	const [firstWord, setFirstWord] = useState(undefined);
 	const [lastWord, setLastWord] = useState(undefined);
 

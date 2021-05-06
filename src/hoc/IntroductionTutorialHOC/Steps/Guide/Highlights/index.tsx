@@ -1,8 +1,10 @@
 import React from "react";
 import { Explain, TutorialGuide } from "../../../../../components";
-import { Outer, ExplainThese, Example, ExampleInner } from "./styles";
+import { SoubRoutineProps } from "../../../interface";
+import { Outer, ExplainThese, Example } from "./styles";
 import * as TUTORIAL from "./tutorialItems";
-export const HighLights = () => {
+
+export const HighLights = (props: SoubRoutineProps) => {
 	return (
 		<Outer>
 			<ExplainThese>
