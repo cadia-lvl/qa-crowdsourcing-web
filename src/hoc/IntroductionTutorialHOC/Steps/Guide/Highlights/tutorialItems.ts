@@ -1,11 +1,15 @@
 import { TutorialExplanations } from "../../../../../components";
 
+/**
+ * ID is given as name just to make sure taht
+ * it can be shown again if user quits mid way throug
+ */
 export const explain1: TutorialExplanations[] = [
 	{
 		type: "str",
 		payload:
 			"Stundum blikkar rauður rammi á skjánum. Þá er ég að reyna að sýna þér einhvað nýtt",
-		id: "INTRODUCTION:GUIDE:HIGHLIGHT:1",
+		id: new Date().toISOString() + "1",
 		highlight: true,
 		dialog: [
 			{
@@ -19,7 +23,7 @@ export const explain2: TutorialExplanations[] = [
 	{
 		type: "str",
 		payload: "Núna er ég að reyna að sýna þér dæmi númer 2",
-		id: "INTRODUCTION:GUIDE:HIGHLIGHT:2",
+		id: new Date().toISOString() + "2",
 		highlight: true,
 		dialog: [
 			{
@@ -29,15 +33,18 @@ export const explain2: TutorialExplanations[] = [
 	},
 ];
 
-export const explain3: TutorialExplanations[] = [
+export const explain3Closure = (
+	cb: () => void
+): TutorialExplanations[] => [
 	{
 		type: "str",
 		payload: "Svona heldur þetta áfram, núna er ég að sýna þér dæmi 3",
-		id: "INTRODUCTION:GUIDE:HIGHLIGHT:3",
+		id: new Date().toISOString() + "3",
 		highlight: true,
 		dialog: [
 			{
 				text: "Já fínt",
+				onClick: cb,
 			},
 		],
 	},

@@ -15,7 +15,9 @@ export const CloseBubble = ({
 	const items = TUTORIAL.explainCloseClosure(onShowButton);
 	return (
 		<Outer>
-			<Explain items={items}> </Explain>
+			<Explain items={[]} persist={items}>
+				{" "}
+			</Explain>
 			<TutorialGuide />
 		</Outer>
 	);

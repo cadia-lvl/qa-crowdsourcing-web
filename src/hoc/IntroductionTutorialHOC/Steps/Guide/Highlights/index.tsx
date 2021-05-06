@@ -1,10 +1,21 @@
-import React from "react";
+import React, { useEffect, useMemo } from "react";
 import { Explain, TutorialGuide } from "../../../../../components";
 import { SoubRoutineProps } from "../../../interface";
 import { Outer, ExplainThese, Example } from "./styles";
 import * as TUTORIAL from "./tutorialItems";
 
-export const HighLights = (props: SoubRoutineProps) => {
+export const HighLights = ({
+	onShowButton,
+	onHideButton,
+}: SoubRoutineProps) => {
+	useEffect(() => {
+		onHideButton();
+	}, []);
+
+	const items = useMemo(
+		() => TUTORIAL.explain3Closure(onShowButton),
+		[]
+	);
 	return (
 		<Outer>
 			<ExplainThese>
@@ -19,7 +30,7 @@ export const HighLights = (props: SoubRoutineProps) => {
 					</Explain>
 				</Example>{" "}
 				<Example>
-					<Explain items={TUTORIAL.explain3}>
+					<Explain items={items}>
 						<span>Dæmi 3</span>
 					</Explain>
 				</Example>{" "}

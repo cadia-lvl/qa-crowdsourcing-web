@@ -6,7 +6,7 @@ export const explainCloseClosure = (
 	{
 		type: "str",
 		payload: "Prufa að loka þessu skilaboði!",
-		id: "INTRODUCTION:GUIDE:CLOSE",
+		id: new Date().toISOString(),
 		highlight: false,
 		dialog: [
 			{
