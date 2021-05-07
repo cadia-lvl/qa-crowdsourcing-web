@@ -7,7 +7,7 @@ export * as Alerts from "./Alerts";
 export * from "./Texts";
 export * as Loaders from "./Loaders";
 export * as Clipboard from "./Clipboard";
-export * from "./Avatars";
+export * as Avatars from "./Avatars";
 export * from "./Animations";
 export * from "./Images";
 export * from "./Pagination";

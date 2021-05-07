@@ -2,7 +2,7 @@ import React from "react";
 import { Outer } from "./styles";
 import { IProps } from "./interface";
 
-export const UserAvatar = ({ src, color, onLoad }: IProps) => {
+const UserAvatar = ({ src, color, onLoad }: IProps) => {
 	const DEFAULT_BORDER_COLOR = "rgba(0,0,0,0.05)";
 
 	return (
@@ -13,3 +13,5 @@ export const UserAvatar = ({ src, color, onLoad }: IProps) => {
 		></Outer>
 	);
 };
+
+export default UserAvatar;

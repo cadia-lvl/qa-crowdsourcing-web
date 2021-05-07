@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
 	TextPrompt,
 	ShootingStars,
-	UserAvatar,
+	Atoms,
 	BaseButton,
 	Organisms,
 } from "../../../..";
@@ -70,7 +70,7 @@ export const CompletedView = () => {
 			<TopBox>
 				<IconBoxOuter>
 					<IconWrapper className={shouldShake ? "shake" : ""}>
-						<UserAvatar
+						<Atoms.Avatars.User
 							src={iconURL}
 							onLoad={() => {
 								if (canStopShake) setShouldShake(false);
