@@ -59,13 +59,15 @@ export const AuthCodeHOC = ({ children }: IProps) => {
 						) : null}
 						Senda aftur
 					</p>
-					<AuthCodeInner>
-						<AuthCodeInput
-							value={authCode}
-							onChange={setAuthCode}
-							length={AUTHCODE_LENGTH}
-						/>
-					</AuthCodeInner>
+					<form>
+						<AuthCodeInner>
+							<AuthCodeInput
+								value={authCode}
+								onChange={setAuthCode}
+								length={AUTHCODE_LENGTH}
+							/>
+						</AuthCodeInner>
+					</form>
 					{isAuthCodeSubmissionLoading ? (
 						<FlexLoader size={20} />
 					) : (
