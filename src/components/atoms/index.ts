@@ -5,6 +5,7 @@ export * from "./ChartAtoms";
 export * as Alerts from "./Alerts";
 export * from "./Texts";
 export * as Loaders from "./Loaders";
+export * as Clipboard from "./Clipboard";
 export * from "./Avatars";
 export * from "./Animations";
 export * from "./Images";

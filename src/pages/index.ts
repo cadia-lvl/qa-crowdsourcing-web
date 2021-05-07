@@ -6,3 +6,4 @@ export * from "./SignUp";
 export * from "./AboutUs";
 export * from "./Terms";
 export * from "./Prizes";
+export * from "./Invite";
