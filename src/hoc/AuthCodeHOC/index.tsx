@@ -11,7 +11,7 @@ import {
 	BaseButton,
 	FilledAlert,
 	AuthCodeInput,
-	FlexLoader,
+	Atoms,
 } from "../../components";
 import { AuthCodeOuter, FlexCenter, AuthCodeInner } from "./styles";
 import { useSelector, useDispatch } from "react-redux";
@@ -69,7 +69,7 @@ export const AuthCodeHOC = ({ children }: IProps) => {
 						</AuthCodeInner>
 					</form>
 					{isAuthCodeSubmissionLoading ? (
-						<FlexLoader size={20} />
+						<Atoms.Loaders.Flex size={20} />
 					) : (
 						<BaseButton
 							label="Staðfesta"

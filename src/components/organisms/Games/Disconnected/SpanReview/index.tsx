@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Utils } from "../../";
-import { BaseButton, Explain, FlexLoader } from "../../../..";
+import { BaseButton, Explain, Atoms } from "../../../..";
 import { IProps, SelectionStage } from "./interface";
 import { ButtonContainer } from "./styles";
 import * as TUTORIAL from "./tutorialItems";
@@ -66,7 +66,7 @@ export const SpanReview = ({
 			/>
 			<ButtonContainer>
 				{isLoadingButtons ? (
-					<FlexLoader size={40} />
+					<Atoms.Loaders.Flex size={40} />
 				) : selectionStage ===
 				  SelectionStage.seeIfAnswerIsPresent ? (
 					isYesOrNo ? (

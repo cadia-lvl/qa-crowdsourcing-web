@@ -9,7 +9,7 @@ import {
 	GoogleTextInput,
 	FilledAlert,
 	ModalWithTitle,
-	FlexLoader,
+	Atoms,
 } from "../../../../";
 import { GOOGLE_LOGO } from "../../../../../static";
 import { SearchForm, Paragraph, ContinueBox } from "./styles";
@@ -160,7 +160,7 @@ export const GoogleSearch = () => {
 				</SearchForm>
 
 				{isPerformingSearch ? (
-					<FlexLoader size={40} />
+					<Atoms.Loaders.Flex size={40} />
 				) : searchError ? (
 					<FilledAlert
 						label="Það kom um villa við leitina, prufaðu annan leitarstreng"

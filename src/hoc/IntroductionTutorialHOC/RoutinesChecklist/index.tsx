@@ -1,6 +1,6 @@
 import React from "react";
 import { Outer, RoutineOuter, Bottom } from "./styles";
-import { BaseButton, PlayButton, FlexLoader } from "../../../components";
+import { BaseButton, PlayButton, Atoms } from "../../../components";
 import { IProps } from "./interface";
 import { IconDecorator } from "../../../hoc";
 import { useDispatch, useSelector } from "react-redux";
@@ -35,7 +35,7 @@ const RoutinesChecklist = ({ todos, onNext, completed }: IProps) => {
 				<Bottom>
 					{completed ? (
 						isTutorialCompletedLoading ? (
-							<FlexLoader size={40} />
+							<Atoms.Loaders.Flex size={40} />
 						) : (
 							<BaseButton
 								type="highlight"

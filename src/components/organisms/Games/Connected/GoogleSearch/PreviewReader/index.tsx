@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { StoreState } from "../../../../../../reducers";
-import { HighlightSubText, Explain } from "../../../../../";
+import { HighlightSubText, Explain, Atoms } from "../../../../../";
 import {
 	Outer,
 	Inner,
@@ -21,7 +21,6 @@ import {
 } from "../../../../../../actions";
 import { Colors } from "../../../../../../styles";
 import * as TUTORIAL from "./tutorialItems";
-import { FlexLoader } from "../../../../../atoms";
 
 const PreviewHeader = () => {
 	const state = useSelector((state: StoreState) => state);
@@ -99,7 +98,7 @@ const PreviewHeader = () => {
 							 * the flex loader
 							 */
 							isLoadingArticle ? (
-								<FlexLoader size={40} />
+								<Atoms.Loaders.Flex size={40} />
 							) : previewArticle ? (
 								// map the paragraphs to the article
 								previewArticle.paragraphs.map(
