@@ -20,7 +20,7 @@ import {
 import { IProps } from "./interface";
 import * as TUTORIAL from "./tutorialItems";
 
-export const FrontPageDashBoard = ({
+const UserProgress = ({
 	username,
 	level,
 	scoreCard,
@@ -119,3 +119,5 @@ export const FrontPageDashBoard = ({
 		</DashBoardOuter>
 	);
 };
+
+export default UserProgress;

@@ -14,7 +14,7 @@ import {
 	Icon3,
 	Icon4,
 } from "./styles";
-import { FrontPageDashBoard, PlayButton } from "../../components";
+import { Organisms, PlayButton } from "../../components";
 import { AuthConditionalRender } from "../../hoc";
 import { useSelector } from "react-redux";
 import { StoreState } from "../../reducers";
@@ -45,7 +45,7 @@ export const Front = () => {
 					<React.Fragment>
 						{/* When user is Authenticated */}
 						<WhenIsAuth>
-							<FrontPageDashBoard
+							<Organisms.Dashboard.UserProgress
 								{...user}
 								totalRounds={totalRounds}
 								currentRound={currentRound}
@@ -151,7 +151,7 @@ export const Front = () => {
 									</Margins>
 
 									<DashBoardExample className="shine-wrap no-pointer-events no-highlight">
-										<FrontPageDashBoard
+										<Organisms.Dashboard.UserProgress
 											{...{
 												...user,
 												username:

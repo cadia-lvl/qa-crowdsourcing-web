@@ -3,7 +3,7 @@ import { Outer, Inner, Lists, ListHeading } from "./styles";
 import { RewardService } from "../../../../services";
 import { PrizeCard } from "../../../";
 
-export const WinningsDashBoard = () => {
+const Prizes = () => {
 	const [currentView, setCurrentView] = useState<Lists>("categories");
 
 	type Lists = "categories" | "items";
@@ -63,3 +63,5 @@ export const WinningsDashBoard = () => {
 		</Outer>
 	);
 };
+
+export default Prizes;

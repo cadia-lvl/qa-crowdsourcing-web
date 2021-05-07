@@ -5,7 +5,7 @@ import {
 	ShootingStars,
 	UserAvatar,
 	BaseButton,
-	WinningsDashBoard,
+	Organisms,
 } from "../../../..";
 import {
 	fetchCurrentGameRound,
@@ -92,7 +92,7 @@ export const CompletedView = () => {
 				</TextPromptWrapper>
 			</TopBox>
 			<PrizeWrapper>
-				<WinningsDashBoard />
+				<Organisms.Dashboard.Prizes />
 			</PrizeWrapper>
 
 			<BaseButton
