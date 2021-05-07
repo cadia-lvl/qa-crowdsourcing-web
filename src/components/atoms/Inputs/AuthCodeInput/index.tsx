@@ -41,14 +41,25 @@ export const AuthCodeInput = ({
 		[value, currDigit, onChange]
 	);
 
+	const handlePaste = useCallback(
+		(e: any) => {
+			onChange(e.clipboardData.getData("text"));
+		},
+		[value, currDigit, onChange]
+	);
+
 	useEffect(() => {
 		// @ts-ignore
 		window.addEventListener("keypress", handleKeyPress);
+		window.addEventListener("paste", handlePaste);
 		return () => {
 			// @ts-ignore
 			window.removeEventListener("keypress", handleKeyPress);
+			window.removeEventListener("paste", handlePaste);
 		};
 	}, [value, currDigit, onChange]);
+
+	useEffect(() => {}, []);
 
 	return (
 		<Outer>
@@ -58,6 +69,9 @@ export const AuthCodeInput = ({
 					<DigitContainer
 						current={currDigit === i}
 						onClick={() =>
+							setCurrDigit(Math.min(i, value.length))
+						}
+						onContextMenu={() =>
 							setCurrDigit(Math.min(i, value.length))
 						}
 					>
