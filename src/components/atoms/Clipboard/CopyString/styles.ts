@@ -8,6 +8,7 @@ interface IOuter {
 export const Outer = styled.div<IOuter>`
 	width: 100%;
 	padding: 0 13px;
+	box-sizing: border-box;
 	height: 40px;
 	font-size: 16px;
 	background-color: #fff;
