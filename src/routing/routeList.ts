@@ -15,6 +15,10 @@ export const ROUTE_LIST: RouteInterface[] = [
 		path: "/spila",
 	},
 	{
+		component: Pages.Prizes,
+		path: "/vinningar",
+	},
+	{
 		component: Pages.Terms,
 		path: "/skilmalar",
 		exact: true,

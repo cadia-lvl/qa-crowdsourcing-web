@@ -1,6 +1,6 @@
 import React from "react";
-import {} from "../../components";
+import { Organisms } from "../../components";
 
 export const Prizes = () => {
-	return <div></div>;
+	return <Organisms.Dashboard.Prizes />;
 };
