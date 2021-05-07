@@ -1,6 +1,6 @@
 import React from "react";
 
-export const TermsPage = () => {
+export const Terms = () => {
 	return (
 		<div>
 			<h1>Notendaskilmálar</h1>

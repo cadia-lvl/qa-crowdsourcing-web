@@ -7,7 +7,7 @@ import { StoreState } from "../../reducers";
 import * as Styles from "./styles";
 import { GameTypes } from "../../declerations";
 
-export const GamePage = () => {
+export const Games = () => {
 	const dispatch = useDispatch();
 	const state = useSelector((state: StoreState) => state.game);
 	useEffect(() => {

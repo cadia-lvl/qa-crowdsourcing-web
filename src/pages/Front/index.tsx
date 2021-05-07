@@ -20,7 +20,7 @@ import { useSelector } from "react-redux";
 import { StoreState } from "../../reducers";
 import { NavLink } from "react-router-dom";
 
-export const FrontPage = () => {
+export const Front = () => {
 	const user = useSelector((state: StoreState) => state.auth);
 	const { currentRound, totalRounds } = useSelector(
 		(state: StoreState) => state.game
