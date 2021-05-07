@@ -1,13 +1,11 @@
 import React from "react";
 import { Outer, HeaderItem, HeaderItemContainer } from "./styles";
-import { headerItems } from "./utils";
+import { headerItems, authItems } from "./utils";
 import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { logOutUser } from "../../actions";
+import { useSelector } from "react-redux";
 import { StoreState } from "../../reducers";
 
 const Header = () => {
-	const dispatch = useDispatch();
 	const state = useSelector((state: StoreState) => state);
 
 	const {
@@ -31,14 +29,16 @@ const Header = () => {
 			<HeaderItemContainer>
 				{showAvatarInHeader ? (
 					<React.Fragment>
-						{isAuth ? (
-							<HeaderItem
-								className="header-profile-itm"
-								onClick={() => dispatch(logOutUser())}
-							>
-								Útskrá
-							</HeaderItem>
-						) : null}
+						{isAuth
+							? authItems.map((item) => (
+									<Link to={item.path} key={item.text}>
+										<HeaderItem className="header-itm">
+											<i className={item.faClass} />
+											{item.text}
+										</HeaderItem>
+									</Link>
+							  ))
+							: null}
 					</React.Fragment>
 				) : null}
 			</HeaderItemContainer>

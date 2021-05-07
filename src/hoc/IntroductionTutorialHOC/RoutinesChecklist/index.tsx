@@ -9,7 +9,12 @@ import { completeTutorial } from "../../../actions";
 import { StoreState } from "../../../reducers";
 
 const ITEM_COUNT = 4;
-const RoutinesChecklist = ({ todos, onNext, completed }: IProps) => {
+const RoutinesChecklist = ({
+	todos,
+	onNext,
+	completed,
+	hideText,
+}: IProps) => {
 	const { isTutorialCompletedLoading } = useSelector(
 		(state: StoreState) => state.auth
 	);
@@ -19,7 +24,10 @@ const RoutinesChecklist = ({ todos, onNext, completed }: IProps) => {
 		<IconDecorator iconCount={ITEM_COUNT}>
 			<Outer>
 				<h1 className="italic">{Utils.TEXT[accessor].title}</h1>
-				<p>{Utils.TEXT[accessor].paragraph}</p>
+				{completed || !hideText ? (
+					<p>{Utils.TEXT[accessor].paragraph}</p>
+				) : null}
+
 				{/* Maps todo items and applies the
 		    relevant icon */}
 				{todos.map((item) => (

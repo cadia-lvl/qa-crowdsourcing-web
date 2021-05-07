@@ -9,7 +9,6 @@ import {
 import {
 	WhiteBoxWithTitle,
 	BaseButton,
-	FilledAlert,
 	AuthCodeInput,
 	Atoms,
 } from "../../components";
@@ -41,7 +40,7 @@ export const AuthCodeHOC = ({ children }: IProps) => {
 			<AuthCodeOuter {...{ isAuthCodeRegenerationLoading }}>
 				<WhiteBoxWithTitle title="Staðfestingarkóði">
 					{authCodeErrorMessage ? (
-						<FilledAlert
+						<Atoms.Alerts.Ribbon
 							label={authCodeErrorMessage}
 							type="danger"
 						/>

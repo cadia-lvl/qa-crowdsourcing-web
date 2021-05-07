@@ -19,7 +19,7 @@ export const RoutineOuter = styled.div`
 		border: none;
 	}
 	.far {
-		color: #cecece;
+		display: none;
 	}
 	.fas {
 		color: ${Colors.SUCCESS};

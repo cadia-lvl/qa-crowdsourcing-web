@@ -5,12 +5,7 @@ import React, {
 	useState,
 	useMemo,
 } from "react";
-import {
-	GoogleTextInput,
-	FilledAlert,
-	ModalWithTitle,
-	Atoms,
-} from "../../../../";
+import { GoogleTextInput, ModalWithTitle, Atoms } from "../../../../";
 import { GOOGLE_LOGO } from "../../../../../static";
 import { SearchForm, Paragraph, ContinueBox } from "./styles";
 import ArticlePreview from "./ArticlePreview";
@@ -162,7 +157,7 @@ export const GoogleSearch = () => {
 				{isPerformingSearch ? (
 					<Atoms.Loaders.Flex size={40} />
 				) : searchError ? (
-					<FilledAlert
+					<Atoms.Alerts.Ribbon
 						label="Það kom um villa við leitina, prufaðu annan leitarstreng"
 						type="danger"
 					/>
@@ -215,7 +210,7 @@ export const GoogleSearch = () => {
 						))}
 					</Explain>
 				) : noResults ? (
-					<FilledAlert
+					<Atoms.Alerts.Ribbon
 						label="Það fundust engar niðurstöður hjá Google. Prufaðu annan leitarstreng"
 						type="warning"
 					/>

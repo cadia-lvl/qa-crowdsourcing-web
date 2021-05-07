@@ -1,9 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-	Game,
-	ModalWithTitle,
-	FilledAlert,
-} from "../../../../../components";
+import { Game, ModalWithTitle, Atoms } from "../../../../../components";
 import { SoubRoutineProps } from "../../../interface";
 
 export const SelectSpan = ({
@@ -62,7 +58,7 @@ export const SelectSpan = ({
 				Svarið er þarna í efnisgreininni.
 			</ModalWithTitle>
 			{errorMessage ? (
-				<FilledAlert type="danger" label={errorMessage} />
+				<Atoms.Alerts.Ribbon type="danger" label={errorMessage} />
 			) : null}
 			<Game.Disconnected.SelectSpan
 				question={QUESTION}

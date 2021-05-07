@@ -1,1 +1,1 @@
-export * from "./AlertFilled";
+export { default as Ribbon } from "./Ribbon";
