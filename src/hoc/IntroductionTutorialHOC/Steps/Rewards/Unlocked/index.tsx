@@ -1,5 +1,5 @@
 import React from "react";
-import { PrizeCard } from "../../../../../components";
+import { Atoms } from "../../../../../components";
 import { RewardService } from "../../../../../services";
 import { Outer } from "./styles";
 
@@ -7,7 +7,7 @@ export const Unlocked = () => {
 	return (
 		<Outer>
 			{RewardService.PriceCategories.slice(0, 1).map((cat) => (
-				<PrizeCard
+				<Atoms.Cards.Prizes
 					label={cat.name}
 					category={cat}
 					imageURL={

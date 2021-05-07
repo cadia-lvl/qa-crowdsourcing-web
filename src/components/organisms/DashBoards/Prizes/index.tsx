@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { Outer, Inner, Lists, ListHeading } from "./styles";
+import * as Styles from "./styles";
 import { RewardService } from "../../../../services";
-import { PrizeCard } from "../../../";
+import { Atoms } from "../../../";
 
 const Prizes = () => {
 	const [currentView, setCurrentView] = useState<Lists>("categories");
@@ -20,23 +20,23 @@ const Prizes = () => {
 	const lists: Lists[] = ["categories", "items"];
 
 	return (
-		<Outer>
-			<Lists>
+		<Styles.Outer>
+			<Styles.Lists>
 				{lists.map((item) => (
-					<ListHeading
+					<Styles.ListHeading
 						isSelected={item === currentView}
 						className="italic"
 						onClick={() => setCurrentView(item)}
 					>
 						{mapListToLabel(item)}
-					</ListHeading>
+					</Styles.ListHeading>
 				))}
-			</Lists>
-			<Inner>
+			</Styles.Lists>
+			<Styles.Inner>
 				{currentView === "categories"
 					? RewardService.PriceCategories.map((cat) => {
 							return (
-								<PrizeCard
+								<Atoms.Cards.Prizes
 									label={cat.name}
 									category={cat}
 									imageURL={
@@ -46,7 +46,7 @@ const Prizes = () => {
 							);
 					  })
 					: RewardService.PrizeItems.map((item) => (
-							<PrizeCard
+							<Atoms.Cards.Prizes
 								label={item.name}
 								category={
 									RewardService.mapCategoryNametoCategory(
@@ -59,8 +59,8 @@ const Prizes = () => {
 								}
 							/>
 					  ))}
-			</Inner>
-		</Outer>
+			</Styles.Inner>
+		</Styles.Outer>
 	);
 };
 

@@ -1,3 +1,3 @@
 export * from "./WhiteFlexCard";
 export * from "./WhiteBoxWithTitle";
-export * from "./PrizeCard";
+export { default as Prizes } from "./Prizes";

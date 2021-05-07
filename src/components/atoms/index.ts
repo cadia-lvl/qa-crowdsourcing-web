@@ -1,6 +1,7 @@
 export * from "./Inputs";
 export * from "./Buttons";
 export * from "./Cards";
+export * as Cards from "./Cards";
 export * from "./ChartAtoms";
 export * as Alerts from "./Alerts";
 export * from "./Texts";
