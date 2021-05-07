@@ -23,6 +23,7 @@ import store from "../../store";
 import { AxiosResponse } from "axios";
 
 const __handleUpdateTask = (data: TaskFromBackend) => {
+	console.log(data);
 	switch (data.taskInfo.type) {
 		case "make-question":
 			store.dispatch<FetchQuestionRoundFromAPIAction>({

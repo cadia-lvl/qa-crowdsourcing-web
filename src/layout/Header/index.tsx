@@ -18,13 +18,15 @@ const Header = () => {
 	return (
 		<Outer>
 			<HeaderItemContainer>
-				{headerItems.map((item) => (
-					<Link to={item.path} key={item.text}>
-						<HeaderItem className="header-itm">
-							{item.text}
-						</HeaderItem>
-					</Link>
-				))}
+				{!isAuth
+					? headerItems.map((item) => (
+							<Link to={item.path} key={item.text}>
+								<HeaderItem className="header-itm">
+									{item.text}
+								</HeaderItem>
+							</Link>
+					  ))
+					: null}
 			</HeaderItemContainer>
 			<HeaderItemContainer>
 				{showAvatarInHeader ? (
