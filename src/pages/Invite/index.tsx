@@ -1,5 +1,6 @@
 import React from "react";
+import { Organisms } from "../../components";
 
 export const Invite = () => {
-	return <div>vinir</div>;
+	return <Organisms.Dashboard.SocialInvites />;
 };
