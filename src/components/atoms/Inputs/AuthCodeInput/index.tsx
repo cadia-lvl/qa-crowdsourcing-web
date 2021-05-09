@@ -5,7 +5,8 @@ import React, {
 	useCallback,
 } from "react";
 import { AuthCodeInputProps } from "../../../../declerations";
-import { Outer, DigitContainer } from "./styles";
+import * as Styles from "./styles";
+import { Atoms } from "../../../";
 
 export const AuthCodeInput = ({
 	length,
@@ -41,32 +42,29 @@ export const AuthCodeInput = ({
 		[value, currDigit, onChange]
 	);
 
-	const handlePaste = useCallback(
-		(e: any) => {
-			onChange(e.clipboardData.getData("text"));
-		},
-		[value, currDigit, onChange]
-	);
+	Atoms.Clipboard.Hooks.usePasteString(onChange, [
+		value,
+		currDigit,
+		onChange,
+	]);
 
 	useEffect(() => {
 		// @ts-ignore
 		window.addEventListener("keypress", handleKeyPress);
-		window.addEventListener("paste", handlePaste);
 		return () => {
 			// @ts-ignore
 			window.removeEventListener("keypress", handleKeyPress);
-			window.removeEventListener("paste", handlePaste);
 		};
 	}, [value, currDigit, onChange]);
 
 	useEffect(() => {}, []);
 
 	return (
-		<Outer>
+		<Styles.Outer>
 			{[...new Array(length)].map((val, i) => {
 				const char = i >= value.length ? " " : value.charAt(i);
 				return (
-					<DigitContainer
+					<Styles.DigitContainer
 						current={currDigit === i}
 						onClick={() =>
 							setCurrDigit(Math.min(i, value.length))
@@ -76,9 +74,9 @@ export const AuthCodeInput = ({
 						}
 					>
 						{char}
-					</DigitContainer>
+					</Styles.DigitContainer>
 				);
 			})}
-		</Outer>
+		</Styles.Outer>
 	);
 };

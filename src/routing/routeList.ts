@@ -3,29 +3,37 @@ import * as Pages from "../pages";
 
 export const ROUTE_LIST: RouteInterface[] = [
 	{
-		component: Pages.SignInPage,
+		component: Pages.SignIn,
 		path: "/innskra",
 	},
 	{
-		component: Pages.SignUpPage,
+		component: Pages.SignUp,
 		path: "/nyr-notandi",
 	},
 	{
-		component: Pages.GamePage,
+		component: Pages.Games,
 		path: "/spila",
 	},
 	{
-		component: Pages.TermsPage,
+		component: Pages.Prizes,
+		path: "/vinningar",
+	},
+	{
+		component: Pages.Invite,
+		path: "/vinir",
+	},
+	{
+		component: Pages.Terms,
 		path: "/skilmalar",
 		exact: true,
 	},
 	{
-		component: Pages.AboutUsPage,
+		component: Pages.AboutUs,
 		path: "/um-okkur",
 		exact: true,
 	},
 	{
-		component: Pages.FrontPage,
+		component: Pages.Front,
 		path: "(/|/heim)?",
 	},
 ];

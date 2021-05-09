@@ -3,9 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import {
 	TextPrompt,
 	ShootingStars,
-	UserAvatar,
+	Atoms,
 	BaseButton,
-	WinningsDashBoard,
+	Organisms,
 } from "../../../..";
 import {
 	fetchCurrentGameRound,
@@ -70,7 +70,7 @@ export const CompletedView = () => {
 			<TopBox>
 				<IconBoxOuter>
 					<IconWrapper className={shouldShake ? "shake" : ""}>
-						<UserAvatar
+						<Atoms.Avatars.User
 							src={iconURL}
 							onLoad={() => {
 								if (canStopShake) setShouldShake(false);
@@ -92,7 +92,7 @@ export const CompletedView = () => {
 				</TextPromptWrapper>
 			</TopBox>
 			<PrizeWrapper>
-				<WinningsDashBoard />
+				<Organisms.Dashboard.Prizes />
 			</PrizeWrapper>
 
 			<BaseButton

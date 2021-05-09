@@ -1,26 +1,12 @@
 import React from "react";
-import {
-	Outer,
-	Section,
-	TextBoxPara,
-	Inner,
-	DashBoardExample,
-	Margins,
-	LogoBox,
-	LogoGrid,
-	PlayIcon,
-	Icon1,
-	Icon2,
-	Icon3,
-	Icon4,
-} from "./styles";
-import { FrontPageDashBoard, PlayButton } from "../../components";
+import * as Styles from "./styles";
+import { Organisms, PlayButton } from "../../components";
 import { AuthConditionalRender } from "../../hoc";
 import { useSelector } from "react-redux";
 import { StoreState } from "../../reducers";
 import { NavLink } from "react-router-dom";
 
-export const FrontPage = () => {
+export const Front = () => {
 	const user = useSelector((state: StoreState) => state.auth);
 	const { currentRound, totalRounds } = useSelector(
 		(state: StoreState) => state.game
@@ -28,41 +14,40 @@ export const FrontPage = () => {
 
 	const ConvertButton = () => (
 		<NavLink to="/spila">
-			<TextBoxPara>
+			<Styles.TextBoxPara>
 				<i className="play">
-					<PlayIcon className="fas fa-chevron-right" />
+					<Styles.PlayIcon className="fas fa-chevron-right" />
 					Spila leikinn
 				</i>
-			</TextBoxPara>
+			</Styles.TextBoxPara>
 		</NavLink>
 	);
 
 	return (
-		<Outer>
+		<Styles.Outer>
 			{/* Space to the Left of the screen */}
 			<AuthConditionalRender>
 				{(WhenIsAuth, WhenNotAuth) => (
 					<React.Fragment>
 						{/* When user is Authenticated */}
 						<WhenIsAuth>
-							<FrontPageDashBoard
+							<Organisms.Dashboard.UserProgress
 								{...user}
 								totalRounds={totalRounds}
 								currentRound={currentRound}
 							/>
-							{/* <WinningsDashBoard /> */}
 						</WhenIsAuth>
 
 						{/* When user is not authenticated */}
 						<WhenNotAuth>
-							<Inner>
-								<Section>
-									<Icon1 />
-									<Margins>
+							<Styles.Inner>
+								<Styles.Section>
+									<Styles.Icon1 />
+									<Styles.Margins>
 										<h1 className="italic">
 											Spurningar.is
 										</h1>
-										<TextBoxPara>
+										<Styles.TextBoxPara>
 											Auktu þekkingu þína á hinum
 											ýmsum málefnum og hjálpaðu að
 											koma íslensku í nútimann í
@@ -70,8 +55,8 @@ export const FrontPage = () => {
 											vinningar í boði og því stærra
 											sem þitt framlag verður því
 											betri vinninga getur þú unnið.
-										</TextBoxPara>
-										<TextBoxPara>
+										</Styles.TextBoxPara>
+										<Styles.TextBoxPara>
 											Markmiðið er að safna{" "}
 											<i>100.000 spurningum</i> árið
 											2021 til þess að búa til
@@ -79,23 +64,23 @@ export const FrontPage = () => {
 											spurningasvörun. Því meira sem
 											þú spilar, því meiri stuðning
 											veitir þú íslensku í nútímanum.
-										</TextBoxPara>{" "}
-									</Margins>
+										</Styles.TextBoxPara>{" "}
+									</Styles.Margins>
 									<NavLink to="/spila">
 										<PlayButton>
-											<PlayIcon className="fas fa-puzzle-piece" />
+											<Styles.PlayIcon className="fas fa-puzzle-piece" />
 											Spila
 										</PlayButton>
 									</NavLink>
-								</Section>
+								</Styles.Section>
 
-								<Section>
-									<Icon2 />
-									<Margins>
+								<Styles.Section>
+									<Styles.Icon2 />
+									<Styles.Margins>
 										<h1 className="italic">
 											Hvaða vinninga getur þú unnið?
 										</h1>
-										<TextBoxPara>
+										<Styles.TextBoxPara>
 											Það eru fjögur þrep af
 											vinningum samtals, þar sem
 											hvert þrep er veglegra en
@@ -106,31 +91,31 @@ export const FrontPage = () => {
 											leiknum, því fleiri vinninga
 											getur þú átt möguleika á að
 											vinna.
-										</TextBoxPara>
-										<TextBoxPara>
+										</Styles.TextBoxPara>
+										<Styles.TextBoxPara>
 											Það eru samtals{" "}
 											<i>23 vinningar</i> í boði.
 											Allt frá kassa af <i>NOCCO</i>{" "}
 											upp í <i>BOSE</i> heyrnatól.
-										</TextBoxPara>
+										</Styles.TextBoxPara>
 										<ConvertButton />
-									</Margins>
-									<LogoGrid className="shine-wrap no-pointer-events no-highlight">
+									</Styles.Margins>
+									<Styles.LogoGrid className="shine-wrap no-pointer-events no-highlight">
 										{
 											/// tmp until we get actual price logos
 											[...new Array(12)].map(() => (
-												<LogoBox />
+												<Styles.LogoBox />
 											))
 										}
-									</LogoGrid>
-								</Section>
-								<Section>
-									<Icon3 />
-									<Margins>
+									</Styles.LogoGrid>
+								</Styles.Section>
+								<Styles.Section>
+									<Styles.Icon3 />
+									<Styles.Margins>
 										<h1 className="italic">
 											Fylgstu með mælaborðinu þínu
 										</h1>
-										<TextBoxPara>
+										<Styles.TextBoxPara>
 											Þegar þú býrð til aðgang þá
 											færðu þitt eigið mælaborð. Þar
 											getur þú séð hvert þú ert
@@ -138,20 +123,20 @@ export const FrontPage = () => {
 											vinningum þú átt rétt á og
 											hversu mikið þú hefur lagt fram
 											til samfélagsins
-										</TextBoxPara>
-										<TextBoxPara>
+										</Styles.TextBoxPara>
+										<Styles.TextBoxPara>
 											Á mælaborðinu sérðu einnig hvar
 											þú ert í stigatöflunni ásamt
 											því hversu nálægt samfélagið á
 											spurningar.is er að ná{" "}
 											<i>100 þúsund spurninga</i>{" "}
 											markinu.
-										</TextBoxPara>
+										</Styles.TextBoxPara>
 										<ConvertButton />
-									</Margins>
+									</Styles.Margins>
 
-									<DashBoardExample className="shine-wrap no-pointer-events no-highlight">
-										<FrontPageDashBoard
+									<Styles.DashBoardExample className="shine-wrap no-pointer-events no-highlight">
+										<Organisms.Dashboard.UserProgress
 											{...{
 												...user,
 												username:
@@ -170,15 +155,15 @@ export const FrontPage = () => {
 											totalRounds={7}
 											currentRound={3}
 										/>
-									</DashBoardExample>
-								</Section>
-								<Section>
-									<Icon4 />
-									<Margins>
+									</Styles.DashBoardExample>
+								</Styles.Section>
+								<Styles.Section>
+									<Styles.Icon4 />
+									<Styles.Margins>
 										<h1 className="italic">
 											Taktu þátt!
 										</h1>
-										<TextBoxPara>
+										<Styles.TextBoxPara>
 											Spurningar.is gengur út á það
 											að spyrja samfélagið spurninga,
 											fara yfir spurningar og finna
@@ -188,26 +173,26 @@ export const FrontPage = () => {
 											meðan þá ertu að{" "}
 											<i>styrkja stöðu íslensk</i>u í
 											nútímanum.
-										</TextBoxPara>
-										<TextBoxPara>
+										</Styles.TextBoxPara>
+										<Styles.TextBoxPara>
 											Á meðan þú spilar leikinn þá
 											safnar þú stigum og Lvl-um sem
 											gefa þér möguleika{" "}
 											<i>glæsilegum vinningum</i>.
-										</TextBoxPara>
-									</Margins>
+										</Styles.TextBoxPara>
+									</Styles.Margins>
 									<NavLink to="/spila">
 										<PlayButton>
-											<PlayIcon className="fas fa-puzzle-piece" />
+											<Styles.PlayIcon className="fas fa-puzzle-piece" />
 											Spila
 										</PlayButton>
 									</NavLink>
-								</Section>
-							</Inner>
+								</Styles.Section>
+							</Styles.Inner>
 						</WhenNotAuth>
 					</React.Fragment>
 				)}
 			</AuthConditionalRender>
-		</Outer>
+		</Styles.Outer>
 	);
 };

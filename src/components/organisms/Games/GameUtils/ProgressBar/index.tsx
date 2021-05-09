@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { SmallProgressBar } from "../../../../";
+import { SmallProgressBar, Atoms } from "../../../../";
 import { GameTypes } from "../../../../../declerations";
 import { StoreState } from "../../../../../reducers";
 import { Colors } from "../../../../../styles";
@@ -13,8 +13,6 @@ import {
 	Icon,
 } from "./styles";
 import { IProps } from "./interface";
-import { UserAvatar } from "../../../../atoms";
-import { ICON_LVL_1 } from "../../../../../static";
 import { UserLevelService } from "../../../../../services";
 
 /**
@@ -35,7 +33,7 @@ export const GameProgress = ({ showIcon }: IProps) => {
 			{showIcon ? (
 				<IconContainer theme={{ widthRatio: ratio }}>
 					<Icon>
-						<UserAvatar
+						<Atoms.Avatars.User
 							src={UserLevelService.mapLevelToIconURL(
 								auth.level
 							)}

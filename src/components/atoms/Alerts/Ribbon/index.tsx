@@ -3,7 +3,7 @@ import { Outer } from "./styles";
 import { IProps } from "./interface";
 import { FillColorMap, TextColorMap } from "./utils";
 
-export const FilledAlert = ({ label, type }: IProps) => {
+const FilledAlert = ({ label, type }: IProps) => {
 	if (!label) return null;
 	return (
 		<Outer
@@ -16,3 +16,5 @@ export const FilledAlert = ({ label, type }: IProps) => {
 		</Outer>
 	);
 };
+
+export default FilledAlert;

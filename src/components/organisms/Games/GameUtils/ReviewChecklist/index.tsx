@@ -8,7 +8,7 @@ import {
 	CheckListContainer,
 } from "./styles";
 import { ReviewActions, State } from "./stateUtils";
-import { CheckListBullet, FlexLoader, PageDots } from "../../../../";
+import { CheckListBullet, Atoms, PageDots } from "../../../../";
 import { shuffle } from "./utils";
 
 export const ReviewCheckList = <T extends {}>({
@@ -100,7 +100,7 @@ export const ReviewCheckList = <T extends {}>({
 			{hasQuestion ? (
 				<CheckListQuestionContainer>
 					{state.isLoading ? (
-						<FlexLoader size={40} />
+						<Atoms.Loaders.Flex size={40} />
 					) : (
 						<React.Fragment>
 							<span>{question}</span>

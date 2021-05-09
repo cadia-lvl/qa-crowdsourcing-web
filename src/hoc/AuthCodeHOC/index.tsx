@@ -9,9 +9,8 @@ import {
 import {
 	WhiteBoxWithTitle,
 	BaseButton,
-	FilledAlert,
 	AuthCodeInput,
-	FlexLoader,
+	Atoms,
 } from "../../components";
 import { AuthCodeOuter, FlexCenter, AuthCodeInner } from "./styles";
 import { useSelector, useDispatch } from "react-redux";
@@ -41,7 +40,7 @@ export const AuthCodeHOC = ({ children }: IProps) => {
 			<AuthCodeOuter {...{ isAuthCodeRegenerationLoading }}>
 				<WhiteBoxWithTitle title="Staðfestingarkóði">
 					{authCodeErrorMessage ? (
-						<FilledAlert
+						<Atoms.Alerts.Ribbon
 							label={authCodeErrorMessage}
 							type="danger"
 						/>
@@ -69,7 +68,7 @@ export const AuthCodeHOC = ({ children }: IProps) => {
 						</AuthCodeInner>
 					</form>
 					{isAuthCodeSubmissionLoading ? (
-						<FlexLoader size={20} />
+						<Atoms.Loaders.Flex size={20} />
 					) : (
 						<BaseButton
 							label="Staðfesta"

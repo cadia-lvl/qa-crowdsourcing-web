@@ -5,7 +5,7 @@ import { Inner, LinkContainer } from "./styles";
 import { Link } from "react-router-dom";
 import { AllowOnlyPage } from "../../hoc";
 
-export const SignUpPage = () => {
+export const SignUp = () => {
 	return (
 		<AllowOnlyPage userTypes={["guest"]} fallbackUrl="/heim">
 			<SinglePageCard>

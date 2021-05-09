@@ -59,7 +59,7 @@ export const SelectSpan = (props: IProps) => {
 						/>
 					</Explain>
 					<BaseButton
-						label="Áfram"
+						label="Staðfesta"
 						onClick={handleSubmitSpan}
 						isInactive={canProceed}
 						type="highlight"

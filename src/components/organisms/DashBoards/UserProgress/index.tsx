@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { Explain, QAsPerDay, Game } from "../..";
-import { PlayButton, UserAvatar } from "../../..";
+import { Explain, QAsPerDay, Game, Atoms } from "../../..";
+import { PlayButton } from "../../..";
 import { UserLevelService } from "../../../../services";
 import {
 	DashBoardOuter,
@@ -20,7 +20,7 @@ import {
 import { IProps } from "./interface";
 import * as TUTORIAL from "./tutorialItems";
 
-export const FrontPageDashBoard = ({
+const UserProgress = ({
 	username,
 	level,
 	scoreCard,
@@ -40,7 +40,7 @@ export const FrontPageDashBoard = ({
 				<Explain items={TUTORIAL.userProgress}>
 					<Col1Row1>
 						<Col1Row1Cell1>
-							<UserAvatar
+							<Atoms.Avatars.User
 								src={UserLevelService.mapLevelToIconURL(
 									level
 								)}
@@ -119,3 +119,5 @@ export const FrontPageDashBoard = ({
 		</DashBoardOuter>
 	);
 };
+
+export default UserProgress;

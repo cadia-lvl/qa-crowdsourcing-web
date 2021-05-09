@@ -1,5 +1,5 @@
 import React from "react";
-import { PrizeCard } from "../../../../../components";
+import { Atoms } from "../../../../../components";
 import { RewardService } from "../../../../../services";
 import { Outer } from "./styles";
 
@@ -7,7 +7,7 @@ export const Locked = () => {
 	return (
 		<Outer>
 			{RewardService.PriceCategories.slice(1, 2).map((cat) => (
-				<PrizeCard
+				<Atoms.Cards.Prizes
 					label={cat.name}
 					category={cat}
 					imageURL={

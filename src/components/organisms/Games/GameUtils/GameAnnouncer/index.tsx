@@ -13,13 +13,11 @@ import {
 	AnnouncerAvatarWrapper,
 	DescriptionBoxPara,
 } from "./styles";
-import { FlexLoader, TextPrompt, PlayButton } from "../../../../";
+import { Atoms, TextPrompt, PlayButton } from "../../../../";
 import { IProps } from "./interface";
 import { getPrevText, LOADING_TIMER } from "./utils";
-import { UserAvatar } from "../../../../atoms";
 import { UserLevelService } from "../../../../../services";
 import gameInfos from "../GameInfos";
-import { GameBullets } from "../GameBullets";
 
 export const GameAnnouncer = ({ children }: IProps) => {
 	/**
@@ -106,7 +104,7 @@ export const GameAnnouncer = ({ children }: IProps) => {
 		return announcePrevGame ? (
 			<LoadingItems>
 				<LoadingContainer>
-					<FlexLoader size={40} />
+					<Atoms.Loaders.Flex size={40} />
 				</LoadingContainer>
 				<TextPrompt>{getPrevText(prevGame)}</TextPrompt>
 			</LoadingItems>
@@ -120,7 +118,7 @@ export const GameAnnouncer = ({ children }: IProps) => {
 					</NextTaskTopLine>
 					<DescriptionBox>
 						<AnnouncerAvatarWrapper>
-							<UserAvatar
+							<Atoms.Avatars.User
 								src={UserLevelService.mapLevelToIconURL(
 									level
 								)}

@@ -1,13 +1,13 @@
 import React, { useEffect } from "react";
 import { GameWrapper, RestrictedPage } from "../../hoc";
-import { Game, FlexLoader } from "../../components";
+import { Game, Atoms } from "../../components";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCurrentGameRound, fetchScoreCard } from "../../actions";
 import { StoreState } from "../../reducers";
-import { ProgressBarContainer } from "./styles";
+import * as Styles from "./styles";
 import { GameTypes } from "../../declerations";
 
-export const GamePage = () => {
+export const Games = () => {
 	const dispatch = useDispatch();
 	const state = useSelector((state: StoreState) => state.game);
 	useEffect(() => {
@@ -25,13 +25,13 @@ export const GamePage = () => {
 		<RestrictedPage userTypes={["guest"]} fallbackUrl="/innskra">
 			<Game.Utils.GameAnnouncer>
 				{state.current === undefined ? (
-					<FlexLoader size={150} />
+					<Atoms.Loaders.Flex size={150} />
 				) : (
 					<React.Fragment>
 						{/* PROGRESS BAR */}
-						<ProgressBarContainer>
+						<Styles.ProgressBarContainer>
 							<Game.Utils.GameProgress showIcon />
-						</ProgressBarContainer>
+						</Styles.ProgressBarContainer>
 						{/* CREATE QUESTION ROUND COMPONENT */}
 						<GameWrapper type={GameTypes.writeQuestion}>
 							<Game.Utils.TaskInfoBox title="Búa til spurningu">

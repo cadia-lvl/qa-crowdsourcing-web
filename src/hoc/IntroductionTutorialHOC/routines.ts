@@ -20,7 +20,7 @@ const routines: IRoutine[] = [
 				description: [
 					"Það er oft gott að lesa skilaboð og loka þeim svo, ef þau kunna að vera fyrir því sem er að gerast á skjánnum.",
 
-					"Þegar þú svarar skilaboðunum þá lokast þaum (hérna getur þú svarað með „Ókei“). Þú getur svarað skilaboðunum þegar þú ert búin/n að lesa þau.",
+					"Þegar þú bregst við skilaboðunum þá lokast þau (hérna getur þú brugðist við með „Ókei“).",
 				],
 				key: "close",
 				Component: Steps.Guide.CloseBubble,

@@ -1,6 +1,6 @@
 import React from "react";
 
-export const AboutUsPage = () => {
+export const AboutUs = () => {
 	return (
 		<div>
 			<h1>Um okkur</h1>

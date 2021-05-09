@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { IProps } from "./interface";
-import { FlexLoader, PageDots, PlayButton } from "../../../components";
+import { Atoms, PageDots, PlayButton } from "../../../components";
 import { Outer, Content, Bottom, DotsContainer } from "./styles";
 
 const SubRoutineViewer = ({
@@ -50,7 +50,7 @@ const SubRoutineViewer = ({
 		<Outer>
 			<Content>
 				{isLoading ? (
-					<FlexLoader size={40} />
+					<Atoms.Loaders.Flex size={40} />
 				) : !!Component ? (
 					<React.Fragment>
 						<h1 className="italic">{current.label}</h1>

@@ -12,7 +12,7 @@ import {
 	TextWrapper,
 } from "./styles";
 
-export const PrizeCard = ({
+const PrizeCard = ({
 	label,
 	imageURL,
 	category,
@@ -78,3 +78,5 @@ export const PrizeCard = ({
 		</Outer>
 	);
 };
+
+export default PrizeCard;

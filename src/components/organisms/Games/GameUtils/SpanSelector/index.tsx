@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { ClickableSpan, FlexLoader } from "../../../..";
+import { ClickableSpan, Atoms } from "../../../..";
 import { IProps, SelectionStates } from "./interface";
 import { Outer, Word, InstructionWrapper } from "./styles";
 
@@ -51,7 +51,7 @@ export const SpanSelector = ({
 		["Smelltu á síðasta stafinn sem myndar svarið"],
 		[
 			"Smelltu á textann til þess að velja aftur",
-			"Smelltu á „áfram“ til þess að staðfesta orða val",
+			"Smelltu á „Staðfesta“ til þess að staðfesta orða val",
 		],
 	];
 
@@ -116,7 +116,7 @@ export const SpanSelector = ({
 				))}
 			</p>
 			{immutable ? null : areInstructionsLoading ? (
-				<FlexLoader size={40} />
+				<Atoms.Loaders.Flex size={40} />
 			) : (
 				userInstructions.map((instructions, i) =>
 					i == getStage() ? (
