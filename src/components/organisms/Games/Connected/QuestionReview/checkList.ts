@@ -14,13 +14,6 @@ const checkList: CheckList<QAquestionItems> = {
 	title: "Review question quality",
 	items: [
 		{
-			question: "Skilur þú spurninguna?",
-			expectedAnswer: "yes",
-			key: "grammar-correct",
-			correctAnswerPrompt: "Þú skilur spurninguna",
-			badAnswerPrompt: "Þú skilur ekki spurninguna",
-		},
-		{
 			question: "Heldurðu að spurningin hafi svar?",
 			expectedAnswer: "yes",
 			key: "is-impossible",

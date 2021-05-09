@@ -51,7 +51,7 @@ export const SpanSelector = ({
 		["Smelltu á síðasta stafinn sem myndar svarið"],
 		[
 			"Smelltu á textann til þess að velja aftur",
-			"Smelltu á „áfram“ til þess að staðfesta orða val",
+			"Smelltu á „Staðfesta“ til þess að staðfesta orða val",
 		],
 	];
 
