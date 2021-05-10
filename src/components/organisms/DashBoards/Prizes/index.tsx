@@ -22,11 +22,12 @@ const Prizes = () => {
 	return (
 		<Styles.Outer>
 			<Styles.Lists>
-				{lists.map((item) => (
+				{lists.map((item, i) => (
 					<Styles.ListHeading
 						isSelected={item === currentView}
 						className="italic"
 						onClick={() => setCurrentView(item)}
+						key={i}
 					>
 						{mapListToLabel(item)}
 					</Styles.ListHeading>
@@ -49,9 +50,7 @@ const Prizes = () => {
 							<Atoms.Cards.Prizes
 								label={item.name}
 								category={
-									RewardService.mapCategoryNametoCategory(
-										item.category
-									)!
+									RewardService.mapCategoryNametoCategory(item.category)!
 								}
 								individualItem
 								imageURL={

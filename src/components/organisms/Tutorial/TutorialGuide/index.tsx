@@ -47,22 +47,17 @@ export const TutorialGuide = ({ onHideMessages }: IProps) => {
 		>
 			<Inner>
 				<BubbleContainer>
-					{showBubbles ? (
-						<TutorialBubble explain={firstItem} />
-					) : null}
+					{showBubbles ? <TutorialBubble explain={firstItem} /> : null}
 					{showBubbles
 						? state.persistant.map((item) => (
-								<TutorialBubble explain={item} />
+								<TutorialBubble explain={item} key={item.id} />
 						  ))
 						: null}
 				</BubbleContainer>
 
 				<Atoms.Avatars.User src={ICON_AGENT} />
 				{bubbleCount > 0 ? (
-					<CloseOpenIcon
-						closed={!showBubbles}
-						onClick={handleToogleBubbles}
-					>
+					<CloseOpenIcon closed={!showBubbles} onClick={handleToogleBubbles}>
 						{showBubbles ? (
 							<i className="fas fa-chevron-down" />
 						) : (

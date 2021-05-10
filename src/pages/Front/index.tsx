@@ -44,26 +44,18 @@ export const Front = () => {
 								<Styles.Section>
 									<Styles.Icon1 />
 									<Styles.Margins>
-										<h1 className="italic">
-											Spurningar.is
-										</h1>
+										<h1 className="italic">Spurningar.is</h1>
 										<Styles.TextBoxPara>
-											Auktu þekkingu þína á hinum
-											ýmsum málefnum og hjálpaðu að
-											koma íslensku í nútimann í
-											leiðinni. Það eru spennandi
-											vinningar í boði og því stærra
-											sem þitt framlag verður því
+											Auktu þekkingu þína á hinum ýmsum málefnum og hjálpaðu að
+											koma íslensku í nútimann í leiðinni. Það eru spennandi
+											vinningar í boði og því stærra sem þitt framlag verður því
 											betri vinninga getur þú unnið.
 										</Styles.TextBoxPara>
 										<Styles.TextBoxPara>
-											Markmiðið er að safna{" "}
-											<i>100.000 spurningum</i> árið
-											2021 til þess að búa til
-											gervigreind fyrir
-											spurningasvörun. Því meira sem
-											þú spilar, því meiri stuðning
-											veitir þú íslensku í nútímanum.
+											Markmiðið er að safna <i>100.000 spurningum</i> árið 2021
+											til þess að búa til gervigreind fyrir spurningasvörun. Því
+											meira sem þú spilar, því meiri stuðning veitir þú íslensku
+											í nútímanum.
 										</Styles.TextBoxPara>{" "}
 									</Styles.Margins>
 									<NavLink to="/spila">
@@ -77,34 +69,25 @@ export const Front = () => {
 								<Styles.Section>
 									<Styles.Icon2 />
 									<Styles.Margins>
-										<h1 className="italic">
-											Hvaða vinninga getur þú unnið?
-										</h1>
+										<h1 className="italic">Hvaða vinninga getur þú unnið?</h1>
 										<Styles.TextBoxPara>
-											Það eru fjögur þrep af
-											vinningum samtals, þar sem
-											hvert þrep er veglegra en
-											þrepið á undan því. Skráðu þig
-											í leikinn til þess að eiga
-											möguleika á fyrsta þrepi. Því
-											fleiri Lvl sem þú klárar í
-											leiknum, því fleiri vinninga
-											getur þú átt möguleika á að
-											vinna.
+											Það eru fjögur þrep af vinningum samtals, þar sem hvert
+											þrep er veglegra en þrepið á undan því. Skráðu þig í
+											leikinn til þess að eiga möguleika á fyrsta þrepi. Því
+											fleiri Lvl sem þú klárar í leiknum, því fleiri vinninga
+											getur þú átt möguleika á að vinna.
 										</Styles.TextBoxPara>
 										<Styles.TextBoxPara>
-											Það eru samtals{" "}
-											<i>23 vinningar</i> í boði.
-											Allt frá kassa af <i>NOCCO</i>{" "}
-											upp í <i>BOSE</i> heyrnatól.
+											Það eru samtals <i>23 vinningar</i> í boði. Allt frá kassa
+											af <i>NOCCO</i> upp í <i>BOSE</i> heyrnatól.
 										</Styles.TextBoxPara>
 										<ConvertButton />
 									</Styles.Margins>
 									<Styles.LogoGrid className="shine-wrap no-pointer-events no-highlight">
 										{
 											/// tmp until we get actual price logos
-											[...new Array(12)].map(() => (
-												<Styles.LogoBox />
+											[...new Array(12)].map((_, i) => (
+												<Styles.LogoBox key={i} />
 											))
 										}
 									</Styles.LogoGrid>
@@ -112,25 +95,17 @@ export const Front = () => {
 								<Styles.Section>
 									<Styles.Icon3 />
 									<Styles.Margins>
-										<h1 className="italic">
-											Fylgstu með mælaborðinu þínu
-										</h1>
+										<h1 className="italic">Fylgstu með mælaborðinu þínu</h1>
 										<Styles.TextBoxPara>
-											Þegar þú býrð til aðgang þá
-											færðu þitt eigið mælaborð. Þar
-											getur þú séð hvert þú ert
-											kominn í leiknum, hvaða
-											vinningum þú átt rétt á og
-											hversu mikið þú hefur lagt fram
+											Þegar þú býrð til aðgang þá færðu þitt eigið mælaborð. Þar
+											getur þú séð hvert þú ert kominn í leiknum, hvaða
+											vinningum þú átt rétt á og hversu mikið þú hefur lagt fram
 											til samfélagsins
 										</Styles.TextBoxPara>
 										<Styles.TextBoxPara>
-											Á mælaborðinu sérðu einnig hvar
-											þú ert í stigatöflunni ásamt
-											því hversu nálægt samfélagið á
-											spurningar.is er að ná{" "}
-											<i>100 þúsund spurninga</i>{" "}
-											markinu.
+											Á mælaborðinu sérðu einnig hvar þú ert í stigatöflunni
+											ásamt því hversu nálægt samfélagið á spurningar.is er að
+											ná <i>100 þúsund spurninga</i> markinu.
 										</Styles.TextBoxPara>
 										<ConvertButton />
 									</Styles.Margins>
@@ -139,8 +114,7 @@ export const Front = () => {
 										<Organisms.Dashboard.UserProgress
 											{...{
 												...user,
-												username:
-													"Jónína Jónsdóttir",
+												username: "Jónína Jónsdóttir",
 												level: 5,
 												scoreCard: {
 													hiscoreRank: 327,
@@ -160,25 +134,17 @@ export const Front = () => {
 								<Styles.Section>
 									<Styles.Icon4 />
 									<Styles.Margins>
-										<h1 className="italic">
-											Taktu þátt!
-										</h1>
+										<h1 className="italic">Taktu þátt!</h1>
 										<Styles.TextBoxPara>
-											Spurningar.is gengur út á það
-											að spyrja samfélagið spurninga,
-											fara yfir spurningar og finna
-											svör. Þú{" "}
-											<i>bætir þekkinguna</i> þína í
-											hinum ótrúlegustu málefnum og á
-											meðan þá ertu að{" "}
-											<i>styrkja stöðu íslensk</i>u í
+											Spurningar.is gengur út á það að spyrja samfélagið
+											spurninga, fara yfir spurningar og finna svör. Þú{" "}
+											<i>bætir þekkinguna</i> þína í hinum ótrúlegustu málefnum
+											og á meðan þá ertu að <i>styrkja stöðu íslensk</i>u í
 											nútímanum.
 										</Styles.TextBoxPara>
 										<Styles.TextBoxPara>
-											Á meðan þú spilar leikinn þá
-											safnar þú stigum og Lvl-um sem
-											gefa þér möguleika{" "}
-											<i>glæsilegum vinningum</i>.
+											Á meðan þú spilar leikinn þá safnar þú stigum og Lvl-um
+											sem gefa þér möguleika <i>glæsilegum vinningum</i>.
 										</Styles.TextBoxPara>
 									</Styles.Margins>
 									<NavLink to="/spila">

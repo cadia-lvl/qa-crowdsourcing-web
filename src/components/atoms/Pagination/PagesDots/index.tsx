@@ -6,7 +6,7 @@ export const PageDots = ({ current, total }: IProps) => {
 	return (
 		<Outer className="page-dots">
 			{[...new Array(total)].map((_, i) => (
-				<Dot completed={i < current} />
+				<Dot completed={i < current} key={i} />
 			))}
 		</Outer>
 	);

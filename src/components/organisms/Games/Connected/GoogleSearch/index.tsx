@@ -1,10 +1,4 @@
-import React, {
-	FormEvent,
-	useEffect,
-	useRef,
-	useState,
-	useMemo,
-} from "react";
+import React, { FormEvent, useEffect, useRef, useState, useMemo } from "react";
 import { GoogleTextInput, ModalWithTitle, Atoms } from "../../../../";
 import { GOOGLE_LOGO } from "../../../../../static";
 import { SearchForm, Paragraph, ContinueBox } from "./styles";
@@ -74,8 +68,7 @@ export const GoogleSearch = () => {
 	 */
 	const CACHEKEY = `${userId}-NEVER:SHOW:PERSISTANT:TUTORIAL`;
 
-	const showCloseResultTutorial =
-		localStorage.getItem(CACHEKEY) === null;
+	const showCloseResultTutorial = localStorage.getItem(CACHEKEY) === null;
 
 	const handleCloseResultTutorial = (e: TutorialItemClickEvent) => {
 		localStorage.setItem(CACHEKEY, "1");
@@ -117,20 +110,14 @@ export const GoogleSearch = () => {
 						label: "Já",
 						type: "highlight",
 						onClick: () =>
-							dispatch(
-								markQuestionAsImpossible(
-									gameRoundId,
-									questionId
-								)
-							),
+							dispatch(markQuestionAsImpossible(gameRoundId, questionId)),
 					},
 				]}
 				title={"Viltu halda áfram?"}
 				open={showContinueModal}
 			>
-				Það er algengt að svar finnist ekki við spurningu. Ef þú
-				heldur áfram þá merkjum við spurninguna sem erfiða eða
-				ósvaranlega.
+				Það er algengt að svar finnist ekki við spurningu. Ef þú heldur áfram þá
+				merkjum við spurninguna sem erfiða eða ósvaranlega.
 			</ModalWithTitle>
 			<TaskInfoBox title="FINNA SVAR Á VEFNUM">
 				<Paragraph>
@@ -146,9 +133,7 @@ export const GoogleSearch = () => {
 						<img src={GOOGLE_LOGO} alt="myndmerki google" />
 						<GoogleTextInput
 							value={query}
-							onChange={(text) =>
-								dispatch(writeArticleSearchQuery(text))
-							}
+							onChange={(text) => dispatch(writeArticleSearchQuery(text))}
 						/>
 						<input type="submit" value="Google leit" />
 					</Explain>
@@ -177,12 +162,9 @@ export const GoogleSearch = () => {
 								>
 									<h3>Finnur þú ekki svarið?</h3>
 									<p>
-										Það gerist að öðru hverju að svar
-										finnist ekki í leitinni. Ef þú
-										lendir í því þá getur þú haldið
-										áfram í næsta verkefni og við
-										merkjum spurninguna sem erfiða /
-										ósvaranlega.{" "}
+										Það gerist að öðru hverju að svar finnist ekki í leitinni.
+										Ef þú lendir í því þá getur þú haldið áfram í næsta verkefni
+										og við merkjum spurninguna sem erfiða / ósvaranlega.{" "}
 									</p>
 									Halda áfram í næsta verkefni
 									<i className="fas fa-chevron-right" />
@@ -200,12 +182,8 @@ export const GoogleSearch = () => {
 							 * we display all, if we have a preview then we display
 							 * said preview
 							 */
-							<div ref={i == 0 ? firstArticleRef : null}>
-								<ArticlePreview
-									{...item}
-									key={item.key}
-									_key={item.key}
-								/>
+							<div ref={i === 0 ? firstArticleRef : null}>
+								<ArticlePreview {...item} key={item.key} _key={item.key} />
 							</div>
 						))}
 					</Explain>

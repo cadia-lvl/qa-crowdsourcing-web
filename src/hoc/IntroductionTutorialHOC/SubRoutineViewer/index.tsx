@@ -3,11 +3,7 @@ import { IProps } from "./interface";
 import { Atoms, PageDots, PlayButton } from "../../../components";
 import { Outer, Content, Bottom, DotsContainer } from "./styles";
 
-const SubRoutineViewer = ({
-	items,
-	onComplete,
-	onCompleteStep,
-}: IProps) => {
+const SubRoutineViewer = ({ items, onComplete, onCompleteStep }: IProps) => {
 	const [showButton, setShowButton] = useState(true);
 	const [currentIndex, setCurrentIndex] = useState(0);
 	const [isLoading, setIsLoading] = useState(true);
@@ -54,8 +50,8 @@ const SubRoutineViewer = ({
 				) : !!Component ? (
 					<React.Fragment>
 						<h1 className="italic">{current.label}</h1>
-						{current.description.map((text) => (
-							<p>{text}</p>
+						{current.description.map((text, i) => (
+							<p key={i}>{text}</p>
 						))}
 						<Component
 							onHideButton={handleHideButton}
@@ -66,10 +62,7 @@ const SubRoutineViewer = ({
 			</Content>
 			<Bottom>
 				<DotsContainer>
-					<PageDots
-						current={currentIndex + 1}
-						total={items.length}
-					/>
+					<PageDots current={currentIndex + 1} total={items.length} />
 				</DotsContainer>
 				{showButton ? (
 					<PlayButton onClick={handleNextStep}>Áfram</PlayButton>

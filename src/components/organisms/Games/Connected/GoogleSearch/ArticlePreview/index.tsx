@@ -10,7 +10,6 @@ const ArticlePreview = (article: IProps) => {
 		title,
 		source: { logo, identifier },
 		snippet,
-		_id,
 		_key,
 	} = article;
 
@@ -19,21 +18,14 @@ const ArticlePreview = (article: IProps) => {
 
 	const { previewArticle } = state;
 	const isPreviewOpen = previewArticle?.key === _key;
-	const previewHoverText = !isPreviewOpen
-		? "... Kannski er svarið hér"
-		: "";
+	const previewHoverText = !isPreviewOpen ? "... Kannski er svarið hér" : "";
 
 	return (
 		<React.Fragment>
 			<Outer
 				theme={{ isPreviewOpen: false }}
 				onClick={() =>
-					dispatch(
-						previewArticleToSubmit(
-							identifier,
-							encodeURIComponent(_key)
-						)
-					)
+					dispatch(previewArticleToSubmit(identifier, encodeURIComponent(_key)))
 				}
 			>
 				<LeftBox theme={{ imgUrl: logo, isPreviewOpen: false }} />

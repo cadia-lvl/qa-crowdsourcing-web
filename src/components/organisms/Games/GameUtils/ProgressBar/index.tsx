@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 import { SmallProgressBar, Atoms } from "../../../../";
 import { GameTypes } from "../../../../../declerations";
@@ -23,9 +23,7 @@ export const GameProgress = ({ showIcon }: IProps) => {
 	const state = useSelector((state: StoreState) => state);
 	const { game, auth } = state;
 	const isFinished = game.current === GameTypes.completed;
-	const currentRound = isFinished
-		? game.currentRound
-		: game.currentRound - 1;
+	const currentRound = isFinished ? game.currentRound : game.currentRound - 1;
 	const ratio = currentRound / game.totalRounds;
 
 	return (
@@ -34,25 +32,19 @@ export const GameProgress = ({ showIcon }: IProps) => {
 				<IconContainer theme={{ widthRatio: ratio }}>
 					<Icon>
 						<Atoms.Avatars.User
-							src={UserLevelService.mapLevelToIconURL(
-								auth.level
-							)}
+							src={UserLevelService.mapLevelToIconURL(auth.level)}
 						/>
 					</Icon>
 				</IconContainer>
 			) : null}
 
 			<TickContainer>
-				{[...Array(game.totalRounds + 1)].map((_) => (
-					<Tick />
+				{[...Array(game.totalRounds + 1)].map((_, i) => (
+					<Tick key={i} />
 				))}
 			</TickContainer>
 			<ProgressBarCont>
-				<SmallProgressBar
-					ratio={ratio}
-					label=""
-					color={Colors.SUCCESS}
-				/>
+				<SmallProgressBar ratio={ratio} label="" color={Colors.SUCCESS} />
 			</ProgressBarCont>
 			{ratio < 1 ? null : null}
 		</Outer>

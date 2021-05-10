@@ -19,7 +19,7 @@ export const Games = () => {
 		return () => {
 			dispatch(fetchCurrentGameRound());
 		};
-	}, [state.currentRound]);
+	}, [state.currentRound, dispatch]);
 
 	return (
 		<RestrictedPage userTypes={["guest"]} fallbackUrl="/innskra">
@@ -39,9 +39,7 @@ export const Games = () => {
 							</Game.Utils.TaskInfoBox>
 						</GameWrapper>
 						{/* VERIFY QUESTIONS QUALITY ROUND COMPONENT*/}
-						<GameWrapper
-							type={GameTypes.questionQualityAssurance}
-						>
+						<GameWrapper type={GameTypes.questionQualityAssurance}>
 							<Game.Utils.TaskInfoBox title="Staðfesta spurningu">
 								<Game.Connected.QuestionReview />
 							</Game.Utils.TaskInfoBox>

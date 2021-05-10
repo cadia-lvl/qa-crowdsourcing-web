@@ -1,53 +1,38 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Atoms } from "../../../";
+import { fetchInvites } from "../../../../actions";
+import { StoreState } from "../../../../reducers";
 import * as Styled from "./styles";
+import * as Hoc from "../../../../hoc";
 
 const SocialInvites = () => {
-	// TODO: remove with values from backend
-	const GUUID = "5b606ef3-6b0b-429a-9980-5115b98014b3";
-	// TODO: replace with real data
-	// const users = [];
-	// TODO: possible create invite service
+	const auth = useSelector((state: StoreState) => state.auth);
+	const dispatch = useDispatch();
+
+	useEffect(() => {
+		dispatch(fetchInvites());
+	}, []);
 	return (
-		<Styled.Outer>
-			<h1 className="italic">Bjóða vinum</h1>
-			<p>
-				Þú getur faritað hlekkinn hér fyrir neðan með því að smella
-				á hann. Þegar vinur eða vandamaður opnar spurningar.is með
-				þessum hlekk og skráir sig sem nýjan notanda þá sérð þú
-				þína vini hér. þegar þú hefur boðið 10 vinum þá getur þú
-				unnið vinninga fyrir að vera áhrifavaldur.
-			</p>
-			<Styled.CopyWrap>
-				<Atoms.Clipboard.CopyString
-					value={`https://spurningar.is/bjoda/${GUUID}`}
-				/>
-			</Styled.CopyWrap>
-			{/* {
-				// TODO: replace dummy data with real data
-				users.map((invite) => (
-					<Atoms.Cards.InvitedUser
-						{...{
-							username: "Jon Gudnason",
-							level: 4,
-							email: "",
-							type: "user",
-							scoreCard: {
-								answerVerifications: 1,
-								answers: 1,
-								questionVerifications: 1,
-								questions: 1,
-								articles: 1,
-								hiscoreRank: 1,
-								invites: 1,
-							},
-							_id: "",
-							hasCompletedTutorial: false,
-						}}
+		<Hoc.RestrictedPage userTypes={["guest", "loading"]} fallbackUrl="/innskra">
+			<Styled.Outer>
+				<h1 className="italic">Bjóða vinum</h1>
+				<p>
+					Þú getur faritað hlekkinn hér fyrir neðan með því að smella á hann.
+					Þegar vinur eða vandamaður opnar spurningar.is með þessum hlekk og
+					skráir sig sem nýjan notanda þá sérð þú þína vini hér. þegar þú hefur
+					boðið 10 vinum þá getur þú unnið vinninga fyrir að vera áhrifavaldur.
+				</p>
+				<Styled.CopyWrap>
+					<Atoms.Clipboard.CopyString
+						value={`https://spurningar.is/bjoda/${auth._id}`}
 					/>
-				))
-			} */}
-		</Styled.Outer>
+				</Styled.CopyWrap>
+				{auth.invites.map((item) => (
+					<Atoms.Cards.InvitedUser {...item} key={item._id} />
+				))}
+			</Styled.Outer>
+		</Hoc.RestrictedPage>
 	);
 };
 

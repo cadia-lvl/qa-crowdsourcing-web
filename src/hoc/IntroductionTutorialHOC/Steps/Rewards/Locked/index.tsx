@@ -13,6 +13,7 @@ export const Locked = () => {
 					imageURL={
 						"https://www.fivestartrading-holland.eu/images/product_images/original_images/nocco%20tropical%20250%20tray.jpg"
 					}
+					key={cat.name}
 				/>
 			))}
 		</Outer>

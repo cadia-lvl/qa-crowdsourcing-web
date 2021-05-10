@@ -27,11 +27,11 @@ export const LayoutWrapper = ({ children }: IProps) => {
 				clearTimeout(t);
 			};
 		}
-	}, []);
+	}, [dispatch, type]);
 
 	useEffect(() => {
 		dispatch(fetchCurrentGameRound());
-	}, [_id]);
+	}, [_id, dispatch]);
 
 	if (type === "loading")
 		return (

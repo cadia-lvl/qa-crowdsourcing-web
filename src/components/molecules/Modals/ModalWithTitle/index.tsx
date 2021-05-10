@@ -23,7 +23,7 @@ export const ModalWithTitle = ({
 						{children}
 						<ButtonContainer>
 							{buttons.map((item) => (
-								<BaseButton {...item} />
+								<BaseButton {...item} key={item.label} />
 							))}
 						</ButtonContainer>
 					</Inner>

@@ -49,8 +49,8 @@ export const IconDecorator = ({ children, iconCount }: IProps) => {
 	return (
 		<Outer>
 			{children}
-			{icons.map((url) => (
-				<Icon src={url} />
+			{icons.map((url, i) => (
+				<Icon src={url} key={i} />
 			))}
 		</Outer>
 	);

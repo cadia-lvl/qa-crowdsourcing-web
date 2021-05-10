@@ -69,6 +69,12 @@ const reducer = (
 				hasCompletedTutorial: true,
 			};
 		}
+		case ActionTypes.fetchInvites: {
+			return {
+				...state,
+				invites: action.payload,
+			};
+		}
 		default:
 			return state;
 	}

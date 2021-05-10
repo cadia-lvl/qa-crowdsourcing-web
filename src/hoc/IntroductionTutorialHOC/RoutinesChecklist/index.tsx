@@ -9,12 +9,7 @@ import { completeTutorial } from "../../../actions";
 import { StoreState } from "../../../reducers";
 
 const ITEM_COUNT = 4;
-const RoutinesChecklist = ({
-	todos,
-	onNext,
-	completed,
-	hideText,
-}: IProps) => {
+const RoutinesChecklist = ({ todos, onNext, completed, hideText }: IProps) => {
 	const { isTutorialCompletedLoading } = useSelector(
 		(state: StoreState) => state.auth
 	);
@@ -31,7 +26,7 @@ const RoutinesChecklist = ({
 				{/* Maps todo items and applies the
 		    relevant icon */}
 				{todos.map((item) => (
-					<RoutineOuter>
+					<RoutineOuter key={item.key}>
 						<span>{item.label}</span>
 						{item.completed ? (
 							<i className="fas fa-check-circle" />
@@ -48,9 +43,7 @@ const RoutinesChecklist = ({
 							<BaseButton
 								type="highlight"
 								label={Utils.TEXT[accessor].button}
-								onClick={() =>
-									dispatch(completeTutorial())
-								}
+								onClick={() => dispatch(completeTutorial())}
 							/>
 						)
 					) : (

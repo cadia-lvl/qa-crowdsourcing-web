@@ -1,6 +1,6 @@
 import { TutorialExplanations } from "../../..";
 import React from "react";
-import { ContinueSpanPara, ContinueClick } from "./styles";
+import { ContinueSpanPara } from "./styles";
 import { TutorialItemClickEvent } from "../../../Tutorial";
 
 export const explainGoogle: TutorialExplanations[] = [
@@ -42,12 +42,11 @@ export const markasNotAnswerableClosure = (
 		payload: () => (
 			<React.Fragment>
 				<ContinueSpanPara>
-					Ef þú finnur ekki svarið innan 2-3 mínútna, þá er í
-					lagi að halda áfram
+					Ef þú finnur ekki svarið innan 2-3 mínútna, þá er í lagi að halda
+					áfram
 				</ContinueSpanPara>
 				<ContinueSpanPara>
-					þá merkjum við spurninguna sem erfiða og þú færð annað
-					verkefni
+					þá merkjum við spurninguna sem erfiða og þú færð annað verkefni
 				</ContinueSpanPara>
 				{/* <ContinueClick onClick={dispatchCB}>
 					Halda áfram <i className="fas fa-arrow-right" />{" "}

@@ -45,6 +45,7 @@ export enum ActionTypes {
 	setAuthCodeErrorMessage,
 	setIsLoadingArticle,
 	completeTutorial,
+	fetchInvites,
 }
 
 export type Actions =
@@ -58,6 +59,7 @@ export type Actions =
 	| AuthActions.SetIsWaitingForVerificationAction
 	| AuthActions.SetIsWaitingForCompletingTutorialAction
 	| AuthActions.CompleteTutorialAction
+	| AuthActions.FetchInvitesAction
 	| WriteQuestionActions.WriteQuestionAction
 	| SubmitArticleActions.PreviewArticleToSubmitAction
 	| SubmitArticleActions.ClosePreviewArticleToSubmitAction

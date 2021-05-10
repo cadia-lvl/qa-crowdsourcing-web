@@ -21,9 +21,7 @@ export const ClickableSpan = (props: HTMLProps<HTMLSpanElement>) => {
 	 * responds to the click by checking via a time out if the
 	 * click is a double click or not
 	 */
-	const handleClick = (
-		event: React.MouseEvent<HTMLDivElement, MouseEvent>
-	) => {
+	const handleClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
 		const metakey = hasMetaKey(event);
 		const currClickTime = new Date().getTime();
 		lastClick = getClickId();
@@ -46,20 +44,17 @@ export const ClickableSpan = (props: HTMLProps<HTMLSpanElement>) => {
 		metakey: boolean
 	) => {
 		if (clickId !== lastClick || !onClick) return;
-		if (new Date().getTime() - lastDoubleClick < DOUBLE_CLICK_DELAY)
-			return;
+		if (new Date().getTime() - lastDoubleClick < DOUBLE_CLICK_DELAY) return;
 		onClick(event);
 	};
 
-	// emits double click event
-	const handleDoubleClick = (event: React.MouseEvent) => {
-		// not implemented
-	};
+	// // emits double click event
+	// const handleDoubleClick = (event: React.MouseEvent) => {
+	// 	// not implemented
+	// };
 
 	// check if the ctr or cmd key was pressed alongside click
-	const hasMetaKey = (
-		event: React.MouseEvent<HTMLDivElement, MouseEvent>
-	) => {
+	const hasMetaKey = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
 		return event.metaKey || event.ctrlKey;
 	};
 

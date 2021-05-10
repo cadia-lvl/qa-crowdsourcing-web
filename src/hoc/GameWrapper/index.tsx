@@ -1,6 +1,5 @@
-import React, { Fragment, useEffect } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { GameTypes } from "../../declerations";
 import { StoreState } from "../../reducers";
 import { IProps } from "./interface";
 

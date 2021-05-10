@@ -6,14 +6,20 @@ export const GameBullets = () => {
 	return (
 		<React.Fragment>
 			{gameInfo().dos.map((text) => (
-				<Bullet type="good">{text}</Bullet>
+				<Bullet type="good" key={text}>
+					{text}
+				</Bullet>
 			))}
 			{gameInfo().infos.map((text) => (
-				<Bullet type="neutral">{text}</Bullet>
+				<Bullet type="neutral" key={text}>
+					{text}
+				</Bullet>
 			))}
 
 			{gameInfo().donts.map((text) => (
-				<Bullet type="bad">{text}</Bullet>
+				<Bullet type="bad" key={text}>
+					{text}
+				</Bullet>
 			))}
 		</React.Fragment>
 	);

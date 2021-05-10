@@ -16,11 +16,11 @@ export const SpanSelector = ({
 	let selectionState: SelectionStates;
 
 	let action: ((v: number) => any) | undefined;
-	if (firstWord == undefined) {
+	if (firstWord === undefined) {
 		action = onFirstWordChange;
 		lastWord = firstWord = -1;
 		selectionState = "select-first";
-	} else if (lastWord == undefined) {
+	} else if (lastWord === undefined) {
 		action = onLastWordChange;
 		lastWord = firstWord;
 		selectionState = "select-last";
@@ -42,9 +42,7 @@ export const SpanSelector = ({
 		}
 	};
 
-	const [areInstructionsLoading, setAreInstructionsLoading] = useState(
-		false
-	);
+	const [areInstructionsLoading, setAreInstructionsLoading] = useState(false);
 
 	const userInstructions = [
 		["Smelltu á fyrsta stafinn sem myndar svarið"],
@@ -93,8 +91,7 @@ export const SpanSelector = ({
 							<Word
 								title={getToolTipString(word)}
 								theme={{
-									isSelected:
-										i >= firstWord! && i <= lastWord!,
+									isSelected: i >= firstWord! && i <= lastWord!,
 								}}
 							>{`${
 								/**
@@ -103,9 +100,7 @@ export const SpanSelector = ({
 								 * last word then we want to trim any space
 								 * and remove punctuation
 								 */
-								i === lastWord || i === firstWord
-									? word.trim()
-									: word + " "
+								i === lastWord || i === firstWord ? word.trim() : word + " "
 							}`}</Word>
 						</ClickableSpan>
 						{
@@ -119,7 +114,7 @@ export const SpanSelector = ({
 				<Atoms.Loaders.Flex size={40} />
 			) : (
 				userInstructions.map((instructions, i) =>
-					i == getStage() ? (
+					i === getStage() ? (
 						<InstructionWrapper>
 							{instructions.map((inst) => (
 								<p>
