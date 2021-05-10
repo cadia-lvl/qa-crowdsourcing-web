@@ -21,6 +21,7 @@ export const initialState: AuthState = {
 	isTutorialCompletedLoading: false,
 	authCodeErrorMessage: "",
 	hasCompletedTutorial: false,
+	invites: [],
 };
 
 const reducer = (
