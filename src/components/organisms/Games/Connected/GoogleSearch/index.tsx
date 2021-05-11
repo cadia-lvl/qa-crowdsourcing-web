@@ -95,6 +95,27 @@ export const GoogleSearch = () => {
 		[questionId]
 	);
 
+	const PointUserToContinue = () => (
+		<React.Fragment>
+			{!showCloseResultTutorial && !hasPreview ? (
+				<ContinueBox
+					hideDetails={false}
+					onClick={() => setContinueModal(true)}
+				>
+					<h3>Finnur þú ekki svarið?</h3>
+					<p>
+						Það gerist að öðru hverju að svar finnist ekki í
+						leitinni. Ef þú lendir í því þá getur þú haldið
+						áfram í næsta verkefni og við merkjum spurninguna
+						sem erfiða / ósvaranlega.{" "}
+					</p>
+					Halda áfram í næsta verkefni
+					<i className="fas fa-chevron-right" />
+				</ContinueBox>
+			) : null}
+		</React.Fragment>
+	);
+
 	return (
 		<GameWrapper type={GameTypes.submitArticle}>
 			{/*
@@ -153,10 +174,17 @@ export const GoogleSearch = () => {
 				{isPerformingSearch ? (
 					<Atoms.Loaders.Flex size={40} />
 				) : searchError ? (
-					<Atoms.Alerts.Ribbon
-						label="Það kom um villa við leitina, prufaðu annan leitarstreng"
-						type="danger"
-					/>
+					<Explain
+						priority="clear-others"
+						items={[]}
+						persist={persistantSearchResultTutorial}
+					>
+						<PointUserToContinue />
+						<Atoms.Alerts.Ribbon
+							label="Það kom um villa við leitina, prufaðu annan leitarstreng"
+							type="danger"
+						/>
+					</Explain>
 				) : articles.length > 0 ? (
 					<Explain
 						priority="clear-others"
@@ -165,26 +193,7 @@ export const GoogleSearch = () => {
 						// items access to callback to mark as impossible
 						persist={persistantSearchResultTutorial}
 					>
-						<React.Fragment>
-							{!showCloseResultTutorial && !hasPreview ? (
-								<ContinueBox
-									hideDetails={false}
-									onClick={() => setContinueModal(true)}
-								>
-									<h3>Finnur þú ekki svarið?</h3>
-									<p>
-										Það gerist að öðru hverju að svar
-										finnist ekki í leitinni. Ef þú
-										lendir í því þá getur þú haldið
-										áfram í næsta verkefni og við
-										merkjum spurninguna sem erfiða /
-										ósvaranlega.{" "}
-									</p>
-									Halda áfram í næsta verkefni
-									<i className="fas fa-chevron-right" />
-								</ContinueBox>
-							) : null}
-						</React.Fragment>
+						<PointUserToContinue />
 
 						{articles.map((item, i) => (
 							/**
