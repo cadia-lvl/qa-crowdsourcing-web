@@ -7,7 +7,7 @@ export const explainGoogle: TutorialExplanations[] = [
 	{
 		type: "str",
 		payload:
-			"Þessi Google leitarvél birtir niðurstöðurnar inn á þessari síðu. Hún leitar aðeins á Wikipedia, Vísindavefnum, mbl.is og Vísir.is",
+			"Þessi Google leitarvél birtir niðurstöðurnar inn á þessari síðu. Hún leitar aðeins á íslensku Wikipediu, Vísindavefnum, mbl.is og Vísir.is",
 		id: "GAME:SEARCH:EXPLAINGOOGLE",
 		highlight: false,
 		dialog: [
@@ -42,11 +42,12 @@ export const markasNotAnswerableClosure = (
 		payload: () => (
 			<React.Fragment>
 				<ContinueSpanPara>
-					Ef þú finnur ekki svarið innan 2-3 mínútna, þá er í lagi að halda
-					áfram
+					Ef þú finnur ekki svarið innan 2-3 mínútna, þá er í
+					lagi að halda áfram
 				</ContinueSpanPara>
 				<ContinueSpanPara>
-					þá merkjum við spurninguna sem erfiða og þú færð annað verkefni
+					þá merkjum við spurninguna sem erfiða og þú færð annað
+					verkefni
 				</ContinueSpanPara>
 				{/* <ContinueClick onClick={dispatchCB}>
 					Halda áfram <i className="fas fa-arrow-right" />{" "}

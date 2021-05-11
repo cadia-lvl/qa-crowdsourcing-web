@@ -10,9 +10,5 @@ export const Outer = styled.div`
 	border-radius: 5px;
 	margin-bottom: 10px;
 	transition: 0.3s;
-	:hover {
-		color: ${(props) => props.theme.backgroundColor};
-		background-color: ${(props) => props.theme.color};
-		opacity: 0.8;
-	}
+	font-weight: 600;
 `;

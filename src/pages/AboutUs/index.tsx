@@ -3,7 +3,7 @@ import React from "react";
 export const AboutUs = () => {
 	return (
 		<div>
-			<h1>Um okkur</h1>
+			<h1 className="italic">Um okkur</h1>
 			<p>
 				Spurningar.is er spurningaleikur þar sem notendur spreyta
 				sig á því að spyrja aðra notendur spurninga og finna svör
