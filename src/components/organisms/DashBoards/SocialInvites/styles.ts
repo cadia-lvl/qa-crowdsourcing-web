@@ -11,4 +11,13 @@ export const Outer = styled.div`
 	}
 `;
 
-export const CopyWrap = styled.div``;
+export const CopyWrap = styled.div`
+	margin-top: 25px;
+`;
+
+export const UserGrid = styled.div`
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+	grid-gap: 15px;
+	margin-top: 25px;
+`;
