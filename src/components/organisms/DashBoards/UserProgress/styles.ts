@@ -12,23 +12,33 @@ export const DashBoardOuter = styled.div`
 		box-sizing: border-box;
 		padding: 15px;
 	}
+
+	@media only screen and (max-width: 1200px) {
+		flex-direction: column;
+		height: auto;
+	}
 `;
 
 export const DashboardCol1 = styled.div`
-	flex: 0.4;
-	display: flex;
-	flex-direction: column;
+	@media only screen and (min-width: 1201px) {
+		flex: 0.4;
+		display: flex;
+		flex-direction: column;
+	}
 `;
 
 export const DashboardCol2 = styled.div`
-	flex: 0.25;
-	border-left: #cecece 1px dashed;
+	@media only screen and (min-width: 1201px) {
+		flex: 0.25;
+		border-left: #cecece 1px dashed;
+	}
 `;
 
 export const DashboardCol3 = styled.div`
-	flex: 0.35;
-	display: flex;
-	flex-direction: column;
+	@media only screen and (min-width: 1201px) {
+		flex: 0.35;
+		border-left: #cecece 1px dashed;
+	}
 `;
 
 export const Col1Row1 = styled.div`
@@ -91,7 +101,11 @@ export const Col1Row3 = styled.div`
 `;
 
 export const Col3Cell1 = styled.div`
-	flex: 0.4;
+	width: 385px;
+
+	@media only screen and (max-width: 1200px) {
+		width: 100%;
+	}
 `;
 
 export const Col3Cell2 = styled.div`
