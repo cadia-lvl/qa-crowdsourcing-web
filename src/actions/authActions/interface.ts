@@ -47,3 +47,8 @@ export interface SetIsWaitingForCompletingTutorialAction {
 export interface CompleteTutorialAction {
 	type: ActionTypes.completeTutorial;
 }
+
+export interface FetchInvitesAction {
+	type: ActionTypes.fetchInvites;
+	payload: User[];
+}

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Game, FilledAlert } from "../../../../../components";
+import { Game } from "../../../../../components";
 import { SoubRoutineProps } from "../../../interface";
 
 export const AskQuestion = ({

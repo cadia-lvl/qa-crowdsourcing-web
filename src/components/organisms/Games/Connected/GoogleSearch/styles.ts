@@ -71,6 +71,7 @@ export const ContinueBox = styled.div<IContinueBox>`
 	border-radius: 5px;
 	padding: 20px;
 	box-sizing: border-box;
+	margin-bottom: 15px;
 	color: #fff;
 	font-weight: 600;
 	cursor: pointer;

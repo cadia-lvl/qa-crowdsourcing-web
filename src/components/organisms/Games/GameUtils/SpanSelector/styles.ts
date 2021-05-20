@@ -29,6 +29,8 @@ export const Word = styled.span`
 			? `
 			color: ${Colors.HIGHLIGHT};
 			font-weight: bold;
+			text-decoration: underline;
+			
 			`
 			: ""}
 `;

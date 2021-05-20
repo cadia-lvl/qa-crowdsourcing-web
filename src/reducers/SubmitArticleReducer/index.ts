@@ -47,6 +47,10 @@ const reducer = (
 				articles: [],
 				previewParagraphIndex: undefined,
 				previewOpenCount: 0,
+				searchError: false,
+				noResults: false,
+				isPerformingSearch: false,
+				isLoadingArticle: false,
 			};
 		case ActionTypes.writeArticleSearchQuery: {
 			return {

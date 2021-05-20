@@ -24,7 +24,18 @@ export const QuestionReview = () => {
 	};
 
 	const getCheckListItems = (): CheckListItem<QAquestionItems>[] => {
-		if (!isYesOrNo) return [...checkList.items];
+		if (!isYesOrNo)
+			return [
+				{
+					question: "Er þetta já eða nei spurning?",
+					expectedAnswer: "no",
+					key: "is-yes-or-no",
+					correctAnswerPrompt:
+						"Þetta er ekki já eða nei spurning",
+					badAnswerPrompt: "Þetta er já eða nei spurning",
+				},
+				...checkList.items,
+			];
 		return [
 			{
 				question: "Er þetta já eða nei spurning?",

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { ClickableSpan, FlexLoader } from "../../../..";
+import { ClickableSpan, Atoms } from "../../../..";
 import { IProps, SelectionStates } from "./interface";
 import { Outer, Word, InstructionWrapper } from "./styles";
 
@@ -16,11 +16,11 @@ export const SpanSelector = ({
 	let selectionState: SelectionStates;
 
 	let action: ((v: number) => any) | undefined;
-	if (firstWord == undefined) {
+	if (firstWord === undefined) {
 		action = onFirstWordChange;
 		lastWord = firstWord = -1;
 		selectionState = "select-first";
-	} else if (lastWord == undefined) {
+	} else if (lastWord === undefined) {
 		action = onLastWordChange;
 		lastWord = firstWord;
 		selectionState = "select-last";
@@ -42,16 +42,14 @@ export const SpanSelector = ({
 		}
 	};
 
-	const [areInstructionsLoading, setAreInstructionsLoading] = useState(
-		false
-	);
+	const [areInstructionsLoading, setAreInstructionsLoading] = useState(false);
 
 	const userInstructions = [
 		["Smelltu á fyrsta stafinn sem myndar svarið"],
 		["Smelltu á síðasta stafinn sem myndar svarið"],
 		[
 			"Smelltu á textann til þess að velja aftur",
-			"Smelltu á „áfram“ til þess að staðfesta orða val",
+			"Smelltu á „Staðfesta“ til þess að staðfesta orða val",
 		],
 	];
 
@@ -93,8 +91,7 @@ export const SpanSelector = ({
 							<Word
 								title={getToolTipString(word)}
 								theme={{
-									isSelected:
-										i >= firstWord! && i <= lastWord!,
+									isSelected: i >= firstWord! && i <= lastWord!,
 								}}
 							>{`${
 								/**
@@ -103,9 +100,7 @@ export const SpanSelector = ({
 								 * last word then we want to trim any space
 								 * and remove punctuation
 								 */
-								i === lastWord || i === firstWord
-									? word.trim()
-									: word + " "
+								i === lastWord || i === firstWord ? word.trim() : word + " "
 							}`}</Word>
 						</ClickableSpan>
 						{
@@ -116,10 +111,10 @@ export const SpanSelector = ({
 				))}
 			</p>
 			{immutable ? null : areInstructionsLoading ? (
-				<FlexLoader size={40} />
+				<Atoms.Loaders.Flex size={40} />
 			) : (
 				userInstructions.map((instructions, i) =>
-					i == getStage() ? (
+					i === getStage() ? (
 						<InstructionWrapper>
 							{instructions.map((inst) => (
 								<p>

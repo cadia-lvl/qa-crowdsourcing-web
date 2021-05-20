@@ -13,7 +13,6 @@ const reducer = (
 ): WriteQuestionState => {
 	switch (action.type) {
 		case ActionTypes.fetchMakeQuestion:
-			const { questionType } = action.payload.taskInfo;
 			return {
 				...state,
 				...action.payload.taskInfo,

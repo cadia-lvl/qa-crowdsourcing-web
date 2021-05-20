@@ -21,6 +21,7 @@ export const initialState: AuthState = {
 	isTutorialCompletedLoading: false,
 	authCodeErrorMessage: "",
 	hasCompletedTutorial: false,
+	invites: [],
 };
 
 const reducer = (
@@ -66,6 +67,12 @@ const reducer = (
 			return {
 				...state,
 				hasCompletedTutorial: true,
+			};
+		}
+		case ActionTypes.fetchInvites: {
+			return {
+				...state,
+				invites: action.payload,
 			};
 		}
 		default:

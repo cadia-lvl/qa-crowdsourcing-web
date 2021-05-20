@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { IProps } from "../formInterface";
-import { InputElementFactory, SubmitButton, FilledAlert } from "../../..";
+import { InputElementFactory, SubmitButton, Atoms } from "../../..";
 import { Form } from "./styles";
 import { LOAD_TIMER_MS } from "./utils";
 import Api from "../../../../api";
@@ -49,7 +49,7 @@ export const FormBuilder = <T extends {}, K = {}>({
 				e.preventDefault();
 			}}
 		>
-			<FilledAlert type="danger" label={errorMessage} />
+			<Atoms.Alerts.Ribbon type="danger" label={errorMessage} />
 			{Object.keys(formObject).map((key: any) => (
 				<InputElementFactory
 					key={key}

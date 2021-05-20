@@ -1,6 +1,6 @@
 import React from "react";
 import { Outer, RoutineOuter, Bottom } from "./styles";
-import { BaseButton, PlayButton, FlexLoader } from "../../../components";
+import { BaseButton, PlayButton, Atoms } from "../../../components";
 import { IProps } from "./interface";
 import { IconDecorator } from "../../../hoc";
 import { useDispatch, useSelector } from "react-redux";
@@ -9,7 +9,7 @@ import { completeTutorial } from "../../../actions";
 import { StoreState } from "../../../reducers";
 
 const ITEM_COUNT = 4;
-const RoutinesChecklist = ({ todos, onNext, completed }: IProps) => {
+const RoutinesChecklist = ({ todos, onNext, completed, hideText }: IProps) => {
 	const { isTutorialCompletedLoading } = useSelector(
 		(state: StoreState) => state.auth
 	);
@@ -19,11 +19,14 @@ const RoutinesChecklist = ({ todos, onNext, completed }: IProps) => {
 		<IconDecorator iconCount={ITEM_COUNT}>
 			<Outer>
 				<h1 className="italic">{Utils.TEXT[accessor].title}</h1>
-				<p>{Utils.TEXT[accessor].paragraph}</p>
+				{completed || !hideText ? (
+					<p>{Utils.TEXT[accessor].paragraph}</p>
+				) : null}
+
 				{/* Maps todo items and applies the
 		    relevant icon */}
 				{todos.map((item) => (
-					<RoutineOuter>
+					<RoutineOuter key={item.key}>
 						<span>{item.label}</span>
 						{item.completed ? (
 							<i className="fas fa-check-circle" />
@@ -35,14 +38,12 @@ const RoutinesChecklist = ({ todos, onNext, completed }: IProps) => {
 				<Bottom>
 					{completed ? (
 						isTutorialCompletedLoading ? (
-							<FlexLoader size={40} />
+							<Atoms.Loaders.Flex size={40} />
 						) : (
 							<BaseButton
 								type="highlight"
 								label={Utils.TEXT[accessor].button}
-								onClick={() =>
-									dispatch(completeTutorial())
-								}
+								onClick={() => dispatch(completeTutorial())}
 							/>
 						)
 					) : (

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Outer } from "./styles";
 import { IProps } from "./interface";
-import { FlexLoader } from "../../../";
+import { Atoms } from "../../../";
 
 export const LoadingFlexIMG = ({ src }: IProps) => {
 	const [isLoading, setIsLoading] = useState(true);
@@ -23,7 +23,7 @@ export const LoadingFlexIMG = ({ src }: IProps) => {
 
 	return (
 		<Outer imageULR={imgSrc} className={isLoading ? "shine" : ""}>
-			{isLoading ? <FlexLoader size={25} /> : null}
+			{isLoading ? <Atoms.Loaders.Flex size={25} /> : null}
 		</Outer>
 	);
 };

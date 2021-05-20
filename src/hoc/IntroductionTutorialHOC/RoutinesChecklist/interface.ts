@@ -8,4 +8,5 @@ export interface IProps {
 	todos: Todo[];
 	onNext?: () => void;
 	completed?: boolean;
+	hideText?: boolean;
 }

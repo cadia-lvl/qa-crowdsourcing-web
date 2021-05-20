@@ -8,7 +8,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { StoreState } from "../reducers";
 import { fetchCurrentGameRound, fetchUserFromToken } from "../actions";
 import { FETCH_USER_FROM_TOKEN_WAIT_MS } from "./utils";
-import { FlexLoader, TutorialGuide } from "../components";
+import { Atoms, TutorialGuide } from "../components";
 import { fetchAnswersPerDay } from "../actions/chartDataActions";
 import { AuthCodeHOC, IntroductionTutorialHOC } from "../hoc";
 
@@ -27,17 +27,17 @@ export const LayoutWrapper = ({ children }: IProps) => {
 				clearTimeout(t);
 			};
 		}
-	}, []);
+	}, [dispatch, type]);
 
 	useEffect(() => {
 		dispatch(fetchCurrentGameRound());
-	}, [_id]);
+	}, [_id, dispatch]);
 
 	if (type === "loading")
 		return (
 			<LoadingOuter>
 				<GlobalStyle />
-				<FlexLoader size={150} />
+				<Atoms.Loaders.Flex size={150} />
 			</LoadingOuter>
 		);
 	return (

@@ -1,13 +1,13 @@
 import { TutorialExplanations } from "../../..";
 import React from "react";
-import { ContinueSpanPara, ContinueClick } from "./styles";
+import { ContinueSpanPara } from "./styles";
 import { TutorialItemClickEvent } from "../../../Tutorial";
 
 export const explainGoogle: TutorialExplanations[] = [
 	{
 		type: "str",
 		payload:
-			"Þessi Google leitarvél birtir niðurstöðurnar inn á þessari síðu. Hún leitar aðeins á Wikipedia, Vísindavefnum, mbl.is og Vísir.is",
+			"Þessi Google leitarvél birtir niðurstöðurnar inn á þessari síðu. Hún leitar aðeins á íslensku Wikipediu, Vísindavefnum, mbl.is og Vísir.is",
 		id: "GAME:SEARCH:EXPLAINGOOGLE",
 		highlight: false,
 		dialog: [

@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { GameTypes } from "../../declerations";
 import { StoreState } from "../../reducers";
@@ -9,6 +9,6 @@ export const GameWrapper = ({ type, children }: IProps) => {
 
 	const dispatch = useDispatch();
 
-	if (state.current !== type) return null;
+	if (type !== state.current) return null;
 	return <div style={{ position: "relative" }}>{children}</div>;
 };

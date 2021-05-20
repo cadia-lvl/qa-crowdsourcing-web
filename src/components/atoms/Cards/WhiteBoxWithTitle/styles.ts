@@ -6,8 +6,9 @@ export const Outer = styled.div`
 	padding: 5px 15px 25px 15px;
 	border-radius: 5px;
 	box-sizing: border-box;
-	box-shadow: 0px 0px 20px rgba(${Colors.HIGHLIGHT_RGB}, 0.15);
 	transition: 0.3s;
+	max-width: 600px;
+	margin: 0 auto;
 `;
 
 export const TitleBox = styled.div`

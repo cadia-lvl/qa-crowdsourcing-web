@@ -1,12 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-	TextPrompt,
-	ShootingStars,
-	UserAvatar,
-	BaseButton,
-	WinningsDashBoard,
-} from "../../../..";
+import { ShootingStars, Atoms, BaseButton, Organisms } from "../../../..";
 import {
 	fetchCurrentGameRound,
 	fetchUserFromToken,
@@ -14,15 +8,7 @@ import {
 import { usePrev } from "../../../../../hooks";
 import { StoreState } from "../../../../../reducers";
 import { UserLevelService } from "../../../../../services";
-import {
-	Outer,
-	IconBoxOuter,
-	TextPromptWrapper,
-	TopBox,
-	TextPromptInner,
-	IconWrapper,
-	PrizeWrapper,
-} from "./styles";
+import { Outer, IconBoxOuter, TopBox, IconWrapper } from "./styles";
 
 /**
  * This round does not have an disconnected counterpart
@@ -66,11 +52,11 @@ export const CompletedView = () => {
 		handleSetURL(URL);
 	}, []);
 	return (
-		<Outer>
+		<Outer className="border">
 			<TopBox>
 				<IconBoxOuter>
 					<IconWrapper className={shouldShake ? "shake" : ""}>
-						<UserAvatar
+						<Atoms.Avatars.User
 							src={iconURL}
 							onLoad={() => {
 								if (canStopShake) setShouldShake(false);
@@ -79,21 +65,14 @@ export const CompletedView = () => {
 					</IconWrapper>
 					<ShootingStars />
 				</IconBoxOuter>
-				<TextPromptWrapper>
-					<TextPromptInner>
-						<TextPrompt>
-							<i>Vel gert!</i> Þú hefur náð Lvl {auth.level},
-							og ert orðin/n{" "}
-							{UserLevelService.mapLevelToString(auth.level)}
-							! Nú erum við einu skrefi nær því að koma
-							íslensku inn í <i>nútímann</i>.
-						</TextPrompt>
-					</TextPromptInner>
-				</TextPromptWrapper>
+				<p>
+					<i>Vel gert!</i> Þú hefur náð Lvl {auth.level}, og ert
+					orðin/n {UserLevelService.mapLevelToString(auth.level)}
+					! Nú erum við einu skrefi nær því að koma íslensku inn
+					í <i>nútímann</i>.
+				</p>
 			</TopBox>
-			<PrizeWrapper>
-				<WinningsDashBoard />
-			</PrizeWrapper>
+			<Organisms.Dashboard.Prizes />
 
 			<BaseButton
 				label="Áfram"

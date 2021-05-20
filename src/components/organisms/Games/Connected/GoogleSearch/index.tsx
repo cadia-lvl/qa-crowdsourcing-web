@@ -5,12 +5,7 @@ import React, {
 	useState,
 	useMemo,
 } from "react";
-import {
-	GoogleTextInput,
-	FilledAlert,
-	ModalWithTitle,
-	FlexLoader,
-} from "../../../../";
+import { GoogleTextInput, ModalWithTitle, Atoms } from "../../../../";
 import { GOOGLE_LOGO } from "../../../../../static";
 import { SearchForm, Paragraph, ContinueBox } from "./styles";
 import ArticlePreview from "./ArticlePreview";
@@ -24,7 +19,7 @@ import {
 	writeArticleSearchQuery,
 	markQuestionAsImpossible,
 } from "../../../../../actions";
-import { TaskInfoBox } from "../../GameUtils";
+import { QuestionIs, TaskInfoBox } from "../../GameUtils";
 import { Explain, TutorialItemClickEvent } from "../../../Tutorial";
 import * as TUTORIAL from "./tutorialItems";
 
@@ -100,6 +95,27 @@ export const GoogleSearch = () => {
 		[questionId]
 	);
 
+	const PointUserToContinue = () => (
+		<React.Fragment>
+			{!showCloseResultTutorial && !hasPreview ? (
+				<ContinueBox
+					hideDetails={false}
+					onClick={() => setContinueModal(true)}
+				>
+					<h3>Finnur þú ekki svarið?</h3>
+					<p>
+						Það gerist að öðru hverju að svar finnist ekki í
+						leitinni. Ef þú lendir í því þá getur þú haldið
+						áfram í næsta verkefni og við merkjum spurninguna
+						sem erfiða / ósvaranlega.{" "}
+					</p>
+					Halda áfram í næsta verkefni
+					<i className="fas fa-chevron-right" />
+				</ContinueBox>
+			) : null}
+		</React.Fragment>
+	);
+
 	return (
 		<GameWrapper type={GameTypes.submitArticle}>
 			{/*
@@ -139,11 +155,7 @@ export const GoogleSearch = () => {
 			</ModalWithTitle>
 			<TaskInfoBox title="FINNA SVAR Á VEFNUM">
 				<Paragraph>
-					<span className="query">
-						„{text.charAt(0).toLocaleLowerCase()}
-						{text.substring(1)}“
-					</span>
-					.
+					<QuestionIs question={text} />.
 				</Paragraph>
 
 				<SearchForm onSubmit={handleSubmit}>
@@ -160,12 +172,19 @@ export const GoogleSearch = () => {
 				</SearchForm>
 
 				{isPerformingSearch ? (
-					<FlexLoader size={40} />
+					<Atoms.Loaders.Flex size={40} />
 				) : searchError ? (
-					<FilledAlert
-						label="Það kom um villa við leitina, prufaðu annan leitarstreng"
-						type="danger"
-					/>
+					<Explain
+						priority="clear-others"
+						items={[]}
+						persist={persistantSearchResultTutorial}
+					>
+						<PointUserToContinue />
+						<Atoms.Alerts.Ribbon
+							label="Það kom um villa við leitina, prufaðu annan leitarstreng"
+							type="danger"
+						/>
+					</Explain>
 				) : articles.length > 0 ? (
 					<Explain
 						priority="clear-others"
@@ -174,26 +193,7 @@ export const GoogleSearch = () => {
 						// items access to callback to mark as impossible
 						persist={persistantSearchResultTutorial}
 					>
-						<React.Fragment>
-							{!showCloseResultTutorial && !hasPreview ? (
-								<ContinueBox
-									hideDetails={false}
-									onClick={() => setContinueModal(true)}
-								>
-									<h3>Finnur þú ekki svarið?</h3>
-									<p>
-										Það gerist að öðru hverju að svar
-										finnist ekki í leitinni. Ef þú
-										lendir í því þá getur þú haldið
-										áfram í næsta verkefni og við
-										merkjum spurninguna sem erfiða /
-										ósvaranlega.{" "}
-									</p>
-									Halda áfram í næsta verkefni
-									<i className="fas fa-chevron-right" />
-								</ContinueBox>
-							) : null}
-						</React.Fragment>
+						<PointUserToContinue />
 
 						{articles.map((item, i) => (
 							/**
@@ -205,7 +205,7 @@ export const GoogleSearch = () => {
 							 * we display all, if we have a preview then we display
 							 * said preview
 							 */
-							<div ref={i == 0 ? firstArticleRef : null}>
+							<div ref={i === 0 ? firstArticleRef : null}>
 								<ArticlePreview
 									{...item}
 									key={item.key}
@@ -215,7 +215,7 @@ export const GoogleSearch = () => {
 						))}
 					</Explain>
 				) : noResults ? (
-					<FilledAlert
+					<Atoms.Alerts.Ribbon
 						label="Það fundust engar niðurstöður hjá Google. Prufaðu annan leitarstreng"
 						type="warning"
 					/>

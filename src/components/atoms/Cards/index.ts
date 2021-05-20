@@ -1,3 +1,5 @@
 export * from "./WhiteFlexCard";
 export * from "./WhiteBoxWithTitle";
-export * from "./PrizeCard";
+export { default as PrizeCategory } from "./PrizeCategory";
+export { default as PrizeItem } from "./PrizeItem";
+export { default as InvitedUser } from "./InvitedUser";

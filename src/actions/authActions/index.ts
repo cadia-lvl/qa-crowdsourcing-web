@@ -8,6 +8,7 @@ import {
 	SetAuthCodeErrorMessageAction,
 	CompleteTutorialAction,
 	SetIsWaitingForCompletingTutorialAction,
+	FetchInvitesAction,
 } from "./interface";
 import { ScoreCard, User } from "../../declerations";
 import { Dispatch } from "redux";
@@ -39,9 +40,7 @@ export const registerUser = (user: User) => {
 export const fetchScoreCard = () => {
 	return async function (dispatch: Dispatch) {
 		try {
-			const res = await Api.get<ScoreCard>(
-				"/api/v1/users/current/score_card"
-			);
+			const res = await Api.get<ScoreCard>("/api/v1/users/current/score_card");
 
 			dispatch<FetchScoreCardAction>({
 				type: ActionTypes.fetchScoreCard,
@@ -114,9 +113,7 @@ export const requestNewVerificationCode = () => {
 				payload: true,
 			});
 			// request code
-			await Api.get<User>(
-				"/api/v1/users/verification_code/generate"
-			);
+			await Api.get<User>("/api/v1/users/verification_code/generate");
 		} catch (error) {
 			// set error message on error
 			dispatch<SetAuthCodeErrorMessageAction>({
@@ -156,6 +153,24 @@ export const completeTutorial = () => {
 				type: ActionTypes.setIsWaitingForCompletingTutorial,
 				payload: false,
 			});
+		}
+	};
+};
+
+export const fetchInvites = () => {
+	return async function (dispatch: Dispatch) {
+		try {
+			dispatch<FetchInvitesAction>({
+				type: ActionTypes.fetchInvites,
+				payload: [],
+			});
+			const { data } = await Api.get<User[]>("/api/v1/users/current/invites");
+			dispatch<FetchInvitesAction>({
+				type: ActionTypes.fetchInvites,
+				payload: data,
+			});
+		} catch (error) {
+			//
 		}
 	};
 };

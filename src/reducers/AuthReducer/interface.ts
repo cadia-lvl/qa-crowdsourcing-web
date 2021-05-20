@@ -5,4 +5,5 @@ export interface AuthState extends User {
 	isAuthCodeRegenerationLoading: boolean;
 	isTutorialCompletedLoading: boolean;
 	authCodeErrorMessage: string;
+	invites: User[];
 }

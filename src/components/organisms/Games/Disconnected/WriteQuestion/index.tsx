@@ -1,7 +1,7 @@
 import React from "react";
 import { AlertsContainer, QuestionInput } from "./styles";
 import { IProps } from "./interface";
-import { FilledAlert } from "../../../..";
+import { Atoms } from "../../../..";
 /**
  * This is a stateless component that contains
  * the UI related to writing a question in the
@@ -16,9 +16,11 @@ export const WriteQuestion = ({
 }: IProps) => (
 	<React.Fragment>
 		<AlertsContainer>
-			{!!error ? <FilledAlert label={error} type="danger" /> : null}
+			{!!error ? (
+				<Atoms.Alerts.Ribbon label={error} type="danger" />
+			) : null}
 			{isYesNoQuestion ? (
-				<FilledAlert
+				<Atoms.Alerts.Ribbon
 					label="Búðu til Já/nei spurningu"
 					type="success"
 				/>

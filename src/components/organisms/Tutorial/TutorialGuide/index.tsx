@@ -1,11 +1,11 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import { ICON_AGENT } from "../../../../static";
-import { UserAvatar } from "../../../atoms";
 import { Outer, Inner, BubbleContainer, CloseOpenIcon } from "./styles";
 import TutorialBubble from "../TutorialBubble";
 import { StoreState } from "../../../../reducers";
 import { useSelector } from "react-redux";
 import { IProps } from "./interface";
+import { Atoms } from "../../..";
 
 export const TutorialGuide = ({ onHideMessages }: IProps) => {
 	const [showBubbles, setShowBubbles] = useState(true);
@@ -47,21 +47,17 @@ export const TutorialGuide = ({ onHideMessages }: IProps) => {
 		>
 			<Inner>
 				<BubbleContainer>
-					{showBubbles ? (
-						<TutorialBubble explain={firstItem} />
-					) : null}
+					{showBubbles ? <TutorialBubble explain={firstItem} /> : null}
 					{showBubbles
 						? state.persistant.map((item) => (
-								<TutorialBubble explain={item} />
+								<TutorialBubble explain={item} key={item.id} />
 						  ))
 						: null}
 				</BubbleContainer>
-				<UserAvatar src={ICON_AGENT} />
+
+				<Atoms.Avatars.User src={ICON_AGENT} />
 				{bubbleCount > 0 ? (
-					<CloseOpenIcon
-						closed={!showBubbles}
-						onClick={handleToogleBubbles}
-					>
+					<CloseOpenIcon closed={!showBubbles} onClick={handleToogleBubbles}>
 						{showBubbles ? (
 							<i className="fas fa-chevron-down" />
 						) : (

@@ -23,7 +23,10 @@ export const HeaderItemContainer = styled.div`
 `;
 
 export const HeaderItem = styled.div`
-	padding: 0 20px 0 0;
+	padding: 0 30px 0 0;
+	.fas {
+		margin-right: 10px;
+	}
 `;
 
 export const Badge = styled.div`

@@ -1,11 +1,7 @@
-import React, {
-	useEffect,
-	KeyboardEvent,
-	useState,
-	useCallback,
-} from "react";
+import React, { useEffect, KeyboardEvent, useState, useCallback } from "react";
 import { AuthCodeInputProps } from "../../../../declerations";
-import { Outer, DigitContainer } from "./styles";
+import * as Styles from "./styles";
+import { Atoms } from "../../../";
 
 export const AuthCodeInput = ({
 	length,
@@ -19,8 +15,7 @@ export const AuthCodeInput = ({
 			const ZERO_CODE = 48;
 			const NINE_CODE = 57;
 			// return if not a digit
-			if (event.charCode < ZERO_CODE || event.keyCode > NINE_CODE)
-				return;
+			if (event.charCode < ZERO_CODE || event.keyCode > NINE_CODE) return;
 			// append digit if it is last digit
 			if (currDigit === value.length && currDigit < length) {
 				const updated = value + event.key;
@@ -41,6 +36,8 @@ export const AuthCodeInput = ({
 		[value, currDigit, onChange]
 	);
 
+	Atoms.Clipboard.Hooks.usePasteString(onChange, [value, currDigit, onChange]);
+
 	useEffect(() => {
 		// @ts-ignore
 		window.addEventListener("keypress", handleKeyPress);
@@ -50,21 +47,23 @@ export const AuthCodeInput = ({
 		};
 	}, [value, currDigit, onChange]);
 
+	useEffect(() => {}, []);
+
 	return (
-		<Outer>
+		<Styles.Outer>
 			{[...new Array(length)].map((val, i) => {
 				const char = i >= value.length ? " " : value.charAt(i);
 				return (
-					<DigitContainer
+					<Styles.DigitContainer
 						current={currDigit === i}
-						onClick={() =>
-							setCurrDigit(Math.min(i, value.length))
-						}
+						onClick={() => setCurrDigit(Math.min(i, value.length))}
+						onContextMenu={() => setCurrDigit(Math.min(i, value.length))}
+						key={i}
 					>
 						{char}
-					</DigitContainer>
+					</Styles.DigitContainer>
 				);
 			})}
-		</Outer>
+		</Styles.Outer>
 	);
 };

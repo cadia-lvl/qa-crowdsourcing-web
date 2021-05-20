@@ -32,7 +32,7 @@ export const SelectSpan = () => {
 	const handleSubmit = (start?: number, end?: number) => {
 		// forcing value with ! is ok because api will reject the
 		// request if request is malformed
-		submitSpan(gameRoundId, answerId, start!, end!);
+		dispatch(submitSpan(gameRoundId, answerId, start!, end!));
 	};
 
 	return (

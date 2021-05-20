@@ -1,11 +1,13 @@
 export * from "./Inputs";
 export * from "./Buttons";
 export * from "./Cards";
+export * as Cards from "./Cards";
 export * from "./ChartAtoms";
-export * from "./Alerts";
+export * as Alerts from "./Alerts";
 export * from "./Texts";
-export * from "./Loaders";
-export * from "./Avatars";
+export * as Loaders from "./Loaders";
+export * as Clipboard from "./Clipboard";
+export * as Avatars from "./Avatars";
 export * from "./Animations";
 export * from "./Images";
 export * from "./Pagination";

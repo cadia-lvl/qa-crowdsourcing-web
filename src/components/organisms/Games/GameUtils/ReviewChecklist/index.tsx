@@ -8,7 +8,7 @@ import {
 	CheckListContainer,
 } from "./styles";
 import { ReviewActions, State } from "./stateUtils";
-import { CheckListBullet, FlexLoader, PageDots } from "../../../../";
+import { CheckListBullet, Atoms, PageDots } from "../../../../";
 import { shuffle } from "./utils";
 
 export const ReviewCheckList = <T extends {}>({
@@ -35,8 +35,7 @@ export const ReviewCheckList = <T extends {}>({
 			case "answer-question":
 				const goodAnswer =
 					action.payload.answer ===
-					questions[action.payload.questionNumber]
-						.expectedAnswer;
+					questions[action.payload.questionNumber].expectedAnswer;
 				const { finished } = state;
 				finished[action.payload.questionNumber] = {
 					key: questions[action.payload.questionNumber].key,
@@ -100,7 +99,7 @@ export const ReviewCheckList = <T extends {}>({
 			{hasQuestion ? (
 				<CheckListQuestionContainer>
 					{state.isLoading ? (
-						<FlexLoader size={40} />
+						<Atoms.Loaders.Flex size={40} />
 					) : (
 						<React.Fragment>
 							<span>{question}</span>
@@ -111,8 +110,7 @@ export const ReviewCheckList = <T extends {}>({
 											type: "answer-question",
 											payload: {
 												answer: "no",
-												questionNumber:
-													state.currentQuestion,
+												questionNumber: state.currentQuestion,
 											},
 										})
 									}
@@ -125,8 +123,7 @@ export const ReviewCheckList = <T extends {}>({
 											type: "answer-question",
 											payload: {
 												answer: "yes",
-												questionNumber:
-													state.currentQuestion,
+												questionNumber: state.currentQuestion,
 											},
 										})
 									}
@@ -143,19 +140,17 @@ export const ReviewCheckList = <T extends {}>({
 				</CheckListQuestionContainer>
 			) : (
 				<CheckListContainer>
-					{questions
-						.slice(0, state.currentQuestion)
-						.map((item, i) =>
-							state.finished[i].goodAnswer ? (
-								<CheckListBullet type="good">
-									{item.correctAnswerPrompt}
-								</CheckListBullet>
-							) : (
-								<CheckListBullet type="bad">
-									{item.badAnswerPrompt}
-								</CheckListBullet>
-							)
-						)}
+					{questions.slice(0, state.currentQuestion).map((item, i) =>
+						state.finished[i].goodAnswer ? (
+							<CheckListBullet type="good" key={item.question}>
+								{item.correctAnswerPrompt}
+							</CheckListBullet>
+						) : (
+							<CheckListBullet type="bad" key={item.question}>
+								{item.badAnswerPrompt}
+							</CheckListBullet>
+						)
+					)}
 					<ButtonDiv>
 						<CheckListActionButton
 							onClick={() =>
@@ -171,9 +166,7 @@ export const ReviewCheckList = <T extends {}>({
 								// calls relevant callback
 								// based on if all answers were
 								// good or not
-								state.finished.every(
-									(item) => item.goodAnswer
-								)
+								state.finished.every((item) => item.goodAnswer)
 									? onComplete()
 									: onBadAnswer()
 							}

@@ -8,9 +8,10 @@ import {
 import RoutinesChecklist from "./RoutinesChecklist";
 import SubRoutineViewer from "./SubRoutineViewer";
 import routines from "./routines";
-import { Outer } from "./styles";
-import { useSelector } from "react-redux";
+import { Outer, Inner, TopBanner } from "./styles";
+import { useDispatch, useSelector } from "react-redux";
 import { StoreState } from "../../reducers";
+import { completeTutorial } from "../../actions";
 
 export const IntroductionTutorialHOC = ({ children }: IProps) => {
 	// this is the key of the current routine
@@ -22,6 +23,9 @@ export const IntroductionTutorialHOC = ({ children }: IProps) => {
 	const [subRoutineList, setSubRoutineList] = useState<IRoutineStep[]>(
 		[]
 	);
+
+	// use dispatch
+	const dispatch = useDispatch();
 
 	// destructures REDUX state
 	const {
@@ -90,6 +94,15 @@ export const IntroductionTutorialHOC = ({ children }: IProps) => {
 		}
 	};
 
+	const hasCompletedSomething = () => {
+		const state = getCachedState();
+		return Object.keys(state).some(
+			(key) =>
+				state[key as RoutineKeys] !== undefined &&
+				state[key as RoutineKeys].length > 0
+		);
+	};
+
 	// return children if user has completed tutorial
 	if (
 		hasCompletedTutorial ||
@@ -98,22 +111,31 @@ export const IntroductionTutorialHOC = ({ children }: IProps) => {
 		return <React.Fragment>{children}</React.Fragment>;
 	return (
 		<Outer>
-			{subRoutineList.length > 0 ? (
-				<SubRoutineViewer
-					items={subRoutineList}
-					onComplete={() => setSubRoutineList([])}
-					onCompleteStep={handleFinishSubroutine}
-				/>
-			) : (
-				<RoutinesChecklist
-					todos={routines.map((item) => ({
-						...item,
-						completed: allCompleted(item.key, item.steps),
-					}))}
-					onNext={handleNext}
-					completed={!nextItem}
-				/>
-			)}
+			<Inner>
+				<TopBanner>
+					<span onClick={() => dispatch(completeTutorial())}>
+						<i className="fas fa-times" />
+						Sleppa Kennslu
+					</span>
+				</TopBanner>
+				{subRoutineList.length > 0 ? (
+					<SubRoutineViewer
+						items={subRoutineList}
+						onComplete={() => setSubRoutineList([])}
+						onCompleteStep={handleFinishSubroutine}
+					/>
+				) : (
+					<RoutinesChecklist
+						hideText={hasCompletedSomething()}
+						todos={routines.map((item) => ({
+							...item,
+							completed: allCompleted(item.key, item.steps),
+						}))}
+						onNext={handleNext}
+						completed={!nextItem}
+					/>
+				)}
+			</Inner>
 		</Outer>
 	);
 };
