@@ -27,7 +27,6 @@ export const WriteQuestion = ({
 			) : null}
 		</AlertsContainer>
 		<QuestionInput
-			type="text"
 			placeholder={
 				placeholder ??
 				`Spurðu spurningar sem hægt er að finna svar við`

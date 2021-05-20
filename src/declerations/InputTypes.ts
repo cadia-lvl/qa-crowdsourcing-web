@@ -2,6 +2,7 @@ export enum InputElementTypes {
 	text,
 	hidden,
 	authCode,
+	textBox,
 }
 
 export interface InputBaseInterface {
@@ -64,14 +65,34 @@ export interface AuthCodeInputRecipe extends AuthCodeInputBase {
 }
 
 /**
+ * TEXTBOX INPUTS
+ */
+
+export interface TextBoxInputBase extends InputBaseInterface {
+	value: string;
+	placeholder?: string;
+}
+
+export interface TextBoxInputProps extends TextBoxInputBase {
+	onChange: (v: any) => void;
+}
+
+export interface TextBoxInputRecipe extends TextBoxInputBase {
+	type: InputElementTypes.textBox;
+	label: string;
+}
+
+/**
  * Putting it all together
  */
 export type InputElementProps =
 	| TextInputBase
+	| TextBoxInputBase
 	| HiddenInputBase
 	| AuthCodeInputBase;
 
 export type InputElementRecipe =
+	| TextBoxInputRecipe
 	| TextInputRecipe
 	| HiddenInputRecipe
 	| AuthCodeInputRecipe;

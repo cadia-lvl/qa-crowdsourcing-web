@@ -22,7 +22,6 @@ export const Outer = styled.div`
 
 export const Inner = styled.div`
 	margin-top: 20px;
-	width: 600px;
 `;
 
 export const ButtonContainer = styled.div`

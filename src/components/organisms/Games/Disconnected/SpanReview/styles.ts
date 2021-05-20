@@ -3,13 +3,13 @@ import { TUTORIAL_IMG_ANSWER_IS_PURPLE } from "../../../../../static";
 
 export const ButtonContainer = styled.div`
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
 	justify-content: flex-start;
 	button {
-		margin-right: 20px;
 		width: auto;
 		padding-left: 25px !important;
 		padding-right: 25px !important;
+		margin-bottom: 10px;
 	}
 	margin-top: 20px;
 `;

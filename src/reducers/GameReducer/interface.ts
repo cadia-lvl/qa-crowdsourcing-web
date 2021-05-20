@@ -7,4 +7,5 @@ export interface GameState {
 	_id: string;
 	isLoading: boolean;
 	showAvatarInHeader: boolean;
+	lastLoaded: number;
 }
