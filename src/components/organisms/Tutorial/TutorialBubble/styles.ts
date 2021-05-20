@@ -10,7 +10,6 @@ export const Outer = styled.div`
 	bottom: 0;
 	padding: 15px;
 	background-color: #fff;
-	box-shadow: 0 0 15px rgba(137, 80, 252, 0.3);
 	font-size: 18px !important;
 	line-height: 1.35;
 `;
