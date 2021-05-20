@@ -16,13 +16,6 @@ const PreviewHeader = () => {
 
 	const { previewArticle, isLoadingArticle } = state.submitArticle;
 
-	// clear selected paragraph when component mounts
-	useEffect(() => {
-		return () => {
-			dispatch(selectParagraphToPreview(undefined));
-		};
-	}, []);
-
 	// we we do not have an article, or ar not loading an article then we return nothing
 	if (!previewArticle && !isLoadingArticle) return null;
 	return (
@@ -31,14 +24,6 @@ const PreviewHeader = () => {
 		>
 			<WhiteBoxWithTitle title="Smella á svarið">
 				<Styles.Inner onClick={(e) => e.stopPropagation()}>
-					{/* <p>
-						Þessi efnisgrein tilheyrir greininni{" "}
-						{previewArticle?.title} frá{" "}
-						{previewArticle?.source?.hostname}. Lestu yfir
-						textann og athugaðu hvort þú sjáir svarið við
-						spurningunni. Smelltu á efnisgreinina sem
-						inniheldur svarið.{" "}
-					</p> */}
 					{isLoadingArticle ? (
 						<Atoms.Loaders.Flex size={40} />
 					) : // if no paragraphs or if no preview article, show red alert
@@ -53,8 +38,13 @@ const PreviewHeader = () => {
 							label="Smelltu á efnisgreinina sem inniheldur svarið"
 						/>
 					)}
-					{previewArticle?.paragraphs.map((text) => (
-						<Styles.ParaContainer>
+					{previewArticle?.paragraphs.map((text, i) => (
+						<Styles.ParaContainer
+							onClick={(e) => {
+								e.stopPropagation();
+								dispatch(selectParagraphToPreview(i));
+							}}
+						>
 							<p>{text}</p>
 						</Styles.ParaContainer>
 					))}

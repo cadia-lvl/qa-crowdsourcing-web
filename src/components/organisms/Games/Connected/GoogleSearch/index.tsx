@@ -4,6 +4,7 @@ import React, {
 	useRef,
 	useState,
 	useMemo,
+	useCallback,
 } from "react";
 import { GoogleTextInput, ModalWithTitle, Atoms } from "../../../../";
 import { GOOGLE_LOGO } from "../../../../../static";
@@ -18,6 +19,8 @@ import {
 	fetchArticlesQuery,
 	writeArticleSearchQuery,
 	markQuestionAsImpossible,
+	selectParagraphToPreview,
+	submitArticleAndParagraph,
 } from "../../../../../actions";
 import { QuestionIs, TaskInfoBox } from "../../GameUtils";
 import { Explain, TutorialItemClickEvent } from "../../../Tutorial";
@@ -44,6 +47,7 @@ export const GoogleSearch = () => {
 			searchError,
 			noResults,
 			isPerformingSearch,
+			previewParagraphIndex,
 		},
 		game: { _id: gameRoundId },
 		auth: { _id: userId },
@@ -116,6 +120,34 @@ export const GoogleSearch = () => {
 		</React.Fragment>
 	);
 
+	const handleClearParagraphSelection = () =>
+		dispatch(selectParagraphToPreview(undefined));
+
+	const handleMarkAsImpossible = useCallback(
+		() => dispatch(markQuestionAsImpossible(gameRoundId, questionId)),
+		[gameRoundId, questionId]
+	);
+
+	const handleSubmitParagraph = useCallback(
+		() =>
+			dispatch(
+				submitArticleAndParagraph(
+					gameRoundId,
+					previewArticle?.source.identifier ?? "",
+					previewArticle?.key ?? "",
+					questionId,
+					previewParagraphIndex ?? -1
+				)
+			),
+		[
+			gameRoundId,
+			previewArticle?.key,
+			previewArticle?.source.identifier,
+			questionId,
+			previewParagraphIndex,
+		]
+	);
+
 	return (
 		<GameWrapper type={GameTypes.submitArticle}>
 			{/*
@@ -137,13 +169,7 @@ export const GoogleSearch = () => {
 					{
 						label: "Já",
 						type: "highlight",
-						onClick: () =>
-							dispatch(
-								markQuestionAsImpossible(
-									gameRoundId,
-									questionId
-								)
-							),
+						onClick: handleMarkAsImpossible,
 					},
 				]}
 				title={"Viltu halda áfram?"}
@@ -153,11 +179,58 @@ export const GoogleSearch = () => {
 				heldur áfram þá merkjum við spurninguna sem erfiða eða
 				ósvaranlega.
 			</ModalWithTitle>
+
+			{/* ARTICLE PREVIEW READER AND 
+			MODAL TO VERIFY SELECTION STARTS HERE
+		
+			the preview reader is the result of the expression if
+			no preview paragraph has been selected. If one has been
+			selected then the modal is shown instead. */}
+			{previewParagraphIndex === undefined ? (
+				<PreviewReader />
+			) : (
+				<ModalWithTitle
+					open={true}
+					onClose={handleClearParagraphSelection}
+					buttons={[
+						{
+							label: "Nei",
+							type: "danger",
+							onClick: handleClearParagraphSelection,
+						},
+						{
+							label: "Já",
+							type: "highlight",
+							onClick: handleSubmitParagraph,
+						},
+					]}
+					title="Er svarið hér?"
+				>
+					<p>
+						Spurningin er {text} og þú smelltir á eftirfarandi
+						efnisgrein. Er svarið að finna í þessum textabút:
+					</p>
+					<p>
+						„{" "}
+						{previewArticle?.paragraphs[
+							previewParagraphIndex ?? 0
+						] ?? "VILLA"}
+						“
+					</p>
+				</ModalWithTitle>
+			)}
+			{/* 			
+			END OF MODALS 
+
+			START OF TASK
+			Here below the search box and the 
+			search results are displayed */}
 			<TaskInfoBox title="FINNA SVAR Á VEFNUM">
 				<Paragraph>
 					<QuestionIs question={text} />.
 				</Paragraph>
 
+				{/* GOOGLE SEARCH INPUT FORM */}
 				<SearchForm onSubmit={handleSubmit}>
 					<Explain items={TUTORIAL.explainGoogle}>
 						<img src={GOOGLE_LOGO} alt="myndmerki google" />
@@ -171,6 +244,7 @@ export const GoogleSearch = () => {
 					</Explain>
 				</SearchForm>
 
+				{/* Loading, result cards and alerts */}
 				{isPerformingSearch ? (
 					<Atoms.Loaders.Flex size={40} />
 				) : searchError ? (
@@ -189,29 +263,16 @@ export const GoogleSearch = () => {
 					<Explain
 						priority="clear-others"
 						items={TUTORIAL.explainResults}
-						// closure returns array of elements but gives
-						// items access to callback to mark as impossible
 						persist={persistantSearchResultTutorial}
 					>
 						<PointUserToContinue />
 
 						{articles.map((item, i) => (
-							/**
-							 * logical equivalence of
-							 * if (there is article in preview) then this is the article being preview
-							 * if that proposition is true then we display the preview item
-							 *
-							 * else we don't display anything, i.e. if no preview
-							 * we display all, if we have a preview then we display
-							 * said preview
-							 */
-							<div ref={i === 0 ? firstArticleRef : null}>
-								<ArticlePreview
-									{...item}
-									key={item.key}
-									_key={item.key}
-								/>
-							</div>
+							<ArticlePreview
+								{...item}
+								key={item.key}
+								_key={item.key}
+							/>
 						))}
 					</Explain>
 				) : noResults ? (
@@ -220,7 +281,6 @@ export const GoogleSearch = () => {
 						type="warning"
 					/>
 				) : null}
-				<PreviewReader />
 			</TaskInfoBox>
 		</GameWrapper>
 	);
