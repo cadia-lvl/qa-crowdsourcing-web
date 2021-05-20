@@ -9,6 +9,7 @@ export const QuestionInput = styled.textarea`
 	font-size: 20px;
 	max-width: 600;
 	resize: none;
+	border: 1px solid;
 `;
 
 export const AlertsContainer = styled.div`

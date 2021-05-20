@@ -4,7 +4,7 @@ export const ButtonContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	button {
-		margin-right: 20px;
+		margin-bottom: 10px;
 		border-radius: 25px;
 		width: auto;
 		padding-left: 25px;
