@@ -12,4 +12,5 @@ export const IconContainer = styled.div`
 export const RoundOuter = styled.div`
 	max-width: 600px;
 	margin: 0 auto;
+	width: 100%;
 `;

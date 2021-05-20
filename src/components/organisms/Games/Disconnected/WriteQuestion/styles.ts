@@ -7,6 +7,7 @@ export const QuestionInput = styled.input`
 	width: 100%;
 	background-color: rgba(0, 0, 0, 0);
 	font-size: 20px;
+	max-width: 600;
 `;
 
 export const AlertsContainer = styled.div`
