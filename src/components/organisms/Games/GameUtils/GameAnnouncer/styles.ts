@@ -6,7 +6,6 @@ export const Outer = styled.div`
 	margin: 0 auto;
 	background-color: #fff;
 	border-radius: 5px;
-	box-shadow: 0px 0px 20px rgba(${Colors.HIGHLIGHT_RGB}, 0.15);
 `;
 
 export const LoadingContainer = styled.div`

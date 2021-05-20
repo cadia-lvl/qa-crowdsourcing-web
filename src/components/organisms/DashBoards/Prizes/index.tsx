@@ -20,7 +20,7 @@ const Prizes = () => {
 	const lists: Lists[] = ["categories", "items"];
 
 	return (
-		<Styles.Outer>
+		<Styles.Outer className="border">
 			<Styles.Lists>
 				{lists.map((item, i) => (
 					<Styles.ListHeading
@@ -50,7 +50,9 @@ const Prizes = () => {
 							<Atoms.Cards.Prizes
 								label={item.name}
 								category={
-									RewardService.mapCategoryNametoCategory(item.category)!
+									RewardService.mapCategoryNametoCategory(
+										item.category
+									)!
 								}
 								individualItem
 								imageURL={

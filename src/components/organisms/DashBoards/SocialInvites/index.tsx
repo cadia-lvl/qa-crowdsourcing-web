@@ -18,7 +18,7 @@ const SocialInvites = () => {
 			userTypes={["guest", "loading"]}
 			fallbackUrl="/innskra"
 		>
-			<Styled.Outer>
+			<Styled.Outer className="border">
 				<h1 className="italic">Bjóða vinum</h1>
 				<p>
 					Þú getur faritað hlekkinn hér fyrir neðan með því að
