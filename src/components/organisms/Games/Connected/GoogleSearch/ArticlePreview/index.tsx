@@ -1,7 +1,6 @@
 import React from "react";
 import { IProps } from "./interface";
-import { useDispatch, useSelector } from "react-redux";
-import { StoreState } from "../../../../../../reducers";
+import { useDispatch } from "react-redux";
 import { previewArticleToSubmit } from "../../../../../../actions";
 import * as Styles from "./styles";
 

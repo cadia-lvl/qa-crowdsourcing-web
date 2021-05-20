@@ -25,13 +25,17 @@ export const previewArticleToSubmit = (
 				payload: true,
 			});
 			const { data } = await Api.get<Article>(
-				`/api/v1/article_sources/${sourceIdentifier}/article/${articleKey}`
+				`/api/v1/article_sources/${sourceIdentifier}/article/${articleKey.replace(
+					/\//g,
+					"%2F"
+				)}`
 			);
 			dispatch<PreviewArticleToSubmitAction>({
 				type: ActionTypes.previewArticleToSubmit,
 				payload: data,
 			});
 		} catch (error) {
+			console.log(`error`, error);
 			dispatch<PreviewArticleToSubmitAction>({
 				type: ActionTypes.previewArticleToSubmit,
 				payload: undefined,
