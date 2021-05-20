@@ -96,6 +96,7 @@ interface Source {
 	name: string;
 	baseUrl: string;
 	identifier: string;
+	hostname: string;
 }
 
 export interface Article {
