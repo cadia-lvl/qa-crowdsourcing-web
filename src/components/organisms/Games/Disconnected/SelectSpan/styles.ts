@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const ButtonContainer = styled.div`
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
 	button {
 		margin-right: 20px;
 		border-radius: 25px;

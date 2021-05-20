@@ -8,6 +8,7 @@ export const Outer = styled.div`
 	margin: 10px 0;
 	display: flex;
 	justify-content: space-between;
+	cursor: pointer;
 `;
 
 export const Title = styled.p`
