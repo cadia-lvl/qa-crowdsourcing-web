@@ -8,6 +8,7 @@ export const initialState: GameState = {
 	_id: "",
 	isLoading: false,
 	showAvatarInHeader: true,
+	lastLoaded: 0,
 };
 
 const reducer = (
@@ -19,6 +20,7 @@ const reducer = (
 			return {
 				...state,
 				currentRound: action.payload,
+				lastLoaded: new Date().getTime(),
 			};
 		case ActionTypes.fetchMakeQuestion:
 			return {

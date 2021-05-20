@@ -8,7 +8,6 @@ export const ReviewQuestion = ({
 }: SoubRoutineProps) => {
 	// use the same type as in the connected version
 	// for user familiarity
-	type Keys = Game.Connected.QAquestionItems;
 	const [showModal, setShowModal] = useState(false);
 
 	useEffect(() => {
@@ -36,12 +35,9 @@ export const ReviewQuestion = ({
 			>
 				Þessi spurning ætti að upfylla allar kröfur
 			</ModalWithTitle>
-			<Game.Disconnected.QuestionReview<Keys>
+			<Game.Disconnected.QuestionReview
 				onComplete={handleComplete}
 				question="Hvað heita meðlimir ClubDub?"
-				// spread the same props as in the
-				// connected version for user familiarity
-				{...Game.Connected.CheckList}
 			/>
 		</div>
 	);
