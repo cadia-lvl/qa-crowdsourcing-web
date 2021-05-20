@@ -27,7 +27,7 @@ export const Games = () => {
 				{state.current === undefined ? (
 					<Atoms.Loaders.Flex size={150} />
 				) : (
-					<React.Fragment>
+					<Styles.RoundOuter>
 						{/* PROGRESS BAR */}
 						<Styles.ProgressBarContainer>
 							<Game.Utils.GameProgress showIcon />
@@ -39,7 +39,9 @@ export const Games = () => {
 							</Game.Utils.TaskInfoBox>
 						</GameWrapper>
 						{/* VERIFY QUESTIONS QUALITY ROUND COMPONENT*/}
-						<GameWrapper type={GameTypes.questionQualityAssurance}>
+						<GameWrapper
+							type={GameTypes.questionQualityAssurance}
+						>
 							<Game.Utils.TaskInfoBox title="Staðfesta spurningu">
 								<Game.Connected.QuestionReview />
 							</Game.Utils.TaskInfoBox>
@@ -65,7 +67,7 @@ export const Games = () => {
 						<GameWrapper type={GameTypes.completed}>
 							<Game.Connected.CompletedView />
 						</GameWrapper>
-					</React.Fragment>
+					</Styles.RoundOuter>
 				)}
 			</Game.Utils.GameAnnouncer>
 		</RestrictedPage>

@@ -8,3 +8,8 @@ export const IconContainer = styled.div`
 	height: 70px;
 	width: 70px;
 `;
+
+export const RoundOuter = styled.div`
+	max-width: 600px;
+	margin: 0 auto;
+`;
