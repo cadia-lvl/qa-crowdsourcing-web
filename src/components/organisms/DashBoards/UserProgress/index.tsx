@@ -41,7 +41,10 @@ const UserProgress = ({
 			<Styles.ProgressBar>
 				<div className="advance-info">
 					<span>
-						{currentRound - 1}/{totalRounds}
+						{Math.round(
+							100 * ((currentRound - 1) / totalRounds)
+						)}
+						% að næsta Lvl
 					</span>
 					<span>
 						<i className="fas fa-chevron-right" />
