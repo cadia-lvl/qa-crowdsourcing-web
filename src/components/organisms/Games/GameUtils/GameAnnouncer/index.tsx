@@ -33,9 +33,13 @@ export const GameAnnouncer = ({ children }: IProps) => {
 	 *        game and prev game are defined, it is the prompt to
 	 *        the user letting him know that what he did was successful
 	 */
-	const [currGame, setCurrGame] = useState<GameTypes | undefined>(undefined);
+	const [currGame, setCurrGame] = useState<GameTypes | undefined>(
+		undefined
+	);
 
-	const [prevGame, setPrevGame] = useState<GameTypes | undefined>(undefined);
+	const [prevGame, setPrevGame] = useState<GameTypes | undefined>(
+		undefined
+	);
 
 	const state = useSelector((state: StoreState) => state);
 
@@ -104,21 +108,29 @@ export const GameAnnouncer = ({ children }: IProps) => {
 				<TextPrompt>{getPrevText(prevGame)}</TextPrompt>
 			</LoadingItems>
 		) : (
-			<Outer>
+			<Outer className="border">
 				<NextTaskInner>
 					<NextTaskTopLine>
-						<h1 className="italic">{gameInfos().title.toUpperCase()}</h1>
+						<h1 className="italic">
+							{gameInfos().title.toUpperCase()}
+						</h1>
 					</NextTaskTopLine>
 					<DescriptionBox>
 						<AnnouncerAvatarWrapper>
 							<Atoms.Avatars.User
-								src={UserLevelService.mapLevelToIconURL(level)}
+								src={UserLevelService.mapLevelToIconURL(
+									level
+								)}
 							/>
 						</AnnouncerAvatarWrapper>
-						<DescriptionBoxPara>{gameInfos().text}</DescriptionBoxPara>
+						<DescriptionBoxPara>
+							{gameInfos().text}
+						</DescriptionBoxPara>
 					</DescriptionBox>
 					<ButtonWrapper>
-						<PlayButton onClick={handleOpenTask}>Áfram</PlayButton>
+						<PlayButton onClick={handleOpenTask}>
+							Áfram
+						</PlayButton>
 					</ButtonWrapper>
 				</NextTaskInner>
 			</Outer>

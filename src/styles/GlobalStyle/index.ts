@@ -7,7 +7,10 @@ export const GlobalStyle = createGlobalStyle`
         padding: 0;
     }
 
+    .border {
 
+	border: 1px solid #cecece;
+    }
 
     body {
 
@@ -16,8 +19,7 @@ export const GlobalStyle = createGlobalStyle`
     
     html, body {
         font-family: 'Quicksand', sans-serif;
-        background: rgb(246,78,96);
-        background: radial-gradient(circle, rgba(246,78,96,0.12) 0%, rgba(0,212,255,0) 100%);
+        background: #fafafa;
         min-height: 100vh;
     }
 

@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Outer = styled.div`
 	display: flex;
 	flex: 1;
-	padding: 20px 0;
+	padding: 5px 0;
 	flex-direction: column;
 `;
 
