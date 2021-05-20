@@ -8,6 +8,9 @@ export const Outer = styled.footer`
 	display: flex;
 	align-items: flex-end;
 	justify-content: flex-start;
+	@media only screen and (max-width: 1000px) {
+		flex-direction: column;
+	}
 	a {
 		padding: none;
 		margin: none;
