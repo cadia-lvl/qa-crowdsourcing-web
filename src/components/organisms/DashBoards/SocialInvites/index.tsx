@@ -21,7 +21,7 @@ const SocialInvites = () => {
 	const dispatch = useDispatch();
 
 	const url = `https://spurningar.is/bjoda/${auth._id}`;
-
+	const ICON_SIZE = 32;
 	useEffect(() => {
 		dispatch(fetchInvites());
 	}, []);
@@ -35,16 +35,16 @@ const SocialInvites = () => {
 					<h1 className="italic">Bjóða vinum</h1>
 					<Styled.Icons>
 						<FacebookShareButton url={url}>
-							<FacebookIcon size={32} round={true} />
+							<FacebookIcon size={ICON_SIZE} round={true} />
 						</FacebookShareButton>
 						<EmailShareButton url={url}>
-							<EmailIcon size={32} round={true} />
+							<EmailIcon size={ICON_SIZE} round={true} />
 						</EmailShareButton>
 						<LinkedinShareButton url={url}>
-							<LinkedinIcon size={32} round={true} />
+							<LinkedinIcon size={ICON_SIZE} round={true} />
 						</LinkedinShareButton>
 						<TwitterShareButton url={url}>
-							<TwitterIcon size={32} round={true} />
+							<TwitterIcon size={ICON_SIZE} round={true} />
 						</TwitterShareButton>
 					</Styled.Icons>
 				</Styled.TopLine>
