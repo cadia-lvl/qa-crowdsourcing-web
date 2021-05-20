@@ -7,7 +7,7 @@ export const Locked = () => {
 	return (
 		<Outer>
 			{RewardService.PriceCategories.slice(1, 2).map((cat) => (
-				<Atoms.Cards.Prizes
+				<Atoms.Cards.PrizeCategory
 					label={cat.name}
 					category={cat}
 					imageURL={

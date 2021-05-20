@@ -12,7 +12,7 @@ import {
 	TextWrapper,
 } from "./styles";
 
-const PrizeCard = ({
+const PrizeItem = ({
 	label,
 	imageURL,
 	category,
@@ -79,4 +79,4 @@ const PrizeCard = ({
 	);
 };
 
-export default PrizeCard;
+export default PrizeItem;

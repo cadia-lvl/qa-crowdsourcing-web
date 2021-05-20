@@ -7,7 +7,7 @@ export const Unlocked = () => {
 	return (
 		<Outer>
 			{RewardService.PriceCategories.slice(0, 1).map((cat) => (
-				<Atoms.Cards.Prizes
+				<Atoms.Cards.PrizeCategory
 					label={cat.name}
 					category={cat}
 					imageURL={
