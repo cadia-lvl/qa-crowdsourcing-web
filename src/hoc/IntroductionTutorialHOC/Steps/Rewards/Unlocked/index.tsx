@@ -7,14 +7,7 @@ export const Unlocked = () => {
 	return (
 		<Outer>
 			{RewardService.PriceCategories.slice(0, 1).map((cat) => (
-				<Atoms.Cards.Prizes
-					label={cat.name}
-					category={cat}
-					imageURL={
-						"https://www.fivestartrading-holland.eu/images/product_images/original_images/nocco%20tropical%20250%20tray.jpg"
-					}
-					key={cat.name}
-				/>
+				<Atoms.Cards.PrizeCategory {...cat} key={cat.name} />
 			))}
 		</Outer>
 	);

@@ -1,66 +1,59 @@
 import React, { useState } from "react";
 import * as Styles from "./styles";
-import { RewardService } from "../../../../services";
 import { Atoms } from "../../../";
+import { RewardService } from "../../../../services";
+import { useSelector } from "react-redux";
+import { StoreState } from "../../../../reducers";
 
 const Prizes = () => {
-	const [currentView, setCurrentView] = useState<Lists>("categories");
+	const auth = useSelector((state: StoreState) => state.auth);
 
-	type Lists = "categories" | "items";
-
-	const mapListToLabel = (list: Lists) => {
-		switch (list) {
-			case "categories":
-				return "Verðlauna flokkar";
-			case "items":
-				return "Vinningar";
-		}
-	};
-
-	const lists: Lists[] = ["categories", "items"];
+	const [focusCategory, setFocusCategory] = useState<
+		RewardService.PrizeCategory | undefined
+	>();
 
 	return (
-		<Styles.Outer className="border">
-			<Styles.Lists>
-				{lists.map((item, i) => (
-					<Styles.ListHeading
-						isSelected={item === currentView}
-						className="italic"
-						onClick={() => setCurrentView(item)}
-						key={i}
-					>
-						{mapListToLabel(item)}
-					</Styles.ListHeading>
-				))}
-			</Styles.Lists>
-			<Styles.Inner>
-				{currentView === "categories"
-					? RewardService.PriceCategories.map((cat) => {
-							return (
-								<Atoms.Cards.Prizes
-									label={cat.name}
-									category={cat}
-									imageURL={
-										"https://www.fivestartrading-holland.eu/images/product_images/original_images/nocco%20tropical%20250%20tray.jpg"
-									}
-								/>
-							);
-					  })
-					: RewardService.PrizeItems.map((item) => (
-							<Atoms.Cards.Prizes
-								label={item.name}
-								category={
-									RewardService.mapCategoryNametoCategory(
-										item.category
-									)!
-								}
-								individualItem
-								imageURL={
-									"https://www.fivestartrading-holland.eu/images/product_images/original_images/nocco%20tropical%20250%20tray.jpg"
-								}
-							/>
-					  ))}
-			</Styles.Inner>
+		<Styles.Outer>
+			{focusCategory ? (
+				<div>
+					<Styles.CategoryTopLine>
+						<Styles.GoBack
+							onClick={() => setFocusCategory(undefined)}
+							className="clickable"
+						>
+							<i className="fas fa-arrow-left" />
+							Til baka
+						</Styles.GoBack>
+						<Styles.Title>
+							<span>{focusCategory.name}</span>
+							{RewardService.hasUnlockedCategory(
+								focusCategory.name,
+								auth
+							) ? (
+								<i className="fas fa-check" />
+							) : (
+								<i className="fas fa-lock" />
+							)}
+						</Styles.Title>
+					</Styles.CategoryTopLine>
+					{RewardService.PrizeItems.filter(
+						(item) => item.category === focusCategory.name
+					).map((item) => (
+						<Atoms.Cards.PrizeItem {...item} />
+					))}
+				</div>
+			) : (
+				RewardService.PriceCategories.map((cat) => {
+					return (
+						<div
+							onClick={() => setFocusCategory(cat)}
+							className="clickable"
+						>
+							<Atoms.Cards.PrizeCategory {...cat} />
+						</div>
+					);
+				})
+			)}
 		</Styles.Outer>
 	);
 };

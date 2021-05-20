@@ -30,17 +30,21 @@ const UserProgress = ({
 				</Styles.AvatarContainer>
 
 				<Styles.UserDetailsContainer>
+					<span className="bold username">{username}</span>
 					<span>
 						Lvl {level}{" "}
 						{UserLevelService.mapLevelToString(level)}
 					</span>
-					<span className="bold username">{username}</span>
+					<span>#{hiscoreRank} á stigatöflunni</span>
 				</Styles.UserDetailsContainer>
 			</Styles.NameAndLevel>
 			<Styles.ProgressBar>
 				<div className="advance-info">
 					<span>
-						{currentRound - 1}/{totalRounds}
+						{Math.round(
+							100 * ((currentRound - 1) / totalRounds)
+						)}
+						% að næsta Lvl
 					</span>
 					<span>
 						<i className="fas fa-chevron-right" />
@@ -51,9 +55,11 @@ const UserProgress = ({
 				</div>
 				<Game.Utils.GameProgress />
 			</Styles.ProgressBar>
+			<Styles.SmallTitle>Minn árangur</Styles.SmallTitle>
 			<Explain items={TUTORIAL.scorecard}>
 				<Game.Utils.ScoreCard {...scoreCard} />
 			</Explain>
+			<Styles.SmallTitle>Samfélagið</Styles.SmallTitle>
 			<Explain items={TUTORIAL.communityProgress}>
 				<QAsPerDay />
 			</Explain>

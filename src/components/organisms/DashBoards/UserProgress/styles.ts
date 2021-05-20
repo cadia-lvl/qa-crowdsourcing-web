@@ -19,7 +19,6 @@ export const NameAndLevel = styled.div`
 	> div {
 		margin-right: 25px;
 	}
-	margin-bottom: 25px;
 `;
 
 export const AvatarContainer = styled.div`
@@ -37,7 +36,6 @@ export const UserDetailsContainer = styled.div`
 		font-weight: 700;
 	}
 	span.username {
-		margin-top: 5px;
 		font-size: 20px;
 		color: ${Colors.HIGHLIGHT};
 	}
@@ -45,8 +43,7 @@ export const UserDetailsContainer = styled.div`
 
 export const ProgressBar = styled.div`
 	width: 100%;
-	padding: 35px 0 15px 0;
-	border-bottom: #cecece 1px dashed;
+	padding-top: 15px;
 	.advance-info {
 		display: flex;
 		justify-content: space-between;
@@ -57,4 +54,11 @@ export const ProgressBar = styled.div`
 			margin-right: 5px;
 		}
 	}
+`;
+
+export const SmallTitle = styled.span`
+	color: ${Colors.HIGHLIGHT};
+	font-weight: 600;
+	font-size: 18px;
+	margin-top: 35px;
 `;

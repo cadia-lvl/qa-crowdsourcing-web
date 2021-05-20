@@ -7,6 +7,8 @@ export const Outer = styled.div`
 	border-radius: 5px;
 	box-sizing: border-box;
 	transition: 0.3s;
+	max-width: 600px;
+	margin: 0 auto;
 `;
 
 export const TitleBox = styled.div`
