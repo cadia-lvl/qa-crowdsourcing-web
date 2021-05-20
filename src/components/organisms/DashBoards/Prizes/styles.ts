@@ -10,4 +10,10 @@ export const Outer = styled.div`
 	max-width: 600px;
 	width: 100%;
 	margin: 0 auto;
+	h1 {
+		margin: 0;
+	}
+	> p {
+		margin-bottom: 15px;
+	}
 `;

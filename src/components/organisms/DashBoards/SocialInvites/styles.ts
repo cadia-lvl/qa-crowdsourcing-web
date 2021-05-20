@@ -6,10 +6,11 @@ export const Outer = styled.div`
 	border-radius: 5px;
 	padding: 15px;
 	box-sizing: border-box;
-	h1 {
-		margin-bottom: 15px !important;
-	}
 	margin: 0 auto;
+	h1 {
+		margin: 0 !important;
+		padding: 0 !important;
+	}
 `;
 
 export const CopyWrap = styled.div`
@@ -27,6 +28,7 @@ export const TopLine = styled.div`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	margin-bottom: 10px;
 `;
 
 export const Icons = styled.div`

@@ -118,6 +118,10 @@ export const GlobalStyle = createGlobalStyle`
         cursor:pointer;  
     }
 
+    .clickable {
+        cursor: pointer;
+    }
+    
     .no-pointer-events {
 
         pointer-events: none;

@@ -10,4 +10,5 @@ export const Outer = styled.div<IOuter>`
 	background-size: contain;
 	height: 100%;
 	width: 100%;
+	background-position: center;
 `;

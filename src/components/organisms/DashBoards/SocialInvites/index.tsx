@@ -48,6 +48,12 @@ const SocialInvites = () => {
 						</TwitterShareButton>
 					</Styled.Icons>
 				</Styled.TopLine>
+				{auth.invites.length === 0 ? (
+					<Atoms.Alerts.Ribbon
+						label="Það hefur enginn skráð sig með þínum hlekk"
+						type="warning"
+					/>
+				) : null}
 				<p>
 					Þú getur faritað hlekkinn hér fyrir neðan með því að
 					smella á hann. Þegar vinur eða vandamaður opnar
