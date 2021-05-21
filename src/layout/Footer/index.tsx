@@ -15,14 +15,21 @@ const Footer = () => {
 			<a target="_blank" href="https://www.ru.is" rel="noreferrer">
 				<LogoImg src={RU_LOGO} />
 			</a>
+			<div />
 			<span>
 				<Link to="/">Heim</Link>
 			</span>
 			<span>
-				<a href="mailto:spurningar@spurningar.is">spurningar@spurningar.is</a>
+				<a href="mailto:spurningar@spurningar.is">
+					spurningar@spurningar.is
+				</a>
 			</span>
 			<span>
-				<a target="_blank" href="https://github.com/cadia-lvl" rel="noreferrer">
+				<a
+					target="_blank"
+					href="https://github.com/cadia-lvl"
+					rel="noreferrer"
+				>
 					GitHub
 				</a>
 			</span>
@@ -31,9 +38,14 @@ const Footer = () => {
 				<Link to="/skilmalar">Skilmálar</Link>
 			</span>
 			{isAuth ? (
-				<span onClick={() => dispatch(logOutUser())}>Útskrá</span>
+				<span
+					className="clickable"
+					onClick={() => dispatch(logOutUser())}
+				>
+					Útskrá
+				</span>
 			) : (
-				<span>
+				<span className="clickable">
 					<Link to="/innskra">Innskrá</Link>
 				</span>
 			)}

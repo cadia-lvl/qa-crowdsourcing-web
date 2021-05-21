@@ -10,7 +10,7 @@ import { fetchCurrentGameRound, fetchUserFromToken } from "../actions";
 import { FETCH_USER_FROM_TOKEN_WAIT_MS } from "./utils";
 import { Atoms, TutorialGuide } from "../components";
 import { fetchAnswersPerDay } from "../actions/chartDataActions";
-import { AuthCodeHOC, IntroductionTutorialHOC } from "../hoc";
+import TestBlur from "./BackgroundBlur";
 
 export const LayoutWrapper = ({ children }: IProps) => {
 	const { type, _id } = useSelector((state: StoreState) => state.auth);
@@ -42,21 +42,25 @@ export const LayoutWrapper = ({ children }: IProps) => {
 		);
 
 	/**
-	 * TODO: move header
-	 * TODO: fix footer
 	 * TODO: show sign in / sign up on front page
-	 * TODO: make that work with mobile (no content)
 	 * TODO: make that work with auth code
 	 * TODO: make that work with tutorial
+	 * TODO: make that work with mobile (no content)
 	 */
 	return (
-		<Outer>
-			<GlobalStyle />
-			<Header />
-			{children}
-			<TutorialGuidePlacement>
-				<TutorialGuide />
-			</TutorialGuidePlacement>
-		</Outer>
+		<React.Fragment>
+			<Outer>
+				<GlobalStyle />
+				<Header />
+				{children}
+				<Footer />
+				<TutorialGuidePlacement>
+					<TutorialGuide />
+				</TutorialGuidePlacement>
+			</Outer>
+			<TestBlur />
+		</React.Fragment>
 	);
 };
+
+export { default as BlurBackground } from "./BackgroundBlur";

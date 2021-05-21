@@ -22,7 +22,7 @@ export const Games = () => {
 	}, [state.currentRound, dispatch]);
 
 	return (
-		<RestrictedPage userTypes={["guest"]} fallbackUrl="/innskra">
+		<RestrictedPage userTypes={["guest"]}>
 			<Game.Utils.GameAnnouncer>
 				{state.current === undefined ? (
 					<Atoms.Loaders.Flex size={150} />

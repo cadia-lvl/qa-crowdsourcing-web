@@ -7,7 +7,7 @@ import { AllowOnlyPage } from "../../hoc";
 
 export const SignIn = () => {
 	return (
-		<AllowOnlyPage userTypes={["guest"]} fallbackUrl="/heim">
+		<AllowOnlyPage userTypes={["guest"]}>
 			<SinglePageCard>
 				<Inner>
 					<h1 className="italic">Velkomin/n aftur</h1>

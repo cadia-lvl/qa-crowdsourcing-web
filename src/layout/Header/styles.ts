@@ -10,14 +10,6 @@ export const Outer = styled.div`
 	margin: 25px 0 100px 0;
 `;
 
-export const HeaderItemContainer = styled.div`
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	justify-content: flex-start;
-	cursor: pointer;
-`;
-
 export const HeaderItem = styled.div`
 	i {
 		margin-right: 10px;
