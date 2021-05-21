@@ -12,7 +12,9 @@ import { Atoms, TutorialGuide, Organisms } from "../components";
 import { fetchAnswersPerDay } from "../actions/chartDataActions";
 
 export const LayoutWrapper = ({ children }: IProps) => {
-	const { type, _id } = useSelector((state: StoreState) => state.auth);
+	const { type, _id, hasCompletedTutorial } = useSelector(
+		(state: StoreState) => state.auth
+	);
 	const dispatch = useDispatch();
 
 	useEffect(() => {
@@ -41,9 +43,6 @@ export const LayoutWrapper = ({ children }: IProps) => {
 		);
 
 	/**
-	 * TODO: add app / web logig
-	 * TODO: show sign in / sign up on front page
-	 * TODO: make that work with auth code
 	 * TODO: make that work with tutorial
 	 * TODO: make that work with mobile (no content)
 	 */
@@ -55,9 +54,11 @@ export const LayoutWrapper = ({ children }: IProps) => {
 				<Header />
 				{children}
 				<Footer />
-				<TutorialGuidePlacement>
-					<TutorialGuide />
-				</TutorialGuidePlacement>
+				{hasCompletedTutorial ? (
+					<TutorialGuidePlacement>
+						<TutorialGuide />
+					</TutorialGuidePlacement>
+				) : null}
 			</Outer>
 		</React.Fragment>
 	);
