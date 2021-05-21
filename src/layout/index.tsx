@@ -40,19 +40,23 @@ export const LayoutWrapper = ({ children }: IProps) => {
 				<Atoms.Loaders.Flex size={150} />
 			</LoadingOuter>
 		);
+
+	/**
+	 * TODO: move header
+	 * TODO: fix footer
+	 * TODO: show sign in / sign up on front page
+	 * TODO: make that work with mobile (no content)
+	 * TODO: make that work with auth code
+	 * TODO: make that work with tutorial
+	 */
 	return (
 		<Outer>
 			<GlobalStyle />
-			<AuthCodeHOC>
-				<IntroductionTutorialHOC>
-					<Header />
-					<TutorialGuidePlacement>
-						<TutorialGuide />
-					</TutorialGuidePlacement>
-					{children}
-					<Footer />{" "}
-				</IntroductionTutorialHOC>
-			</AuthCodeHOC>
+			<Header />
+			{children}
+			<TutorialGuidePlacement>
+				<TutorialGuide />
+			</TutorialGuidePlacement>
 		</Outer>
 	);
 };
