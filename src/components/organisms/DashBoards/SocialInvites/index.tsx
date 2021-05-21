@@ -26,10 +26,7 @@ const SocialInvites = () => {
 		dispatch(fetchInvites());
 	}, []);
 	return (
-		<Hoc.RestrictedPage
-			userTypes={["guest", "loading"]}
-			fallbackUrl="/innskra"
-		>
+		<Hoc.RestrictedPage userTypes={["guest", "loading"]}>
 			<Styled.Outer className="border">
 				<Styled.TopLine>
 					<h1 className="italic">Bjóða vinum</h1>

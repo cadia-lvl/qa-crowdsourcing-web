@@ -17,3 +17,5 @@ export const SignUpForm = () => {
 		/>
 	);
 };
+
+export default SignUpForm;

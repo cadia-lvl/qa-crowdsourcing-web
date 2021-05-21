@@ -8,9 +8,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { StoreState } from "../reducers";
 import { fetchCurrentGameRound, fetchUserFromToken } from "../actions";
 import { FETCH_USER_FROM_TOKEN_WAIT_MS } from "./utils";
-import { Atoms, TutorialGuide } from "../components";
+import { Atoms, TutorialGuide, Organisms } from "../components";
 import { fetchAnswersPerDay } from "../actions/chartDataActions";
-import { AuthCodeHOC, IntroductionTutorialHOC } from "../hoc";
 
 export const LayoutWrapper = ({ children }: IProps) => {
 	const { type, _id } = useSelector((state: StoreState) => state.auth);
@@ -40,19 +39,28 @@ export const LayoutWrapper = ({ children }: IProps) => {
 				<Atoms.Loaders.Flex size={150} />
 			</LoadingOuter>
 		);
+
+	/**
+	 * TODO: add app / web logig
+	 * TODO: show sign in / sign up on front page
+	 * TODO: make that work with auth code
+	 * TODO: make that work with tutorial
+	 * TODO: make that work with mobile (no content)
+	 */
 	return (
-		<Outer>
-			<GlobalStyle />
-			<AuthCodeHOC>
-				<IntroductionTutorialHOC>
-					<Header />
-					<TutorialGuidePlacement>
-						<TutorialGuide />
-					</TutorialGuidePlacement>
-					{children}
-					<Footer />{" "}
-				</IntroductionTutorialHOC>
-			</AuthCodeHOC>
-		</Outer>
+		<React.Fragment>
+			<Organisms.Intro />
+			<Outer>
+				<GlobalStyle />
+				<Header />
+				{children}
+				<Footer />
+				<TutorialGuidePlacement>
+					<TutorialGuide />
+				</TutorialGuidePlacement>
+			</Outer>
+		</React.Fragment>
 	);
 };
+
+export { default as BlurBackground } from "./BackgroundBlur";

@@ -276,3 +276,55 @@ $shooting-time: 3000ms;
 		top: 100%;
 	}
 }
+
+.blur-out-anim {
+	animation: blurOut 1.5s;
+	-webkit-animation: blurOut 1.5s;
+	-moz-animation: blurOut 1.5s;
+	-o-animation: blurOut 1.5s;
+	-ms-animation: blurOut 1.5s;
+}
+@keyframes blurOut {
+	0% {
+		backdrop-filter: blur(0);
+	}
+	100% {
+		backdrop-filter: blur(3px);
+	}
+}
+
+@-moz-keyframes blurOut {
+	0% {
+		backdrop-filter: blur(0);
+	}
+	100% {
+		backdrop-filter: blur(3px);
+	}
+}
+
+@-webkit-keyframes blurOut {
+	0% {
+		backdrop-filter: blur(0);
+	}
+	100% {
+		backdrop-filter: blur(3px);
+	}
+}
+
+@-o-keyframes blurOut {
+	0% {
+		backdrop-filter: blur(0);
+	}
+	100% {
+		backdrop-filter: blur(3px);
+	}
+}
+
+@-ms-keyframes blurOut {
+	0% {
+		backdrop-filter: blur(5px);
+	}
+	0 100% {
+		backdrop-filter: blur(3px);
+	}
+}

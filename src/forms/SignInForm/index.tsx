@@ -5,7 +5,7 @@ import { User } from "../../declerations";
 import { form } from "./form";
 import { registerUser } from "../../actions";
 
-export const SignInForm = () => {
+const SignInForm = () => {
 	const dispatch = useDispatch();
 	return (
 		<FormBuilder<User>
@@ -17,3 +17,5 @@ export const SignInForm = () => {
 		/>
 	);
 };
+
+export default SignInForm;

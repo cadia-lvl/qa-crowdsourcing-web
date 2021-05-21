@@ -99,6 +99,7 @@ export const GoogleSearch = () => {
 		[questionId]
 	);
 
+	// box which user can use to continue to next task
 	const PointUserToContinue = () => (
 		<React.Fragment>
 			{!showCloseResultTutorial && !hasPreview ? (
@@ -120,14 +121,17 @@ export const GoogleSearch = () => {
 		</React.Fragment>
 	);
 
+	// handles clearing previewed paragraph
 	const handleClearParagraphSelection = () =>
 		dispatch(selectParagraphToPreview(undefined));
 
+	// handles marking question as unanswerable
 	const handleMarkAsImpossible = useCallback(
 		() => dispatch(markQuestionAsImpossible(gameRoundId, questionId)),
 		[gameRoundId, questionId]
 	);
 
+	// handles submitting preview article as the answer to question
 	const handleSubmitParagraph = useCallback(
 		() =>
 			dispatch(
@@ -230,7 +234,7 @@ export const GoogleSearch = () => {
 					<QuestionIs question={text} />.
 				</Paragraph>
 
-				{/* GOOGLE SEARCH INPUT FORM */}
+				{/* START OF GOOGLE SEARCH INPUT FORM */}
 				<SearchForm onSubmit={handleSubmit}>
 					<Explain items={TUTORIAL.explainGoogle}>
 						<img src={GOOGLE_LOGO} alt="myndmerki google" />
@@ -243,45 +247,55 @@ export const GoogleSearch = () => {
 						<input type="submit" value="Google leit" />
 					</Explain>
 				</SearchForm>
+				{
+					// END OF GOOGLE SEARCH INPUT FORM
 
-				{/* Loading, result cards and alerts */}
-				{isPerformingSearch ? (
-					<Atoms.Loaders.Flex size={40} />
-				) : searchError ? (
-					<Explain
-						priority="clear-others"
-						items={[]}
-						persist={persistantSearchResultTutorial}
-					>
-						<PointUserToContinue />
-						<Atoms.Alerts.Ribbon
-							label="Það kom um villa við leitina, prufaðu annan leitarstreng"
-							type="danger"
-						/>
-					</Explain>
-				) : articles.length > 0 ? (
-					<Explain
-						priority="clear-others"
-						items={TUTORIAL.explainResults}
-						persist={persistantSearchResultTutorial}
-					>
-						<PointUserToContinue />
-
-						{articles.map((item, i) => (
-							<ArticlePreview
-								{...item}
-								key={item.key}
-								_key={item.key}
+					// START OF RESULTS SEGMENT ON SCREEN
+					//
+					// Loading, result cards and alerts
+					// CASE 1: we are performing search, show loade
+					isPerformingSearch ? (
+						<Atoms.Loaders.Flex size={40} />
+					) : // CASE 2: there is a search error, show error message
+					searchError ? (
+						<Explain
+							priority="clear-others"
+							items={[]}
+							persist={persistantSearchResultTutorial}
+						>
+							<PointUserToContinue />
+							<Atoms.Alerts.Ribbon
+								label="Það kom um villa við leitina, prufaðu annan leitarstreng"
+								type="danger"
 							/>
-						))}
-					</Explain>
-				) : noResults ? (
-					<Atoms.Alerts.Ribbon
-						label="Það fundust engar niðurstöður hjá Google. Prufaðu annan leitarstreng"
-						type="warning"
-					/>
-				) : null}
+						</Explain>
+					) : // CASE 3: We have results, map them to JSX
+					articles.length > 0 ? (
+						<Explain
+							priority="clear-others"
+							items={TUTORIAL.explainResults}
+							persist={persistantSearchResultTutorial}
+						>
+							<PointUserToContinue />
+							{articles.map((item, i) => (
+								<ArticlePreview
+									{...item}
+									key={item.key}
+									_key={item.key}
+								/>
+							))}
+						</Explain>
+					) : // CASE 4: NO results, show warning ribbon
+					noResults ? (
+						<Atoms.Alerts.Ribbon
+							label="Það fundust engar niðurstöður hjá Google. Prufaðu annan leitarstreng"
+							type="warning"
+						/>
+					) : // CASE -1: should not happen
+					null
+				}
 			</TaskInfoBox>
+			{/* END OF TASK */}
 		</GameWrapper>
 	);
 };

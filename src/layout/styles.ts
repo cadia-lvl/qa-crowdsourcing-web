@@ -1,12 +1,11 @@
 import styled from "styled-components";
 
 export const Outer = styled.div`
-	max-width: 1200px;
-	width: 90%;
+	max-width: 600px;
 	margin: 0 auto;
-	min-height: 100vh;
 	display: flex;
 	flex-direction: column;
+	align-items: center;
 `;
 
 export const LoadingOuter = styled.div`

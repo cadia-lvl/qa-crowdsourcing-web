@@ -7,24 +7,11 @@ export const Outer = styled.div`
 	justify-content: space-between;
 	width: 100%;
 	box-sizing: border-box;
-	padding: 30px 0;
-	margin-bottom: 100px;
-	@media only screen and (max-width: 1300px) {
-		margin-bottom: 20px;
-	}
-`;
-
-export const HeaderItemContainer = styled.div`
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	justify-content: flex-start;
-	cursor: pointer;
+	margin: 25px 0 100px 0;
 `;
 
 export const HeaderItem = styled.div`
-	padding: 0 30px 0 0;
-	.fas {
+	i {
 		margin-right: 10px;
 	}
 `;

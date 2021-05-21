@@ -3,7 +3,7 @@ import { Actions, ActionTypes } from "../../actions";
 import { GameTypes } from "../../declerations";
 
 export const initialState: GameState = {
-	currentRound: 0,
+	currentRound: 4,
 	totalRounds: 10,
 	_id: "",
 	isLoading: false,

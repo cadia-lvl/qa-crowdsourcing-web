@@ -1,12 +1,5 @@
 import styled from "styled-components";
-import { Colors } from "../../styles";
-
-export const FlexCenter = styled.div`
-	height: 100vh;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-`;
+import { Colors } from "../../../../styles";
 
 interface IAuthCodeOuter {
 	isAuthCodeRegenerationLoading: boolean;

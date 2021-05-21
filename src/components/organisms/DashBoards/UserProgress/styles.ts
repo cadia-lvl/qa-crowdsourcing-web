@@ -6,7 +6,7 @@ export const Outer = styled.div`
 	display: flex;
 	border-radius: 5px;
 	width: 100%;
-	max-width: 600px;
+	width: 600px;
 	flex-direction: column;
 	margin: 0 auto;
 	padding: 15px;

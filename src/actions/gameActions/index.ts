@@ -155,11 +155,11 @@ export const submitVerifyQuestion = (
 	);
 
 export const submitArticleAndParagraph = (
-	gameRoundId?: string,
-	identifier?: string,
-	key?: string,
-	questionId?: string,
-	paragraphIndex?: number
+	gameRoundId: string,
+	identifier: string,
+	key: string,
+	questionId: string,
+	paragraphIndex: number
 ) =>
 	gameActionWrapperFunc((_dispatch: Dispatch) =>
 		Api.post<TaskFromBackend>(
