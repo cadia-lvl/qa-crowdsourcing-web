@@ -12,7 +12,7 @@ import {
 import { IProps } from "./interface";
 import { Icon, Outer } from "./styles";
 
-export const IconDecorator = ({ children, iconCount }: IProps) => {
+const IconDecorator = ({ children, iconCount }: IProps) => {
 	// generates a random int
 	const genNumber = (min: number, max: number) => {
 		return Math.floor(Math.random() * max) + min;
@@ -55,3 +55,5 @@ export const IconDecorator = ({ children, iconCount }: IProps) => {
 		</Outer>
 	);
 };
+
+export default IconDecorator;

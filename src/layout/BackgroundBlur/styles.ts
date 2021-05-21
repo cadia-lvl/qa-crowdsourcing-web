@@ -6,6 +6,7 @@ export const Outer = styled.div`
 	display: flex;
 	flex-direction: center;
 	align-items: center;
+	justify-content: center;
 	height: 100vh;
 	width: 100vw;
 	top: 0;

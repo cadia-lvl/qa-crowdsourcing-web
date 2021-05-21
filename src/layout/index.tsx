@@ -8,9 +8,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { StoreState } from "../reducers";
 import { fetchCurrentGameRound, fetchUserFromToken } from "../actions";
 import { FETCH_USER_FROM_TOKEN_WAIT_MS } from "./utils";
-import { Atoms, TutorialGuide } from "../components";
+import { Atoms, TutorialGuide, Organisms } from "../components";
 import { fetchAnswersPerDay } from "../actions/chartDataActions";
-import TestBlur from "./BackgroundBlur";
 
 export const LayoutWrapper = ({ children }: IProps) => {
 	const { type, _id } = useSelector((state: StoreState) => state.auth);
@@ -49,6 +48,7 @@ export const LayoutWrapper = ({ children }: IProps) => {
 	 */
 	return (
 		<React.Fragment>
+			<Organisms.Intro />
 			<Outer>
 				<GlobalStyle />
 				<Header />
@@ -58,7 +58,6 @@ export const LayoutWrapper = ({ children }: IProps) => {
 					<TutorialGuide />
 				</TutorialGuidePlacement>
 			</Outer>
-			<TestBlur />
 		</React.Fragment>
 	);
 };
