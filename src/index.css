@@ -27,6 +27,8 @@ code {
 		box-sizing: border-box;
 		min-height: 100vh;
 		justify-content: center;
+		max-width: 500px;
+		margin: 0 auto;
 	}
 	h1 {
 		margin: 0;
