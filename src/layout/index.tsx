@@ -12,7 +12,9 @@ import { Atoms, TutorialGuide, Organisms } from "../components";
 import { fetchAnswersPerDay } from "../actions/chartDataActions";
 
 export const LayoutWrapper = ({ children }: IProps) => {
-	const { type, _id } = useSelector((state: StoreState) => state.auth);
+	const { type, _id, hasCompletedTutorial } = useSelector(
+		(state: StoreState) => state.auth
+	);
 	const dispatch = useDispatch();
 
 	useEffect(() => {
@@ -52,9 +54,11 @@ export const LayoutWrapper = ({ children }: IProps) => {
 				<Header />
 				{children}
 				<Footer />
-				<TutorialGuidePlacement>
-					<TutorialGuide />
-				</TutorialGuidePlacement>
+				{hasCompletedTutorial ? (
+					<TutorialGuidePlacement>
+						<TutorialGuide />
+					</TutorialGuidePlacement>
+				) : null}
 			</Outer>
 		</React.Fragment>
 	);
