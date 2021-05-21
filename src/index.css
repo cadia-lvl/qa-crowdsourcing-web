@@ -1,13 +1,65 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+	margin: 0;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+		"Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+		"Helvetica Neue", sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+		monospace;
+}
+
+#mobile {
+	display: none;
+}
+
+@media only screen and (max-width: 1000px) {
+	#web {
+		display: none;
+	}
+	#mobile {
+		display: flex;
+		flex-direction: column;
+		padding: 15px;
+		box-sizing: border-box;
+		min-height: 100vh;
+		justify-content: center;
+	}
+	h1 {
+		margin: 0;
+		padding: 0;
+	}
+	p {
+		text-align: justify;
+	}
+	#icon-grid {
+		display: grid;
+		grid-template-columns: 1.1fr 0.9fr 0.7fr 1.2fr;
+	}
+	#icon-grid .img {
+		width: 100%;
+		height: 150px;
+		background-size: contain;
+		background-position: center;
+		background-repeat: no-repeat;
+	}
+	#playstore {
+		width: 225px;
+		height: 100px;
+		background-size: contain;
+		background-position: center;
+		background-repeat: no-repeat;
+		margin: 0 auto;
+	}
+	#ios {
+		width: 200px;
+		height: 100px;
+		background-size: contain;
+		background-position: center;
+		background-repeat: no-repeat;
+		margin: 0 auto;
+	}
 }
