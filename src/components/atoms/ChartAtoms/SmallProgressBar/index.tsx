@@ -8,16 +8,18 @@ export const SmallProgressBar = ({
 	label,
 	amount,
 }: IProps) => {
+	const DEFAULT_SIZE = 0.015;
 	const [ratio, setRatio] = useState(0);
 
 	useEffect(() => {
 		const ANIM_DELAY = 600;
-		if (ratio !== size) {
-			const t = setTimeout(() => setRatio(size), ANIM_DELAY);
-			return () => {
-				clearTimeout(t);
-			};
-		}
+		const t = setTimeout(
+			() => setRatio(size === 0 ? DEFAULT_SIZE : size),
+			ANIM_DELAY
+		);
+		return () => {
+			clearTimeout(t);
+		};
 	}, [size]);
 
 	return (

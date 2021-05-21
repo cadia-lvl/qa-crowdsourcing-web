@@ -15,6 +15,7 @@ const Authenticate = ({ onComplete }: IntroductionStep) => {
 	useEffect(() => {
 		onComplete?.();
 	}, [auth._id]);
+
 	return (
 		<Intros.IntroBaseOuter className="border">
 			<Styles.Outer>
