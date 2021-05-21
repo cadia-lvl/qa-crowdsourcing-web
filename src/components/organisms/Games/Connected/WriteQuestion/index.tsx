@@ -4,7 +4,6 @@ import { submitQuestion, writeQuestion } from "../../../../../actions";
 import { StoreState } from "../../../../../reducers";
 import { BaseButton, Explain } from "../../../../";
 import { ButtonContainer } from "./styles";
-import { ideaWordsTutorialClosure } from "./tutorialItems";
 import * as Disconnected from "../../Disconnected";
 
 export const WriteQuestion = () => {
@@ -46,6 +45,11 @@ export const WriteQuestion = () => {
 
 	return (
 		<React.Fragment>
+			<p>
+				Handhófskenndar hugmyndir til þess að spyrja um:{" "}
+				{ideaWords.join(", ")}.
+			</p>
+			<p>Svo getur þú auðvitað spurt út í einhvað allt annað.</p>
 			<Disconnected.WriteQuestion
 				isYesNoQuestion={isYesNoQuestion}
 				error={errorMessage}
@@ -53,19 +57,14 @@ export const WriteQuestion = () => {
 				onChange={(val) => dispatch(writeQuestion(val))}
 			/>
 
-			<Explain
-				items={[]}
-				persist={ideaWordsTutorialClosure(ideaWords)}
-			>
-				<ButtonContainer>
-					<BaseButton
-						label="Áfram"
-						onClick={handleSubmit}
-						isInactive={hasError}
-						type="highlight"
-					/>
-				</ButtonContainer>
-			</Explain>
+			<ButtonContainer>
+				<BaseButton
+					label="Áfram"
+					onClick={handleSubmit}
+					isInactive={hasError}
+					type="highlight"
+				/>
+			</ButtonContainer>
 		</React.Fragment>
 	);
 };
