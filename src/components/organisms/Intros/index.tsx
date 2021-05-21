@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import * as Layout from "../../../layout";
 import { IconDecorator } from "../../../hoc";
-import intros from "./intros";
-
+import introSteps from "./intros";
+import { IIntroductionWrap } from "./interface";
 /**
  * This is a component that displays in sequences other components
  * that are a part of an introduction process for
@@ -17,12 +17,20 @@ import intros from "./intros";
 const Intro = () => {
 	const ICON_COUNT = 4;
 
+	const [intros, setIntros] = useState<IIntroductionWrap[]>([]);
+
+	useEffect(() => {
+		setIntros(introSteps);
+	}, []);
+
+	const handleUpdate = () => setIntros([...intros]);
+
 	const Found = intros.find((entry) => entry.shouldShow(entry.id));
 	if (!Found) return null;
 	return (
 		<Layout.BlurBackground>
 			<IconDecorator iconCount={ICON_COUNT}>
-				<Found.Component />
+				<Found.Component onComplete={handleUpdate} />
 			</IconDecorator>
 		</Layout.BlurBackground>
 	);

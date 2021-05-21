@@ -1,2 +1,2 @@
-export * from "./SignUpForm";
-export * from "./SignInForm";
+export { default as SignUp } from "./SignUpForm";
+export { default as SignIn } from "./SignInForm";

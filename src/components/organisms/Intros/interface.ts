@@ -1,6 +1,9 @@
 export interface IIntroductionWrap {
-	Component: () => JSX.Element;
+	Component: (props: IntroductionStep) => JSX.Element;
 	shouldShow: (id: string) => boolean;
-	onComplete?: (id: string) => void;
 	id: string;
+}
+
+export interface IntroductionStep {
+	onComplete?: () => void;
 }
