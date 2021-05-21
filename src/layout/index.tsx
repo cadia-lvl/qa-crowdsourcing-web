@@ -41,9 +41,6 @@ export const LayoutWrapper = ({ children }: IProps) => {
 		);
 
 	/**
-	 * TODO: add app / web logig
-	 * TODO: show sign in / sign up on front page
-	 * TODO: make that work with auth code
 	 * TODO: make that work with tutorial
 	 * TODO: make that work with mobile (no content)
 	 */

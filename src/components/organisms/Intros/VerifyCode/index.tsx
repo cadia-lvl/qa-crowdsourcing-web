@@ -5,19 +5,14 @@ import {
 	requestNewVerificationCode,
 	verifyUser,
 } from "../../../../actions";
-import {
-	WhiteBoxWithTitle,
-	BaseButton,
-	AuthCodeInput,
-	Atoms,
-} from "../../../../components";
+import { BaseButton, AuthCodeInput, Atoms } from "../../../../components";
 import { AuthCodeOuter, AuthCodeInner } from "./styles";
 import { useSelector, useDispatch } from "react-redux";
-import { IIntroductionWrap } from "../interface";
+import { IIntroductionWrap, IntroductionStep } from "../interface";
 import store from "../../../../store";
 import * as Intros from "../styles";
 
-const VerifyCode = () => {
+const VerifyCode = (_props: IntroductionStep) => {
 	const [authCode, setAuthCode] = useState("");
 	const AUTHCODE_LENGTH = 6;
 
