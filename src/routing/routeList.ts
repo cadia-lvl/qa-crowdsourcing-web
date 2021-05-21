@@ -3,14 +3,6 @@ import * as Pages from "../pages";
 
 export const ROUTE_LIST: RouteInterface[] = [
 	{
-		component: Pages.SignIn,
-		path: "/innskra",
-	},
-	{
-		component: Pages.SignUp,
-		path: "/nyr-notandi",
-	},
-	{
 		component: Pages.Games,
 		path: "/spila",
 	},
