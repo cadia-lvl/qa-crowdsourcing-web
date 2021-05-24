@@ -4,3 +4,4 @@ export * from "./PasswordInput";
 export * from "./GoogleTextInput";
 export * from "./AuthCodeInput";
 export * as TextBox from "./TextBox";
+export { default as CheckBox } from "./CheckBox";
