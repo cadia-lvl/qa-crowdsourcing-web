@@ -8,7 +8,7 @@ import React, {
 } from "react";
 import { GoogleTextInput, ModalWithTitle, Atoms } from "../../../../";
 import { GOOGLE_LOGO } from "../../../../../static";
-import { SearchForm, Paragraph, ContinueBox } from "./styles";
+import * as Styles from "./styles";
 import ArticlePreview from "./ArticlePreview";
 import { useDispatch, useSelector } from "react-redux";
 import { StoreState } from "../../../../../reducers";
@@ -25,6 +25,7 @@ import {
 import { QuestionIs, TaskInfoBox } from "../../GameUtils";
 import { Explain, TutorialItemClickEvent } from "../../../Tutorial";
 import * as TUTORIAL from "./tutorialItems";
+import axios, { CancelTokenSource } from "axios";
 
 /**
  * This round does not have an disconnected counterpart as
@@ -32,6 +33,7 @@ import * as TUTORIAL from "./tutorialItems";
  */
 export const GoogleSearch = () => {
 	const [showContinueModal, setContinueModal] = useState(false);
+	const cancelToken = useRef<CancelTokenSource>();
 
 	const state = useSelector((state: StoreState) => state);
 	const dispatch = useDispatch();
@@ -67,8 +69,10 @@ export const GoogleSearch = () => {
 
 	// handles the submission
 	const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+		cancelToken.current = axios.CancelToken.source();
+
 		e.preventDefault();
-		dispatch(fetchArticlesQuery());
+		dispatch(fetchArticlesQuery(cancelToken.current));
 	};
 
 	/**
@@ -99,11 +103,15 @@ export const GoogleSearch = () => {
 		[questionId]
 	);
 
+	const handleCancelFetchArticles = () => {
+		cancelToken.current?.cancel();
+	};
+
 	// box which user can use to continue to next task
 	const PointUserToContinue = () => (
 		<React.Fragment>
 			{!showCloseResultTutorial && !hasPreview ? (
-				<ContinueBox
+				<Styles.ContinueBox
 					hideDetails={false}
 					onClick={() => setContinueModal(true)}
 				>
@@ -116,7 +124,7 @@ export const GoogleSearch = () => {
 					</p>
 					Halda áfram í næsta verkefni
 					<i className="fas fa-chevron-right" />
-				</ContinueBox>
+				</Styles.ContinueBox>
 			) : null}
 		</React.Fragment>
 	);
@@ -230,12 +238,12 @@ export const GoogleSearch = () => {
 			Here below the search box and the 
 			search results are displayed */}
 			<TaskInfoBox title="FINNA SVAR Á VEFNUM">
-				<Paragraph>
+				<Styles.Paragraph>
 					<QuestionIs question={text} />.
-				</Paragraph>
+				</Styles.Paragraph>
 
 				{/* START OF GOOGLE SEARCH INPUT FORM */}
-				<SearchForm onSubmit={handleSubmit}>
+				<Styles.SearchForm onSubmit={handleSubmit}>
 					<Explain items={TUTORIAL.explainGoogle}>
 						<img src={GOOGLE_LOGO} alt="myndmerki google" />
 						<GoogleTextInput
@@ -246,7 +254,7 @@ export const GoogleSearch = () => {
 						/>
 						<input type="submit" value="Google leit" />
 					</Explain>
-				</SearchForm>
+				</Styles.SearchForm>
 				{
 					// END OF GOOGLE SEARCH INPUT FORM
 
@@ -255,7 +263,16 @@ export const GoogleSearch = () => {
 					// Loading, result cards and alerts
 					// CASE 1: we are performing search, show loade
 					isPerformingSearch ? (
-						<Atoms.Loaders.Flex size={40} />
+						<Styles.LoaderWrap>
+							<span
+								className="clickable"
+								onClick={handleCancelFetchArticles}
+							>
+								<i className="fas fa-times" />
+								Hætta við leit
+							</span>
+							<Atoms.Loaders.Flex size={40} />
+						</Styles.LoaderWrap>
 					) : // CASE 2: there is a search error, show error message
 					searchError ? (
 						<Explain

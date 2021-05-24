@@ -5,7 +5,6 @@ export const SearchForm = styled.form`
 	margin: 0 auto;
 	border-radius: 5px;
 	box-sizing: border-box;
-	width: 600px;
 	height: 250px;
 	margin-top: 35px;
 	display: flex;
@@ -39,11 +38,6 @@ export const SearchForm = styled.form`
 	}
 `;
 
-export const AlertContainer = styled.div`
-	margin-top: 40px;
-	cursor: pointer;
-`;
-
 export const Paragraph = styled.p`
 	span.query {
 		font-weight: 600;
@@ -52,14 +46,6 @@ export const Paragraph = styled.p`
 
 export const ContinueSpanPara = styled.div`
 	margin-bottom: 10px;
-`;
-
-export const ContinueClick = styled.p`
-	i {
-		margin-left: 5px;
-		color: ${Colors.WARNING};
-	}
-	cursor: pointer;
 `;
 
 interface IContinueBox {
@@ -90,5 +76,18 @@ export const ContinueBox = styled.div<IContinueBox>`
 	}
 	h3 {
 		margin-top: 0;
+	}
+`;
+
+export const LoaderWrap = styled.div`
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	i {
+		margin-right: 10px;
+	}
+	span {
+		color: #666;
+		padding: 10px;
 	}
 `;

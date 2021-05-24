@@ -1,3 +1,4 @@
+import { CancelTokenSource } from "axios";
 import { Dispatch } from "redux";
 import Api from "../../api";
 import { ArticlePreview, Article } from "../../declerations";
@@ -73,7 +74,7 @@ export const writeArticleSearchQuery = (
 	};
 };
 
-export const fetchArticlesQuery = () => {
+export const fetchArticlesQuery = (cancelToken?: CancelTokenSource) => {
 	return async function (dispatch: Dispatch) {
 		try {
 			dispatch<SetIsPerformingSearch>({
@@ -83,7 +84,10 @@ export const fetchArticlesQuery = () => {
 			const { data } = await Api.get<ArticlePreview[]>(
 				`/api/v1/articles?query=${
 					store.getState().submitArticle.query
-				}`
+				}`,
+				{
+					cancelToken: cancelToken?.token,
+				}
 			);
 
 			dispatch<FetchArticlesQueryAction>({
