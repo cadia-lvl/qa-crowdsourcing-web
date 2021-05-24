@@ -3,6 +3,7 @@ export enum InputElementTypes {
 	hidden,
 	authCode,
 	textBox,
+	checkBox,
 }
 
 export interface InputBaseInterface {
@@ -83,16 +84,35 @@ export interface TextBoxInputRecipe extends TextBoxInputBase {
 }
 
 /**
+ * CHECKBOX INPUTS
+ */
+
+export interface CheckBoxInputBase extends InputBaseInterface {
+	value: boolean;
+}
+
+export interface CheckBoxInputProps extends CheckBoxInputBase {
+	onChange: (v: any) => void;
+}
+
+export interface CheckBoxInputRecipe extends CheckBoxInputBase {
+	type: InputElementTypes.checkBox;
+	label: string;
+}
+
+/**
  * Putting it all together
  */
 export type InputElementProps =
 	| TextInputBase
+	| CheckBoxInputBase
 	| TextBoxInputBase
 	| HiddenInputBase
 	| AuthCodeInputBase;
 
 export type InputElementRecipe =
 	| TextBoxInputRecipe
+	| CheckBoxInputRecipe
 	| TextInputRecipe
 	| HiddenInputRecipe
 	| AuthCodeInputRecipe;

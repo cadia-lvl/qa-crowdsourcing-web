@@ -1,4 +1,5 @@
 export * from "./Inputs";
+export * as Inputs from "./Inputs";
 export * from "./Buttons";
 export * from "./Cards";
 export * as Cards from "./Cards";

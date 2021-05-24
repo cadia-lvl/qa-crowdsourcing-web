@@ -4,6 +4,7 @@ import {
 	InputWrapper,
 	PasswordInput,
 	AuthCodeInput,
+	Atoms,
 } from "../../";
 import { InputElementTypes } from "../../../declerations";
 import { IProps } from "./interface";
@@ -29,6 +30,14 @@ export const InputElementFactory = (props: IProps) => {
 		case InputElementTypes.authCode:
 			inputElement = (
 				<AuthCodeInput {...inputField} onChange={onChange} />
+			);
+			break;
+		case InputElementTypes.checkBox:
+			inputElement = (
+				<Atoms.Inputs.CheckBox
+					{...inputField}
+					onChange={onChange}
+				/>
 			);
 			break;
 		default:

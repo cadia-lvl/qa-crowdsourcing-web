@@ -29,4 +29,10 @@ export const form: FormRecipe = {
 		value: "",
 		required: true,
 	},
+	allowEmail: {
+		type: InputElementTypes.checkBox,
+		label:
+			"Ég vil fá pósta um nýja vinninga, árangur minn og samfélagsins.",
+		value: false,
+	},
 };
