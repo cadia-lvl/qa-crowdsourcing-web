@@ -1,6 +1,12 @@
 import styled from "styled-components";
 import { Colors } from "../../../../../styles";
 
+export const Inner = styled.div`
+	border-left: 5px solid #ccc;
+	box-sizing: border-box;
+	margin-bottom: 20px;
+`;
+
 export const Outer = styled.div`
 	p {
 		font-size: 19px;

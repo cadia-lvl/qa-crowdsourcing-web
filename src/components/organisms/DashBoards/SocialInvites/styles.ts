@@ -39,3 +39,7 @@ export const Icons = styled.div`
 	display: flex;
 	justify-content: space-between;
 `;
+
+export const Link = styled.span`
+	text-decoration: underline;
+`;

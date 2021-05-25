@@ -25,13 +25,9 @@ export const WriteQuestion = () => {
 			if (question.length < MIN_QUESTION_LENGTH)
 				throw new Error(`Spurningin er ekki nógu löng`);
 			if (question.slice(-1) !== "?")
-				throw new Error(
-					`Spurningin verður að enda á spurningarmerki`
-				);
+				throw new Error(`Spurningin verður að enda á spurningarmerki`);
 			setErrorMessage("");
-			dispatch(
-				submitQuestion(gameRoundId, question, isYesNoQuestion)
-			);
+			dispatch(submitQuestion(gameRoundId, question, isYesNoQuestion));
 		} catch (e) {
 			setErrorMessage(e.message);
 		}
@@ -45,11 +41,8 @@ export const WriteQuestion = () => {
 
 	return (
 		<React.Fragment>
-			<p>
-				Handhófskenndar hugmyndir til þess að spyrja um:{" "}
-				{ideaWords.join(", ")}.
-			</p>
-			<p>Svo getur þú auðvitað spurt út í einhvað allt annað.</p>
+			<p>Handhófskenndar hugmyndir til þess að spyrja um: {ideaWords.join(", ")}.</p>
+			<p>Svo getur þú auðvitað spurt út í eitthvað allt annað.</p>
 			<Disconnected.WriteQuestion
 				isYesNoQuestion={isYesNoQuestion}
 				error={errorMessage}

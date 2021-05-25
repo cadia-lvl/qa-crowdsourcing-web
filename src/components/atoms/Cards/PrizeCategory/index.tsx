@@ -14,19 +14,12 @@ const PrizeCategory = ({ name, prereqDescription }: IProps) => {
 			<span className="title">{name}</span>
 			<p>
 				{isAvailable
-					? "Þú ert komin/n í pottinn"
-					: `Þú þarft að ${prereqDescription}`}
+					? "Þú ert komin/n í pottinn."
+					: `Þú þarft að ${prereqDescription}.`}
 			</p>
-			<p>
-				{RewardService.countPrizesPerCategory(name)} vinningar í
-				þessum flokki
-			</p>
+			<p>{RewardService.countPrizesPerCategory(name)} vinningar í þessum flokki.</p>
 			<Styles.IconContainer>
-				{isAvailable ? (
-					<i className="fas fa-check" />
-				) : (
-					<i className="fas fa-lock" />
-				)}
+				{isAvailable ? <i className="fas fa-check" /> : <i className="fas fa-lock" />}
 			</Styles.IconContainer>
 		</Styles.Outer>
 	);

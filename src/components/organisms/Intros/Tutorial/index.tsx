@@ -13,14 +13,10 @@ import * as Intros from "../styles";
 
 export const Tutorial = (_props: IntroductionStep) => {
 	// this is the key of the current routine
-	const [routineKey, setRoutineKey] = useState<RoutineKeys | undefined>(
-		"guide"
-	);
+	const [routineKey, setRoutineKey] = useState<RoutineKeys | undefined>("guide");
 
 	// list of subroutines (pages in a tutorial)
-	const [subRoutineList, setSubRoutineList] = useState<IRoutineStep[]>(
-		[]
-	);
+	const [subRoutineList, setSubRoutineList] = useState<IRoutineStep[]>([]);
 
 	// use dispatch
 	const dispatch = useDispatch();
@@ -61,10 +57,7 @@ export const Tutorial = (_props: IntroductionStep) => {
 		localStorage.setItem(CACHE_KEY, JSON.stringify(state));
 	};
 
-	const allCompleted = (
-		routineKey: RoutineKeys,
-		steps: IRoutineStep[]
-	) => {
+	const allCompleted = (routineKey: RoutineKeys, steps: IRoutineStep[]) => {
 		const state = getCachedState();
 		return steps
 			.map((step) => step.key)
@@ -74,9 +67,7 @@ export const Tutorial = (_props: IntroductionStep) => {
 	// get the next list of subroutines to open
 	const nextItem = useMemo(() => {
 		if (subRoutineList.length > 0) return undefined;
-		const list = routines.find(
-			(item) => !allCompleted(item.key, item.steps)
-		);
+		const list = routines.find((item) => !allCompleted(item.key, item.steps));
 		if (!list) return undefined;
 		return list;
 	}, [subRoutineList.length]);
@@ -92,8 +83,7 @@ export const Tutorial = (_props: IntroductionStep) => {
 		const state = getCachedState();
 		return Object.keys(state).some(
 			(key) =>
-				state[key as RoutineKeys] !== undefined &&
-				state[key as RoutineKeys].length > 0
+				state[key as RoutineKeys] !== undefined && state[key as RoutineKeys].length > 0
 		);
 	};
 
@@ -104,7 +94,7 @@ export const Tutorial = (_props: IntroductionStep) => {
 					<TopBanner>
 						<span onClick={() => dispatch(completeTutorial())}>
 							<i className="fas fa-times" />
-							Sleppa Kennslu
+							Sleppa kennslu
 						</span>
 					</TopBanner>
 					{subRoutineList.length > 0 ? (
@@ -118,10 +108,7 @@ export const Tutorial = (_props: IntroductionStep) => {
 							hideText={hasCompletedSomething()}
 							todos={routines.map((item) => ({
 								...item,
-								completed: allCompleted(
-									item.key,
-									item.steps
-								),
+								completed: allCompleted(item.key, item.steps),
 							}))}
 							onNext={handleNext}
 							completed={!nextItem}

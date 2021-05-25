@@ -91,3 +91,9 @@ export const LoaderWrap = styled.div`
 		padding: 10px;
 	}
 `;
+
+export const Para = styled.p`
+	border-left: 5px solid #ccc;
+	box-sizing: border-box;
+	padding-left: 10px;
+`;

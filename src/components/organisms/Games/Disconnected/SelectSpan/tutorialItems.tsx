@@ -9,19 +9,15 @@ export const tooLongExample: TutorialExplanations[] = [
 			<TutorialBox>
 				<h1 className="italic">DÆMI</h1>
 				<TutorialParagraph>
-					Það er mikilvægt að svarið sé rétt merkt, stutt og
-					hnitmiðað
+					Það er mikilvægt að svarið sé rétt merkt, stutt og hnitmiðað.
+				</TutorialParagraph>
+				<TutorialParagraph>Hver á heimsmetið í 100m hlaupi?</TutorialParagraph>
+				<TutorialParagraph>
+					„Usain Bolt er heimsmeistari í 100m hlaupi“ er{" "}
+					<span className="danger bold">of langt</span>.
 				</TutorialParagraph>
 				<TutorialParagraph>
-					Hver á heimsmetið í 100m hlaupi?
-				</TutorialParagraph>
-				<TutorialParagraph>
-					„Usain Bolt er heimsmeistari í 100m hlaupi.“ er{" "}
-					<span className="danger bold">of langt</span>
-				</TutorialParagraph>
-				<TutorialParagraph>
-					„Usain Bolt“ er{" "}
-					<span className="success bold">hnitmiðað</span>
+					„Usain Bolt“ er <span className="success bold">hnitmiðað</span>.
 				</TutorialParagraph>
 			</TutorialBox>
 		),
