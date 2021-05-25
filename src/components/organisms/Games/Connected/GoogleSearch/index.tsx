@@ -82,8 +82,7 @@ export const GoogleSearch = () => {
 	 */
 	const CACHEKEY = `${userId}-NEVER:SHOW:PERSISTANT:TUTORIAL`;
 
-	const showCloseResultTutorial =
-		localStorage.getItem(CACHEKEY) === null;
+	const showCloseResultTutorial = localStorage.getItem(CACHEKEY) === null;
 
 	const handleCloseResultTutorial = (e: TutorialItemClickEvent) => {
 		localStorage.setItem(CACHEKEY, "1");
@@ -111,16 +110,12 @@ export const GoogleSearch = () => {
 	const PointUserToContinue = () => (
 		<React.Fragment>
 			{!showCloseResultTutorial && !hasPreview ? (
-				<Styles.ContinueBox
-					hideDetails={false}
-					onClick={() => setContinueModal(true)}
-				>
+				<Styles.ContinueBox hideDetails={false} onClick={() => setContinueModal(true)}>
 					<h3>Finnur þú ekki svarið?</h3>
 					<p>
-						Það gerist að öðru hverju að svar finnist ekki í
-						leitinni. Ef þú lendir í því þá getur þú haldið
-						áfram í næsta verkefni og við merkjum spurninguna
-						sem erfiða / ósvaranlega.{" "}
+						Það gerist að öðru hverju að svar finnist ekki í leitinni. Ef þú lendir í
+						því þá getur þú haldið áfram í næsta verkefni og við merkjum spurninguna sem
+						erfiða / ósvaranlega.{" "}
 					</p>
 					Halda áfram í næsta verkefni
 					<i className="fas fa-chevron-right" />
@@ -187,9 +182,8 @@ export const GoogleSearch = () => {
 				title={"Viltu halda áfram?"}
 				open={showContinueModal}
 			>
-				Það er algengt að svar finnist ekki við spurningu. Ef þú
-				heldur áfram þá merkjum við spurninguna sem erfiða eða
-				ósvaranlega.
+				Það er algengt að svar finnist ekki við spurningu. Ef þú heldur áfram þá merkjum
+				við spurninguna sem erfiða eða ósvaranlega.
 			</ModalWithTitle>
 
 			{/* ARTICLE PREVIEW READER AND 
@@ -219,16 +213,12 @@ export const GoogleSearch = () => {
 					title="Er svarið hér?"
 				>
 					<p>
-						Spurningin er {text} og þú smelltir á eftirfarandi
-						efnisgrein. Er svarið að finna í þessum textabút:
+						Spurningin er „{text}“. Þú smelltir á eftirfarandi efnisgrein. Ertu viss um
+						að svarið sé hér að finna?
 					</p>
-					<p>
-						„{" "}
-						{previewArticle?.paragraphs[
-							previewParagraphIndex ?? 0
-						] ?? "VILLA"}
-						“
-					</p>
+					<Styles.Para>
+						„ {previewArticle?.paragraphs[previewParagraphIndex ?? 0] ?? "VILLA"}“
+					</Styles.Para>
 				</ModalWithTitle>
 			)}
 			{/* 			
@@ -248,9 +238,7 @@ export const GoogleSearch = () => {
 						<img src={GOOGLE_LOGO} alt="myndmerki google" />
 						<GoogleTextInput
 							value={query}
-							onChange={(text) =>
-								dispatch(writeArticleSearchQuery(text))
-							}
+							onChange={(text) => dispatch(writeArticleSearchQuery(text))}
 						/>
 						<input type="submit" value="Google leit" />
 					</Explain>
@@ -264,10 +252,7 @@ export const GoogleSearch = () => {
 					// CASE 1: we are performing search, show loade
 					isPerformingSearch ? (
 						<Styles.LoaderWrap>
-							<span
-								className="clickable"
-								onClick={handleCancelFetchArticles}
-							>
+							<span className="clickable" onClick={handleCancelFetchArticles}>
 								<i className="fas fa-times" />
 								Hætta við leit
 							</span>
@@ -295,11 +280,7 @@ export const GoogleSearch = () => {
 						>
 							<PointUserToContinue />
 							{articles.map((item, i) => (
-								<ArticlePreview
-									{...item}
-									key={item.key}
-									_key={item.key}
-								/>
+								<ArticlePreview {...item} key={item.key} _key={item.key} />
 							))}
 						</Explain>
 					) : // CASE 4: NO results, show warning ribbon

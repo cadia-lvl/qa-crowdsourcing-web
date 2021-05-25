@@ -15,6 +15,7 @@ import {
 	LinkedinIcon,
 	TwitterIcon,
 } from "react-share";
+import { NavLink } from "react-router-dom";
 
 const SocialInvites = () => {
 	const auth = useSelector((state: StoreState) => state.auth);
@@ -52,22 +53,21 @@ const SocialInvites = () => {
 					/>
 				) : null}
 				<p>
-					Þú getur faritað hlekkinn hér fyrir neðan með því að
-					smella á hann. Þegar vinur eða vandamaður opnar
-					spurningar.is með þessum hlekk og skráir sig sem nýjan
-					notanda þá sérð þú þína vini hér. þegar þú hefur boðið
-					10 vinum þá getur þú unnið vinninga fyrir að vera
-					áhrifavaldur.
+					Þú getur afritað hlekkinn hér fyrir neðan með því að smella á hann. Þegar
+					vinur eða vandamaður opnar spurningar.is með þínum hlekk og skráir sig sem
+					nýjan notanda þá sérð þú hans táknmynd hér. Þegar þú hefur boðið 10 vinum þá
+					getur þú unnið vinninga sem{" "}
+					<NavLink to="/vinningar">
+						<Styled.Link>áhrifavaldur</Styled.Link>
+					</NavLink>
+					.
 				</p>
 				<Styled.CopyWrap>
 					<Atoms.Clipboard.CopyString value={url} />
 				</Styled.CopyWrap>
 				<Styled.UserGrid>
 					{auth.invites.map((item) => (
-						<Atoms.Cards.InvitedUser
-							{...item}
-							key={item._id}
-						/>
+						<Atoms.Cards.InvitedUser {...item} key={item._id} />
 					))}
 				</Styled.UserGrid>
 			</Styled.Outer>

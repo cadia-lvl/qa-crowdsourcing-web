@@ -6,10 +6,7 @@ import { IProps } from "./interface";
 export const ScoreCard = (props: IProps) => {
 	const stats = props;
 
-	const calculateProgressRatio = (
-		count: number,
-		coefficient: number
-	) => {
+	const calculateProgressRatio = (count: number, coefficient: number) => {
 		return (2 * Math.atan(coefficient * count)) / Math.PI;
 	};
 
@@ -29,20 +26,14 @@ export const ScoreCard = (props: IProps) => {
 				amount={stats.answers}
 			/>
 			<SmallProgressBar
-				ratio={calculateProgressRatio(
-					stats.questionVerifications,
-					0.25
-				)}
+				ratio={calculateProgressRatio(stats.questionVerifications, 0.25)}
 				label="Yfirfarnar spurningar"
 				color={Colors.DANGER}
 				amount={stats.questionVerifications}
 			/>
 			<SmallProgressBar
-				ratio={calculateProgressRatio(
-					stats.answerVerifications,
-					0.25
-				)}
-				label="Yfirfarnin svör"
+				ratio={calculateProgressRatio(stats.answerVerifications, 0.25)}
+				label="Yfirfarin svör"
 				color={Colors.DANGER}
 				amount={stats.answerVerifications}
 			/>

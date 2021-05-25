@@ -2,10 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Game, ModalWithTitle, Atoms } from "../../../../../../";
 import { SoubRoutineProps } from "../../../interface";
 
-export const SelectSpan = ({
-	onHideButton,
-	onShowButton,
-}: SoubRoutineProps) => {
+export const SelectSpan = ({ onHideButton, onShowButton }: SoubRoutineProps) => {
 	const [firstWord, setFirstWord] = useState(undefined);
 	const [lastWord, setLastWord] = useState(undefined);
 	const [showModal, setShowModal] = useState(false);
@@ -13,7 +10,7 @@ export const SelectSpan = ({
 
 	const QUESTION = "Hvað búa margir í New York borg?";
 	const ANSWER =
-		"New York eða Nýja-Jórvík (enska: New York City, gjarnan skammstafað NYC) er fjölmennasta borg New York-fylkis, og jafnframt Bandaríkjanna, með ríflega 8,6 milljónir íbúa (2017) af ýmsum þjóðernum";
+		"New York eða Nýja-Jórvík (enska: New York City, gjarnan skammstafað NYC) er fjölmennasta borg New York-fylkis, og jafnframt Bandaríkjanna, með ríflega 8,6 milljónir íbúa (2017) af ýmsum þjóðernum.";
 
 	const handleClearRange = () => {
 		setFirstWord(undefined);
@@ -22,9 +19,8 @@ export const SelectSpan = ({
 
 	const handleComplete = () => {
 		try {
-			if (firstWord !== 21) throw new Error("Svarið byrjar á 8,6");
-			if (lastWord !== 22)
-				throw new Error("Svarið endar á milljónir");
+			if (firstWord !== 21) throw new Error("Svarið byrjar á „8,6“");
+			if (lastWord !== 22) throw new Error("Svarið endar á „milljónir“");
 			setErrorMessage("");
 			onShowButton();
 		} catch (e) {
@@ -37,14 +33,13 @@ export const SelectSpan = ({
 	}, []);
 
 	useEffect(() => {
-		if (lastWord === undefined || firstWord === undefined)
-			setErrorMessage("");
+		if (lastWord === undefined || firstWord === undefined) setErrorMessage("");
 	}, [firstWord, lastWord]);
 
 	return (
 		<React.Fragment>
 			<ModalWithTitle
-				title="Ertu viss"
+				title="Ertu viss?"
 				open={showModal}
 				buttons={[
 					{
@@ -57,18 +52,12 @@ export const SelectSpan = ({
 			>
 				Svarið er þarna í efnisgreininni.
 			</ModalWithTitle>
-			{errorMessage ? (
-				<Atoms.Alerts.Ribbon type="danger" label={errorMessage} />
-			) : null}
+			{errorMessage ? <Atoms.Alerts.Ribbon type="danger" label={errorMessage} /> : null}
 			<Game.Disconnected.SelectSpan
 				question={QUESTION}
 				paragraph={ANSWER}
-				onFirstWordChange={
-					(setFirstWord as unknown) as (i: number) => void
-				}
-				onLastWordChange={
-					(setLastWord as unknown) as (i: number) => void
-				}
+				onFirstWordChange={setFirstWord as unknown as (i: number) => void}
+				onLastWordChange={setLastWord as unknown as (i: number) => void}
 				onClearRange={handleClearRange}
 				onArchive={() => setShowModal(true)}
 				onSubmitSpan={handleComplete}

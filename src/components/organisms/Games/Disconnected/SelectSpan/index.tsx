@@ -9,14 +9,8 @@ export const SelectSpan = (props: IProps) => {
 	// if it is true then user is locating answer in span
 	const [isSelectingSpan, setIsSelectingSpan] = useState(false);
 
-	const {
-		question,
-		onArchive,
-		onClearRange,
-		onSubmitSpan,
-		firstWord,
-		lastWord,
-	} = props;
+	const { question, onArchive, onClearRange, onSubmitSpan, firstWord, lastWord } =
+		props;
 
 	// goes back from selecting span to verification step
 	const handleStopSelectingSpan = () => {
@@ -38,11 +32,7 @@ export const SelectSpan = (props: IProps) => {
 			<Utils.SpanSelector {...props} immutable={!isSelectingSpan} />
 			{!isSelectingSpan ? (
 				<ButtonContainer>
-					<BaseButton
-						label="Ég sé ekki svarið"
-						type="danger"
-						onClick={onArchive}
-					/>
+					<BaseButton label="Ég sé ekki svarið" type="danger" onClick={onArchive} />
 					<BaseButton
 						label="Ég sé svarið"
 						onClick={() => setIsSelectingSpan(true)}
@@ -53,7 +43,7 @@ export const SelectSpan = (props: IProps) => {
 				<ButtonContainer>
 					<Explain items={TUTORIAL.tooLongExample}>
 						<BaseButton
-							label="til baka"
+							label="Til baka"
 							type="danger"
 							onClick={handleStopSelectingSpan}
 						/>

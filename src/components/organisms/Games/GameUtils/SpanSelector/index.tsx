@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { ClickableSpan, Atoms } from "../../../..";
 import { IProps, SelectionStates } from "./interface";
-import { Outer, Word, InstructionWrapper } from "./styles";
+import * as Styles from "./styles";
 
 export const SpanSelector = ({
 	paragraph,
@@ -45,11 +45,11 @@ export const SpanSelector = ({
 	const [areInstructionsLoading, setAreInstructionsLoading] = useState(false);
 
 	const userInstructions = [
-		["Smelltu á fyrsta stafinn sem myndar svarið"],
-		["Smelltu á síðasta stafinn sem myndar svarið"],
+		["Smelltu á fyrsta stafinn sem myndar svarið."],
+		["Smelltu á síðasta stafinn sem myndar svarið."],
 		[
-			"Smelltu á textann til þess að velja aftur",
-			"Smelltu á „Staðfesta“ til þess að staðfesta orða val",
+			"Smelltu á textann til þess að velja aftur.",
+			"Smelltu á „Staðfesta“ til þess að staðfesta valið.",
 		],
 	];
 
@@ -62,10 +62,7 @@ export const SpanSelector = ({
 	useEffect(() => {
 		const LOADING_TIMEOUT = 350;
 		if (areInstructionsLoading) {
-			const t = setTimeout(
-				() => setAreInstructionsLoading(false),
-				LOADING_TIMEOUT
-			);
+			const t = setTimeout(() => setAreInstructionsLoading(false), LOADING_TIMEOUT);
 			return () => {
 				// cleanup
 				clearTimeout(t);
@@ -82,40 +79,42 @@ export const SpanSelector = ({
 	}, [getStage()]);
 
 	return (
-		<Outer>
-			<p>
-				{paragraph.split(" ").map((word, i) => (
-					<React.Fragment>
-						{i === firstWord ? <Word>„</Word> : null}
-						<ClickableSpan onClick={() => action?.(i)}>
-							<Word
-								title={getToolTipString(word)}
-								theme={{
-									isSelected: i >= firstWord! && i <= lastWord!,
-								}}
-							>{`${
-								/**
-								 * This expression in the JSX returns just the
-								 * word, the logic here is checking if it is the
-								 * last word then we want to trim any space
-								 * and remove punctuation
-								 */
-								i === lastWord || i === firstWord ? word.trim() : word + " "
-							}`}</Word>
-						</ClickableSpan>
-						{
-							// checks for lastword and adds quotation mark
-							i === lastWord ? <Word>“ </Word> : null
-						}
-					</React.Fragment>
-				))}
-			</p>
+		<Styles.Outer>
+			<Styles.Inner>
+				<p>
+					{paragraph.split(" ").map((word, i) => (
+						<React.Fragment>
+							{i === firstWord ? <Styles.Word>„</Styles.Word> : null}
+							<ClickableSpan onClick={() => action?.(i)}>
+								<Styles.Word
+									title={getToolTipString(word)}
+									theme={{
+										isSelected: i >= firstWord! && i <= lastWord!,
+									}}
+								>{`${
+									/**
+									 * This expression in the JSX returns just the
+									 * word, the logic here is checking if it is the
+									 * last word then we want to trim any space
+									 * and remove punctuation
+									 */
+									i === lastWord || i === firstWord ? word.trim() : word + " "
+								}`}</Styles.Word>
+							</ClickableSpan>
+							{
+								// checks for lastword and adds quotation mark
+								i === lastWord ? <Styles.Word>“ </Styles.Word> : null
+							}
+						</React.Fragment>
+					))}
+				</p>
+			</Styles.Inner>
 			{immutable ? null : areInstructionsLoading ? (
 				<Atoms.Loaders.Flex size={40} />
 			) : (
 				userInstructions.map((instructions, i) =>
 					i === getStage() ? (
-						<InstructionWrapper>
+						<Styles.InstructionWrapper>
 							{instructions.map((inst) => (
 								<p>
 									{" "}
@@ -123,10 +122,10 @@ export const SpanSelector = ({
 									{inst}
 								</p>
 							))}
-						</InstructionWrapper>
+						</Styles.InstructionWrapper>
 					) : null
 				)
 			)}
-		</Outer>
+		</Styles.Outer>
 	);
 };

@@ -7,12 +7,12 @@ export const explainGoogle: TutorialExplanations[] = [
 	{
 		type: "str",
 		payload:
-			"Þessi Google leitarvél birtir niðurstöðurnar inn á þessari síðu. Hún leitar aðeins á íslensku Wikipediu, Vísindavefnum, mbl.is og Vísir.is",
+			"Þessi Google leitarvél birtir niðurstöðurnar á þessari síðu. Hún leitar aðeins á íslensku Wikipediu, Vísindavefnum, mbl.is og vísir.is.",
 		id: "GAME:SEARCH:EXPLAINGOOGLE",
 		highlight: false,
 		dialog: [
 			{
-				text: "Allt í góðu",
+				text: "Ég skil",
 			},
 		],
 	},
@@ -22,12 +22,12 @@ export const explainResults: TutorialExplanations[] = [
 	{
 		type: "str",
 		payload:
-			"Þessar niðurstöður fengum við frá Google. Þú getur opnað síður sem þér þykir líklegar til að innihalda svarið.",
+			"Þessar niðurstöður fengust frá Google. Þú getur opnað þær síður sem þér þykja líklegar til að innihalda svarið.",
 		id: "GAME:SEARCH:EXPLAINRESULTS",
 		highlight: false,
 		dialog: [
 			{
-				text: "Allt í góðu",
+				text: "Ég skil",
 			},
 		],
 	},
@@ -42,12 +42,11 @@ export const markasNotAnswerableClosure = (
 		payload: () => (
 			<React.Fragment>
 				<ContinueSpanPara>
-					Ef þú finnur ekki svarið innan 2-3 mínútna, þá er í
-					lagi að halda áfram
+					Ef þú finnur ekki svarið innan 2-3 mínútna, þá er í lagi að halda áfram.
 				</ContinueSpanPara>
 				<ContinueSpanPara>
-					þá merkjum við spurninguna sem erfiða og þú færð annað
-					verkefni
+					Þá merkjum við spurninguna sem <i>erfiða</i> og þú færð annað verkefni í
+					staðinn.
 				</ContinueSpanPara>
 				{/* <ContinueClick onClick={dispatchCB}>
 					Halda áfram <i className="fas fa-arrow-right" />{" "}

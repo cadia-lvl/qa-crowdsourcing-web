@@ -2,10 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Game, ModalWithTitle } from "../../../../../../";
 import { SoubRoutineProps } from "../../../interface";
 import { Outer } from "./styles";
-export const SpanReview = ({
-	onHideButton,
-	onShowButton,
-}: SoubRoutineProps) => {
+export const SpanReview = ({ onHideButton, onShowButton }: SoubRoutineProps) => {
 	const [modalText, setModalText] = useState("");
 
 	useEffect(() => {
@@ -16,7 +13,7 @@ export const SpanReview = ({
 	const TEXT =
 		"Lafði Diana Spencer (fædd Diana Frances Spencer) betur þekkt sem Díana prinsessa (1. júlí 1961 - 31. ágúst 1997) var fyrsta eiginkona Karls Bretaprins og móðir prinsanna Vilhjálms og Harry. ";
 	const ANSWER_IS_PRESENT =
-		"Svarið er þarna í efnisgreininni, merkt í fjólubláu.";
+		"Svarið er þarna í efnisgreininni, merkt með fjólubláum stöfum.";
 	const ANSWER_CAN_NOT_BE_SHORTENED =
 		"Það er varla hægt að svara í færri orðum en þetta.";
 
@@ -28,7 +25,7 @@ export const SpanReview = ({
 	return (
 		<Outer>
 			<ModalWithTitle
-				title="Ertu viss"
+				title="Ertu viss?"
 				open={!!modalText}
 				buttons={[
 					{
