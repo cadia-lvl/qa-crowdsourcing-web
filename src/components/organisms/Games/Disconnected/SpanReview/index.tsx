@@ -5,10 +5,7 @@ import { IProps, SelectionStage } from "./interface";
 import { ButtonContainer } from "./styles";
 import * as TUTORIAL from "./tutorialItems";
 
-export type SelectionStates =
-	| "select-first"
-	| "select-last"
-	| "clear-selection";
+export type SelectionStates = "select-first" | "select-last" | "clear-selection";
 
 export const SpanReview = ({
 	firstWord,
@@ -32,10 +29,7 @@ export const SpanReview = ({
 	useEffect(() => {
 		const TIMEOUT = 1000;
 		if (isLoadingButtons) {
-			const t = setTimeout(
-				() => setIsLoadingButtons(false),
-				TIMEOUT
-			);
+			const t = setTimeout(() => setIsLoadingButtons(false), TIMEOUT);
 			return () => {
 				clearTimeout(t);
 			};
@@ -44,8 +38,7 @@ export const SpanReview = ({
 
 	const handleVerifyAnswerIsPresent = () => {
 		setIsLoadingButtons(true);
-		if (isYesOrNo)
-			setSelectionStage(SelectionStage.getAnswerForYesOrNo);
+		if (isYesOrNo) setSelectionStage(SelectionStage.getAnswerForYesOrNo);
 		else setSelectionStage(SelectionStage.critisizeAnswerLength);
 	};
 
@@ -67,8 +60,7 @@ export const SpanReview = ({
 			<ButtonContainer>
 				{isLoadingButtons ? (
 					<Atoms.Loaders.Flex size={40} />
-				) : selectionStage ===
-				  SelectionStage.seeIfAnswerIsPresent ? (
+				) : selectionStage === SelectionStage.seeIfAnswerIsPresent ? (
 					isYesOrNo ? (
 						// Buttons if it is a yes or no question
 						// and user is verifying if the answer is present
@@ -103,8 +95,7 @@ export const SpanReview = ({
 							</Explain>
 						</React.Fragment>
 					)
-				) : selectionStage ===
-				  SelectionStage.critisizeAnswerLength ? (
+				) : selectionStage === SelectionStage.critisizeAnswerLength ? (
 					// Buttons if user has said that the answer
 					// is present and we want to check if the asnwer can be shortened
 					// TODO: add tutorial to explain what shorter means
@@ -127,8 +118,7 @@ export const SpanReview = ({
 							/>
 						</Explain>
 					</React.Fragment>
-				) : selectionStage ===
-				  SelectionStage.getAnswerForYesOrNo ? (
+				) : selectionStage === SelectionStage.getAnswerForYesOrNo ? (
 					// Buttons to ask user to evaluate the yes/no answer
 					// to a yes/no question according to the paragraph
 					<React.Fragment>
