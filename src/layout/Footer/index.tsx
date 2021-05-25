@@ -21,7 +21,7 @@ const Footer = () => {
 			</span>
 			<span>
 				<a href="mailto:spurningar@spurningar.is">
-					spurningar@spurningar.is
+					spurningar@ru.is
 				</a>
 			</span>
 			<span>

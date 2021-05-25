@@ -69,10 +69,10 @@ export const GlobalStyle = createGlobalStyle`
         
     }
 
-    h1 {
+    h1, h2 {
         color: ${Colors.HIGHLIGHT};
     }
-    h1.italic {
+    h1.italic, h2.italic {
             font-family: "Merriweather", serif !important;
             font-style: italic !important;
             margin-bottom: 0  !important;
