@@ -7,7 +7,13 @@ export const Unlocked = () => {
 	return (
 		<Outer>
 			{RewardService.PriceCategories.slice(0, 1).map((cat) => (
-				<Atoms.Cards.PrizeCategory {...cat} key={cat.name} />
+				<Atoms.Cards.PrizeCategory
+					_id="3"
+					name="Klíkan"
+					isAvailable={false}
+					prereqDescription="komast í Lvl 5"
+					prizes={[]}
+				/>
 			))}
 		</Outer>
 	);

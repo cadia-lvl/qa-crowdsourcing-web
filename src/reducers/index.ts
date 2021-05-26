@@ -8,6 +8,7 @@ import QuestionQualityAssuranceReducer from "./QuestionQualityAssurance";
 import VerifyAnswerLocationReducer from "./VerifyAnswerLocation";
 import ChartDataReducer from "./ChartDataReducer";
 import tutorialReducer from "./TutorialReducer";
+import PrizeReducer from "./PrizeReducer";
 
 export default combineReducers<StoreState>({
 	auth: AuthReducer,
@@ -18,6 +19,7 @@ export default combineReducers<StoreState>({
 	questionQualityAssurance: QuestionQualityAssuranceReducer,
 	chartData: ChartDataReducer,
 	tutorial: tutorialReducer,
+	prize: PrizeReducer,
 });
 
 export * from "./interface";

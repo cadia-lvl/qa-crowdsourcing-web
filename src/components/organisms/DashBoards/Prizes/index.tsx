@@ -1,16 +1,27 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import * as Styles from "./styles";
 import { Atoms } from "../../../";
 import { RewardService } from "../../../../services";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { StoreState } from "../../../../reducers";
+import { fetchPrizeCategories } from "../../../../actions/prizeActions";
+import { PrizeCategory } from "../../../../declerations";
 
 const Prizes = () => {
 	const auth = useSelector((state: StoreState) => state.auth);
 
-	const [focusCategory, setFocusCategory] = useState<
-		RewardService.PrizeCategory | undefined
-	>();
+	const [focusCategory, setFocusCategory] =
+		useState<PrizeCategory | undefined>();
+
+	const dispatch = useDispatch();
+
+	const prizeCategories = useSelector(
+		(state: StoreState) => state.prize.prizeCategories
+	);
+
+	useEffect(() => {
+		dispatch(fetchPrizeCategories());
+	}, [dispatch]);
 
 	return (
 		<Styles.Outer>
@@ -26,29 +37,21 @@ const Prizes = () => {
 						</Styles.GoBack>
 						<Styles.Title>
 							<span>{focusCategory.name}</span>
-							{RewardService.hasUnlockedCategory(
-								focusCategory.name,
-								auth
-							) ? (
+							{focusCategory.isAvailable ? (
 								<i className="fas fa-check" />
 							) : (
 								<i className="fas fa-lock" />
 							)}
 						</Styles.Title>
 					</Styles.CategoryTopLine>
-					{RewardService.PrizeItems.filter(
-						(item) => item.category === focusCategory.name
-					).map((item) => (
+					{focusCategory.prizes.map((item) => (
 						<Atoms.Cards.PrizeItem {...item} />
 					))}
 				</div>
 			) : (
-				RewardService.PriceCategories.map((cat) => {
+				prizeCategories.map((cat) => {
 					return (
-						<div
-							onClick={() => setFocusCategory(cat)}
-							className="clickable"
-						>
+						<div onClick={() => setFocusCategory(cat)} className="clickable">
 							<Atoms.Cards.PrizeCategory {...cat} />
 						</div>
 					);
