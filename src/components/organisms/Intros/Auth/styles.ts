@@ -16,3 +16,14 @@ export const Toogle = styled.p`
 	margin: 5px 0;
 	cursor: pointer;
 `;
+
+export const BottomBar = styled.div`
+	width: 100%;
+	display: flex;
+	.link {
+		color: #999;
+		padding: 15px 0;
+		margin-right: 15px;
+		font-size: 15px;
+	}
+`;

@@ -6,6 +6,7 @@ import * as Styles from "./styles";
 import store from "../../../../store";
 import { useSelector } from "react-redux";
 import { StoreState } from "../../../../reducers";
+import { NavLink } from "react-router-dom";
 
 const Authenticate = ({ onComplete }: IntroductionStep) => {
 	const [hasAccount, setHasAccount] = useState(false);
@@ -40,6 +41,14 @@ const Authenticate = ({ onComplete }: IntroductionStep) => {
 						<Forms.SignUp />
 					</React.Fragment>
 				)}
+				<Styles.BottomBar>
+					<NavLink to="/um-okkur">
+						<div className="link">Um okkur</div>
+					</NavLink>
+					<NavLink to="skilmalar">
+						<div className="link">Skilmálar</div>
+					</NavLink>
+				</Styles.BottomBar>
 			</Styles.Outer>
 		</Intros.IntroBaseOuter>
 	);

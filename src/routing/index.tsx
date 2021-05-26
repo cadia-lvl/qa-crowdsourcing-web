@@ -1,21 +1,18 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { ROUTE_LIST } from "./routeList";
-import { createBrowserHistory } from "history";
 import { LayoutWrapper } from "../layout";
-
-export const history = createBrowserHistory();
 
 export default function Routing() {
 	return (
-		<Router>
+		<BrowserRouter>
 			<LayoutWrapper>
 				<Switch>
-					{ROUTE_LIST.map((route, i) => (
-						<Route key={i} {...route} />
+					{ROUTE_LIST.map((item, i) => (
+						<Route key={i} {...item} />
 					))}
 				</Switch>
 			</LayoutWrapper>
-		</Router>
+		</BrowserRouter>
 	);
 }
