@@ -7,5 +7,5 @@ export const Outer = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	height: 200px;
+	padding-top: 120px;
 `;

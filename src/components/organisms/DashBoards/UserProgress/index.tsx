@@ -13,8 +13,10 @@ const UserProgress = ({
 	scoreCard,
 	totalRounds,
 	currentRound,
+	hasCompletedTutorial,
 }: IProps) => {
 	const { hiscoreRank } = scoreCard;
+
 	return (
 		<Styles.Outer className="border">
 			{/* -- START OF DASHBOARD --
@@ -56,11 +58,17 @@ const UserProgress = ({
 				<Game.Utils.GameProgress />
 			</Styles.ProgressBar>
 			<Styles.SmallTitle>Minn árangur</Styles.SmallTitle>
-			<Explain items={TUTORIAL.scorecard}>
+			<Explain
+				items={hasCompletedTutorial ? TUTORIAL.scorecard : []}
+			>
 				<Game.Utils.ScoreCard {...scoreCard} />
 			</Explain>
 			<Styles.SmallTitle>Samfélagið</Styles.SmallTitle>
-			<Explain items={TUTORIAL.communityProgress}>
+			<Explain
+				items={
+					hasCompletedTutorial ? TUTORIAL.communityProgress : []
+				}
+			>
 				<QAsPerDay />
 			</Explain>
 		</Styles.Outer>

@@ -45,8 +45,7 @@ export const userTask: TutorialExplanations[] = [
 export const scorecard: TutorialExplanations[] = [
 	{
 		type: "str",
-		payload:
-			"... og hér munt þú sjá tölur um hversu mikið þú hefur lagt til þess að bjarga íslensku",
+		payload: "Hér munt þú sjá tölur um hversu stórt þitt framlag er.",
 		id: "FRONTPAGE:DASHBOARD:INTRO:SCORECARD",
 		dialog: [
 			{

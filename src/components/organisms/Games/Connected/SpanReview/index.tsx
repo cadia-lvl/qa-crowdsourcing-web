@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { StoreState } from "../../../../../reducers";
 import {
@@ -7,6 +7,7 @@ import {
 	verifyYesNoQuestion,
 } from "../../../../../actions";
 import { Disconnected } from "../../";
+import { ModalWithTitle } from "../../../../";
 
 // export type SelectionStates =
 // 	| "select-first"
@@ -15,6 +16,7 @@ import { Disconnected } from "../../";
 
 export const SpanReview = () => {
 	const state = useSelector((state: StoreState) => state);
+	const [showArchiveModal, setShowArchiveModal] = useState(false);
 
 	const dispatch = useDispatch();
 
@@ -39,19 +41,41 @@ export const SpanReview = () => {
 	};
 
 	const handleArchive = () => {
-		dispatch(archiveAnswer(gameRoundId, answerId));
+		setShowArchiveModal(true);
 	};
 
 	return (
-		<Disconnected.SpanReview
-			question={question}
-			text={text}
-			onArchive={handleArchive}
-			onVerification={handleVerifyDispatch}
-			onYesNoVerification={handleVerifyYesOrNo}
-			isYesOrNo={isYesOrNo}
-			firstWord={firstWord}
-			lastWord={lastWord}
-		/>
+		<React.Fragment>
+			<ModalWithTitle
+				title="Ertu viss?"
+				buttons={[
+					{
+						type: "highlight",
+						label: "Nei",
+						onClick: () => setShowArchiveModal(false),
+					},
+					{
+						type: "highlight",
+						label: "Já",
+						onClick: () =>
+							dispatch(archiveAnswer(gameRoundId, answerId)),
+					},
+				]}
+				open={showArchiveModal}
+				onClose={() => setShowArchiveModal(false)}
+			>
+				Við munum eyða þessu svari.
+			</ModalWithTitle>
+			<Disconnected.SpanReview
+				question={question}
+				text={text}
+				onArchive={handleArchive}
+				onVerification={handleVerifyDispatch}
+				onYesNoVerification={handleVerifyYesOrNo}
+				isYesOrNo={isYesOrNo}
+				firstWord={firstWord}
+				lastWord={lastWord}
+			/>
+		</React.Fragment>
 	);
 };
