@@ -26,6 +26,7 @@ export const ROUTE_LIST: RouteInterface[] = [
 	},
 	{
 		component: Pages.Front,
-		path: "(/|/heim)?",
+		path: "(/|/heim)",
+		exact: true,
 	},
 ];
