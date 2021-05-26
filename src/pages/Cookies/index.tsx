@@ -1,6 +1,6 @@
 import React from "react";
 
-export const Terms = () => {
+export const Cookies = () => {
 	return (
 		<div>
 			<h1 className="italic">Vafrakökustefna</h1>
