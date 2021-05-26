@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Colors } from "../styles";
 
 export const Outer = styled.div`
 	max-width: 600px;

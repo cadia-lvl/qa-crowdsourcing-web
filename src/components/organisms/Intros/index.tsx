@@ -3,6 +3,7 @@ import * as Layout from "../../../layout";
 import { IconDecorator } from "../../../hoc";
 import introSteps from "./intros";
 import { IIntroductionWrap } from "./interface";
+import { useLocation } from "react-router-dom";
 /**
  * This is a component that displays in sequences other components
  * that are a part of an introduction process for
@@ -15,6 +16,14 @@ import { IIntroductionWrap } from "./interface";
  * know which step of the tutorial should be shwon (if any)
  */
 const Intro = () => {
+	const [shouldShow, setShouldShow] = useState(true);
+	const location = useLocation();
+
+	useEffect(() => {
+		const NO_INTRO_PATHS = ["/um-okkur", "/skilmalar", "/vafrakokur"];
+		setShouldShow(!NO_INTRO_PATHS.includes(location.pathname));
+	}, [location]);
+
 	const ICON_COUNT = 4;
 
 	const [intros, setIntros] = useState<IIntroductionWrap[]>([]);
@@ -26,7 +35,7 @@ const Intro = () => {
 	const handleUpdate = () => setIntros([...intros]);
 
 	const Found = intros.find((entry) => entry.shouldShow(entry.id));
-	if (!Found) return null;
+	if (!Found || !shouldShow) return null;
 	return (
 		<Layout.BlurBackground>
 			<IconDecorator iconCount={ICON_COUNT}>

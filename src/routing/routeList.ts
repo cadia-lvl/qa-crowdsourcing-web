@@ -25,7 +25,13 @@ export const ROUTE_LIST: RouteInterface[] = [
 		exact: true,
 	},
 	{
+		component: Pages.Cookies,
+		path: "/vafrakokur",
+		exact: true,
+	},
+	{
 		component: Pages.Front,
-		path: "(/|/heim)?",
+		path: "(/|/heim)",
+		exact: true,
 	},
 ];

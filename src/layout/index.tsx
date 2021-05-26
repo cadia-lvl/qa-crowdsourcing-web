@@ -3,13 +3,14 @@ import { GlobalStyle } from "../styles";
 import { IProps } from "./interface";
 import Header from "./Header";
 import Footer from "./Footer";
-import { LoadingOuter, Outer, TutorialGuidePlacement } from "./styles";
+import * as Styles from "./styles";
 import { useSelector, useDispatch } from "react-redux";
 import { StoreState } from "../reducers";
 import { fetchCurrentGameRound, fetchUserFromToken } from "../actions";
 import { FETCH_USER_FROM_TOKEN_WAIT_MS } from "./utils";
 import { Atoms, TutorialGuide, Organisms } from "../components";
 import { fetchAnswersPerDay } from "../actions/chartDataActions";
+import CookieBanner from "./CookieBanner";
 
 export const LayoutWrapper = ({ children }: IProps) => {
 	const { type, _id, hasCompletedTutorial } = useSelector(
@@ -36,10 +37,10 @@ export const LayoutWrapper = ({ children }: IProps) => {
 
 	if (type === "loading")
 		return (
-			<LoadingOuter>
+			<Styles.LoadingOuter>
 				<GlobalStyle />
 				<Atoms.Loaders.Flex size={150} />
-			</LoadingOuter>
+			</Styles.LoadingOuter>
 		);
 
 	/**
@@ -48,18 +49,19 @@ export const LayoutWrapper = ({ children }: IProps) => {
 	 */
 	return (
 		<React.Fragment>
+			<CookieBanner />
 			<Organisms.Intro />
-			<Outer>
+			<Styles.Outer>
 				<GlobalStyle />
 				<Header />
 				{children}
 				<Footer />
 				{hasCompletedTutorial ? (
-					<TutorialGuidePlacement>
+					<Styles.TutorialGuidePlacement>
 						<TutorialGuide />
-					</TutorialGuidePlacement>
+					</Styles.TutorialGuidePlacement>
 				) : null}
-			</Outer>
+			</Styles.Outer>
 		</React.Fragment>
 	);
 };
