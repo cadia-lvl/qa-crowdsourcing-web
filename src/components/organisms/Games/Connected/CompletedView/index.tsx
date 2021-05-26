@@ -8,6 +8,7 @@ import {
 import { usePrev } from "../../../../../hooks";
 import { StoreState } from "../../../../../reducers";
 import { UserLevelService } from "../../../../../services";
+import FlexLoader from "../../../../atoms/Loaders/FlexLoader";
 import { Outer, IconBoxOuter, TopBox, IconWrapper } from "./styles";
 
 /**
@@ -15,7 +16,7 @@ import { Outer, IconBoxOuter, TopBox, IconWrapper } from "./styles";
  * as it has not proven to be necessary
  */
 export const CompletedView = () => {
-	const { auth } = useSelector((state: StoreState) => state);
+	const { auth, game } = useSelector((state: StoreState) => state);
 	const dispatch = useDispatch();
 	const [shouldShake, setShouldShake] = useState(true);
 	const [iconURL, setIconURL] = useState("");
@@ -73,12 +74,15 @@ export const CompletedView = () => {
 				</p>
 			</TopBox>
 			<Organisms.Dashboard.Prizes />
-
-			<BaseButton
-				label="Áfram"
-				type="highlight"
-				onClick={() => dispatch(fetchCurrentGameRound())}
-			/>
+			{game.isLoading ? (
+				<FlexLoader size={20} />
+			) : (
+				<BaseButton
+					label="Áfram"
+					type="highlight"
+					onClick={() => dispatch(fetchCurrentGameRound())}
+				/>
+			)}
 		</Outer>
 	);
 };
