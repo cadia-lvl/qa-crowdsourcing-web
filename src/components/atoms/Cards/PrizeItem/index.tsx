@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { LoadingFlexIMG } from "../../..";
 import { StoreState } from "../../../../reducers";
 import { RewardService } from "../../../../services";
-import { PrizeItem as IProps } from "../../../../services/RewardService";
+import { Prize as IProps } from "../../../../declerations";
 import * as Styles from "./styles";
 
 const PrizeItem = ({ name, imageURL }: IProps) => {

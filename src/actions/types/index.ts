@@ -5,6 +5,7 @@ import * as GameActions from "../gameActions";
 import * as VerifyAnswerLocationsActions from "../verifyAnswerLocationActions";
 import * as ChartDataActions from "../chartDataActions";
 import * as TutorialActions from "../tutorialActions";
+import * as PrizeActions from "../prizeActions";
 
 export enum ActionTypes {
 	fetchUserFromToken,
@@ -46,6 +47,7 @@ export enum ActionTypes {
 	setIsLoadingArticle,
 	completeTutorial,
 	fetchInvites,
+	fetchPrizeCategories,
 }
 
 export type Actions =
@@ -87,4 +89,5 @@ export type Actions =
 	| TutorialActions.ReplaceQueueAction
 	| TutorialActions.SetTutorialItemsToFrontAction
 	| TutorialActions.AddPersistantTutorialItems
-	| TutorialActions.RemoveTutorialItemIDsAction;
+	| TutorialActions.RemoveTutorialItemIDsAction
+	| PrizeActions.FetchPrizeCategories;
