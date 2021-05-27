@@ -3,34 +3,31 @@ import React from "react";
 export const AboutUs = () => {
 	return (
 		<div>
-			<h1 className="italic">Um okkur</h1>
+			<h1 className="italic">Um spurningar.is</h1>
 			<p>
-				Spurningar.is er spurningaleikur þar sem notendur spreyta
-				sig á því að spyrja aðra notendur spurninga og finna svör
-				við spurningum annara notenda á veraldarvefnum. Hlutverk
-				spurningarleiksins er að safna sem flestum spurningum og
-				svörum, ásamt því að tryggja að spurningarnar séu á góðri
-				íslensku sem og að þær séu svaranlegar.
+				Spurningar.is er spurningaleikur sem gerir þér kleift að bæta þekkinguna þína,
+				vinna glæsilega vinninga og auðvelda notkun íslensku í
+				upplýsingatækniþjóðfélaginu. Hlutverk spurningar.is er að safna gögnum sem geta
+				nýst rannsóknar- og þróunaraðilum til þess að þróa gervigreindarlíkön fyrir
+				spurningasvörun. Gögn sem þessi eru mikilvægt svo hægt sé að tryggja að íslenska
+				standi jafnfætis öðrum tungumálum í sífellt tæknivæddari heimi.
+				Gervigreindarlíkönin geta lært að svara spurningum, jafnvel þeim sem þau hafa
+				ekki séð áður.
 			</p>
+
+			<h2 className="italic">Markmiðið</h2>
 			<p>
-				Markmið vefsins er að safna gögnum til þess að geta þróað
-				gervigreind sem getur lært að svara spurningum. Markmiðið
-				er ekki að kenna gervigreindinni að svara spurningunum sem
-				verða til inn á spurningar.is. Heldur er markmiðið að
-				gervigreindin geti lært að svara spurningum almennt eins
-				lengi og svarið sé að finna í texta.
+				Markmið spurningar.is er að safna 100 þúsund pörum af spurningum og svörum.
+				Slíkt gagnasafn myndi tryggja að íslenskan standa jafnfætis, og jafnvel framar,
+				mörgum af stærstu tungumálum heims. Þetta er metnaðarfullt markmið, en miðað við
+				samheldnina sem íslenska þjóðin hefur sýnt fram á í ýmsum átökum þá virðist fátt
+				vera ómögulegt.
 			</p>
+			<h2 className="italic">Kynningarmál og umfjallanir</h2>
 			<p>
-				Þetta þróunarverkefni er unnið sem hluti af rannsókn innan
-				mál- og raddtæknistofu gervigreindarseturs HR.
+				Ef þú vilt fræðast meira um verkefnið og fjalla um árangurinn þá getur þú sent
+				okkur línu á <a href="mailto:spurningar@ru.is">spurningar@ru.is.</a>
 			</p>
-			<p>
-				Hægt er að hafa samband við okkur í{" "}
-				<a href="mailto:spurningar@ru.is">tölvupósti</a> ef
-				spurningar kunna að vakna um verkefnið eða vefinn.
-			</p>
-			<p></p>
-			<p></p>
 		</div>
 	);
 };

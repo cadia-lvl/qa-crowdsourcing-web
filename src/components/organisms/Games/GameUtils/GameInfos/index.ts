@@ -21,14 +21,14 @@ const getCurrText = () => {
 						  )} orð.`
 				}
 				`,
-				dos: ["Það er í lagi að svarið byggi á heimildum sem eru nokkura ára gamlar"],
+				dos: ["Það er í lagi að svarið byggi á heimildum sem eru nokkura ára gamlar."],
 				infos: !isYesOrNo
 					? [
-							"Athugaðu að svarið er merkt sem fjólublátt. Textinn í kringum fjólubláa svarið telst ekki sem hluti af svarinu",
+							"Athugaðu að svarið er merkt með fjólubláu. Textinn í kringum fjólubláa svarið telst ekki sem hluti af svarinu.",
 					  ]
 					: [],
 				donts: [
-					"Ef svarið er háð tilfinningum og skoðunum fólks þá er svarið ekki rétt",
+					"Ef svarið er háð tilfinningum og skoðunum fólks þá er svarið ekki rétt.",
 				],
 			};
 		case GameTypes.questionQualityAssurance:
@@ -67,7 +67,7 @@ const getCurrText = () => {
 					"Gamlar heimildir eru í lagi.",
 				],
 				infos: [],
-				donts: ["Ekki velja fleiri orð en nauðsynlegt er til að svara spurningunni."],
+				donts: ["Ekki velja fleiri orð en nauðsynleg eru til að svara spurningunni."],
 			};
 		case GameTypes.completed:
 			return {
@@ -82,13 +82,15 @@ const getCurrText = () => {
 			return {
 				title: "Búa til nýja spurningu",
 
-				text: "Í þessu skrefi þarft þú að búa til spurningu. Við munum gefa þér hugmyndir til að spyrja út í, en þú þarft auðvitað ekki að styðjast við þær.",
-				dos: ["Reyndu að nýta þér hugmyndirnar, en þú mátt spyrja út í eitthvað annað"],
+				text: "Í þessu skrefi þarft þú að búa til spurningu. Við munum gefa þér hugmyndir til að spyrja út í, en þú þarft ekki að styðjast við þær.",
+				dos: [
+					"Reyndu að nýta þér hugmyndirnar, en þú mátt spyrja út í eitthvað annað.",
+				],
 				infos: [
 					"Skrifaðu spurninguna eins og þú myndir spyrja í daglegu tali, ekki hafa spurninguna of formlega.",
 				],
 				donts: [
-					"Ekki spyrja spurningar sem hafa mismunandi svör eftir því hvern eða hvaða dag þú spyrð",
+					"Ekki spyrja spurningar sem hefur mismunandi svör eftir því hvern eða hvaða dag þú spyrð.",
 				],
 			};
 		default:

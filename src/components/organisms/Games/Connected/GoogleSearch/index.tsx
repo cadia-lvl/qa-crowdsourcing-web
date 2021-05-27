@@ -113,9 +113,9 @@ export const GoogleSearch = () => {
 				<Styles.ContinueBox hideDetails={false} onClick={() => setContinueModal(true)}>
 					<h3>Finnur þú ekki svarið?</h3>
 					<p>
-						Það gerist að öðru hverju að svar finnist ekki í leitinni. Ef þú lendir í
-						því þá getur þú haldið áfram í næsta verkefni og við merkjum spurninguna sem
-						erfiða / ósvaranlega.{" "}
+						Það gerist að öðru hverju að svar finnst ekki í leitinni. Ef þú lendir í því
+						þá getur þú haldið áfram í næsta verkefni og við merkjum spurninguna sem
+						erfiða / ósvaranlega.
 					</p>
 					Halda áfram í næsta verkefni
 					<i className="fas fa-chevron-right" />

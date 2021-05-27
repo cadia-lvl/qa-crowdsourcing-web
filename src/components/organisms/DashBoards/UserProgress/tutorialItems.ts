@@ -3,8 +3,7 @@ import { TutorialExplanations } from "../../Tutorial/interface";
 export const userProgress: TutorialExplanations[] = [
 	{
 		type: "str",
-		payload:
-			"Hér getur þú séð þinn árangur og hvaða Lvl þú ert komin/n á!",
+		payload: "Hér getur þú séð þinn árangur og hvaða Lvl þú ert komin/n á!",
 		id: "FRONTPAGE:DASHBOARD:INTRO:PROGRESS",
 		highlight: true,
 		dialog: [
@@ -12,8 +11,7 @@ export const userProgress: TutorialExplanations[] = [
 				text: "Allt í góðu",
 				item: {
 					type: "str",
-					payload:
-						"Því fleiri verkefni sem þú klárar, því fleiri stigum safnarðu!",
+					payload: "Því fleiri verkefni sem þú klárar, því fleiri stigum safnarðu!",
 					id: "FRONTPAGE:DASHBOARD:INTRO:PROGRESS:2",
 					highlight: false,
 					dialog: [
@@ -45,11 +43,12 @@ export const userTask: TutorialExplanations[] = [
 export const scorecard: TutorialExplanations[] = [
 	{
 		type: "str",
-		payload: "Hér munt þú sjá tölur um hversu stórt þitt framlag er.",
+		payload:
+			"Hér sérð þú tölur um hversu mikið þú hefur lagt fram til að auðvelda spurningasvörun fyrir íslensku.",
 		id: "FRONTPAGE:DASHBOARD:INTRO:SCORECARD",
 		dialog: [
 			{
-				text: "Allt í góðu",
+				text: "Ég skil",
 				item: undefined,
 			},
 		],
