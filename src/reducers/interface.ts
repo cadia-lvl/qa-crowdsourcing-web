@@ -6,6 +6,7 @@ import { SubmitArticleState } from "./SubmitArticleReducer";
 import { TutorialState } from "./TutorialReducer";
 import { VerifyAnswerLocationState } from "./VerifyAnswerLocation";
 import { WriteQuestionState } from "./WriteQuestionReducer";
+import { PrizeState } from "./PrizeReducer";
 
 export interface StoreState {
 	auth: AuthState;
@@ -16,4 +17,5 @@ export interface StoreState {
 	questionQualityAssurance: QuestionQualityAssuranceState;
 	chartData: ChartDataState;
 	tutorial: TutorialState;
+	prize: PrizeState;
 }

@@ -6,9 +6,13 @@ import { Outer } from "./styles";
 export const Locked = () => {
 	return (
 		<Outer>
-			{RewardService.PriceCategories.slice(1, 2).map((cat) => (
-				<Atoms.Cards.PrizeCategory {...cat} key={cat.name} />
-			))}
+			<Atoms.Cards.PrizeCategory
+				_id={"1"}
+				name={"Allir taka þátt"}
+				prereqDescription={""}
+				isAvailable={true}
+				prizes={[]}
+			/>
 		</Outer>
 	);
 };
