@@ -21,7 +21,7 @@ export const WriteQuestion = ({
 			) : null}
 			{isYesNoQuestion ? (
 				<Atoms.Alerts.Ribbon
-					label="Búðu til Já/nei spurningu"
+					label="Spurðu spurningu sem hægt er að svara með JÁ / NEI"
 					type="success"
 				/>
 			) : null}
@@ -29,7 +29,9 @@ export const WriteQuestion = ({
 		<QuestionInput
 			placeholder={
 				placeholder ??
-				`Spurðu spurningar sem hægt er að finna svar við`
+				`Spurðu ${
+					isYesNoQuestion ? "JÁ / NEI " : ""
+				}spurningu sem hægt er að finna svar við`
 			}
 			onChange={(e) => onChange?.(e.target.value)}
 			value={value}

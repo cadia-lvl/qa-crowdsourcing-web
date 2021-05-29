@@ -10,6 +10,9 @@ import { GameTypes } from "../../declerations";
 export const Games = () => {
 	const dispatch = useDispatch();
 	const state = useSelector((state: StoreState) => state.game);
+	const writeQuestion = useSelector(
+		(state: StoreState) => state.writeQuestion
+	);
 	useEffect(() => {
 		dispatch(fetchCurrentGameRound());
 	}, [dispatch]);
@@ -34,7 +37,13 @@ export const Games = () => {
 						</Styles.ProgressBarContainer>
 						{/* CREATE QUESTION ROUND COMPONENT */}
 						<GameWrapper type={GameTypes.writeQuestion}>
-							<Game.Utils.TaskInfoBox title="Búa til spurningu">
+							<Game.Utils.TaskInfoBox
+								title={`Búa til ${
+									writeQuestion.questionType === "Já/Nei"
+										? "JÁ / NEI "
+										: ""
+								}spurningu`}
+							>
 								<Game.Connected.WriteQuestion />
 							</Game.Utils.TaskInfoBox>
 						</GameWrapper>

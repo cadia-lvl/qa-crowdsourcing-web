@@ -24,7 +24,7 @@ export const WriteQuestion = () => {
 		try {
 			if (question.length < MIN_QUESTION_LENGTH)
 				throw new Error(`Spurningin er ekki nógu löng`);
-			if (question.slice(-1) !== "?")
+			if (question.trim().slice(-1) !== "?")
 				throw new Error(
 					`Spurningin verður að enda á spurningarmerki`
 				);

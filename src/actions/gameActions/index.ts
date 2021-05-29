@@ -110,7 +110,8 @@ export const gameActionWrapperFunc = (
 			const { data } = await cb(_dispatch);
 			__handleUpdateTask(data);
 		} catch (e) {
-			// do nothing on error
+			// @ts-ignore
+			store.dispatch(fetchCurrentGameRound());
 		} finally {
 			// release loading in both cases
 			_dispatch<SetGameLoadingStateAction>({
