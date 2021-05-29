@@ -1,10 +1,6 @@
 import axios from "axios";
 
-const isProd = true;
-
-const url = isProd
-	? "https://spurningar.herokuapp.com/"
-	: "http://localhost:5000/";
+const url = "http://spurningar.herokuapp.com/";
 
 export default axios.create({
 	baseURL: url,
