@@ -25,13 +25,9 @@ export const WriteQuestion = () => {
 			if (question.length < MIN_QUESTION_LENGTH)
 				throw new Error(`Spurningin er ekki nógu löng`);
 			if (question.trim().slice(-1) !== "?")
-				throw new Error(
-					`Spurningin verður að enda á spurningarmerki`
-				);
+				throw new Error(`Spurningin verður að enda á spurningarmerki`);
 			setErrorMessage("");
-			dispatch(
-				submitQuestion(gameRoundId, question, isYesNoQuestion)
-			);
+			dispatch(submitQuestion(gameRoundId, question, isYesNoQuestion));
 		} catch (e) {
 			setErrorMessage(e.message);
 		}

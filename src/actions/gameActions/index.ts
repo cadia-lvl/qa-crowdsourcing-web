@@ -128,14 +128,11 @@ export const submitQuestion = (
 	isYesOrNo: boolean
 ) =>
 	gameActionWrapperFunc((_dispatch: Dispatch) =>
-		Api.post<TaskFromBackend>(
-			`/api/v1/game_rounds/${gameRoundId}/advance`,
-			{
-				type: "make-question",
-				text: questionText,
-				isYesOrNo,
-			}
-		)
+		Api.post<TaskFromBackend>(`/api/v1/game_rounds/${gameRoundId}/advance`, {
+			type: "make-question",
+			text: questionText,
+			isYesOrNo,
+		})
 	);
 
 export const submitVerifyQuestion = (
@@ -144,14 +141,11 @@ export const submitVerifyQuestion = (
 	isGood: boolean
 ) =>
 	gameActionWrapperFunc((_dispatch: Dispatch) =>
-		Api.post<TaskFromBackend>(
-			`/api/v1/game_rounds/${gameRoundId}/advance`,
-			{
-				type: "verify-question",
-				questionId,
-				archive: !isGood,
-			}
-		)
+		Api.post<TaskFromBackend>(`/api/v1/game_rounds/${gameRoundId}/advance`, {
+			type: "verify-question",
+			questionId,
+			archive: !isGood,
+		})
 	);
 
 export const submitArticleAndParagraph = (
@@ -162,27 +156,21 @@ export const submitArticleAndParagraph = (
 	paragraphIndex: number
 ) =>
 	gameActionWrapperFunc((_dispatch: Dispatch) =>
-		Api.post<TaskFromBackend>(
-			`/api/v1/game_rounds/${gameRoundId}/advance`,
-			{
-				type: "find-article",
-				identifier,
-				questionId,
-				key,
-				paragraphIndex,
-			}
-		)
+		Api.post<TaskFromBackend>(`/api/v1/game_rounds/${gameRoundId}/advance`, {
+			type: "find-article",
+			identifier,
+			questionId,
+			key,
+			paragraphIndex,
+		})
 	);
 
 export const archiveAnswer = (gameRoundId: string, answerId: string) =>
 	gameActionWrapperFunc((_dispatch: Dispatch) =>
-		Api.post<TaskFromBackend>(
-			`/api/v1/game_rounds/${gameRoundId}/advance`,
-			{
-				type: "archive-answer",
-				answerId,
-			}
-		)
+		Api.post<TaskFromBackend>(`/api/v1/game_rounds/${gameRoundId}/advance`, {
+			type: "archive-answer",
+			answerId,
+		})
 	);
 
 export const submitSpan = (
@@ -192,15 +180,12 @@ export const submitSpan = (
 	lastWord: number
 ) =>
 	gameActionWrapperFunc((_dispatch: Dispatch) =>
-		Api.post<TaskFromBackend>(
-			`/api/v1/game_rounds/${gameRoundId}/advance`,
-			{
-				type: "locate-span",
-				answerId,
-				firstWord,
-				lastWord,
-			}
-		)
+		Api.post<TaskFromBackend>(`/api/v1/game_rounds/${gameRoundId}/advance`, {
+			type: "locate-span",
+			answerId,
+			firstWord,
+			lastWord,
+		})
 	);
 
 export const verifyAnswerSpan = (
@@ -209,14 +194,11 @@ export const verifyAnswerSpan = (
 	canBeShortened?: boolean
 ) =>
 	gameActionWrapperFunc((_dispatch: Dispatch) =>
-		Api.post<TaskFromBackend>(
-			`/api/v1/game_rounds/${gameRoundId}/advance`,
-			{
-				type: "verify-span",
-				_id: answerId,
-				canBeShortened,
-			}
-		)
+		Api.post<TaskFromBackend>(`/api/v1/game_rounds/${gameRoundId}/advance`, {
+			type: "verify-span",
+			_id: answerId,
+			canBeShortened,
+		})
 	);
 
 export const markQuestionAsImpossible = (
@@ -224,13 +206,10 @@ export const markQuestionAsImpossible = (
 	questionId: string
 ) =>
 	gameActionWrapperFunc((_dispatch: Dispatch) =>
-		Api.post<TaskFromBackend>(
-			`/api/v1/game_rounds/${gameRoundId}/advance`,
-			{
-				type: "mark-question-impossible",
-				questionId,
-			}
-		)
+		Api.post<TaskFromBackend>(`/api/v1/game_rounds/${gameRoundId}/advance`, {
+			type: "mark-question-impossible",
+			questionId,
+		})
 	);
 
 export const verifyYesNoQuestion = (
@@ -239,14 +218,11 @@ export const verifyYesNoQuestion = (
 	answer: boolean
 ) =>
 	gameActionWrapperFunc((_dispatch: Dispatch) =>
-		Api.post<TaskFromBackend>(
-			`/api/v1/game_rounds/${gameRoundId}/advance`,
-			{
-				type: "verify-yes-no-answer-paragraph",
-				answerId,
-				answer,
-			}
-		)
+		Api.post<TaskFromBackend>(`/api/v1/game_rounds/${gameRoundId}/advance`, {
+			type: "verify-yes-no-answer-paragraph",
+			answerId,
+			answer,
+		})
 	);
 
 export * from "./interface";

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const url = "http://spurningar.herokuapp.com/";
+const url = "https://spurningar.herokuapp.com/";
 
 export default axios.create({
 	baseURL: url,

@@ -10,8 +10,9 @@ import { PrizeCategory } from "../../../../declerations";
 const Prizes = () => {
 	const auth = useSelector((state: StoreState) => state.auth);
 
-	const [focusCategory, setFocusCategory] =
-		useState<PrizeCategory | undefined>();
+	const [focusCategory, setFocusCategory] = useState<
+		PrizeCategory | undefined
+	>();
 
 	const dispatch = useDispatch();
 
@@ -21,7 +22,7 @@ const Prizes = () => {
 
 	useEffect(() => {
 		dispatch(fetchPrizeCategories());
-	}, [dispatch]);
+	}, []);
 
 	return (
 		<Styles.Outer>

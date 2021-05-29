@@ -16,15 +16,18 @@ export const WriteQuestion = ({
 }: IProps) => (
 	<React.Fragment>
 		<AlertsContainer>
-			{!!error ? (
-				<Atoms.Alerts.Ribbon label={error} type="danger" />
-			) : null}
+			{!!error ? <Atoms.Alerts.Ribbon label={error} type="danger" /> : null}
 			{isYesNoQuestion ? (
 				<Atoms.Alerts.Ribbon
 					label="Spurðu spurningu sem hægt er að svara með JÁ / NEI"
 					type="success"
 				/>
-			) : null}
+			) : (
+				<Atoms.Alerts.Ribbon
+					label="Spurðu spurningu sem er EKKI hægt að svara með JÁ / NEI"
+					type="danger"
+				/>
+			)}
 		</AlertsContainer>
 		<QuestionInput
 			placeholder={

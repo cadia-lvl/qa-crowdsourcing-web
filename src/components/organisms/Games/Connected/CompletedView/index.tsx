@@ -4,6 +4,7 @@ import { ShootingStars, Atoms, BaseButton, Organisms } from "../../../..";
 import {
 	fetchCurrentGameRound,
 	fetchUserFromToken,
+	fetchPrizeCategories,
 } from "../../../../../actions";
 import { usePrev } from "../../../../../hooks";
 import { StoreState } from "../../../../../reducers";
@@ -16,7 +17,7 @@ import { Outer, IconBoxOuter, TopBox, IconWrapper } from "./styles";
  * as it has not proven to be necessary
  */
 export const CompletedView = () => {
-	const { auth, game } = useSelector((state: StoreState) => state);
+	const { auth, game, prize } = useSelector((state: StoreState) => state);
 	const dispatch = useDispatch();
 	const [shouldShake, setShouldShake] = useState(true);
 	const [iconURL, setIconURL] = useState("");
@@ -52,6 +53,7 @@ export const CompletedView = () => {
 		dispatch(fetchUserFromToken());
 		handleSetURL(URL);
 	}, []);
+
 	return (
 		<Outer className="border">
 			<TopBox>
@@ -67,10 +69,9 @@ export const CompletedView = () => {
 					<ShootingStars />
 				</IconBoxOuter>
 				<p>
-					<i>Vel gert!</i> Þú hefur náð Lvl {auth.level}, og ert
-					orðin/n {UserLevelService.mapLevelToString(auth.level)}
-					! Nú erum við einu skrefi nær því að koma íslensku inn
-					í <i>nútímann</i>.
+					<i>Vel gert!</i> Þú hefur náð Lvl {auth.level}, og ert orðin/n{" "}
+					{UserLevelService.mapLevelToString(auth.level)}! Nú erum við einu
+					skrefi nær því að koma íslensku inn í <i>nútímann</i>.
 				</p>
 			</TopBox>
 			<Organisms.Dashboard.Prizes />
