@@ -2,7 +2,7 @@ import { createGlobalStyle } from "styled-components";
 import * as Colors from "../Colors";
 
 export const GlobalStyle = createGlobalStyle`
-    html, p, body {
+    html, p, body, h4 {
         margin: 0;
         padding: 0;
     }
