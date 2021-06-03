@@ -7,3 +7,4 @@ export { default as ICON_LVL_6 } from "./ICON_LVL_6.png";
 export { default as ICON_LVL_7 } from "./ICON_LVL_7.png";
 export { default as ICON_LVL_8 } from "./ICON_LVL_8.png";
 export { default as ICON_AGENT } from "./ICON_AGENT.png";
+export * as SOCIAL from "./social";

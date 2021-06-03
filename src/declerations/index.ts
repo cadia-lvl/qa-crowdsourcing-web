@@ -4,3 +4,4 @@ export * from "./Games";
 export * from "./Questions";
 export * from "./Charts";
 export * from "./Prizes";
+export * from "./AboutUs";
